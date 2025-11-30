@@ -20,8 +20,8 @@ public class DpiaQuickscanController : ControllerBase
     }
 
     /// <summary>
-    /// Haal de huidige DPIA-quickscan op voor een assessment.
-    /// Maakt een nieuwe quickscan aan als er nog geen bestaat.
+    /// Haal de DPIA-quickscan op voor dit assessment
+    /// (incl. vragen, antwoorden en berekende uitkomst).
     /// </summary>
     [HttpGet]
     public ActionResult<DpiaQuickscanResult> Get(Guid assessmentId)
@@ -32,28 +32,39 @@ public class DpiaQuickscanController : ControllerBase
             return NotFound("Assessment not found.");
         }
 
-        var quickscan = _dpiaQuickscanService.GetOrCreateForAssessment(assessmentId);
-        return Ok(quickscan);
+        var result = _dpiaQuickscanService.GetOrCreateForAssessment(assessmentId);
+        return Ok(result);
+    }
+
+    public class UpdateDpiaQuickscanAnswer
+    {
+        /// <summary>
+        /// Code van de vraag (bijv. "Q1", "Q2"), moet overeenkomen met DpiaQuickscanQuestion.Code.
+        /// </summary>
+        public string Code { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Antwoord, bijv. "Ja", "Nee", "Nvt". Leeg/null = geen antwoord.
+        /// </summary>
+        public string? Answer { get; set; }
     }
 
     public class UpdateDpiaQuickscanRequest
     {
-        // Voorbeeld JSON:
-        // {
-        //   "answers": {
-        //     "1": "Ja",
-        //     "2": "Nee",
-        //     "3": null
-        //   }
-        // }
-        public Dictionary<int, string?> Answers { get; set; } = new();
+        /// <summary>
+        /// Antwoorden per vraagcode.
+        /// </summary>
+        public List<UpdateDpiaQuickscanAnswer> Answers { get; set; } = new();
     }
 
     /// <summary>
-    /// Werk antwoorden in de DPIA-quickscan bij en herbereken de uitkomst.
+    /// Update de antwoorden voor de DPIA-quickscan van dit assessment.
+    /// De uitkomst (DpiaRequired) wordt automatisch herberekend.
     /// </summary>
     [HttpPut]
-    public ActionResult<DpiaQuickscanResult> Update(Guid assessmentId, [FromBody] UpdateDpiaQuickscanRequest request)
+    public ActionResult<DpiaQuickscanResult> Update(
+        Guid assessmentId,
+        [FromBody] UpdateDpiaQuickscanRequest request)
     {
         var assessment = _assessmentService.GetById(assessmentId);
         if (assessment == null)
@@ -61,12 +72,16 @@ public class DpiaQuickscanController : ControllerBase
             return NotFound("Assessment not found.");
         }
 
-        if (request.Answers == null || request.Answers.Count == 0)
+        if (request == null || request.Answers == null)
         {
-            return BadRequest("No answers provided.");
+            return BadRequest("Request body with 'answers' is required.");
         }
 
-        var quickscan = _dpiaQuickscanService.UpdateAnswers(assessmentId, request.Answers);
-        return Ok(quickscan);
+        var answers = request.Answers
+            .Where(a => a != null && !string.IsNullOrWhiteSpace(a.Code))
+            .Select(a => (a.Code, a.Answer));
+
+        var result = _dpiaQuickscanService.UpdateAnswers(assessmentId, answers);
+        return Ok(result);
     }
 }
