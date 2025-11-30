@@ -11,6 +11,11 @@ builder.Services.AddSwaggerGen();
 // Registratie van onze in-memory AssessmentService
 builder.Services.AddSingleton<AssessmentService>();
 builder.Services.AddSingleton<DpiaQuickscanService>();
+builder.Services.AddSingleton<MdrService>();
+builder.Services.AddSingleton<AiActService>();
+builder.Services.AddSingleton<KoppelingenService>();
+builder.Services.AddSingleton<SecurityProfileService>();
+builder.Services.AddSingleton<ToetsVooronderzoekService>();
 
 var app = builder.Build();
 
