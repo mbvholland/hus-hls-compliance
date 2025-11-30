@@ -1,3 +1,4 @@
+using System;
 using HlsCompliance.Api.Domain;
 using HlsCompliance.Api.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,9 @@ public class MdrController : ControllerBase
     }
 
     /// <summary>
-    /// Haal de MDR-classificatie op voor dit assessment (maakt een lege state aan als die nog niet bestaat).
+    /// Haal de MDR-classificatie op voor dit assessment.
+    /// Criteria die uit DPIA komen worden automatisch afgeleid.
+    /// De uitkomst wordt ook teruggeschreven naar het Assessment (MdrClass + MdrStatus).
     /// </summary>
     [HttpGet]
     public ActionResult<MdrClassificationState> Get(Guid assessmentId)
@@ -30,42 +33,34 @@ public class MdrController : ControllerBase
         }
 
         var state = _mdrService.GetOrCreateForAssessment(assessmentId);
+
+        // Assessment bijwerken met MDR-uitkomst
+        assessment.MdrClass = state.MdrClass;
+        assessment.MdrStatus = state.IsComplete
+            ? "MDR geclassificeerd"
+            : "Onbekend";
+
         return Ok(state);
     }
 
     public class UpdateMdrRequest
     {
         /// <summary>
-        /// "Ja" / "Nee" of leeg.
+        /// Ernst van de schade bij fout:
+        /// "dodelijk_of_onherstelbaar", "ernstig", "niet_ernstig" of "Geen".
         /// </summary>
-        public string? A2_IsMedicalDevice { get; set; }
-
-        /// <summary>
-        /// "Ja" / "Nee" of leeg.
-        /// </summary>
-        public string? B2_ExceptionOrExclusion { get; set; }
-
-        /// <summary>
-        /// "Ja" / "Nee" of leeg.
-        /// </summary>
-        public string? C2_InvasiveOrImplantable { get; set; }
-
-        /// <summary>
-        /// "Ja" / "Nee" of leeg.
-        /// </summary>
-        public string? D2_AdditionalRiskFactor { get; set; }
-
-        /// <summary>
-        /// "dodelijk_of_onherstelbaar", "ernstig", "niet_ernstig" of leeg.
-        /// </summary>
-        public string? E2_Severity { get; set; }
+        public string? ErnstSchadeBijFout { get; set; }
     }
 
     /// <summary>
-    /// Werk de MDR-antwoorden bij en herbereken de classificatie.
+    /// Update de MDR-classificatie door de ernst van de schade bij fout in te vullen.
+    /// Overige criteria worden automatisch afgeleid uit de DPIA-quickscan.
+    /// De uitkomst wordt ook teruggeschreven naar het Assessment (MdrClass + MdrStatus).
     /// </summary>
     [HttpPut]
-    public ActionResult<MdrClassificationState> Update(Guid assessmentId, [FromBody] UpdateMdrRequest request)
+    public ActionResult<MdrClassificationState> Update(
+        Guid assessmentId,
+        [FromBody] UpdateMdrRequest request)
     {
         var assessment = _assessmentService.GetById(assessmentId);
         if (assessment == null)
@@ -73,14 +68,13 @@ public class MdrController : ControllerBase
             return NotFound("Assessment not found.");
         }
 
-        var state = _mdrService.UpdateAnswers(
-            assessmentId,
-            request.A2_IsMedicalDevice,
-            request.B2_ExceptionOrExclusion,
-            request.C2_InvasiveOrImplantable,
-            request.D2_AdditionalRiskFactor,
-            request.E2_Severity
-        );
+        var state = _mdrService.UpdateSeverity(assessmentId, request?.ErnstSchadeBijFout);
+
+        // Assessment bijwerken met MDR-uitkomst
+        assessment.MdrClass = state.MdrClass;
+        assessment.MdrStatus = state.IsComplete
+            ? "MDR geclassificeerd"
+            : "Onbekend";
 
         return Ok(state);
     }
