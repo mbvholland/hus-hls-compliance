@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "xa0WAhBgnkNAIAK7rFWJyPCWT9ptuU88nsrMMKSrEKw=",
+  "Source": "HlsCompliance.Api",
+  "BasePath": "_content/HlsCompliance.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
