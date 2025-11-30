@@ -10,6 +10,7 @@ builder.Services.AddSwaggerGen();
 
 // Registratie van onze in-memory AssessmentService
 builder.Services.AddSingleton<AssessmentService>();
+builder.Services.AddSingleton<DpiaQuickscanService>();
 
 var app = builder.Build();
 
