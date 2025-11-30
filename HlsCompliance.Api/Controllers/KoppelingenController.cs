@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using HlsCompliance.Api.Domain;
 using HlsCompliance.Api.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +21,8 @@ public class KoppelingenController : ControllerBase
 
     /// <summary>
     /// Haal alle koppelingen + aggregated risiconiveau op voor dit assessment.
+    /// Schrijft het overall risiconiveau ook terug naar het Assessment
+    /// (ConnectionsOverallRisk + ConnectionsRiskStatus).
     /// </summary>
     [HttpGet]
     public ActionResult<KoppelingenResult> Get(Guid assessmentId)
@@ -30,6 +34,13 @@ public class KoppelingenController : ControllerBase
         }
 
         var result = _koppelingenService.GetOrCreateForAssessment(assessmentId);
+
+        // Assessment bijwerken met koppelingen-uitkomst
+        assessment.ConnectionsOverallRisk = result.OverallRiskLevel;
+        assessment.ConnectionsRiskStatus = result.Connections.Any()
+            ? "Koppelingen beoordeeld"
+            : "Geen koppelingen geregistreerd";
+
         return Ok(result);
     }
 
@@ -44,16 +55,30 @@ public class KoppelingenController : ControllerBase
         public string Name { get; set; } = string.Empty;
         public string Type { get; set; } = string.Empty;
         public string Direction { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Gevoeligheid volgens HLS tab "2. Koppeling-Beslisboom".
+        /// Mogelijke waarden:
+        /// - "Geen"
+        /// - "Laag"
+        /// - "Geaggregeerd/geanonimiseerd/pseudoniem"
+        /// - "Identificeerbaar medisch of persoon"
+        /// Andere waarden worden als "Onbekend" behandeld.
+        /// </summary>
         public string DataSensitivity { get; set; } = string.Empty;
 
         /// <summary>
-        /// Risiconiveau: bijv. "Geen", "Laag", "Middel", "Hoog", "Onbekend".
+        /// (Wordt genegeerd) Risiconiveau wordt automatisch bepaald op basis van DataSensitivity.
+        /// Deze property blijft alleen voor achterwaartse compatibiliteit.
         /// </summary>
-        public string RiskLevel { get; set; } = "Onbekend";
+        public string? RiskLevel { get; set; }
     }
 
     /// <summary>
     /// Voeg een nieuwe koppeling toe of update een bestaande (indien Id is meegegeven).
+    /// RiskLevel wordt automatisch berekend uit DataSensitivity.
+    /// Schrijft het overall risiconiveau ook terug naar het Assessment
+    /// (ConnectionsOverallRisk + ConnectionsRiskStatus).
     /// </summary>
     [HttpPost]
     public ActionResult<KoppelingenResult> Upsert(Guid assessmentId, [FromBody] UpsertKoppelingRequest request)
@@ -62,6 +87,11 @@ public class KoppelingenController : ControllerBase
         if (assessment == null)
         {
             return NotFound("Assessment not found.");
+        }
+
+        if (request == null)
+        {
+            return BadRequest("Request body is required.");
         }
 
         if (string.IsNullOrWhiteSpace(request.Name))
@@ -75,16 +105,25 @@ public class KoppelingenController : ControllerBase
             Name = request.Name,
             Type = request.Type,
             Direction = request.Direction,
-            DataSensitivity = request.DataSensitivity,
-            RiskLevel = request.RiskLevel
+            DataSensitivity = request.DataSensitivity ?? string.Empty,
+            // RiskLevel niet uit request overnemen; wordt in de service berekend
         };
 
         var result = _koppelingenService.AddOrUpdateConnection(assessmentId, connection);
+
+        // Assessment bijwerken met koppelingen-uitkomst
+        assessment.ConnectionsOverallRisk = result.OverallRiskLevel;
+        assessment.ConnectionsRiskStatus = result.Connections.Any()
+            ? "Koppelingen beoordeeld"
+            : "Geen koppelingen geregistreerd";
+
         return Ok(result);
     }
 
     /// <summary>
     /// Verwijder een koppeling op basis van Id.
+    /// Schrijft het overall risiconiveau ook terug naar het Assessment
+    /// (ConnectionsOverallRisk + ConnectionsRiskStatus).
     /// </summary>
     [HttpDelete("{connectionId:guid}")]
     public ActionResult Delete(Guid assessmentId, Guid connectionId)
@@ -95,11 +134,21 @@ public class KoppelingenController : ControllerBase
             return NotFound("Assessment not found.");
         }
 
+        var resultBefore = _koppelingenService.GetOrCreateForAssessment(assessmentId);
+
         var ok = _koppelingenService.RemoveConnection(assessmentId, connectionId);
         if (!ok)
         {
             return NotFound("Koppeling niet gevonden.");
         }
+
+        var resultAfter = _koppelingenService.GetOrCreateForAssessment(assessmentId);
+
+        // Assessment bijwerken met koppelingen-uitkomst
+        assessment.ConnectionsOverallRisk = resultAfter.OverallRiskLevel;
+        assessment.ConnectionsRiskStatus = resultAfter.Connections.Any()
+            ? "Koppelingen beoordeeld"
+            : "Geen koppelingen geregistreerd";
 
         return NoContent();
     }
