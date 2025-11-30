@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using HlsCompliance.Api.Domain;
 
 namespace HlsCompliance.Api.Services;
@@ -5,151 +8,248 @@ namespace HlsCompliance.Api.Services;
 public class MdrService
 {
     private readonly Dictionary<Guid, MdrClassificationState> _storage = new();
+    private readonly DpiaQuickscanService _dpiaQuickscanService;
+
+    public MdrService(DpiaQuickscanService dpiaQuickscanService)
+    {
+        _dpiaQuickscanService = dpiaQuickscanService;
+    }
 
     public MdrClassificationState GetOrCreateForAssessment(Guid assessmentId)
     {
-        if (_storage.TryGetValue(assessmentId, out var existing))
+        if (!_storage.TryGetValue(assessmentId, out var state))
         {
-            return existing;
+            state = new MdrClassificationState
+            {
+                AssessmentId = assessmentId,
+                MdrClass = "Onbekend",
+                Explanation = "Nog geen MDR-criteria ingevuld.",
+                IsComplete = false,
+                LastUpdated = DateTimeOffset.UtcNow
+            };
+
+            _storage[assessmentId] = state;
         }
 
-        var state = new MdrClassificationState
-        {
-            AssessmentId = assessmentId,
-            Classification = "Onbekend",
-            IsComplete = false,
-            Explanation = "Nog geen MDR-gegevens ingevuld."
-        };
+        // Criteria A–D altijd opnieuw afleiden uit de actuele DPIA-quickscan
+        ApplyDpiaInputs(assessmentId, state);
+        Recalculate(state);
 
-        _storage[assessmentId] = state;
         return state;
     }
 
-    public MdrClassificationState UpdateAnswers(
-        Guid assessmentId,
-        string? a2,
-        string? b2,
-        string? c2,
-        string? d2,
-        string? e2Severity)
+    /// <summary>
+    /// Update alleen de ernst van de schade bij fout (E2).
+    /// De rest wordt afgeleid uit de DPIA-quickscan.
+    /// </summary>
+    public MdrClassificationState UpdateSeverity(Guid assessmentId, string? severity)
     {
         var state = GetOrCreateForAssessment(assessmentId);
 
-        state.A2_IsMedicalDevice = Normalize(a2);
-        state.B2_ExceptionOrExclusion = Normalize(b2);
-        state.C2_InvasiveOrImplantable = Normalize(c2);
-        state.D2_AdditionalRiskFactor = Normalize(d2);
-        state.E2_Severity = Normalize(e2Severity);
+        state.ErnstSchadeBijFout = string.IsNullOrWhiteSpace(severity)
+            ? null
+            : severity.Trim();
 
         Recalculate(state);
         return state;
     }
 
-    private static string? Normalize(string? value)
+    /// <summary>
+    /// Leest de relevante DPIA-quickscan antwoorden in en mapt deze naar de MDR-criteria.
+    /// A2 <- Q6 (Medisch doel)
+    /// C2/D2 <- Q11 (Klinische interpretatie / ondersteunt klinische beslissing)
+    /// </summary>
+    private void ApplyDpiaInputs(Guid assessmentId, MdrClassificationState state)
     {
-        if (string.IsNullOrWhiteSpace(value))
+        var dpia = _dpiaQuickscanService.GetOrCreateForAssessment(assessmentId);
+
+        string? GetAnswer(string code) =>
+            dpia.Questions
+                .FirstOrDefault(q =>
+                    string.Equals(q.Code, code, StringComparison.OrdinalIgnoreCase))
+                ?.Answer;
+
+        // A2 <- DPIA Q6
+        var medischDoelAnswer = GetAnswer("Q6");
+        state.MedischDoel = NormalizeJaNee(medischDoelAnswer);
+
+        if (string.Equals(state.MedischDoel, "Nee", StringComparison.OrdinalIgnoreCase))
         {
-            return null;
+            // Als er géén medisch doel is:
+            // C2 en D2 automatisch "Nee" (zoals je Excel-logica).
+            state.KlinischeInterpretatie = "Nee";
+            state.OndersteuntKlinischeBeslissing = "Nee";
+        }
+        else
+        {
+            // C2/D2 <- DPIA Q11
+            var klinischeInterpretatieAnswer = GetAnswer("Q11");
+            var normalized = NormalizeJaNee(klinischeInterpretatieAnswer);
+
+            state.KlinischeInterpretatie = normalized;
+            state.OndersteuntKlinischeBeslissing = normalized;
         }
 
-        return value.Trim();
+        state.LastUpdated = DateTimeOffset.UtcNow;
+    }
+
+    private static string? NormalizeJaNee(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return null;
+
+        var v = value.Trim().ToLowerInvariant();
+        if (v == "ja") return "Ja";
+        if (v == "nee") return "Nee";
+        return null;
+    }
+
+    private static string? NormalizeSeverity(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return null;
+
+        var v = value.Trim().ToLowerInvariant();
+        return v switch
+        {
+            "dodelijk_of_onherstelbaar" => "dodelijk_of_onherstelbaar",
+            "ernstig" => "ernstig",
+            "niet_ernstig" => "niet_ernstig",
+            "geen" => "Geen",
+            _ => null
+        };
     }
 
     /// <summary>
-    /// MDR-beslislogica (vereenvoudigd, maar gebaseerd op eerder gebruikte regels).
+    /// Spiegelt de logica van F2 in tab '3. MDR Beslisboom'.
     /// </summary>
     private void Recalculate(MdrClassificationState state)
     {
-        var a2 = state.A2_IsMedicalDevice?.ToLowerInvariant();
-        var b2 = state.B2_ExceptionOrExclusion?.ToLowerInvariant();
-        var c2 = state.C2_InvasiveOrImplantable?.ToLowerInvariant();
-        var d2 = state.D2_AdditionalRiskFactor?.ToLowerInvariant();
-        var severity = state.E2_Severity?.ToLowerInvariant();
+        // A2..E2-equivalenten opbouwen
+        var a = state.MedischDoel;                             // A2
+        var b = state.AlleenAdministratiefOfGeneriek;          // B2 (afgeleid uit MedischDoel)
+        var c = state.KlinischeInterpretatie;                  // C2
+        var d = state.OndersteuntKlinischeBeslissing;          // D2
+        var e = NormalizeSeverity(state.ErnstSchadeBijFout);   // E2 (ernst, niet Ja/Nee)
 
-        // 1. Als helemaal niets is ingevuld: Onbekend
-        var anyAnswer =
-            a2 != null || b2 != null || c2 != null || d2 != null || severity != null;
+        // Tel alleen Ja/Nee voor A–D
+        var yesNoInputs = new[] { a, b, c, d };
+        int yesNoCount = yesNoInputs.Count(v =>
+            string.Equals(v, "Ja", StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(v, "Nee", StringComparison.OrdinalIgnoreCase));
 
-        if (!anyAnswer)
+        var allInputs = new string?[] { a, b, c, d, e };
+        bool anyEmpty = allInputs.Any(v => v is null);
+
+        // 1) Helemaal niets ingevuld -> Onbekend
+        if (yesNoCount == 0 && e is null)
         {
-            state.Classification = "Onbekend";
+            state.MdrClass = "Onbekend";
+            state.Explanation =
+                "Nog geen MDR-criteria ingevuld (DPIA-quickscan en ernst van de schade zijn leeg).";
             state.IsComplete = false;
-            state.Explanation = "Er zijn nog geen MDR-antwoorden ingevuld.";
+            state.LastUpdated = DateTimeOffset.UtcNow;
             return;
         }
 
-        // 2. Als een deel is ingevuld maar niet alles: "onvolledig"
-        // (hier eisen we dat A2, B2, C2, D2 en E2 allemaal iets hebben)
-        var missing =
-            a2 == null || b2 == null || c2 == null || d2 == null || severity == null;
-
-        if (missing)
+        // 2) Speciaal: Medisch doel = Nee -> direct Geen medisch hulpmiddel
+        //    E2 moet in dit geval automatisch "Geen" zijn.
+        if (string.Equals(a, "Nee", StringComparison.OrdinalIgnoreCase))
         {
-            state.Classification = "Onbekend";
-            state.IsComplete = false;
-            state.Explanation = "Niet alle MDR-vragen zijn ingevuld. Vul A2 t/m E2 volledig in.";
+            state.ErnstSchadeBijFout = "Geen";
+            state.MdrClass = "Geen medisch hulpmiddel";
+            state.Explanation =
+                "Medisch doel is 'Nee' (afgeleid uit DPIA); volgens MDR is dit geen medisch hulpmiddel.";
+            state.IsComplete = true;
+            state.LastUpdated = DateTimeOffset.UtcNow;
             return;
         }
 
-        // Vanaf hier hebben we een volledige set antwoorden
+        // 3) Speciaal: Medisch doel = Ja, C en D beide "Nee" -> Klasse I,
+        //    en E2 automatisch "Geen" (zoals in de Excel-beslislogica).
+        if (string.Equals(a, "Ja", StringComparison.OrdinalIgnoreCase) &&
+            string.Equals(c, "Nee", StringComparison.OrdinalIgnoreCase) &&
+            string.Equals(d, "Nee", StringComparison.OrdinalIgnoreCase))
+        {
+            state.ErnstSchadeBijFout = "Geen";
+            state.MdrClass = "Klasse I";
+            state.Explanation =
+                "Wel medisch doel, maar geen klinische interpretatie en geen klinische beslissingsondersteuning; daarmee MDR klasse I. Ernst van schade is automatisch 'Geen'.";
+            state.IsComplete = true;
+            state.LastUpdated = DateTimeOffset.UtcNow;
+            return;
+        }
+
+        // 4) Als we wél Ja/Nee hebben, maar nog lege velden (bijv. ernst niet ingevuld)
+        //    en we zitten niet in een van de speciale gevallen hierboven:
+        if (anyEmpty)
+        {
+            state.MdrClass = "Onbekend";
+            state.Explanation =
+                "Vul alle antwoorden in (ook in DPIA-quickscan en ernst van de schade) voor een MDR-classificatieresultaat.";
+            state.IsComplete = false;
+            state.LastUpdated = DateTimeOffset.UtcNow;
+            return;
+        }
+
+        // Vanaf hier weten we:
+        // - MedischDoel is NIET Nee (dus Ja)
+        // - We zitten niet in de 'allebei Nee'-case (C/D)
+        // - B, C, D en E zijn allemaal gevuld
+        // - We kunnen de Excel F2-logica verder volgen
+
         state.IsComplete = true;
 
-        // 3. Logica (gebaseerd op jouw Excel-formule en eerdere uitleg):
-
-        // 3.1. Als A2 != "ja" -> geen medisch hulpmiddel
-        if (a2 != "ja")
+        // Extra robuustheid: als B toch "Ja" is, is het alsnog geen medisch hulpmiddel.
+        if (string.Equals(b, "Ja", StringComparison.OrdinalIgnoreCase))
         {
-            state.Classification = "Geen medisch hulpmiddel";
-            state.Explanation = "A2 is niet 'Ja': deze oplossing wordt niet als medisch hulpmiddel aangemerkt.";
-            return;
+            state.MdrClass = "Geen medisch hulpmiddel";
+            state.Explanation =
+                "De software is alleen administratief/generieke communicatie; volgens MDR is dit geen medisch hulpmiddel.";
+        }
+        else if (!string.Equals(c, "Ja", StringComparison.OrdinalIgnoreCase))
+        {
+            state.MdrClass = "Klasse I";
+            state.Explanation =
+                "Wel medisch doel, maar geen klinische interpretatie; daarmee maximaal MDR klasse I.";
+        }
+        else if (!string.Equals(d, "Ja", StringComparison.OrdinalIgnoreCase))
+        {
+            state.MdrClass = "Klasse I";
+            state.Explanation =
+                "Wel klinische interpretatie, maar de software ondersteunt geen klinische beslissing; daarmee maximaal MDR klasse I.";
+        }
+        else
+        {
+            // Nu bepaalt de ernst van de schade (E2) de klasse
+            switch (e)
+            {
+                case "dodelijk_of_onherstelbaar":
+                    state.MdrClass = "Klasse III";
+                    state.Explanation =
+                        "Bij falen kan dodelijke of onherstelbare schade optreden; MDR klasse III is van toepassing.";
+                    break;
+
+                case "ernstig":
+                    state.MdrClass = "Klasse IIb";
+                    state.Explanation =
+                        "Bij falen kan ernstige schade optreden; MDR klasse IIb is van toepassing.";
+                    break;
+
+                case "niet_ernstig":
+                    state.MdrClass = "Klasse IIa";
+                    state.Explanation =
+                        "Bij falen is de schade niet-ernstig; MDR klasse IIa is van toepassing.";
+                    break;
+
+                default:
+                    state.MdrClass = "Klasse I";
+                    state.Explanation =
+                        "Ernst van schade is onbekend of niet herkend; default naar MDR klasse I.";
+                    break;
+            }
         }
 
-        // 3.2. Als B2 = "ja" -> geen medisch hulpmiddel (valt onder uitzondering)
-        if (b2 == "ja")
-        {
-            state.Classification = "Geen medisch hulpmiddel";
-            state.Explanation = "B2 is 'Ja': de oplossing valt onder een uitzondering en is geen medisch hulpmiddel.";
-            return;
-        }
-
-        // 3.3. Als C2 != "ja" -> Klasse I
-        if (c2 != "ja")
-        {
-            state.Classification = "Klasse I";
-            state.Explanation = "C2 is niet 'Ja': op basis hiervan wordt Klasse I toegekend.";
-            return;
-        }
-
-        // 3.4. Als D2 != "ja" -> Klasse I
-        if (d2 != "ja")
-        {
-            state.Classification = "Klasse I";
-            state.Explanation = "D2 is niet 'Ja': op basis hiervan wordt Klasse I toegekend.";
-            return;
-        }
-
-        // 3.5. Ernst (E2) bepaalt hogere klasse
-        switch (severity)
-        {
-            case "dodelijk_of_onherstelbaar":
-                state.Classification = "Klasse III";
-                state.Explanation = "E2 = dodelijk_of_onherstelbaar: hoogste risicoklasse (III).";
-                break;
-
-            case "ernstig":
-                state.Classification = "Klasse IIb";
-                state.Explanation = "E2 = ernstig: Klasse IIb.";
-                break;
-
-            case "niet_ernstig":
-                state.Classification = "Klasse IIa";
-                state.Explanation = "E2 = niet_ernstig: Klasse IIa.";
-                break;
-
-            default:
-                state.Classification = "Klasse I";
-                state.Explanation = "E2 niet herkend, default naar Klasse I.";
-                break;
-        }
+        state.LastUpdated = DateTimeOffset.UtcNow;
     }
 }
