@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using HlsCompliance.Api.Domain;
 
 namespace HlsCompliance.Api.Services;
@@ -145,6 +148,7 @@ public class DpiaQuickscanService
     /// IsRiskQuestion is gebaseerd op de kolom 'Risico-indicatie':
     /// - Laag  -> false
     /// - Middel/Hoog -> true
+    /// (met uitzondering van Q1: als Q1 'Ja' is, willen we sowieso DPIA).
     /// </summary>
     private List<DpiaQuickscanQuestion> CreateDefaultQuestions()
     {
@@ -154,98 +158,99 @@ public class DpiaQuickscanService
             {
                 Code = "Q1",
                 Text = "Worden persoonsgegevens verwerkt binnen de applicatie of dienst?",
-                IsRiskQuestion = false,   // Risico-indicatie: Laag
+                // Als hier 'Ja' op wordt geantwoord, zijn we sowieso in DPIA-sfeer.
+                IsRiskQuestion = true,
                 IsMandatory = true
             },
             new()
             {
                 Code = "Q2",
                 Text = "Worden bijzondere persoonsgegevens verwerkt, zoals gezondheidsgegevens, genetische of biometrische data?",
-                IsRiskQuestion = true,    // Risico-indicatie: Hoog
+                IsRiskQuestion = true,
                 IsMandatory = true
             },
             new()
             {
                 Code = "Q3",
-                Text = "Bevat de applicatie automatische besluitvorming of profilering...met juridische, medische of significante gevolgen voor personen?",
-                IsRiskQuestion = true,    // Risico-indicatie: Hoog
+                Text = "Bevat de applicatie automatische besluitvorming of profilering met juridische, medische of significante gevolgen voor personen?",
+                IsRiskQuestion = true,
                 IsMandatory = true
             },
             new()
             {
                 Code = "Q4",
                 Text = "Vindt grootschalige verwerking plaats van persoonsgegevens of zorgdata?",
-                IsRiskQuestion = true,    // Risico-indicatie: Hoog
+                IsRiskQuestion = true,
                 IsMandatory = true
             },
             new()
             {
                 Code = "Q5",
                 Text = "Worden individuen gevolgd, gemonitord of geobserveerd via logins, sensoren of gedragstracering?",
-                IsRiskQuestion = true,    // Risico-indicatie: Hoog
+                IsRiskQuestion = true,
                 IsMandatory = true
             },
             new()
             {
                 Code = "Q6",
                 Text = "Wordt nieuwe technologie ingezet (AI, machine learning, cloud analytics)?",
-                IsRiskQuestion = true,    // Risico-indicatie: Hoog
+                IsRiskQuestion = true,
                 IsMandatory = true
             },
             new()
             {
                 Code = "Q7",
                 Text = "Hebben derde partijen of subverwerkers toegang tot persoonsgegevens?",
-                IsRiskQuestion = true,    // Risico-indicatie: Middel
+                IsRiskQuestion = true,
                 IsMandatory = true
             },
             new()
             {
                 Code = "Q8",
                 Text = "Worden persoonsgegevens buiten de EU/EER verwerkt of opgeslagen?",
-                IsRiskQuestion = true,    // Risico-indicatie: Hoog
+                IsRiskQuestion = true,
                 IsMandatory = true
             },
             new()
             {
                 Code = "Q9",
                 Text = "Is er sprake van datakoppelingen met andere zorgsystemen of externe partijen?",
-                IsRiskQuestion = true,    // Risico-indicatie: Hoog
+                IsRiskQuestion = true,
                 IsMandatory = true
             },
             new()
             {
                 Code = "Q10",
                 Text = "Betreft de verwerking kwetsbare betrokkenen, zoals patiënten, ouderen of kinderen?",
-                IsRiskQuestion = true,    // Risico-indicatie: Hoog
+                IsRiskQuestion = true,
                 IsMandatory = true
             },
             new()
             {
                 Code = "Q11",
                 Text = "Kan de verwerking leiden tot uitsluiting, evaluatie of medische beoordeling van personen?",
-                IsRiskQuestion = true,    // Risico-indicatie: Hoog
+                IsRiskQuestion = true,
                 IsMandatory = true
             },
             new()
             {
                 Code = "Q12",
                 Text = "Is de verwerking structureel, herhalend of langdurig?",
-                IsRiskQuestion = true,    // Risico-indicatie: Middel
+                IsRiskQuestion = true,
                 IsMandatory = true
             },
             new()
             {
                 Code = "Q13",
                 Text = "Kunnen personen direct of indirect worden geïdentificeerd via dataset of logs?",
-                IsRiskQuestion = true,    // Risico-indicatie: Hoog
+                IsRiskQuestion = true,
                 IsMandatory = true
             },
             new()
             {
                 Code = "Q14",
                 Text = "Zou een datalek of fout aanzienlijke schade veroorzaken voor betrokkenen?",
-                IsRiskQuestion = true,    // Risico-indicatie: Hoog
+                IsRiskQuestion = true,
                 IsMandatory = true
             },
         };
