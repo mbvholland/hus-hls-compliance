@@ -9,3 +9,5 @@ obj/
 *.cache
 *.DS_Store
 Thumbs.db
+HlsCompliance.Tests/bin/
+HlsCompliance.Tests/obj/

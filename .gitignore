@@ -1,0 +1,14 @@
+# .NET build output (alle projects)
+**/bin/
+**/obj/
+
+# User / IDE files
+*.user
+*.suo
+*.userprefs
+.vs/
+*.log
+*.tmp
+*.cache
+*.DS_Store
+Thumbs.db
