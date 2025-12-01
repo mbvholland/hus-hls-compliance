@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using HlsCompliance.Api.Domain;
 using HlsCompliance.Api.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +24,7 @@ public class DpiaQuickscanController : ControllerBase
 
     /// <summary>
     /// Haal de DPIA-quickscan op voor dit assessment
-    /// (incl. vragen, antwoorden en berekende uitkomst).
+    /// (incl. vragen, antwoorden, berekende uitkomst en risicoscore).
     /// </summary>
     [HttpGet]
     public ActionResult<DpiaQuickscanResult> Get(Guid assessmentId)
@@ -59,7 +62,8 @@ public class DpiaQuickscanController : ControllerBase
 
     /// <summary>
     /// Update de antwoorden voor de DPIA-quickscan van dit assessment.
-    /// De uitkomst (DpiaRequired) wordt automatisch herberekend.
+    /// De uitkomst (DpiaRequired + RiskScore) wordt automatisch herberekend en
+    /// we schrijven de DPIA-verplichting terug naar het Assessment.
     /// </summary>
     [HttpPut]
     public ActionResult<DpiaQuickscanResult> Update(
@@ -82,6 +86,16 @@ public class DpiaQuickscanController : ControllerBase
             .Select(a => (a.Code, a.Answer));
 
         var result = _dpiaQuickscanService.UpdateAnswers(assessmentId, answers);
+
+        // Assessment bijwerken met de uitkomst van de quickscan
+        assessment.DpiaRequired = result.DpiaRequired;
+        assessment.DpiaStatus = result.DpiaRequired switch
+        {
+            null  => "Onbekend",
+            true  => "DPIA verplicht (nog uit te voeren)",
+            false => "Quickscan afgerond (DPIA niet verplicht)"
+        };
+
         return Ok(result);
     }
 }

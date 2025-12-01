@@ -2,34 +2,38 @@ namespace HlsCompliance.Api.Domain;
 
 public class DpiaQuickscanQuestion
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
-
     /// <summary>
-    /// Stabiele code van de vraag, bv. "Q1", "Q2", zodat we antwoorden
-    /// via deze code kunnen doorgeven vanuit de client.
+    /// Vraagcode, bijv. "Q1" t/m "Q14".
     /// </summary>
     public string Code { get; set; } = string.Empty;
 
     /// <summary>
-    /// De vraagtekst zoals die ook in de HLS Excel-tool staat (later te verfijnen).
+    /// Vraagtekst uit de HLS Excel (tab DPIA_Quickscan).
     /// </summary>
     public string Text { get; set; } = string.Empty;
 
     /// <summary>
-    /// Antwoord, bv. "Ja", "Nee", "Nvt", of leeg/null als nog niet beantwoord.
+    /// Of de vraag verplicht is voor het bepalen van de DPIA-verplichting.
     /// </summary>
-    public string? Answer { get; set; }
+    public bool IsMandatory { get; set; }
 
     /// <summary>
-    /// True als deze vraag een DPIA-risicofactor vertegenwoordigt:
-    /// bij antwoord "Ja" telt hij mee voor DPIA verplicht.
+    /// Of dit een risicovraag is (kolom "Risico-indicatie" Middel/Hoog).
     /// </summary>
     public bool IsRiskQuestion { get; set; }
 
     /// <summary>
-    /// Is deze vraag verplicht om te beantwoorden voor een valide quickscan?
+    /// Numerieke risicowaarde per vraag (kolom F in Excel):
+    /// Laag   = 1
+    /// Middel = 2
+    /// Hoog   = 3
     /// </summary>
-    public bool IsMandatory { get; set; } = true;
+    public int RiskWeight { get; set; }
+
+    /// <summary>
+    /// Antwoord: "Ja", "Nee", "Nvt" of null (niet beantwoord).
+    /// </summary>
+    public string? Answer { get; set; }
 }
 
 public class DpiaQuickscanResult
@@ -37,40 +41,48 @@ public class DpiaQuickscanResult
     public Guid AssessmentId { get; set; }
 
     /// <summary>
-    /// Alle vragen voor deze DPIA-quickscan.
+    /// Alle vragen in de quickscan (Q1 t/m Q14).
     /// </summary>
     public List<DpiaQuickscanQuestion> Questions { get; set; } = new();
 
     /// <summary>
-    /// Of een DPIA verplicht is op basis van de huidige beantwoording:
-    /// true  = DPIA vereist
-    /// false = DPIA niet vereist
-    /// null  = nog niet te bepalen (bijv. niet alles beantwoord).
+    /// Of een DPIA verplicht is:
+    /// true  = DPIA verplicht
+    /// false = DPIA niet verplicht
+    /// null  = nog niet te bepalen (bijv. niet alle verplichte vragen zijn beantwoord).
     /// </summary>
     public bool? DpiaRequired { get; set; }
 
     /// <summary>
-    /// Toelichting waarom (nog) wel/niet DPIA vereist is.
+    /// Toelichting bij de uitkomst (metadata, geen juridisch bindende tekst).
     /// </summary>
-    public string? DpiaRequiredReason { get; set; }
+    public string DpiaRequiredReason { get; set; } = string.Empty;
 
     /// <summary>
-    /// Aantal verplichte vragen dat is beantwoord.
+    /// Aantal verplichte vragen (IsMandatory) met een ingevuld antwoord.
     /// </summary>
     public int AnsweredMandatoryCount { get; set; }
 
     /// <summary>
-    /// Aantal verplichte vragen dat nog niet is beantwoord.
+    /// Aantal verplichte vragen zonder antwoord.
     /// </summary>
     public int UnansweredMandatoryCount { get; set; }
 
     /// <summary>
-    /// Aantal risicovragen dat met "Ja" is beantwoord.
+    /// Aantal risicovragen (IsRiskQuestion = true) die met "Ja" zijn beantwoord.
     /// </summary>
     public int RiskQuestionsAnsweredYes { get; set; }
 
     /// <summary>
-    /// Laatste wijzigingsmoment (UTC).
+    /// DPIA-risicoscore op basis van Excel V1.2:
+    /// =AVERAGE(G2:G15)
+    /// waarbij G2..G15 = IF(Answer="Ja"; RiskWeight; 0).
+    /// Score loopt van 0 t/m 3.
     /// </summary>
-    public DateTimeOffset LastUpdated { get; set; } = DateTimeOffset.UtcNow;
+    public double RiskScore { get; set; }
+
+    /// <summary>
+    /// Laatste wijzigingstijdstip (UTC).
+    /// </summary>
+    public DateTimeOffset LastUpdated { get; set; }
 }
