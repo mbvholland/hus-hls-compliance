@@ -23,6 +23,7 @@ public class KoppelingenService
             {
                 AssessmentId = assessmentId,
                 OverallRiskLevel = "Onbekend",
+                OverallRiskScore = 0,
                 Explanation = "Nog geen koppelingen geregistreerd."
             };
 
@@ -150,6 +151,32 @@ public class KoppelingenService
     }
 
     /// <summary>
+    /// Zet OverallRiskLevel om naar numerieke score 0–3, zoals D2 in Excel:
+    /// "Geen"      -> 0
+    /// "Laag"      -> 1
+    /// "Middel"    -> 2
+    /// "Hoog"      -> 3
+    /// "Onbekend"  -> 0
+    /// </summary>
+    private int MapRiskLevelToScore(string? level)
+    {
+        if (string.IsNullOrWhiteSpace(level))
+            return 0;
+
+        var v = level.Trim().ToLowerInvariant();
+
+        return v switch
+        {
+            "geen" => 0,
+            "laag" => 1,
+            "middel" => 2,
+            "hoog" => 3,
+            "onbekend" => 0,
+            _ => 0
+        };
+    }
+
+    /// <summary>
     /// Bepaalt het overall-risico over alle koppelingen, met DPIA-poortwachter (Q9/E10):
     ///
     /// - Als DPIA Q9 = Nee/Geen én er zijn geen koppelingen geregistreerd:
@@ -163,6 +190,9 @@ public class KoppelingenService
     ///
     /// - Als geen koppelingen én DPIA Q9 onbekend:
     ///     Overall = "Onbekend".
+    ///
+    /// Daarnaast wordt overal OverallRiskScore (0–3) gezet
+    /// volgens dezelfde mapping als Excel D2.
     /// </summary>
     private void RecalculateOverallRisk(Guid assessmentId, KoppelingenResult result)
     {
@@ -175,6 +205,7 @@ public class KoppelingenService
         if (string.Equals(dpiaAnswer, "Nee", StringComparison.OrdinalIgnoreCase) && !hasConnections)
         {
             result.OverallRiskLevel = "Geen";
+            result.OverallRiskScore = MapRiskLevelToScore(result.OverallRiskLevel);
             result.Explanation =
                 "Volgens de DPIA-quickscan (vraag Q9: datakoppelingen) zijn er geen koppelingen. " +
                 "Overall risiconiveau voor koppelingen is 'Geen'.";
@@ -185,6 +216,7 @@ public class KoppelingenService
         if (!hasConnections && dpiaAnswer is null)
         {
             result.OverallRiskLevel = "Onbekend";
+            result.OverallRiskScore = MapRiskLevelToScore(result.OverallRiskLevel);
             result.Explanation =
                 "Er zijn nog geen koppelingen geregistreerd en de DPIA-quickscan (vraag Q9) is nog niet ingevuld.";
             return;
@@ -195,6 +227,7 @@ public class KoppelingenService
         {
             // DPIA = Ja, maar nog geen koppelingen ingevuld in de module.
             result.OverallRiskLevel = "Onbekend";
+            result.OverallRiskScore = MapRiskLevelToScore(result.OverallRiskLevel);
             result.Explanation =
                 "De DPIA-quickscan (vraag Q9) geeft aan dat er koppelingen zijn, " +
                 "maar er zijn nog geen koppelingen geregistreerd in deze HLS-module.";
@@ -236,12 +269,14 @@ public class KoppelingenService
             result.OverallRiskLevel = "Onbekend";
         }
 
+        result.OverallRiskScore = MapRiskLevelToScore(result.OverallRiskLevel);
+
         var total = levels.Count;
 
         var explanation =
             $"Totaal {total} koppeling(en). " +
             $"Hoog: {countHoog}, Middel: {countMiddel}, Laag: {countLaag}, Geen: {countGeen}, Onbekend: {countOnbekend}. " +
-            $"Overall risiconiveau: {result.OverallRiskLevel}.";
+            $"Overall risiconiveau: {result.OverallRiskLevel} (score {result.OverallRiskScore}).";
 
         // Als DPIA zegt "geen koppelingen", maar we er toch hebben geregistreerd, dit benoemen.
         if (string.Equals(dpiaAnswer, "Nee", StringComparison.OrdinalIgnoreCase) && hasConnections)
