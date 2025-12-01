@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using HlsCompliance.Api.Domain;
 using HlsCompliance.Api.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -20,10 +23,11 @@ public class SecurityProfileController : ControllerBase
     }
 
     /// <summary>
-    /// Haal het securityprofiel op voor dit assessment.
+    /// Haal het securityprofiel van de leverancier op voor dit assessment
+    /// (inclusief alle 8 vragen, afgeleide DPIA-antwoorden en risicoscore).
     /// </summary>
     [HttpGet]
-    public ActionResult<SecurityProfileState> Get(Guid assessmentId)
+    public ActionResult<SecurityProfileResult> Get(Guid assessmentId)
     {
         var assessment = _assessmentService.GetById(assessmentId);
         if (assessment == null)
@@ -31,33 +35,47 @@ public class SecurityProfileController : ControllerBase
             return NotFound("Assessment not found.");
         }
 
-        var state = _securityProfileService.GetOrCreateForAssessment(assessmentId);
-        return Ok(state);
+        var result = _securityProfileService.GetOrCreateForAssessment(assessmentId);
+
+        // Assessment bijwerken met risicoscore + status
+        assessment.SecurityProfileRiskScore = result.RiskScore;
+        assessment.SecurityProfileStatus = result.IsComplete
+            ? "Securityprofiel beoordeeld"
+            : "Onvolledig";
+
+        return Ok(result);
+    }
+
+    public class UpdateSecurityProfileAnswer
+    {
+        /// <summary>
+        /// Code van de vraag (bijv. "Q2" t/m "Q8").
+        /// Voor afgeleide vragen (Q1, Q5) wordt input genegeerd.
+        /// </summary>
+        public string Code { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Antwoord: "Ja" of "Nee". Leeg/null = geen antwoord.
+        /// </summary>
+        public string? Answer { get; set; }
     }
 
     public class UpdateSecurityProfileRequest
     {
         /// <summary>
-        /// (Optioneel) Versie of variant van het securityprofiel.
+        /// Antwoorden per vraagcode.
+        /// Let op: Q1 en Q5 zijn afgeleid uit DPIA en worden genegeerd.
         /// </summary>
-        public string? ProfileVersion { get; set; }
-
-        /// <summary>
-        /// Overall niveau van het profiel, bv. "Onbekend", "Laag", "Middel", "Hoog".
-        /// </summary>
-        public string? OverallSecurityLevel { get; set; }
-
-        /// <summary>
-        /// Scores per blok/domein. Key = bloknaam, Value = niveau.
-        /// </summary>
-        public Dictionary<string, string>? BlockScores { get; set; }
+        public List<UpdateSecurityProfileAnswer> Answers { get; set; } = new();
     }
 
     /// <summary>
-    /// Maak of update het securityprofiel voor dit assessment.
+    /// Update de antwoorden voor het securityprofiel van deze leverancier.
+    /// Afgeleide velden (Q1 en Q5) blijven gekoppeld aan DPIA en kunnen niet direct
+    /// via deze endpoint worden overschreven.
     /// </summary>
     [HttpPut]
-    public ActionResult<SecurityProfileState> Update(
+    public ActionResult<SecurityProfileResult> Update(
         Guid assessmentId,
         [FromBody] UpdateSecurityProfileRequest request)
     {
@@ -67,18 +85,23 @@ public class SecurityProfileController : ControllerBase
             return NotFound("Assessment not found.");
         }
 
-        if (request == null)
+        if (request == null || request.Answers == null)
         {
-            return BadRequest("Body is required.");
+            return BadRequest("Request body with 'answers' is required.");
         }
 
-        var updated = _securityProfileService.UpdateProfile(
-            assessmentId,
-            request.ProfileVersion,
-            request.OverallSecurityLevel,
-            request.BlockScores
-        );
+        var answers = request.Answers
+            .Where(a => a != null && !string.IsNullOrWhiteSpace(a.Code))
+            .Select(a => (a.Code, a.Answer));
 
-        return Ok(updated);
+        var result = _securityProfileService.UpdateAnswers(assessmentId, answers);
+
+        // Assessment bijwerken met risicoscore + status
+        assessment.SecurityProfileRiskScore = result.RiskScore;
+        assessment.SecurityProfileStatus = result.IsComplete
+            ? "Securityprofiel beoordeeld"
+            : "Onvolledig";
+
+        return Ok(result);
     }
 }

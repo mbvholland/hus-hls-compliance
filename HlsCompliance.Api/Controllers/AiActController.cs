@@ -1,3 +1,4 @@
+using System;
 using HlsCompliance.Api.Domain;
 using HlsCompliance.Api.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -11,14 +12,18 @@ public class AiActController : ControllerBase
     private readonly AiActService _aiActService;
     private readonly AssessmentService _assessmentService;
 
-    public AiActController(AiActService aiActService, AssessmentService assessmentService)
+    public AiActController(
+        AiActService aiActService,
+        AssessmentService assessmentService)
     {
         _aiActService = aiActService;
         _assessmentService = assessmentService;
     }
 
     /// <summary>
-    /// Haal het AI Act-profiel op voor dit assessment (maakt een lege state aan als die nog niet bestaat).
+    /// Haal het AI Act-profiel op voor dit assessment
+    /// (A2–F2 + risicoklasse en score).
+    /// Prefill vanuit DPIA en MDR wordt hierbij toegepast.
     /// </summary>
     [HttpGet]
     public ActionResult<AiActProfileState> Get(Guid assessmentId)
@@ -30,42 +35,53 @@ public class AiActController : ControllerBase
         }
 
         var state = _aiActService.GetOrCreateForAssessment(assessmentId);
+
+        // Assessment bijwerken met AI Act-uitkomst
+        assessment.AiActRiskLevel = state.RiskLevel;
+        assessment.AiActStatus = state.RiskLevel == "Onbekend"
+            ? "Onbekend"
+            : "AI Act geclassificeerd";
+
         return Ok(state);
     }
 
-    public class UpdateAiActRequest
+    public class UpdateAiActProfileRequest
     {
         /// <summary>
-        /// "Ja" / "Nee" of leeg.
+        /// A2: Is_AI_systeem (Ja/Nee/…).
         /// </summary>
-        public string? A2_IsAiSystem { get; set; }
+        public string? IsAiSystem { get; set; }
 
         /// <summary>
-        /// "Ja" / "Nee" of leeg.
+        /// C2: Beslist over toegang tot essentiële zorg (triage, urgentiebepaling) (Ja/Nee/…).
         /// </summary>
-        public string? B2_IsGeneralPurpose { get; set; }
+        public string? DecidesOnEssentialCareTriage { get; set; }
 
         /// <summary>
-        /// "Ja" / "Nee" of leeg.
+        /// D2: Directe klinische beslissing door AI (Ja/Nee/…).
         /// </summary>
-        public string? C2_HighRiskUseCase { get; set; }
+        public string? DirectClinicalDecision { get; set; }
 
         /// <summary>
-        /// "Ja" / "Nee" of leeg.
+        /// E2: Interactieve AI met gebruiker (Ja/Nee/…).
         /// </summary>
-        public string? D2_ProhibitedPractice { get; set; }
+        public string? InteractiveAiWithUser { get; set; }
 
         /// <summary>
-        /// "laag", "beperkt", "hoog" of leeg.
+        /// F2: Genereert content voor gebruiker (Ja/Nee/…).
         /// </summary>
-        public string? E2_ImpactLevel { get; set; }
+        public string? GeneratesContentForUser { get; set; }
     }
 
     /// <summary>
-    /// Werk de AI Act-antwoorden bij en herbereken het risicoprofiel.
+    /// Update het AI Act-profiel (A2, C2, D2, E2, F2) voor dit assessment.
+    /// B2 (IsHighRiskMedicalDevice) wordt altijd afgeleid uit de MDR-klasse.
+    /// Null-velden in de body worden genegeerd (bestaande waarde blijft staan).
     /// </summary>
     [HttpPut]
-    public ActionResult<AiActProfileState> Update(Guid assessmentId, [FromBody] UpdateAiActRequest request)
+    public ActionResult<AiActProfileState> Update(
+        Guid assessmentId,
+        [FromBody] UpdateAiActProfileRequest request)
     {
         var assessment = _assessmentService.GetById(assessmentId);
         if (assessment == null)
@@ -73,14 +89,24 @@ public class AiActController : ControllerBase
             return NotFound("Assessment not found.");
         }
 
-        var state = _aiActService.UpdateAnswers(
+        if (request == null)
+        {
+            return BadRequest("Request body is required.");
+        }
+
+        var state = _aiActService.UpdateProfile(
             assessmentId,
-            request.A2_IsAiSystem,
-            request.B2_IsGeneralPurpose,
-            request.C2_HighRiskUseCase,
-            request.D2_ProhibitedPractice,
-            request.E2_ImpactLevel
-        );
+            request.IsAiSystem,
+            request.DecidesOnEssentialCareTriage,
+            request.DirectClinicalDecision,
+            request.InteractiveAiWithUser,
+            request.GeneratesContentForUser);
+
+        // Assessment bijwerken met AI Act-uitkomst
+        assessment.AiActRiskLevel = state.RiskLevel;
+        assessment.AiActStatus = state.RiskLevel == "Onbekend"
+            ? "Onbekend"
+            : "AI Act geclassificeerd";
 
         return Ok(state);
     }
