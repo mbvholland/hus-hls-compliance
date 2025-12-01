@@ -16,6 +16,7 @@ builder.Services.AddSingleton<AiActService>();
 builder.Services.AddSingleton<KoppelingenService>();
 builder.Services.AddSingleton<SecurityProfileService>();
 builder.Services.AddSingleton<ToetsVooronderzoekService>();
+builder.Services.AddSingleton<AlgemeenService>();
 
 var app = builder.Build();
 
