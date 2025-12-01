@@ -20,12 +20,24 @@ public class Koppeling
     public string Direction { get; set; } = string.Empty;
 
     /// <summary>
-    /// Gevoeligheid van de gegevens (bijv. "Geen", "Laag", "Middel", "Hoog").
+    /// Gevoeligheid van de gegevens.
+    /// HLS Excel tab 2 kent o.a.:
+    /// - "Geen"
+    /// - "Laag"
+    /// - "Geaggregeerd/geanonimiseerd/pseudoniem"
+    /// - "Identificeerbaar medisch of persoon"
+    /// Andere waarden worden behandeld als "Onbekend".
     /// </summary>
     public string DataSensitivity { get; set; } = string.Empty;
 
     /// <summary>
-    /// Risiconiveau voor deze koppeling (placeholder: "Onbekend", "Geen", "Laag", "Middel", "Hoog").
+    /// Risiconiveau voor deze koppeling.
+    /// Wordt in de service automatisch berekend op basis van DataSensitivity:
+    /// - "Geen"
+    /// - "Laag"
+    /// - "Middel"
+    /// - "Hoog"
+    /// - "Onbekend"
     /// </summary>
     public string RiskLevel { get; set; } = "Onbekend";
 }
@@ -40,12 +52,13 @@ public class KoppelingenResult
     public List<Koppeling> Connections { get; set; } = new();
 
     /// <summary>
-    /// Aggregatie van risico over alle koppelingen (bijv. "Onbekend", "Geen", "Laag", "Middel", "Hoog").
+    /// Aggregatie van risico over alle koppelingen
+    /// (bijv. "Onbekend", "Geen", "Laag", "Middel", "Hoog").
     /// </summary>
     public string OverallRiskLevel { get; set; } = "Onbekend";
 
     /// <summary>
-    /// Korte toelichting / samenvatting.
+    /// Korte toelichting / samenvatting, incl. aantallen per risiconiveau.
     /// </summary>
     public string Explanation { get; set; } = string.Empty;
 }

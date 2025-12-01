@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using HlsCompliance.Api.Domain;
 
 namespace HlsCompliance.Api.Services;
@@ -5,28 +8,44 @@ namespace HlsCompliance.Api.Services;
 public class KoppelingenService
 {
     private readonly Dictionary<Guid, KoppelingenResult> _storage = new();
+    private readonly DpiaQuickscanService _dpiaQuickscanService;
+
+    public KoppelingenService(DpiaQuickscanService dpiaQuickscanService)
+    {
+        _dpiaQuickscanService = dpiaQuickscanService;
+    }
 
     public KoppelingenResult GetOrCreateForAssessment(Guid assessmentId)
     {
-        if (_storage.TryGetValue(assessmentId, out var existing))
+        if (!_storage.TryGetValue(assessmentId, out var existing))
         {
-            return existing;
+            existing = new KoppelingenResult
+            {
+                AssessmentId = assessmentId,
+                OverallRiskLevel = "Onbekend",
+                Explanation = "Nog geen koppelingen geregistreerd."
+            };
+
+            _storage[assessmentId] = existing;
         }
 
-        var result = new KoppelingenResult
-        {
-            AssessmentId = assessmentId,
-            OverallRiskLevel = "Onbekend",
-            Explanation = "Nog geen koppelingen geregistreerd."
-        };
-
-        _storage[assessmentId] = result;
-        return result;
+        // Elke keer dat we de staat ophalen, opnieuw overall risk bepalen
+        // op basis van huidige DPIA-quickscan + geregistreerde koppelingen.
+        RecalculateOverallRisk(assessmentId, existing);
+        return existing;
     }
 
+    /// <summary>
+    /// Voeg een koppeling toe of update een bestaande koppeling.
+    /// RiskLevel wordt altijd automatisch berekend uit DataSensitivity
+    /// volgens HLS tab "2. Koppeling-Beslisboom".
+    /// </summary>
     public KoppelingenResult AddOrUpdateConnection(Guid assessmentId, Koppeling connection)
     {
         var result = GetOrCreateForAssessment(assessmentId);
+
+        // RiskLevel altijd herberekenen op basis van DataSensitivity
+        connection.RiskLevel = CalculateRiskLevelFromSensitivity(connection.DataSensitivity);
 
         // Bestaat deze koppeling al? (Id check)
         var existing = result.Connections.FirstOrDefault(c => c.Id == connection.Id);
@@ -45,7 +64,7 @@ public class KoppelingenService
             existing.RiskLevel = connection.RiskLevel;
         }
 
-        RecalculateOverallRisk(result);
+        RecalculateOverallRisk(assessmentId, result);
         return result;
     }
 
@@ -60,60 +79,178 @@ public class KoppelingenService
         }
 
         result.Connections.Remove(existing);
-        RecalculateOverallRisk(result);
+        RecalculateOverallRisk(assessmentId, result);
         return true;
     }
 
-    private void RecalculateOverallRisk(KoppelingenResult result)
+    /// <summary>
+    /// Haalt het antwoord op de DPIA-vraag over koppelingen op.
+    /// In de Excel is dit DPIA_Quickscan!E10 -> tab "2. Koppeling-Beslisboom"!A2.
+    /// In onze API gebruiken we hiervoor vraagcode "Q9":
+    /// "Is er sprake van datakoppelingen met andere zorgsystemen of externe partijen?"
+    /// </summary>
+    private string? GetDpiaConnectionsAnswer(Guid assessmentId)
     {
-        if (!result.Connections.Any())
+        var dpia = _dpiaQuickscanService.GetOrCreateForAssessment(assessmentId);
+
+        var q = dpia.Questions
+            .FirstOrDefault(q => string.Equals(q.Code, "Q9", StringComparison.OrdinalIgnoreCase));
+
+        return q?.Answer;
+    }
+
+    private static string? NormalizeJaNee(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return null;
+
+        var v = value.Trim().ToLowerInvariant();
+        if (v == "ja") return "Ja";
+        if (v == "nee") return "Nee";
+        if (v == "geen") return "Nee"; // "Geen koppelingen" behandelen als Nee
+        return null;
+    }
+
+    /// <summary>
+    /// Mirror van de Excel-logica in tab 2 "Koppeling-Beslisboom":
+    /// DataSensitivity -> RiskLevel.
+    /// </summary>
+    private string CalculateRiskLevelFromSensitivity(string? sensitivity)
+    {
+        if (string.IsNullOrWhiteSpace(sensitivity))
         {
-            result.OverallRiskLevel = "Onbekend";
-            result.Explanation = "Er zijn nog geen koppelingen geregistreerd.";
-            return;
+            return "Onbekend";
         }
 
-        // Placeholder-logica:
-        // Hoog > Middel > Laag > Geen
-        // Als er één "Hoog" is → Overall "Hoog", etc.
+        var v = sensitivity.Trim().ToLowerInvariant();
 
-        var levels = result.Connections
-            .Select(c => c.RiskLevel)
-            .Where(l => !string.IsNullOrWhiteSpace(l))
-            .Select(l => l.Trim().ToLowerInvariant())
-            .ToList();
-
-        if (!levels.Any())
+        // Exacte Excel-waarden (hoofdletterongevoelig)
+        if (v == "geen")
         {
-            result.OverallRiskLevel = "Onbekend";
-            result.Explanation = "Geen risiconiveaus ingesteld voor de geregistreerde koppelingen.";
-            return;
+            return "Geen";
         }
 
-        if (levels.Contains("hoog"))
+        if (v == "laag")
         {
-            result.OverallRiskLevel = "Hoog";
-            result.Explanation = "Ten minste één koppeling heeft risiconiveau 'Hoog'.";
+            return "Laag";
         }
-        else if (levels.Contains("middel"))
+
+        if (v == "geaggregeerd/geanonimiseerd/pseudoniem")
         {
-            result.OverallRiskLevel = "Middel";
-            result.Explanation = "Er zijn koppelingen met risiconiveau 'Middel', geen 'Hoog'.";
+            return "Middel";
         }
-        else if (levels.Contains("laag"))
+
+        if (v == "identificeerbaar medisch of persoon")
         {
-            result.OverallRiskLevel = "Laag";
-            result.Explanation = "Er zijn alleen koppelingen met risiconiveau 'Laag'.";
+            return "Hoog";
         }
-        else if (levels.Contains("geen"))
+
+        // Onbekende/afwijkende waarde
+        return "Onbekend";
+    }
+
+    /// <summary>
+    /// Bepaalt het overall-risico over alle koppelingen, met DPIA-poortwachter (Q9/E10):
+    ///
+    /// - Als DPIA Q9 = Nee/Geen én er zijn geen koppelingen geregistreerd:
+    ///     Overall = "Geen" (zoals A2="Geen" -> risicoklasse "Geen" in Excel),
+    ///     Explanation legt uit dat DPIA aangeeft dat er geen koppelingen zijn.
+    ///
+    /// - Als er wél koppelingen geregistreerd zijn:
+    ///     Hoog > Middel > Laag > Geen > Onbekend.
+    ///     Explanation bevat tellingen per niveau.
+    ///     Als DPIA Q9 = Nee/Geen maar er zijn toch koppelingen, melden we dat.
+    ///
+    /// - Als geen koppelingen én DPIA Q9 onbekend:
+    ///     Overall = "Onbekend".
+    /// </summary>
+    private void RecalculateOverallRisk(Guid assessmentId, KoppelingenResult result)
+    {
+        var dpiaAnswerRaw = GetDpiaConnectionsAnswer(assessmentId);
+        var dpiaAnswer = NormalizeJaNee(dpiaAnswerRaw);
+
+        var hasConnections = result.Connections.Any();
+
+        // Case 1: DPIA zegt expliciet "geen koppelingen" en er zijn er ook geen geregistreerd.
+        if (string.Equals(dpiaAnswer, "Nee", StringComparison.OrdinalIgnoreCase) && !hasConnections)
         {
             result.OverallRiskLevel = "Geen";
-            result.Explanation = "Alle koppelingen hebben risiconiveau 'Geen'.";
+            result.Explanation =
+                "Volgens de DPIA-quickscan (vraag Q9: datakoppelingen) zijn er geen koppelingen. " +
+                "Overall risiconiveau voor koppelingen is 'Geen'.";
+            return;
+        }
+
+        // Case 2: Er zijn nog geen koppelingen geregistreerd en DPIA is leeg/onduidelijk.
+        if (!hasConnections && dpiaAnswer is null)
+        {
+            result.OverallRiskLevel = "Onbekend";
+            result.Explanation =
+                "Er zijn nog geen koppelingen geregistreerd en de DPIA-quickscan (vraag Q9) is nog niet ingevuld.";
+            return;
+        }
+
+        // Vanaf hier: óf er zijn koppelingen geregistreerd, óf DPIA geeft aan dat er koppelingen zijn.
+        if (!hasConnections)
+        {
+            // DPIA = Ja, maar nog geen koppelingen ingevuld in de module.
+            result.OverallRiskLevel = "Onbekend";
+            result.Explanation =
+                "De DPIA-quickscan (vraag Q9) geeft aan dat er koppelingen zijn, " +
+                "maar er zijn nog geen koppelingen geregistreerd in deze HLS-module.";
+            return;
+        }
+
+        // Er zijn koppelingen: per-koppeling risiconiveaus tellen
+        var levels = result.Connections
+            .Select(c => c.RiskLevel ?? "Onbekend")
+            .Select(l => l.Trim())
+            .ToList();
+
+        // Tellingen per niveau
+        int countHoog = levels.Count(l => string.Equals(l, "Hoog", StringComparison.OrdinalIgnoreCase));
+        int countMiddel = levels.Count(l => string.Equals(l, "Middel", StringComparison.OrdinalIgnoreCase));
+        int countLaag = levels.Count(l => string.Equals(l, "Laag", StringComparison.OrdinalIgnoreCase));
+        int countGeen = levels.Count(l => string.Equals(l, "Geen", StringComparison.OrdinalIgnoreCase));
+        int countOnbekend = levels.Count(l => string.Equals(l, "Onbekend", StringComparison.OrdinalIgnoreCase));
+
+        // Overall: Hoog > Middel > Laag > Geen > Onbekend
+        if (countHoog > 0)
+        {
+            result.OverallRiskLevel = "Hoog";
+        }
+        else if (countMiddel > 0)
+        {
+            result.OverallRiskLevel = "Middel";
+        }
+        else if (countLaag > 0)
+        {
+            result.OverallRiskLevel = "Laag";
+        }
+        else if (countGeen > 0)
+        {
+            result.OverallRiskLevel = "Geen";
         }
         else
         {
             result.OverallRiskLevel = "Onbekend";
-            result.Explanation = "Risiconiveaus konden niet eenduidig worden geïnterpreteerd.";
         }
+
+        var total = levels.Count;
+
+        var explanation =
+            $"Totaal {total} koppeling(en). " +
+            $"Hoog: {countHoog}, Middel: {countMiddel}, Laag: {countLaag}, Geen: {countGeen}, Onbekend: {countOnbekend}. " +
+            $"Overall risiconiveau: {result.OverallRiskLevel}.";
+
+        // Als DPIA zegt "geen koppelingen", maar we er toch hebben geregistreerd, dit benoemen.
+        if (string.Equals(dpiaAnswer, "Nee", StringComparison.OrdinalIgnoreCase) && hasConnections)
+        {
+            explanation +=
+                " Let op: de DPIA-quickscan (vraag Q9) gaf aan dat er geen koppelingen zijn, " +
+                "maar er zijn wel koppelingen geregistreerd in deze assessment.";
+        }
+
+        result.Explanation = explanation;
     }
 }

@@ -39,7 +39,9 @@ public class KoppelingenController : ControllerBase
         assessment.ConnectionsOverallRisk = result.OverallRiskLevel;
         assessment.ConnectionsRiskStatus = result.Connections.Any()
             ? "Koppelingen beoordeeld"
-            : "Geen koppelingen geregistreerd";
+            : (result.OverallRiskLevel == "Geen"
+                ? "Geen koppelingen volgens DPIA"
+                : "Geen koppelingen geregistreerd");
 
         return Ok(result);
     }
@@ -115,7 +117,9 @@ public class KoppelingenController : ControllerBase
         assessment.ConnectionsOverallRisk = result.OverallRiskLevel;
         assessment.ConnectionsRiskStatus = result.Connections.Any()
             ? "Koppelingen beoordeeld"
-            : "Geen koppelingen geregistreerd";
+            : (result.OverallRiskLevel == "Geen"
+                ? "Geen koppelingen volgens DPIA"
+                : "Geen koppelingen geregistreerd");
 
         return Ok(result);
     }
@@ -134,8 +138,6 @@ public class KoppelingenController : ControllerBase
             return NotFound("Assessment not found.");
         }
 
-        var resultBefore = _koppelingenService.GetOrCreateForAssessment(assessmentId);
-
         var ok = _koppelingenService.RemoveConnection(assessmentId, connectionId);
         if (!ok)
         {
@@ -148,7 +150,9 @@ public class KoppelingenController : ControllerBase
         assessment.ConnectionsOverallRisk = resultAfter.OverallRiskLevel;
         assessment.ConnectionsRiskStatus = resultAfter.Connections.Any()
             ? "Koppelingen beoordeeld"
-            : "Geen koppelingen geregistreerd";
+            : (resultAfter.OverallRiskLevel == "Geen"
+                ? "Geen koppelingen volgens DPIA"
+                : "Geen koppelingen geregistreerd");
 
         return NoContent();
     }
