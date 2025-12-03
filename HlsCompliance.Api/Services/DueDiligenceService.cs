@@ -12,12 +12,18 @@ namespace HlsCompliance.Api.Services
     /// - berekenen we Toepasselijk? (kolom F) o.b.v. ToetsVooronderzoek,
     /// - vullen we Antwoord (kolom G) en ControlevraagResultaat (kolom I),
     /// - aggregeren we bewijslast naar BewijsResultaat (kolom J),
+    /// - bewaren we beslissingen over "Negatief resultaat acceptabel?" en Afwijkingstekst (kolom K en M),
     /// - berekenen we Resultaat due diligence (kolom L).
     /// </summary>
     public class DueDiligenceService
     {
         private readonly AssessmentService _assessmentService;
         private readonly ToetsVooronderzoekService _toetsVooronderzoekService;
+
+        // In-memory opslag van beslissingen per Assessment + ChecklistID
+        // voor kolom K (NegativeOutcomeAcceptable) en kolom M (DeviationText).
+        private readonly Dictionary<string, ChecklistDecisionState> _decisionStates =
+            new Dictionary<string, ChecklistDecisionState>(StringComparer.OrdinalIgnoreCase);
 
         public DueDiligenceService(
             AssessmentService assessmentService,
@@ -32,6 +38,7 @@ namespace HlsCompliance.Api.Services
         /// - de checklist-definities (statisch),
         /// - de gegeven antwoorden (tab 8-laag),
         /// - de bewijslast-items (tab 11-laag),
+        /// - de beslissingen over kolom K/M,
         /// - het ToetsVooronderzoek-resultaat.
         /// </summary>
         public List<AssessmentChecklistRow> BuildChecklistRows(
@@ -47,7 +54,7 @@ namespace HlsCompliance.Api.Services
             var assessment = _assessmentService.GetById(assessmentId)
                               ?? throw new InvalidOperationException($"Assessment {assessmentId} not found.");
 
-            // ToetsVooronderzoek-resultaat voor dit assessment (tab 6 in de Excel).
+            // ToetsVooronderzoek-resultaat voor dit assessment (tab 6 in de excel).
             var toetsResult = _toetsVooronderzoekService.Get(assessmentId);
 
             var answerLookup = answers
@@ -70,6 +77,9 @@ namespace HlsCompliance.Api.Services
                 var isApplicable = EvaluateApplicability(assessment, def, toetsResult);
                 var evidenceSummary = SummarizeEvidenceStatus(evidenceForQuestion);
 
+                // Haal eventuele eerder opgeslagen beslissing voor kolom K/M op
+                var decision = GetDecisionState(assessmentId, def.ChecklistId);
+
                 var row = new AssessmentChecklistRow
                 {
                     AssessmentId = assessmentId,
@@ -87,14 +97,14 @@ namespace HlsCompliance.Api.Services
                     // Kolom J: BewijsResultaat (samenvatting van bewijslast)
                     EvidenceSummary = evidenceSummary,
 
-                    // Kolom K: Negatief resultaat acceptabel? -> voorlopig default false
-                    NegativeOutcomeAcceptable = false,
+                    // Kolom K: Negatief resultaat acceptabel?
+                    NegativeOutcomeAcceptable = decision?.NegativeOutcomeAcceptable ?? false,
 
                     // Kolom L: Resultaat due diligence (wordt hieronder berekend)
                     DueDiligenceOutcome = null,
 
-                    // Kolom M: Afwijkingstekst (contract) -> vullen we later vanuit UI of andere logica
-                    DeviationText = null
+                    // Kolom M: Afwijkingstekst (contract)
+                    DeviationText = decision?.DeviationText
                 };
 
                 // Kolom L berekenen op basis van F (IsApplicable), I (AnswerEvaluation),
@@ -105,6 +115,33 @@ namespace HlsCompliance.Api.Services
             }
 
             return rows;
+        }
+
+        /// <summary>
+        /// Update kolom K en M voor één vraag:
+        /// - K: Negatief resultaat acceptabel? (true/false)
+        /// - M: Afwijkingstekst (contract)
+        ///
+        /// Daarna kan BuildChecklistRows worden aangeroepen om de nieuwe L-waarde (Resultaat due diligence) te zien.
+        /// </summary>
+        public void UpdateNegativeOutcomeDecision(
+            Guid assessmentId,
+            string checklistId,
+            bool negativeOutcomeAcceptable,
+            string? deviationText)
+        {
+            if (string.IsNullOrWhiteSpace(checklistId))
+            {
+                throw new ArgumentException("ChecklistId is required.", nameof(checklistId));
+            }
+
+            var key = BuildDecisionKey(assessmentId, checklistId);
+
+            _decisionStates[key] = new ChecklistDecisionState
+            {
+                NegativeOutcomeAcceptable = negativeOutcomeAcceptable,
+                DeviationText = deviationText
+            };
         }
 
         /// <summary>
@@ -271,8 +308,6 @@ namespace HlsCompliance.Api.Services
         /// <summary>
         /// Berekent Resultaat due diligence (kolom L) volgens de Excel-LET-logica:
         ///
-        /// In Excel (vereenvoudigd):
-        ///
         /// IF(F<>"Ja";"";LET(
         ///   _ans; I (ControlevraagResultaat);
         ///   _ev;  J (BewijsResultaat);
@@ -340,6 +375,27 @@ namespace HlsCompliance.Api.Services
             }
 
             return "Nog te beoordelen";
+        }
+
+        // -------------------------------
+        // Interne helpers voor K/M-opslag
+        // -------------------------------
+
+        private ChecklistDecisionState? GetDecisionState(Guid assessmentId, string checklistId)
+        {
+            var key = BuildDecisionKey(assessmentId, checklistId);
+            return _decisionStates.TryGetValue(key, out var state) ? state : null;
+        }
+
+        private static string BuildDecisionKey(Guid assessmentId, string checklistId)
+        {
+            return $"{assessmentId:N}|{checklistId}";
+        }
+
+        private class ChecklistDecisionState
+        {
+            public bool NegativeOutcomeAcceptable { get; set; }
+            public string? DeviationText { get; set; }
         }
     }
 }
