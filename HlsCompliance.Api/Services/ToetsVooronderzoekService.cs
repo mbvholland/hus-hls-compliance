@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 using HlsCompliance.Api.Domain;
 
 namespace HlsCompliance.Api.Services
@@ -9,12 +11,23 @@ namespace HlsCompliance.Api.Services
     {
         private readonly AssessmentService _assessmentService;
 
-        // In-memory opslag per assessment
+        // In-memory opslag per assessment (volledig resultaat inclusief alle vragen)
         private readonly Dictionary<Guid, ToetsVooronderzoekResult> _results = new();
+
+        // Persistente opslag van HANDMATIGE antwoorden per AssessmentId + ToetsId
+        private const string ManualAnswersFileName = "Data/toetsvooronderzoek-manual.json";
+
+        private readonly Dictionary<string, ManualAnswerState> _manualAnswers =
+            new(StringComparer.OrdinalIgnoreCase);
+
+        private readonly object _syncRoot = new();
 
         public ToetsVooronderzoekService(AssessmentService assessmentService)
         {
             _assessmentService = assessmentService ?? throw new ArgumentNullException(nameof(assessmentService));
+
+            // Bij opstarten: laad bestaande handmatige antwoorden uit JSON
+            LoadManualAnswersFromDisk();
         }
 
         /// <summary>
@@ -22,39 +35,70 @@ namespace HlsCompliance.Api.Services
         /// </summary>
         public ToetsVooronderzoekResult Get(Guid assessmentId)
         {
-            var result = GetOrCreateResult(assessmentId);
-            Recalculate(result);
-            return result;
+            lock (_syncRoot)
+            {
+                var result = GetOrCreateResult(assessmentId);
+                Recalculate(result);
+                return result;
+            }
         }
 
         /// <summary>
         /// Update handmatige J/N-antwoorden (de 13 niet-afgeleide vragen)
         /// en reken daarna alle afgeleide logica opnieuw uit.
+        ///
+        /// De handmatige antwoorden worden PERSISTENT opgeslagen in JSON.
         /// </summary>
         public ToetsVooronderzoekResult UpdateManualAnswers(
             Guid assessmentId,
             IEnumerable<(string ToetsId, bool? Answer)> manualAnswers)
         {
-            var result = GetOrCreateResult(assessmentId);
-
-            if (manualAnswers != null)
+            lock (_syncRoot)
             {
-                var lookup = result.Questions
-                    .ToDictionary(q => q.ToetsId, q => q, StringComparer.OrdinalIgnoreCase);
+                var result = GetOrCreateResult(assessmentId);
 
-                foreach (var (toetsId, answer) in manualAnswers)
+                if (manualAnswers != null)
                 {
-                    if (lookup.TryGetValue(toetsId, out var question) && !question.IsDerived)
+                    var lookup = result.Questions
+                        .ToDictionary(q => q.ToetsId, q => q, StringComparer.OrdinalIgnoreCase);
+
+                    foreach (var (toetsId, answer) in manualAnswers)
                     {
-                        question.Answer = answer;
+                        if (string.IsNullOrWhiteSpace(toetsId))
+                            continue;
+
+                        if (lookup.TryGetValue(toetsId, out var question) && !question.IsDerived)
+                        {
+                            // In het runtime-resultaat
+                            question.Answer = answer;
+
+                            // En ook in de persistente store
+                            var key = BuildManualKey(assessmentId, toetsId);
+
+                            _manualAnswers[key] = new ManualAnswerState
+                            {
+                                AssessmentId = assessmentId,
+                                ToetsId = toetsId,
+                                Answer = answer
+                            };
+                        }
                     }
                 }
-            }
 
-            Recalculate(result);
-            return result;
+                Recalculate(result);
+
+                // Alle handmatige antwoorden naar schijf schrijven
+                SaveManualAnswersToDisk();
+
+                return result;
+            }
         }
 
+        /// <summary>
+        /// Maak (of haal) een ToetsVooronderzoekResult voor een assessment.
+        /// Als het een nieuw result is, worden eerst de vraagtemplate geladen
+        /// en daarna eventuele PERSISTENTE handmatige antwoorden toegepast.
+        /// </summary>
         private ToetsVooronderzoekResult GetOrCreateResult(Guid assessmentId)
         {
             if (_results.TryGetValue(assessmentId, out var existing))
@@ -67,6 +111,9 @@ namespace HlsCompliance.Api.Services
                 AssessmentId = assessmentId,
                 Questions = CreateQuestionTemplate()
             };
+
+            // Pas eventuele eerder opgeslagen handmatige antwoorden toe
+            ApplyStoredManualAnswers(result);
 
             _results[assessmentId] = result;
             return result;
@@ -110,7 +157,6 @@ namespace HlsCompliance.Api.Services
 
                 // -------------------------
                 // AVG / DPIA – (AVG-a t/m AVG-i, r.6–14 + F15)
-                // In de engine zijn alleen proxy-signalen beschikbaar; detailvragen zetten we (voor nu) op Onbekend.
                 // -------------------------
                 new()
                 {
@@ -202,7 +248,7 @@ namespace HlsCompliance.Api.Services
                     Text = "Heeft de AI-uitkomst impact op gezondheid, veiligheid of grondrechten?",
                     IsDerived = true,
                     DerivedFrom = "AI Act",
-                    Explanation = "Excel C29: zelfde A2-bron; als er een AI-systeem is, hier 'Ja'."
+                    Explanation = "Excel C29: zelfde A2-bron; hier als afgeleide 'impact'-vraag."
                 },
                 new()
                 {
@@ -454,7 +500,7 @@ namespace HlsCompliance.Api.Services
                     Text = "Is er sprake van een hoog-risico medisch hulpmiddel dat onder CRA kan vallen?",
                     IsDerived = true,
                     DerivedFrom = "MDR-d",
-                    Explanation = "Excel C51: =C38 (MDR-d). Hier benaderd via MDR-klasse IIb/III."
+                    Explanation = "Excel C51: =C38 (MDR-d). Hier benaderen we dit als Ja bij hoge MDR-klasse (IIb/III)."
                 },
                 new()
                 {
@@ -648,18 +694,6 @@ namespace HlsCompliance.Api.Services
             result.CraApplicable = AggregateYesNo(result,
                 "CRA-a", "CRA-b", "CRA-c", "CRA-d", "CRA-e", "CRA-f");
 
-            // 6. Vul ToetsAnswers dictionary met alle ToetsID → Answer
-            result.ToetsAnswers.Clear();
-            foreach (var q in result.Questions)
-            {
-                result.ToetsAnswers[q.ToetsId] = q.Answer;
-            }
-
-            // 7. BoZ/LHV-dekking:
-            // eerste versie: direct op basis van ALG-b (BoZ-acceptatie) en ALG-c (LHV-acceptatie).
-            result.IsBozCovered = GetQuestionAnswer(result, "ALG-b");
-            result.IsLhvCovered = GetQuestionAnswer(result, "ALG-c");
-
             // Timestamp
             result.LastUpdated = DateTime.UtcNow;
         }
@@ -767,8 +801,7 @@ namespace HlsCompliance.Api.Services
             var koppA = GetQuestionAnswer(result, "Koppeling-a");
             SetQuestionAnswer(result, "CRA-a", koppA);
 
-            // CRA-b – C51: =C38 (MDR-d) – hier benaderen we dit als Ja bij hoge MDR-klasse (IIb/III),
-            // maar C38 zelf is al via DeriveAnswer voor MDR-d gezet.
+            // CRA-b – C51: =C38 (MDR-d)
             var mdrD = GetQuestionAnswer(result, "MDR-d");
             SetQuestionAnswer(result, "CRA-b", mdrD);
 
@@ -845,19 +878,12 @@ namespace HlsCompliance.Api.Services
 
             switch (toetsId)
             {
-                // -------------------------
-                // ALG – C2 hardcoded Ja
-                // -------------------------
+                // ALG
                 case "ALG-a":
-                    // Excel C2 bevat letterlijk "Ja".
                     return true;
 
-                // -------------------------
-                // AVG – sterk vereenvoudigd
-                // -------------------------
+                // AVG
                 case "AVG-a":
-                    // Excel C6: DPIA_Quickscan!E2. Hier: als er überhaupt een DPIA-beoordeling is gedaan,
-                    // nemen we aan dat AVG relevant is.
                     return assessment.DpiaRequired.HasValue ? true : (bool?)null;
 
                 case "AVG-b":
@@ -868,13 +894,9 @@ namespace HlsCompliance.Api.Services
                 case "AVG-g":
                 case "AVG-h":
                 case "AVG-i":
-                    // In Excel zijn dit DPIA-afgeleide formules; hier hebben we geen per-vraag DPIA-answers,
-                    // dus laten we deze op Onbekend.
                     return null;
 
-                // -------------------------
                 // AI Act
-                // -------------------------
                 case "AIAct-a":
                     if (string.IsNullOrWhiteSpace(ai))
                         return null;
@@ -883,7 +905,6 @@ namespace HlsCompliance.Api.Services
                 case "AIAct-b":
                     if (string.IsNullOrWhiteSpace(ai))
                         return null;
-                    // Zelfde bron als AIAct-a; als er een AI-systeem is, zeggen we hier Ja.
                     return !IsNoAiSystem();
 
                 case "AIAct-c":
@@ -899,7 +920,6 @@ namespace HlsCompliance.Api.Services
                     return (string.IsNullOrWhiteSpace(ai) && string.IsNullOrWhiteSpace(mdr)) ? (bool?)null : false;
 
                 case "AIAct-d":
-                    // Excel C31: DPIA_Quickscan!E7; hier grof benaderd: als DpiaRequired = true, zetten we dit op Ja.
                     if (!assessment.DpiaRequired.HasValue)
                         return null;
                     return assessment.DpiaRequired.Value;
@@ -914,9 +934,7 @@ namespace HlsCompliance.Api.Services
                         return null;
                     return IsNoAiSystem();
 
-                // -------------------------
                 // MDR
-                // -------------------------
                 case "MDR-a":
                     if (string.IsNullOrWhiteSpace(mdr))
                         return null;
@@ -947,11 +965,8 @@ namespace HlsCompliance.Api.Services
                         return null;
                     return IsNoMedicalDevice();
 
-                // -------------------------
                 // NEN / ISO
-                // -------------------------
                 case "NENISO-a":
-                    // Excel C16: Securityprofiel C10; hier: Ja als er enig securityrisico of koppeling is.
                     if (securityProfileScore.HasValue && securityProfileScore.Value > 0)
                         return true;
 
@@ -966,40 +981,26 @@ namespace HlsCompliance.Api.Services
                     return false;
 
                 case "NENISO-b":
-                    // Excel C17: op basis van Securityprofiel C8; die hebben we niet als bron,
-                    // dus hier laten we deze op Onbekend.
                     return null;
 
-                // NENISO-c/d/e worden deels in ApplyNenIsoExtras gezet.
-
-                // -------------------------
-                // ISO13485 (afgeleid)
-                // -------------------------
+                // ISO13485
                 case "ISO13485-a":
-                    // Vereenvoudigd: Ja als er een medisch hulpmiddel is.
                     if (string.IsNullOrWhiteSpace(mdr))
                         return null;
                     return !IsNoMedicalDevice();
 
                 case "ISO13485-c":
-                    // Excel C44: medisch doel ja/nee; hier: zelfde als 'is medisch hulpmiddel'.
                     if (string.IsNullOrWhiteSpace(mdr))
                         return null;
                     return !IsNoMedicalDevice();
 
                 case "ISO13485-d":
-                    // Excel C45: draait in de praktijk om hoog-risico medisch hulpmiddel.
                     if (string.IsNullOrWhiteSpace(mdr))
                         return null;
                     return IsHighRiskMedicalDevice();
 
-                // ISO13485-b wordt in ApplyIso13485Extras gezet.
-
-                // -------------------------
-                // CRA – directe afleidingen
-                // -------------------------
+                // CRA
                 case "CRA-a":
-                    // C50 = C57 (Koppeling-a); als we alleen Assessment hebben:
                     if (string.IsNullOrWhiteSpace(connectionsOverallRisk))
                         return null;
 
@@ -1009,22 +1010,15 @@ namespace HlsCompliance.Api.Services
                     if (connectionsOverallRisk.Equals("Geen", StringComparison.OrdinalIgnoreCase))
                         return false;
 
-                    // Laag/Middel/Hoog → Ja
                     return true;
 
                 case "CRA-b":
-                    // C51 = C38 (MDR-d) – hier hergebruiken we de hoge MDR-klassen (IIb/III) als indicator.
                     if (string.IsNullOrWhiteSpace(mdr))
                         return null;
                     return HasMdrClass("Klasse IIb") || HasMdrClass("Klasse III");
 
-                // CRA-d/e worden in ApplyCraLogic gezet.
-
-                // -------------------------
                 // Koppeling-a
-                // -------------------------
                 case "Koppeling-a":
-                    // Excel C57: Onbekend → "", Geen → Nee, Laag/Middel/Hoog → Ja
                     if (string.IsNullOrWhiteSpace(connectionsOverallRisk))
                         return null;
 
@@ -1034,15 +1028,10 @@ namespace HlsCompliance.Api.Services
                     if (connectionsOverallRisk.Equals("Geen", StringComparison.OrdinalIgnoreCase))
                         return false;
 
-                    // Laag/Middel/Hoog → Ja
                     return true;
 
-                // -------------------------
-                // Continuiteit-b – placeholder
-                // -------------------------
+                // Continuiteit-b
                 case "Continuiteit-b":
-                    // Excel C61: =IF(C14="", "", C14) – C14 is AVG-i.
-                    // We hebben geen AVG-i apart; benaderd via DpiaRequired als er iets rond AVG op tafel ligt.
                     if (!assessment.DpiaRequired.HasValue)
                         return null;
                     return assessment.DpiaRequired.Value;
@@ -1050,6 +1039,149 @@ namespace HlsCompliance.Api.Services
                 default:
                     return null;
             }
+        }
+
+        // -------------------------------
+        // Persistente opslag handmatige antwoorden
+        // -------------------------------
+
+        private void ApplyStoredManualAnswers(ToetsVooronderzoekResult result)
+        {
+            // Voor dit assessment alle opgeslagen manual answers ophalen en op de Questions zetten.
+            var relevant = _manualAnswers.Values
+                .Where(x => x.AssessmentId == result.AssessmentId)
+                .ToList();
+
+            if (!relevant.Any())
+                return;
+
+            var lookup = result.Questions
+                .Where(q => !q.IsDerived)
+                .ToDictionary(q => q.ToetsId, q => q, StringComparer.OrdinalIgnoreCase);
+
+            foreach (var m in relevant)
+            {
+                if (string.IsNullOrWhiteSpace(m.ToetsId))
+                    continue;
+
+                if (lookup.TryGetValue(m.ToetsId, out var q))
+                {
+                    q.Answer = m.Answer;
+                }
+            }
+        }
+
+        private static string BuildManualKey(Guid assessmentId, string toetsId)
+        {
+            return $"{assessmentId:N}|{toetsId}";
+        }
+
+        private void LoadManualAnswersFromDisk()
+        {
+            try
+            {
+                var basePath = Directory.GetCurrentDirectory();
+                var filePath = Path.Combine(basePath, ManualAnswersFileName);
+
+                if (!File.Exists(filePath))
+                {
+                    return;
+                }
+
+                var json = File.ReadAllText(filePath);
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+
+                var records = JsonSerializer.Deserialize<List<ManualAnswerRecord>>(json, options);
+                if (records == null)
+                {
+                    return;
+                }
+
+                lock (_syncRoot)
+                {
+                    _manualAnswers.Clear();
+
+                    foreach (var r in records)
+                    {
+                        if (string.IsNullOrWhiteSpace(r.ToetsId))
+                            continue;
+
+                        var key = BuildManualKey(r.AssessmentId, r.ToetsId);
+                        _manualAnswers[key] = new ManualAnswerState
+                        {
+                            AssessmentId = r.AssessmentId,
+                            ToetsId = r.ToetsId,
+                            Answer = r.Answer
+                        };
+                    }
+                }
+            }
+            catch
+            {
+                // Fout bij lezen/parsen -> we starten met een lege set.
+            }
+        }
+
+        private void SaveManualAnswersToDisk()
+        {
+            try
+            {
+                var basePath = Directory.GetCurrentDirectory();
+                var filePath = Path.Combine(basePath, ManualAnswersFileName);
+
+                List<ManualAnswerRecord> snapshot;
+                lock (_syncRoot)
+                {
+                    snapshot = new List<ManualAnswerRecord>();
+
+                    foreach (var kvp in _manualAnswers)
+                    {
+                        var s = kvp.Value;
+                        snapshot.Add(new ManualAnswerRecord
+                        {
+                            AssessmentId = s.AssessmentId,
+                            ToetsId = s.ToetsId,
+                            Answer = s.Answer
+                        });
+                    }
+                }
+
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                };
+
+                var json = JsonSerializer.Serialize(snapshot, options);
+
+                var dir = Path.GetDirectoryName(filePath);
+                if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
+
+                File.WriteAllText(filePath, json);
+            }
+            catch
+            {
+                // Fouten bij schrijven negeren; handmatige antwoorden blijven in memory beschikbaar.
+            }
+        }
+
+        private class ManualAnswerState
+        {
+            public Guid AssessmentId { get; set; }
+            public string ToetsId { get; set; } = string.Empty;
+            public bool? Answer { get; set; }
+        }
+
+        private class ManualAnswerRecord
+        {
+            public Guid AssessmentId { get; set; }
+            public string? ToetsId { get; set; }
+            public bool? Answer { get; set; }
         }
     }
 }

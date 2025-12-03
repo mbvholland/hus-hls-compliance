@@ -1,0 +1,32 @@
+[
+  {
+    "AssessmentId": "2eb95997-cbbf-44e7-8429-c4fc916a5b57",
+    "ToetsId": "ALG-b",
+    "Answer": true
+  },
+  {
+    "AssessmentId": "2eb95997-cbbf-44e7-8429-c4fc916a5b57",
+    "ToetsId": "ALG-c",
+    "Answer": false
+  },
+  {
+    "AssessmentId": "2eb95997-cbbf-44e7-8429-c4fc916a5b57",
+    "ToetsId": "NENISO-c",
+    "Answer": true
+  },
+  {
+    "AssessmentId": "0ac58f98-c442-4fff-aa63-8925e508e3ce",
+    "ToetsId": "ALG-b",
+    "Answer": true
+  },
+  {
+    "AssessmentId": "0ac58f98-c442-4fff-aa63-8925e508e3ce",
+    "ToetsId": "ALG-c",
+    "Answer": false
+  },
+  {
+    "AssessmentId": "0ac58f98-c442-4fff-aa63-8925e508e3ce",
+    "ToetsId": "NENISO-c",
+    "Answer": true
+  }
+]
