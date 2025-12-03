@@ -44,8 +44,27 @@ namespace HlsCompliance.Api.Domain
 
         /// <summary>
         /// Alle ToetsVooronderzoek-vragen (AVG, NEN/ISO, NIS2, AI Act, MDR, ISO13485, CRA, ALG, ...).
+        /// Komt inhoudelijk overeen met tab 6 in de Excel.
         /// </summary>
         public List<ToetsVooronderzoekQuestion> Questions { get; set; } = new();
+
+        /// <summary>
+        /// Uitkomst per ToetsID, bv. "ALG-a" -> true/false/null.
+        /// null = Onbekend/niet van toepassing.
+        /// Dit is de compacte lookup die we in de Tab-7-logica gebruiken.
+        /// </summary>
+        public IDictionary<string, bool?> ToetsAnswers { get; set; }
+            = new Dictionary<string, bool?>();
+
+        /// <summary>
+        /// Of BoZ deze casus/vragen dekt (zoals CJ in Excel).
+        /// </summary>
+        public bool? IsBozCovered { get; set; }
+
+        /// <summary>
+        /// Of LHV-dekking van toepassing is (zoals CK in Excel).
+        /// </summary>
+        public bool? IsLhvCovered { get; set; }
 
         /// <summary>
         /// Samenvattende “Toepasselijk?”-velden uit kolom E (tab 6).

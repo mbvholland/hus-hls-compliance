@@ -202,7 +202,7 @@ namespace HlsCompliance.Api.Services
                     Text = "Heeft de AI-uitkomst impact op gezondheid, veiligheid of grondrechten?",
                     IsDerived = true,
                     DerivedFrom = "AI Act",
-                    Explanation = "Excel C29: zelfde A2-bron; hier als afgeleide 'impact'-vraag."
+                    Explanation = "Excel C29: zelfde A2-bron; als er een AI-systeem is, hier 'Ja'."
                 },
                 new()
                 {
@@ -647,6 +647,18 @@ namespace HlsCompliance.Api.Services
             // CRA Toepasselijk? – F56: aggregatie over CRA-a..f
             result.CraApplicable = AggregateYesNo(result,
                 "CRA-a", "CRA-b", "CRA-c", "CRA-d", "CRA-e", "CRA-f");
+
+            // 6. Vul ToetsAnswers dictionary met alle ToetsID → Answer
+            result.ToetsAnswers.Clear();
+            foreach (var q in result.Questions)
+            {
+                result.ToetsAnswers[q.ToetsId] = q.Answer;
+            }
+
+            // 7. BoZ/LHV-dekking:
+            // eerste versie: direct op basis van ALG-b (BoZ-acceptatie) en ALG-c (LHV-acceptatie).
+            result.IsBozCovered = GetQuestionAnswer(result, "ALG-b");
+            result.IsLhvCovered = GetQuestionAnswer(result, "ALG-c");
 
             // Timestamp
             result.LastUpdated = DateTime.UtcNow;
