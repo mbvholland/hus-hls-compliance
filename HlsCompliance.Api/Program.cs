@@ -17,7 +17,8 @@ builder.Services.AddSingleton<SecurityProfileService>();
 builder.Services.AddSingleton<ToetsVooronderzoekService>();
 builder.Services.AddSingleton<AlgemeenService>();
 
-builder.Services.AddScoped<DueDiligenceService>();
+// LET OP: nu Singleton i.p.v. Scoped
+builder.Services.AddSingleton<DueDiligenceService>();
 
 builder.Services.AddSingleton<IChecklistDefinitionRepository, JsonChecklistDefinitionRepository>();
 

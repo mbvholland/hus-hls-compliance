@@ -1,0 +1,4849 @@
+[
+  {
+    "ChecklistId": "Algemeen1",
+    "Category": "Governance & Organisatie",
+    "Question": "Beschikt de leverancier over een aangewezen CISO, DPO of Security Officer met duidelijke verantwoordelijkheden voor informatiebeveiliging en privacy?",
+    "NormReference": "Best practice (ISO/IEC 27001 A.5.3)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": true,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Partijen komen overeen dat in het kader van de onder deze Verwerkersovereenkomst vallende verwerkingen HUS optreedt als verwerkingsverantwoordelijke en de Leverancier als verwerker, tenzij partijen schriftelijk anders zijn overeengekomen. In de Verwerkersovereenkomst wordt expliciet vastgelegd wie de verwerkingsverantwoordelijke en wie de verwerker is voor de betreffende verwerkingen",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a"
+    ],
+    "NenDomains": [
+      "Algemeen"
+    ],
+    "Themes": [
+      "Governance & Organisatie"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen2",
+    "Category": "Governance & Organisatie",
+    "Question": "Heeft de leverancier een duidelijke eigendoms- en bestuursstructuur, inclusief moeder-/dochterrelaties en KvK-registratie?",
+    "NormReference": "—",
+    "RiskLevel": "Laag",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a"
+    ],
+    "NenDomains": [
+      "Algemeen"
+    ],
+    "Themes": [
+      "Governance & Organisatie"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen3",
+    "Category": "Governance & Organisatie",
+    "Question": "Beschikt de leverancier over een gedocumenteerd kwaliteitsmanagementsysteem (QMS) of vergelijkbaar raamwerk voor procesbeheersing?",
+    "NormReference": "ISO 9001 of gelijkwaardig",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a"
+    ],
+    "NenDomains": [
+      "Algemeen"
+    ],
+    "Themes": [
+      "Governance & Organisatie"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen4",
+    "Category": "Continuïteit & Exit",
+    "Question": "Is een business continuity- en disaster recoveryplan aanwezig, getest en actueel?",
+    "NormReference": "ISO/IEC 27001 A.5.30",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": true,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier beschikt over een gedocumenteerd en actueel business continuity- en disaster recoveryplan voor de onder deze SLA vallende Diensten. Dit plan wordt periodiek getest en waar nodig geactualiseerd. Op verzoek stelt de Leverancier de relevante delen van het plan en de testrapportages aan HUS ter beschikking, waarbij de in de SLA overeengekomen beschikbaarheids- en hersteltijden zijn geborgd.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a"
+    ],
+    "NenDomains": [
+      "Algemeen"
+    ],
+    "Themes": [
+      "Continuïteit & Exit"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen5",
+    "Category": "Continuïteit & Exit",
+    "Question": "Heeft de leverancier een exit-strategie voor klanten bij faillissement of beëindiging van de dienstverlening?",
+    "NormReference": "—",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a"
+    ],
+    "NenDomains": [
+      "Algemeen"
+    ],
+    "Themes": [
+      "Continuïteit & Exit"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen6",
+    "Category": "Compliance",
+    "Question": "Wordt naleving van relevante wet- en regelgeving periodiek geëvalueerd en gedocumenteerd (bijv. AVG, AI Act, MDR, NIS2, CRA)?",
+    "NormReference": "—",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": true,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Leverancier garandeert in de Verwerkersovereenkomst dat hij alle voor HUS relevante wet- en regelgeving naleeft, waaronder de AVG en, indien van toepassing, sectorale of specifieke regelgeving. De Leverancier verplicht zich om HUS op verzoek in staat te stellen de naleving van deze verplichtingen aan te tonen, onder meer door het verstrekken van relevante documentatie en het faciliteren van audits",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a"
+    ],
+    "NenDomains": [
+      "Algemeen"
+    ],
+    "Themes": [
+      "Compliance"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen7",
+    "Category": "Compliance",
+    "Question": "Beschikt de leverancier over een meldprocedure voor datalekken of beveiligingsincidenten (intern en extern)?",
+    "NormReference": "AVG Art. 33 / NEN7510 §16",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": true,
+    "IsVwoRelevant": true,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier onderhoudt en hanteert een procedure voor het melden en afhandelen van beveiligingsincidenten en (mogelijke) datalekken die de Diensten van HUS raken. Deze procedure waarborgt onder meer tijdige signalering, classificatie, onderzoek, beperkende maatregelen en rapportage, conform de in deze SLA opgenomen termijnen en informatievereisten.",
+    "StandardTextVwo": "De Leverancier verplicht zich in de Verwerkersovereenkomst om HUS onverwijld en volledig te informeren over (mogelijke) datalekken en relevante beveiligingsincidenten. Hierdoor wordt geborgd dat HUS tijdig kan voldoen aan haar meldplichten richting toezichthouder en betrokkenen",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "Algemeen",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match",
+      "Compliance"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen8",
+    "Category": "Contractmanagement",
+    "Question": "Worden onderaannemers en subverwerkers vooraf gescreend op beveiligings- en privacyvereisten?",
+    "NormReference": "NIS2 Art. 21(2d)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": true,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Aanvullend op de standaard afspraken over subverwerkers waarborgt de Leverancier dat de selectie, beoordeling en contractering van subverwerkers en andere toeleveranciers voldoen aan de ketenbeveiligingsverplichtingen zoals bedoeld in NIS2 artikel 21 lid 2 onder d; dit houdt in dat met iedere subverwerker ten minste afspraken zijn gemaakt over passende beveiligingsmaatregelen, melding van incidenten en audit- of controlemogelijkheden, voor zover deze partijen persoonsgegevens namens HUS verwerken.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a",
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "Algemeen",
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match",
+      "Contractmanagement"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen9",
+    "Category": "Contractmanagement",
+    "Question": "Zijn beveiligingsverplichtingen, audits en toezichtrechten opgenomen in contracten met klanten en subverwerkers?",
+    "NormReference": "NEN7510 §15",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": true,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "In de Verwerkersovereenkomst en eventuele subverwerkersovereenkomsten worden de verantwoordelijkheden van partijen vastgelegd ten aanzien van beveiliging, audits, rapportages en toezicht, inclusief het recht van HUS om audits en controles uit te voeren of te laten uitvoeren.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "Algemeen",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match",
+      "Contractmanagement"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen10",
+    "Category": "Integriteit & Personeel",
+    "Question": "Worden medewerkers met toegang tot gevoelige data gescreend en periodiek getraind in informatiebeveiliging?",
+    "NormReference": "NEN7510 §7.2",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": true,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Leverancier is verplicht om medewerkers en ingehuurde krachten met toegang tot persoonsgegevens van HUS zorgvuldig te selecteren, aan een passende geheimhoudingsverplichting te binden en periodiek te trainen in privacy en informatiebeveiliging.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "Algemeen",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match",
+      "Integriteit & Personeel"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen11",
+    "Category": "Transparantie",
+    "Question": "Worden wijzigingen in eigendom, bestuur of voorwaarden tijdig gemeld aan klanten?",
+    "NormReference": "—",
+    "RiskLevel": "Laag",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": true,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Worden wijzigingen in eigendom, bestuur of voorwaarden tijdig gemeld aan klanten?.",
+    "ToetsIds": [
+      "ALG-a"
+    ],
+    "NenDomains": [
+      "Algemeen"
+    ],
+    "Themes": [
+      "Transparantie"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen12",
+    "Category": "Transparantie",
+    "Question": "Publiceert de leverancier een security- of privacyverklaring die inzicht biedt in beleid en maatregelen?",
+    "NormReference": "—",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": true,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Leverancier is verplicht HUS tijdig te informeren over wijzigingen die gevolgen kunnen hebben voor de verwerking van persoonsgegevens, zoals wijzigingen in eigendomsstructuur en subverwerkers.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a"
+    ],
+    "NenDomains": [
+      "Algemeen"
+    ],
+    "Themes": [
+      "Transparantie"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen13",
+    "Category": "Rapportage & Audit",
+    "Question": "Worden periodiek security- of compliance-audits uitgevoerd en rapporten gedeeld met klanten?",
+    "NormReference": "SOC2 / ISAE3402 / ISO27001",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "Algemeen",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match",
+      "Rapportage & Audit"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen14",
+    "Category": "Innovatie & Beleid",
+    "Question": "Wordt bij nieuwe projecten ‘security & privacy by design’ toegepast?",
+    "NormReference": "AVG Art. 25 / ISO27001 A.6.3",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": true,
+    "IsSoRelevant": true,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Leverancier past bij ontwerp, ontwikkeling en wijziging van Diensten het principe van privacy by design en by default toe, zodat standaard de hoogst passende mate van gegevensbescherming is ingebouwd.",
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Wordt bij nieuwe projecten ‘security & privacy by design’ toegepast?.",
+    "ToetsIds": [
+      "ALG-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "Algemeen",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match",
+      "Innovatie & Beleid"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen15",
+    "Category": "Service & Ondersteuning",
+    "Question": "Zijn onderhouds- en supportprocessen afgestemd op zorgcontinuïteit (bijv. responsetijden, updates, noodprocedures)?",
+    "NormReference": "—",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": true,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier richt onderhouds- en supportprocessen zodanig in dat de zorgcontinuïteit is geborgd, met inbegrip van overeengekomen responstijden, tijdige levering van updates en uitvoering van noodprocedures, zoals vastgelegd in de SLA en het implementatie- en onderhoudsplan.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a"
+    ],
+    "NenDomains": [
+      "Algemeen"
+    ],
+    "Themes": [
+      "Service & Ondersteuning"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen16",
+    "Category": "Financiële stabiliteit",
+    "Question": "Is de leverancier financieel gezond (minimaal drie jaar positief eigen vermogen of borging)?",
+    "NormReference": "—",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a"
+    ],
+    "NenDomains": [
+      "Algemeen"
+    ],
+    "Themes": [
+      "Financiële stabiliteit"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen17",
+    "Category": "Toezicht & Escalatie",
+    "Question": "Zijn escalatieprocedures ingericht bij incidenten of geschillen met klanten?",
+    "NormReference": "—",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": true,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": true,
+    "StandardTextSla": "De Leverancier onderhoudt gedocumenteerde escalatieprocedures voor technische en functionele incidenten en geschillen, inclusief contactpunten, escalatieniveaus en termijnen, en stemt deze af met HUS zodat snelle opschaling mogelijk is bij verstoringen in de zorgverlening.",
+    "StandardTextVwo": null,
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Zijn escalatieprocedures ingericht bij incidenten of geschillen met klanten?.",
+    "ToetsIds": [
+      "ALG-a"
+    ],
+    "NenDomains": [
+      "Algemeen"
+    ],
+    "Themes": [
+      "Toezicht & Escalatie"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen18",
+    "Category": "Toepasselijkheid normen",
+    "Question": "Is bepaald welke normenkaders (AVG, NEN7510, NIS2, MDR, AI Act, CRA) relevant zijn voor de geleverde diensten?",
+    "NormReference": "—",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": true,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Leverancier treft passende technische en organisatorische maatregelen conform de voor HUS relevante normen en richtlijnen, waaronder NEN 7510 en ISO 27001. Op verzoek van HUS verstrekt de Leverancier inzage in de wijze waarop deze maatregelen zijn geïmplementeerd",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a"
+    ],
+    "NenDomains": [
+      "Algemeen"
+    ],
+    "Themes": [
+      "Toepasselijkheid normen"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen19",
+    "Category": "Evaluatie",
+    "Question": "Wordt jaarlijks een managementreview uitgevoerd op security, compliance en risico’s?",
+    "NormReference": "ISO/IEC 27001 A.10",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": true,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Wordt jaarlijks een managementreview uitgevoerd op security, compliance en risico’s?.",
+    "ToetsIds": [
+      "ALG-a"
+    ],
+    "NenDomains": [
+      "Algemeen"
+    ],
+    "Themes": [
+      "Evaluatie"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen20",
+    "Category": "Klantrelatie",
+    "Question": "Worden klanttevredenheid en verbeterpunten structureel geëvalueerd?",
+    "NormReference": "ISO 9001",
+    "RiskLevel": "Laag",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a"
+    ],
+    "NenDomains": [
+      "Algemeen"
+    ],
+    "Themes": [
+      "Klantrelatie"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen21",
+    "Category": "Hosting & cloud",
+    "Question": "Zijn redundantie- en failovermechanismen aanwezig?",
+    "NormReference": "NEN7510 §17",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": true,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier treft passende maatregelen om redundantie en failover voor de onder de SLA vallende productieomgevingen te realiseren, zodanig dat het uitvallen van een component niet leidt tot onaanvaardbare onderbreking van de Diensten. De concrete beschikbaarheids- en herstelniveaus worden vastgelegd in de SLA, inclusief bewaking en periodieke toetsing van de werking van deze voorzieningen.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "Algemeen",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match",
+      "Hosting & cloud"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen22",
+    "Category": "Hosting & cloud",
+    "Question": "Worden back-ups onafhankelijk uitgevoerd van het primaire platform?",
+    "NormReference": "NEN7510 §12",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": true,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier zorgt ervoor dat back-ups van de onder deze SLA vallende data en configuraties onafhankelijk van het primaire platform worden uitgevoerd en opgeslagen, zodat verlies of beschadiging van het primaire platform niet leidt tot onherstelbaar gegevensverlies. Frequentie, bewaartermijnen en hersteldoelstellingen van back-ups worden in de SLA vastgelegd.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "Algemeen",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match",
+      "Hosting & cloud"
+    ]
+  },
+  {
+    "ChecklistId": "Algemeen23",
+    "Category": "Hosting & cloud",
+    "Question": "Worden back-ups getest op herstelbaarheid?",
+    "NormReference": "ISO 27001 A.8.13",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": true,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier test periodiek de herstelbaarheid van back-ups die in het kader van de Diensten voor HUS worden gemaakt. De uitkomsten van deze hersteltests worden vastgelegd en op verzoek met HUS gedeeld. Indien tekortkomingen worden geconstateerd, treft de Leverancier zo spoedig mogelijk corrigerende maatregelen zodat de in de SLA afgesproken hersteltijden en dataverliesgrenzen kunnen worden gehaald.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ALG-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "Algemeen",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match",
+      "Hosting & cloud"
+    ]
+  },
+  {
+    "ChecklistId": "AVG1",
+    "Category": "1. Rol en verantwoordelijkheid",
+    "Question": "Is de rol van de leverancier duidelijk vastgesteld (verwerker / subverwerker / gezamenlijke verantwoordelijke)?",
+    "NormReference": "AVG Art. 4(7–8), 26–28",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Leverancier voert uitsluitend die verwerkingen namens HUS uit die expliciet zijn overeengekomen, waarbij HUS optreedt als verwerkingsverantwoordelijke en de Leverancier als verwerker. Indien de Leverancier zelfstandig het doel en de middelen van verwerkingen bepaalt, worden hiervoor afzonderlijke schriftelijke afspraken gemaakt.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-a"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Persoonsgegevens"
+    ]
+  },
+  {
+    "ChecklistId": "AVG2",
+    "Category": "2. Verwerkersovereenkomst",
+    "Question": "Is er een ondertekende verwerkersovereenkomst met beschrijving van doeleinden, verwerkingen, en beveiligingsmaatregelen?",
+    "NormReference": "AVG Art. 28(3)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Leverancier en HUS komen overeen dat de verwerkersovereenkomst voldoet aan artikel 28 AVG en ten minste de verwerkingsdoeleinden, het soort persoonsgegevens, de categorieën van betrokkenen, de aard en duur van de verwerkingen, alsmede de beveiligings- en ondersteuningsverplichtingen van de Leverancier vastlegt.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-a"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Persoonsgegevens"
+    ]
+  },
+  {
+    "ChecklistId": "AVG3",
+    "Category": "3. Subverwerkers",
+    "Question": "Worden subverwerkers alleen ingezet na schriftelijke toestemming en met volledige subverwerkerslijst?",
+    "NormReference": "AVG Art. 28(2)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Leverancier schakelt subverwerkers uitsluitend in na voorafgaande schriftelijke toestemming van HUS en onder de voorwaarde dat met deze subverwerkers een overeenkomst wordt gesloten die gelijkwaardige privacy- en beveiligingsverplichtingen bevat als de verwerkersovereenkomst tussen HUS en de Leverancier",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-e"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Keten"
+    ]
+  },
+  {
+    "ChecklistId": "AVG4",
+    "Category": "4. Locatie van verwerking",
+    "Question": "Vindt de verwerking uitsluitend plaats binnen de EU/EER of met adequate waarborgen (SCC, BCR)?",
+    "NormReference": "AVG Hoofdstuk V",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Persoonsgegevens namens HUS worden uitsluitend verwerkt of opgeslagen in landen die in de Verwerkersovereenkomst zijn gespecificeerd. Doorgifte van persoonsgegevens buiten de EU/EER vindt uitsluitend plaats indien aan de vereisten van de AVG voor doorgifte naar derde landen is voldaan, waaronder het treffen van passende waarborgen.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-e"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Doorgifte"
+    ]
+  },
+  {
+    "ChecklistId": "AVG5",
+    "Category": "5. Categorieën persoonsgegevens",
+    "Question": "Worden bijzondere categorieën persoonsgegevens (gezondheidsdata, biometrie) verwerkt?",
+    "NormReference": "AVG Art. 9",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Leverancier verwerkt uitsluitend de categorieën persoonsgegevens die schriftelijk zijn gespecificeerd door HUS, waaronder, indien van toepassing, gezondheidsgegevens en andere bijzondere categorieën. De Leverancier verstrekt HUS alle benodigde informatie zodat HUS haar informatie- en verantwoordingsplichten kan nakomen.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-b"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Bijzondere gegevens"
+    ]
+  },
+  {
+    "ChecklistId": "AVG6",
+    "Category": "6. Doelbinding",
+    "Question": "Zijn de doeleinden van de verwerking duidelijk omschreven en beperkt tot wat noodzakelijk is?",
+    "NormReference": "AVG Art. 5(1b)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Leverancier verwerkt persoonsgegevens uitsluitend op basis van schriftelijke en gedocumenteerde instructies van HUS en uitsluitend ten behoeve van de in deze overeenkomst vastgelegde doeleinden. Afwijkingen van of uitbreidingen op deze doeleinden zijn slechts toegestaan na voorafgaande schriftelijke toestemming van HUS.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-a",
+      "AVG-h"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Persoonsgegevens",
+      "Rechten betrokkenen"
+    ]
+  },
+  {
+    "ChecklistId": "AVG7",
+    "Category": "7. Dataminimalisatie",
+    "Question": "Worden uitsluitend gegevens verwerkt die noodzakelijk zijn voor het doel?",
+    "NormReference": "AVG Art. 5(1c)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Verwerker zal bij de verwerking van persoonsgegevens het beginsel van dataminimalisatie toepassen en uitsluitend persoonsgegevens verwerken die noodzakelijk zijn voor de uitvoering van de overeengekomen doeleinden. Waar mogelijk worden persoonsgegevens gepseudonimiseerd of geanonimiseerd.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-a"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Persoonsgegevens"
+    ]
+  },
+  {
+    "ChecklistId": "AVG8",
+    "Category": "8. Rechten van betrokkenen",
+    "Question": "Zijn procedures ingericht voor inzage, correctie, verwijdering, bezwaar en dataportabiliteit?",
+    "NormReference": "AVG Arts. 12–23",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Verwerker is verplicht de Verwerkingsverantwoordelijke te ondersteunen bij de uitoefening van rechten van betrokkenen zoals bedoeld in de AVG, waaronder het recht op inzage, rectificatie, verwijdering, beperking van verwerking, bezwaar en dataportabiliteit. Deze ondersteuning dient plaats te vinden binnen de termijnen en onder de voorwaarden zoals vastgelegd in de AVG",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-a",
+      "AVG-f",
+      "AVG-h"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Persoonsgegevens",
+      "Profilering/ADM",
+      "Rechten betrokkenen"
+    ]
+  },
+  {
+    "ChecklistId": "AVG9",
+    "Category": "9. DPIA",
+    "Question": "Is een Data Protection Impact Assessment uitgevoerd voor de verwerking?",
+    "NormReference": "AVG Art. 35",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Indien voor een verwerking een DPIA is vereist, werkt de Leverancier op verzoek van HUS mee aan de uitvoering daarvan en aan het treffen van aanvullende maatregelen die uit de DPIA voortvloeien, zoals vastgelegd in de Verwerkersovereenkomst.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-c",
+      "AVG-f",
+      "AVG-g"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Grootschalige verwerking",
+      "Kwetsbare groepen",
+      "Profilering/ADM"
+    ]
+  },
+  {
+    "ChecklistId": "AVG10",
+    "Category": "10. Beveiligingsmaatregelen",
+    "Question": "Zijn passende technische en organisatorische beveiligingsmaatregelen genomen (encryptie, MFA, RBAC)?",
+    "NormReference": "AVG Art. 32",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Verwerker treft passende technische en organisatorische maatregelen als bedoeld in artikel 32 van de AVG, afgestemd op de aard en de risico’s van de verwerkingen voor de Verwerkingsverantwoordelijke. Deze maatregelen omvatten in ieder geval, waar passend, sterke authenticatie, rolgebaseerde toegangsbeperkingen, versleuteling van gegevens en actueel kwetsbaarheden- en patchmanagement. De Verwerker legt deze maatregelen vast, houdt deze actueel en stelt relevante documentatie op verzoek ter beschikking aan de Verwerkingsverantwoordelijke.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-a",
+      "AVG-b",
+      "AVG-d"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Beheerderstoegang",
+      "Beveiliging",
+      "Bijzondere gegevens"
+    ]
+  },
+  {
+    "ChecklistId": "AVG11",
+    "Category": "11. Logging en auditing",
+    "Question": "Worden toegangs- en wijzigingslogs bewaard en zijn deze niet manipuleerbaar?",
+    "NormReference": "AVG Art. 30, NEN7510 §12.4",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Verwerker richt passende logging en auditing in voor alle toegang tot en wijzigingen in persoonsgegevens. Deze loggegevens worden op verzoek beschikbaar gesteld aan de Verwerkingsverantwoordelijke ten behoeve van toezicht en onderzoek.",
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Worden toegangs- en wijzigingslogs bewaard en zijn deze niet manipuleerbaar?.",
+    "ToetsIds": [
+      "AVG-a",
+      "AVG-c",
+      "AVG-d",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "AVG",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match",
+      "Beheerderstoegang",
+      "Grootschalige verwerking",
+      "Logging"
+    ]
+  },
+  {
+    "ChecklistId": "AVG12",
+    "Category": "12. Incidentmelding",
+    "Question": "Is een procedure voor datalekmeldingen aanwezig (melding binnen 72 uur)?",
+    "NormReference": "AVG Arts. 33–34",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Verwerker meldt zonder onredelijke vertraging alle incidenten die kunnen leiden tot een inbreuk in verband met persoonsgegevens aan de Verwerkingsverantwoordelijke. De melding bevat alle informatie die de Verwerkingsverantwoordelijke nodig heeft om te voldoen aan eventuele meldplichten richting de toezichthouder en betrokkenen, zoals bedoeld in de AVG.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-a",
+      "AVG-c",
+      "AVG-d"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Beheerderstoegang",
+      "Grootschalige verwerking",
+      "Incidenten"
+    ]
+  },
+  {
+    "ChecklistId": "AVG13",
+    "Category": "13. Functionaris Gegevensbescherming",
+    "Question": "Is een FG benoemd en geregistreerd bij de AP (indien verplicht)?",
+    "NormReference": "AVG Arts. 37–39",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Voor zover de Verwerker op grond van de AVG of andere toepasselijke wet- en regelgeving verplicht is een Functionaris voor Gegevensbescherming (FG/DPO) aan te stellen, waarborgt de Verwerker dat deze FG onafhankelijk kan functioneren en verstrekt hij diens contactgegevens aan de Verwerkingsverantwoordelijke. Indien geen wettelijke verplichting geldt, wijst de Verwerker een vast aanspreekpunt voor privacy en gegevensbescherming aan en deelt de contactgegevens hiervan met de Verwerkingsverantwoordelijke.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-c",
+      "AVG-g"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Grootschalige verwerking",
+      "Kwetsbare groepen"
+    ]
+  },
+  {
+    "ChecklistId": "AVG14",
+    "Category": "14. Privacy by Design/Default",
+    "Question": "Is privacy vanaf het ontwerp geborgd in processen en systemen?",
+    "NormReference": "AVG Art. 25",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Verwerker past het beginsel van privacy by design en privacy by default toe bij de ontwikkeling, configuratie en wijziging van systemen en processen waarin persoonsgegevens voor de Verwerkingsverantwoordelijke worden verwerkt.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-f",
+      "AVG-a"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Privacy by design"
+    ]
+  },
+  {
+    "ChecklistId": "AVG15",
+    "Category": "15. Bewaartermijnen",
+    "Question": "Zijn bewaartermijnen vastgesteld en worden gegevens tijdig verwijderd of geanonimiseerd?",
+    "NormReference": "AVG Art. 5(1e)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "In de Verwerkersovereenkomst worden bewaartermijnen en procedures voor verwijdering of anonimisering van persoonsgegevens vastgelegd. De Verwerker voert verwijderings- en vernietigingsverzoeken van de Verwerkingsverantwoordelijke tijdig en aantoonbaar uit.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-b",
+      "AVG-i"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Bewaartermijnen",
+      "Bijzondere gegevens"
+    ]
+  },
+  {
+    "ChecklistId": "AVG16",
+    "Category": "16. Bewustwording en training",
+    "Question": "Krijgen medewerkers periodiek AVG- en securitytraining?",
+    "NormReference": "AVG Art. 39(1b)",
+    "RiskLevel": "Laag",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Verwerker zorgt ervoor dat medewerkers en ingehuurde krachten die toegang hebben tot persoonsgegevens periodiek worden getraind in privacy- en beveiligingsbewustzijn. Daarnaast geeft de Verwerker passende instructies over het zorgvuldig omgaan met persoonsgegevens van de Verwerkingsverantwoordelijke",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-c",
+      "AVG-g"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Grootschalige verwerking",
+      "Kwetsbare groepen"
+    ]
+  },
+  {
+    "ChecklistId": "AVG17",
+    "Category": "17. Certificering of auditverklaring",
+    "Question": "Beschikt de leverancier over ISO27001/NEN7510 of vergelijkbare certificering?",
+    "NormReference": "AVG Art. 24, 32",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Voor zover van toepassing onderhoudt de Verwerker relevante certificeringen en/of assurance-rapportages (zoals ISO 27001, NEN 7510, ISAE 3402/SOC-rapporten) voor de Diensten waarbij persoonsgegevens van de Verwerkingsverantwoordelijke worden verwerkt. De Verwerker stelt actuele certificaten en samenvattingen van auditbevindingen op verzoek ter beschikking aan de Verwerkingsverantwoordelijke en informeert deze tijdig over intrekking, schorsing of materiële beperkingen daarvan",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-a",
+      "NEN/ISO-a"
+    ],
+    "NenDomains": [
+      "AVG",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Certificering/audit"
+    ]
+  },
+  {
+    "ChecklistId": "AVG18",
+    "Category": "18. Verwerkingsregister",
+    "Question": "Is een register van verwerkingsactiviteiten beschikbaar en actueel?",
+    "NormReference": "AVG Art. 30",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Verwerker houdt een register van verwerkingsactiviteiten bij voor de verwerkingen die hij namens de Verwerkingsverantwoordelijke uitvoert en stelt de relevante informatie uit dit register op verzoek ter beschikking aan de Verwerkingsverantwoordelijke, zoals vastgelegd in deze Verwerkersovereenkomst.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-a"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Register"
+    ]
+  },
+  {
+    "ChecklistId": "AVG19",
+    "Category": "19. Cloud en hosting",
+    "Question": "Zijn cloudproviders getoetst op AVG-naleving en contractueel geborgd?",
+    "NormReference": "AVG Art. 28, 32",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Indien de Verwerker gebruikmaakt van cloud- of hostingproviders voor verwerkingen namens de Verwerkingsverantwoordelijke, waarborgt de Verwerker dat deze partijen worden geselecteerd en gecontracteerd met inachtneming van de AVG. De Verwerker sluit passende verwerkers- en subverwerkersovereenkomsten met deze partijen en verstrekt op verzoek relevante informatie hierover aan de Verwerkingsverantwoordelijke.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-d",
+      "AVG-e"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Cloud/hosting"
+    ]
+  },
+  {
+    "ChecklistId": "AVG20",
+    "Category": "20. Verwerkersketen",
+    "Question": "Zijn afspraken over overdracht, exit en continuïteit bij einde contract vastgelegd?",
+    "NormReference": "AVG Art. 28(3g)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier werkt mee aan een ordelijke en tijdige overdracht van data en Diensten bij beëindiging van de overeenkomst(en) met HUS, waaronder het veilig exporteren van gegevens in een overeengekomen formaat, het ondersteunen van datamigratie en het uitvoeren van overeengekomen verwijder- of vernietigingshandelingen. Deze activiteiten en termijnen worden in de SLA en exitregeling nader geconcretiseerd.",
+    "StandardTextVwo": "De Verwerker mag uitsluitend subverwerkers inschakelen met voorafgaande (algemene of specifieke) schriftelijke toestemming van de Verwerkingsverantwoordelijke. De Verwerker legt met deze subverwerkers ten minste gelijkwaardige privacy- en beveiligingsverplichtingen vast als opgenomen in deze Verwerkersovereenkomst. De Verwerker houdt een actueel overzicht van alle ingeschakelde subverwerkers bij, stelt dit overzicht op verzoek ter beschikking aan de Verwerkingsverantwoordelijke en ondersteunt deze bij overdracht, exit en continuïteit van verwerkingen binnen de verwerkersketen.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-d",
+      "AVG-e",
+      "AVG-i"
+    ],
+    "NenDomains": [
+      "AVG"
+    ],
+    "Themes": [
+      "Bewaartermijnen",
+      "Keten"
+    ]
+  },
+  {
+    "ChecklistId": "NEN1",
+    "Category": "1. Informatiebeveiligingsbeleid",
+    "Question": "Is er een vastgesteld informatiebeveiligingsbeleid dat jaarlijks wordt herzien en goedgekeurd door het management?",
+    "NormReference": "ISO 27001 §5.2, NEN 7510 §5.1",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN2",
+    "Category": "2. Risicobeoordeling",
+    "Question": "Is een actuele risicoanalyse uitgevoerd met bijbehorende beheersmaatregelen (plan-do-check-act)?",
+    "NormReference": "ISO 27001 §6.1.2, NEN 7510 §8.2",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN3",
+    "Category": "3. ISMS Scope",
+    "Question": "Is de scope van het Information Security Management System (ISMS) duidelijk gedefinieerd en gedocumenteerd?",
+    "NormReference": "ISO 27001 §4.3",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN4",
+    "Category": "4. Beleid voor toegangsbeheer",
+    "Question": "Zijn toegangsrechten ingericht volgens het least-privilege principe en periodiek beoordeeld?",
+    "NormReference": "ISO 27001 A.5.18, NEN 7510 §9.2",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN5",
+    "Category": "5. Authenticatie",
+    "Question": "Is multi-factor-authenticatie (MFA) verplicht voor beheer- en zorgdata-accounts?",
+    "NormReference": "ISO 27001 A.5.17, NEN 7510 §9.4",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Voor beheeraccounts en andere accounts met toegang tot systemen waarin persoonsgegevens van de Verwerkingsverantwoordelijke worden verwerkt, is sterke authenticatie vereist, bij voorkeur multifactorauthenticatie, conform de door de Verwerkingsverantwoordelijke gehanteerde beveiligingsstandaarden.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN6",
+    "Category": "6. Cryptografie",
+    "Question": "Wordt encryptie toegepast voor data ‘in transit’ en ‘at rest’, inclusief key management?",
+    "NormReference": "ISO 27001 A.8.24, NEN 7510 §10.1",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Verwerker past passende cryptografische maatregelen toe voor persoonsgegevens die namens de Verwerkingsverantwoordelijke worden verwerkt. Deze maatregelen omvatten in ieder geval versleuteling van gegevens bij opslag en transport, evenals zorgvuldig beheer van cryptografische sleutels, conform de geldende beveiligingsstandaarden.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN7",
+    "Category": "7. Logging en monitoring",
+    "Question": "Worden logbestanden centraal opgeslagen, beveiligd en periodiek gecontroleerd?",
+    "NormReference": "ISO 27001 A.8.15, NEN 7513",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN8",
+    "Category": "8. Kwetsbaarhedenbeheer",
+    "Question": "Worden kwetsbaarheden regelmatig gescand, beoordeeld en gepatcht binnen gestelde termijnen?",
+    "NormReference": "ISO 27001 A.8.8, A.8.29, NEN 7510 §12.6",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN9",
+    "Category": "9. Continuïteitsplanning",
+    "Question": "Zijn back-up- en herstelprocedures getest en gedocumenteerd (RTO/RPO eisen)?",
+    "NormReference": "ISO 27001 A.5.30, NEN 7510 §17",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN10",
+    "Category": "10. Leveranciersbeheer",
+    "Question": "Worden leveranciers beoordeeld op informatiebeveiliging en contractueel geborgd?",
+    "NormReference": "ISO 27001 A.5.19, NEN 7510 §15.1",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN11",
+    "Category": "11. Incidentmanagement",
+    "Question": "Is er een incidentresponsproces ingericht met melding binnen 24 uur bij de verantwoordelijke partij?",
+    "NormReference": "ISO 27001 A.5.25, NEN 7510 §16",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier onderhoudt voor de onder deze SLA vallende Diensten een incidentresponsproces dat is afgestemd met HUS. Dit proces omvat ten minste het registreren, prioriteren, analyseren en oplossen van beveiligingsincidenten en storingen, alsmede het informeren van HUS binnen de in de SLA vastgelegde termijnen en volgens de overeengekomen communicatielijnen.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN12",
+    "Category": "12. Personeelsbeveiliging",
+    "Question": "Zijn medewerkers gescreend, geïnformeerd over verantwoordelijkheden en getraind in beveiliging?",
+    "NormReference": "ISO 27001 A.6.1, NEN 7510 §7.2",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN13",
+    "Category": "13. Fysieke beveiliging",
+    "Question": "Zijn datacenters en werkplekken fysiek beveiligd tegen ongeautoriseerde toegang?",
+    "NormReference": "ISO 27001 A.7.1, A.7.10, NEN 7510 §11",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Wijzigingen in systemen en processen die gevolgen kunnen hebben voor de beveiliging of privacy van persoonsgegevens worden vooraf beoordeeld op hun impact. Dergelijke wijzigingen worden uitsluitend doorgevoerd met passende beheersmaatregelen en, waar nodig, in afstemming met de Verwerkingsverantwoordelijke",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN14",
+    "Category": "14. Wijzigingsbeheer",
+    "Question": "Worden systeemwijzigingen formeel beoordeeld op beveiligingsimpact voor implementatie?",
+    "NormReference": "ISO 27001 A.8.32, NEN 7510 §14.2",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Worden systeemwijzigingen formeel beoordeeld op beveiligingsimpact voor implementatie?.",
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN15",
+    "Category": "15. Beveiliging bij ontwikkeling",
+    "Question": "Wordt softwareontwikkeling uitgevoerd volgens beveiligde ontwikkelrichtlijnen (secure coding, test, release)?",
+    "NormReference": "ISO 27001 A.8.28, NEN 7510 §14.2.5",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Wordt softwareontwikkeling uitgevoerd volgens beveiligde ontwikkelrichtlijnen (secure coding, test, release)?.",
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN16",
+    "Category": "16. Classificatie van informatie",
+    "Question": "Zijn informatie en systemen geclassificeerd naar vertrouwelijkheid, integriteit en beschikbaarheid (CIA)?",
+    "NormReference": "ISO 27001 A.8.2, NEN 7510 §8.2",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier zorgt ervoor dat informatie en systemen die onderdeel zijn van de Diensten voor HUS zijn geclassificeerd naar vertrouwelijkheid, integriteit en beschikbaarheid, en dat de inrichting van de dienstverlening en de in de SLA afgesproken servicelevels in lijn zijn met deze classificaties.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN17",
+    "Category": "17. Beheer van media en verwijdering",
+    "Question": "Worden gegevensdragers veilig gewist of vernietigd volgens beleid?",
+    "NormReference": "ISO 27001 A.8.10, NEN 7510 §11.2",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Verwerker waarborgt dat fysieke locaties waar persoonsgegevens van de Verwerkingsverantwoordelijke worden verwerkt of opgeslagen, passend zijn beveiligd tegen onbevoegde toegang, in overeenstemming met de door de Verwerkingsverantwoordelijke gehanteerde normen en richtlijnen.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN18",
+    "Category": "18. Externe partijen en cloudgebruik",
+    "Question": "Zijn contractuele en technische waarborgen aanwezig voor cloud- of outsourcingdiensten?",
+    "NormReference": "ISO 27001 A.5.19, A.5.20",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN19",
+    "Category": "19. Certificering en audits",
+    "Question": "Beschikt de leverancier over een geldig ISO 27001/NEN 7510 certificaat of externe auditverklaring?",
+    "NormReference": "ISO 27001 §9.2, NEN 7510 §18",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NEN20",
+    "Category": "20. Continue verbetering",
+    "Question": "Worden beveiligingsmaatregelen periodiek geëvalueerd en verbeterd op basis van incidenten en audits?",
+    "NormReference": "ISO 27001 §10.2",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier evalueert de effectiviteit van de voor de Diensten getroffen beveiligingsmaatregelen periodiek en naar aanleiding van relevante incidenten, wijzigingen en audits. Waar nodig worden verbetermaatregelen geïmplementeerd, zodat blijvend wordt voldaan aan de in de SLA afgesproken kwaliteits- en beveiligingsniveaus.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/1",
+    "Category": "1. Scope en classificatie",
+    "Question": "Valt de leverancier of diens dienstverlening onder de sectoren of ketenpartners die door NIS2 worden gereguleerd (zoals zorg, cloud of IT-diensten)?",
+    "NormReference": "NIS2 Art. 3 + Annex I/II",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/2",
+    "Category": "2. Governance en verantwoordelijkheden",
+    "Question": "Is er een formeel beveiligingsbeleid goedgekeurd door het management en zijn verantwoordelijkheden toegewezen?",
+    "NormReference": "NIS2 Art. 20",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/3",
+    "Category": "3. Risicobeheer",
+    "Question": "Is een risicobeheersproces ingericht dat risico’s op beschikbaarheid, integriteit en vertrouwelijkheid van netwerken en informatiesystemen adresseert?",
+    "NormReference": "NIS2 Art. 21(1)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier onderhoudt een gedocumenteerd risicobeheersproces dat risico’s op beschikbaarheid, integriteit en vertrouwelijkheid van de aan de Diensten gekoppelde netwerken en informatiesystemen identificeert, beoordeelt en mitigeert, in lijn met NIS2 artikel 21 lid 1, en deelt op verzoek relevante uitkomsten met HUS voor ketenrisicobeheer.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/4",
+    "Category": "4. Ketenbeheer",
+    "Question": "Beoordeelt en borgt de leverancier de cybersecurity van subleveranciers en partners in de keten?",
+    "NormReference": "NIS2 Art. 21(2d)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/5",
+    "Category": "5. Incidentdetectie",
+    "Question": "Zijn er technische en organisatorische maatregelen getroffen om beveiligingsincidenten tijdig te detecteren?",
+    "NormReference": "NIS2 Art. 21(2b)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier treft technische en organisatorische maatregelen om beveiligingsincidenten die relevant zijn voor de Diensten van HUS tijdig te detecteren, te registreren en te analyseren, waaronder passende monitoring, logging en alarmering, conform NIS2 artikel 21 lid 2 onder b.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/6",
+    "Category": "6. Incidentmelding",
+    "Question": "Worden beveiligingsincidenten binnen 24 uur gemeld aan de verantwoordelijke autoriteit of CSIRT?",
+    "NormReference": "NIS2 Art. 23–30",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "Indien de Leverancier als NIS2-plichtige entiteit kwalificeert, borgt hij dat meldingen aan de bevoegde autoriteit of het CSIRT overeenkomstig NIS2 artikelen 23 tot en met 30 worden gedaan en dat HUS tijdig wordt geïnformeerd over incidenten die impact hebben op de dienstverlening aan HUS, zodat HUS haar eigen meldplichten kan nakomen.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/7",
+    "Category": "7. Continuïteit en herstel",
+    "Question": "Beschikt de leverancier over plannen en middelen om bedrijfscontinuïteit en herstel te waarborgen bij incidenten?",
+    "NormReference": "NIS2 Art. 21(2e)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier beschikt over en onderhoudt plannen en voorzieningen voor bedrijfscontinuïteit en herstel bij beveiligingsincidenten die de Diensten aan HUS raken, inclusief hersteldoelstellingen en fallback-scenario’s, in lijn met NIS2 artikel 21 lid 2 onder e.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/8",
+    "Category": "8. Toegangsbeheer",
+    "Question": "Zijn toegangsrechten tot kritieke systemen beperkt en worden ze periodiek herzien?",
+    "NormReference": "NIS2 Art. 21(2a)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/9",
+    "Category": "9. Beveiligingsmaatregelen",
+    "Question": "Zijn technische maatregelen (zoals MFA, segmentatie, patchbeheer en logging) aantoonbaar geïmplementeerd?",
+    "NormReference": "NIS2 Art. 21(2a–b)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/10",
+    "Category": "10. Awareness en training",
+    "Question": "Worden medewerkers regelmatig getraind in cybersecurity en incidentrespons?",
+    "NormReference": "NIS2 Art. 21(2h)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier zorgt ervoor dat medewerkers en ingehuurde derden die betrokken zijn bij de levering en het beheer van de Diensten aan HUS periodiek worden getraind in cybersecurity, incidentherkenning en respons, conform NIS2 artikel 21 lid 2 onder h.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/11",
+    "Category": "11. Documentatie en audittrail",
+    "Question": "Wordt alle beveiligingsdocumentatie bijgehouden, inclusief audittrail van wijzigingen en controles?",
+    "NormReference": "NIS2 Art. 21(5)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Wordt alle beveiligingsdocumentatie bijgehouden, inclusief audittrail van wijzigingen en controles?.",
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/12",
+    "Category": "12. Beveiliging in de toeleveringsketen",
+    "Question": "Zijn er contractuele afspraken over beveiliging, melding van incidenten en audits bij subleveranciers?",
+    "NormReference": "NIS2 Art. 21(2d)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier borgt dat in contracten met relevante toeleveranciers en subverwerkers die bijdragen aan de Diensten aan HUS passende afspraken zijn opgenomen over informatiebeveiliging, melding van incidenten en audit- of controlemogelijkheden, in lijn met de ketenverplichtingen uit NIS2 artikel 21 lid 2 onder d.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/13",
+    "Category": "13. Rapportage aan bestuur",
+    "Question": "Worden cybersecuritystatus en risico’s periodiek aan het bestuur gerapporteerd?",
+    "NormReference": "NIS2 Art. 20(2)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/14",
+    "Category": "14. Audits en toezicht",
+    "Question": "Worden interne of externe audits uitgevoerd om naleving van NIS2 te verifiëren?",
+    "NormReference": "NIS2 Art. 29",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/15",
+    "Category": "15. Beheer van gevoelige gegevens",
+    "Question": "Worden gevoelige of vertrouwelijke gegevens adequaat beschermd tegen ongeautoriseerde toegang of manipulatie?",
+    "NormReference": "NIS2 Art. 21(2a)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Voor zover persoonsgegevens die onder de Diensten vallen binnen de reikwijdte van NIS2 vallen, borgt de Leverancier dat de in NIS2 artikel 21 lid 2 onder a vereiste beveiligings- en risicobeheersmaatregelen voor gevoelige gegevens zijn toegepast op alle verwerkingen die hij namens HUS uitvoert, en informeert hij HUS op verzoek over de wijze waarop deze maatregelen in zijn processen en systemen zijn geïmplementeerd.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/16",
+    "Category": "16. Beleid voor updates en patching",
+    "Question": "Is er een vastgesteld beleid voor het tijdig doorvoeren van beveiligingsupdates en patches?",
+    "NormReference": "NIS2 Art. 21(2a–b)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/17",
+    "Category": "17. Meldplicht bij ernstige kwetsbaarheden",
+    "Question": "Worden ontdekte kwetsbaarheden met impact op de dienstverlening tijdig gemeld aan de klant of autoriteit?",
+    "NormReference": "NIS2 Art. 23",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/18",
+    "Category": "18. Personele betrouwbaarheid",
+    "Question": "Worden medewerkers die toegang hebben tot kritieke systemen gescreend en onderworpen aan vertrouwelijkheidsverklaringen?",
+    "NormReference": "NIS2 Art. 21(2h)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/19",
+    "Category": "19. Contractuele aansprakelijkheid",
+    "Question": "Is in contracten vastgelegd wie verantwoordelijk is voor cybersecurity en meldplichten binnen de keten?",
+    "NormReference": "NIS2 Art. 21(2d)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "NIS2/20",
+    "Category": "20. Bestuurlijke aansprakelijkheid",
+    "Question": "Is het management op de hoogte van haar verantwoordelijkheid en aansprakelijkheid onder NIS2?",
+    "NormReference": "NIS2 Art. 32",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "NIS2-a",
+      "NIS2-b",
+      "NIS2-c",
+      "NIS2-d",
+      "NIS2-e"
+    ],
+    "NenDomains": [
+      "NIS2"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act1",
+    "Category": "1. Vaststelling AI-systeem",
+    "Question": "Bevat de applicatie AI-functionaliteit (machine learning, NLP, statistische beslismodellen of regelgebaseerde automatisering)?",
+    "NormReference": "Art. 3(1)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-a"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "1. Vaststelling AI-systeem"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act2",
+    "Category": "2. Mate van autonomie",
+    "Question": "Beïnvloedt de AI-uitkomst beslissingen zonder volledige menselijke tussenkomst?",
+    "NormReference": "Recital 6",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-b"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "2. Mate van autonomie"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act3",
+    "Category": "3. Risicoclassificatie",
+    "Question": "Is de AI-toepassing geclassificeerd volgens de risicocategorieën van de AI Act (verboden, hoog, beperkt of minimaal risico)?",
+    "NormReference": "Art. 6; Annex III",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-e"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "3. Risicoclassificatie"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act4",
+    "Category": "4. Toepassing in de zorg",
+    "Question": "Wordt de AI-toepassing ingezet voor diagnose, triage, behandeling of monitoring van patiënten?",
+    "NormReference": "Annex III (3)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "Indien de door de Leverancier geleverde AI-functionaliteit wordt ingezet voor diagnose, triage, behandeling of monitoring van patiënten, informeert de Leverancier HUS expliciet over deze inzet, de kwalificatie onder de AI Act (waaronder een mogelijke high-risk classificatie) en de verantwoordelijkheden van de Leverancier in de keten, zodat dit in de SLA en het risicobeheer van HUS kan worden meegenomen.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-c"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "4. Toepassing in de zorg"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act5",
+    "Category": "5. Medische samenloop (MDR)",
+    "Question": "Valt de AI-toepassing onder de MDR/IVDR en is dit afgestemd met de AI Act-verplichtingen?",
+    "NormReference": "Art. 2; MDR Annex VIII",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-e",
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "AI Act",
+      "MDR"
+    ],
+    "Themes": [
+      "5. Medische samenloop (MDR)",
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act6",
+    "Category": "6. Risicomanagementsysteem",
+    "Question": "Is er een risicomanagementsysteem ingericht dat risico’s gedurende de levenscyclus identificeert, evalueert en mitigeert?",
+    "NormReference": "Art. 9",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Is er een risicomanagementsysteem ingericht dat risico’s gedurende de levenscyclus identificeert, evalueert en mitigeert?.",
+    "ToetsIds": [
+      "AI Act-e"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "6. Risicomanagementsysteem"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act7",
+    "Category": "7. Data-governance",
+    "Question": "Worden trainings-, validatie- en testdata beheerd op kwaliteit, representativiteit, bias en herkomst?",
+    "NormReference": "Art. 10",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Indien de door de Leverancier geleverde AI-functionaliteit kwalificeert als high-risk AI in de zin van de AI Act, waarborgt de Leverancier dat de verwerking van trainings-, validatie- en testgegevens voldoet aan de data-governance-eisen uit artikel 10 AI Act, waaronder kwaliteit, representativiteit, biasbeperking en herkomst van de datasets, voor zover in deze datasets persoonsgegevens zijn opgenomen.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-e"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "7. Data-governance"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act8",
+    "Category": "8. Technische documentatie",
+    "Question": "Is technische documentatie beschikbaar die systeemdoel, datasets, prestaties, beperkingen en risicobeoordeling beschrijft?",
+    "NormReference": "Annex IV",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier stelt actuele technische documentatie beschikbaar over AI-componenten die in de Diensten worden gebruikt, waarin onder meer systeemdoel, gebruikte datasets op hoofdlijnen, prestaties, beperkingen en relevante risico’s zijn beschreven, zodat HUS op basis daarvan een DPIA en eigen risicobeoordeling kan uitvoeren.",
+    "StandardTextVwo": "De Leverancier zorgt ervoor dat de technische documentatie die op grond van de AI Act is vereist ook voldoende inzicht geeft in de wijze waarop persoonsgegevens binnen het AI-systeem worden verzameld, gebruikt, opgeslagen en verwijderd, en stelt deze documentatie op verzoek ter beschikking aan HUS zodat HUS zijn verplichtingen als verwerkingsverantwoordelijke kan nakomen.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-e"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "8. Technische documentatie"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act9",
+    "Category": "9. Transparantie en gebruikersinformatie",
+    "Question": "Worden gebruikers geïnformeerd dat AI wordt toegepast, inclusief beperkingen en risico’s?",
+    "NormReference": "Art. 13",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-e"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "9. Transparantie en gebruikersinformatie"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act10",
+    "Category": "10. Menselijk toezicht",
+    "Question": "Is menselijk toezicht ingericht met duidelijke bevoegdheden voor ingrijpen of uitschakelen van de AI?",
+    "NormReference": "Art. 14",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-e"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "10. Menselijk toezicht"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act11",
+    "Category": "11. Prestaties en robuustheid",
+    "Question": "Zijn prestatiespecificaties (nauwkeurigheid, foutmarges, cyberweerbaarheid) vastgelegd en getest?",
+    "NormReference": "Art. 15",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier legt voor AI-functionaliteit die onderdeel uitmaakt van de Diensten prestatiespecificaties vast, zoals nauwkeurigheid, foutmarges en cyberweerbaarheid, test deze periodiek en rapporteert significante afwijkingen of degradaties aan HUS zodat de impact op het zorgproces en de patiëntenveiligheid kan worden beoordeeld.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-e"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "11. Prestaties en robuustheid"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act12",
+    "Category": "12. Traceerbaarheid en logging",
+    "Question": "Worden gebeurtenissen, modelversies en input/output gelogd om onderzoek en audits mogelijk te maken?",
+    "NormReference": "Art. 12",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-e"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "12. Traceerbaarheid en logging"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act13",
+    "Category": "13. Kwaliteitsmanagementsysteem (QMS)",
+    "Question": "Is een kwaliteitsmanagementsysteem ingericht dat ontwerp, ontwikkeling, testen en updates beheerst?",
+    "NormReference": "Art. 17",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Is een kwaliteitsmanagementsysteem ingericht dat ontwerp, ontwikkeling, testen en updates beheerst?.",
+    "ToetsIds": [
+      "AI Act-e"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "13. Kwaliteitsmanagementsysteem (QMS)"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act14",
+    "Category": "14. Conformiteitsbeoordeling",
+    "Question": "Is de vereiste conformiteitsbeoordeling uitgevoerd en is een CE-markering aanwezig?",
+    "NormReference": "Art. 43–51",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-e"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "14. Conformiteitsbeoordeling"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act15",
+    "Category": "15. EU-registratie",
+    "Question": "Is het AI-systeem geregistreerd in de EU-database voor high-risk AI?",
+    "NormReference": "Art. 60",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Voor zover registratie van een high-risk AI-systeem in de EU-database op grond van artikel 60 AI Act vereist is, verstrekt de Leverancier HUS de relevante registratiedetails en eventuele updates, voor zover deze nodig zijn voor de DPIA, het verwerkingsregister of andere verantwoordingsverplichtingen van HUS.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-e"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "15. EU-registratie"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act16",
+    "Category": "16. Post-market monitoring",
+    "Question": "Is er een post-market monitoringplan dat prestaties, bias en incidenten opvolgt?",
+    "NormReference": "Art. 61",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier voert voor AI-componenten een passend post-market monitoringproces uit waarbij prestaties, bias, incidenten en bijna-incidenten worden bewaakt, en deelt met HUS periodiek relevante bevindingen en maatregelen die van invloed kunnen zijn op de veiligheid, kwaliteit of betrouwbaarheid van de Dienst.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-e"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "16. Post-market monitoring"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act17",
+    "Category": "17. Meldplicht incidenten",
+    "Question": "Worden ernstige incidenten of malfunctions tijdig gemeld aan de bevoegde autoriteit?",
+    "NormReference": "Art. 62",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier heeft procedures ingericht om ernstige incidenten of malfunctions van AI-systemen die in de Diensten aan HUS worden gebruikt onverwijld te registreren, te analyseren en, waar vereist, te melden aan de bevoegde autoriteit, en informeert HUS tijdig over dergelijke incidenten en de getroffen corrigerende maatregelen.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-e"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "17. Meldplicht incidenten"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act18",
+    "Category": "18. Wijzigingsbeheer",
+    "Question": "Worden modelupdates, doelwijzigingen en datascope gecontroleerd op impact op conformiteit?",
+    "NormReference": "Art. 9–15; 61",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Leverancier beoordeelt significante wijzigingen in het AI-systeem, waaronder modelupdates en wijzigingen in doel of datascope, op hun impact op de verwerking van persoonsgegevens en op de naleving van de AI Act, en informeert HUS tijdig over dergelijke wijzigingen zodat HUS waar nodig de DPIA, verwerkingsgrondslagen en informatie aan betrokkenen kan actualiseren.",
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Worden modelupdates, doelwijzigingen en datascope gecontroleerd op impact op conformiteit?.",
+    "ToetsIds": [
+      "AI Act-e"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "18. Wijzigingsbeheer"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act19",
+    "Category": "19. Uitlegbaarheid (Explainability)",
+    "Question": "Biedt de AI begrijpelijke en uitlegbare output aan gebruikers of clinici?",
+    "NormReference": "Art. 13",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-e"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "19. Uitlegbaarheid (Explainability)"
+    ]
+  },
+  {
+    "ChecklistId": "AI Act20",
+    "Category": "20. Generatieve AI / GPAI",
+    "Question": "Indien generatieve AI wordt toegepast: zijn instructies, copyright- en dataprovenance-informatie en misuse-preventie aanwezig?",
+    "NormReference": "Art. 52; Recital 124",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Indien de Leverancier generatieve AI-functionaliteit aanbiedt waarbij persoonsgegevens worden gebruikt of gegenereerd, borgt de Leverancier dat de transparantie- en informatieverplichtingen uit de AI Act worden nageleefd, waaronder het verstrekken van passende gebruikersinstructies, informatie over dataprovenance en maatregelen ter voorkoming van oneigenlijk gebruik, voor zover relevant voor de verwerking van persoonsgegevens.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-f"
+    ],
+    "NenDomains": [
+      "AI Act"
+    ],
+    "Themes": [
+      "20. Generatieve AI / GPAI"
+    ]
+  },
+  {
+    "ChecklistId": "MDR1",
+    "Category": "1. Medisch doel",
+    "Question": "Heeft de software een beoogd gebruik dat gericht is op diagnose, preventie, monitoring, voorspelling, behandeling of verlichting van ziekte of handicap?",
+    "NormReference": "MDR Art. 2(1)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier informeert HUS ondubbelzinnig of de geleverde software of dienst kwalificeert als medisch hulpmiddel in de zin van de MDR en, zo ja, voor welk beoogd medisch doel de software is gecertificeerd, zodat dit in de SLA, het risicobeheer en de verantwoordingsdocumentatie van HUS kan worden betrokken.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR2",
+    "Category": "2. Gebruik van patiëntdata",
+    "Question": "Verwerkt de software patiëntspecifieke gegevens om medische conclusies of beslissingen te ondersteunen?",
+    "NormReference": "MDCG 2019-11 §2.2",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Voor zover de door de Leverancier geleverde software een medisch hulpmiddel vormt of onderdeel is van een medisch hulpmiddel, wordt in de Verwerkersovereenkomst vastgelegd hoe wordt omgegaan met persoonsgegevens binnen het kader van de MDR en de rolverdeling tussen HUS en de Leverancier in dat verband.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Gebruik patiëntdata"
+    ]
+  },
+  {
+    "ChecklistId": "MDR3",
+    "Category": "3. Ondersteuning van klinische besluitvorming",
+    "Question": "Levert de software informatie of aanbevelingen die de klinische besluitvorming beïnvloeden?",
+    "NormReference": "MDR Art. 2(1); Annex VIII",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR4",
+    "Category": "4. Integratie met medische apparatuur",
+    "Question": "Is de software geïntegreerd met of afhankelijk van een medisch hulpmiddel, sensor of apparaat?",
+    "NormReference": "MDR Annex VIII Ch. III §3.3",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Is de software geïntegreerd met of afhankelijk van een medisch hulpmiddel, sensor of apparaat?.",
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR5",
+    "Category": "5. Risicoklasse",
+    "Question": "Is de software geclassificeerd in de juiste MDR-risicoklasse (I, IIa, IIb, III)?",
+    "NormReference": "MDR Annex VIII",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR6",
+    "Category": "6. Intended purpose",
+    "Question": "Is de intended purpose door de fabrikant duidelijk gedocumenteerd en afgestemd met het gebruik in de praktijk?",
+    "NormReference": "MDR Art. 10(2); Annex I §23.4",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR7",
+    "Category": "7. Klinische evaluatie",
+    "Question": "Is er een klinische evaluatie uitgevoerd die veiligheid, prestaties en klinisch nut aantoont?",
+    "NormReference": "MDR Art. 61; Annex XIV",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "Voor software die als medisch hulpmiddel wordt aangemerkt, waarborgt de Leverancier dat een MDR-conforme klinische evaluatie is uitgevoerd en onderhouden, en verstrekt hij op verzoek aan HUS samenvattende informatie over de klinische bewijsvoering die relevant is voor de beoogde toepassing in het zorgproces van HUS.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR8",
+    "Category": "8. Risicomanagement",
+    "Question": "Is er een risicomanagementproces ingericht volgens ISO 14971?",
+    "NormReference": "MDR Art. 10(2)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR9",
+    "Category": "9. Technische documentatie",
+    "Question": "Is volledige technische documentatie opgesteld conform MDR Annex II en III?",
+    "NormReference": "MDR Annex II + III",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR10",
+    "Category": "10. Quality Management System (QMS)",
+    "Question": "Is een QMS ingericht conform ISO 13485?",
+    "NormReference": "MDR Art. 10(9)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR11",
+    "Category": "11. CE-markering",
+    "Question": "Is het hulpmiddel voorzien van CE-markering na een geslaagde conformiteitsbeoordeling?",
+    "NormReference": "MDR Art. 20; Annex IX",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR12",
+    "Category": "12. Conformiteitsbeoordeling",
+    "Question": "Is de juiste conformiteitsbeoordelingsroute gevolgd via een aangemelde instantie (Notified Body)?",
+    "NormReference": "MDR Art. 52; Annex IX–XI",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR13",
+    "Category": "13. Softwarevalidatie",
+    "Question": "Is de software gevalideerd op correcte werking, betrouwbaarheid en veiligheid in de medische context?",
+    "NormReference": "MDR Annex I §17.4",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR14",
+    "Category": "14. Post-market surveillance (PMS)",
+    "Question": "Is er een PMS-plan opgesteld en wordt dit actief uitgevoerd?",
+    "NormReference": "MDR Arts. 83–86",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR15",
+    "Category": "15. Vigilantie en incidentmeldingen",
+    "Question": "Is een proces ingericht voor melding van incidenten aan de bevoegde autoriteit (IGJ)?",
+    "NormReference": "MDR Arts. 87–92",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier heeft een MDR-conform vigilantieproces ingericht voor het melden en opvolgen van incidenten met medische software en informeert HUS tijdig over meldingen aan de bevoegde autoriteit, waaronder de IGJ, voor incidenten die de inzet van de software bij HUS raken.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR16",
+    "Category": "16. Labeling en gebruiksaanwijzing",
+    "Question": "Voldoen etikettering en gebruiksaanwijzing aan MDR Annex I §23 (traceerbaarheid, waarschuwingen, symbolen)?",
+    "NormReference": "MDR Annex I §23",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR17",
+    "Category": "17. Traceerbaarheid",
+    "Question": "Is traceerbaarheid van versies, componenten en updates geborgd gedurende de levenscyclus?",
+    "NormReference": "MDR Annex II §1.1(e)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR18",
+    "Category": "18. Markttoezicht en audits",
+    "Question": "Is er een proces voor interne audits en toezicht op naleving van MDR-eisen?",
+    "NormReference": "MDR Art. 10(9)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR19",
+    "Category": "19. Wijzigingsbeheer",
+    "Question": "Worden wijzigingen in software, doel of gebruik beoordeeld op impact op MDR-classificatie en conformiteit?",
+    "NormReference": "MDR Annex IX §3.5",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Worden wijzigingen in software, doel of gebruik beoordeeld op impact op MDR-classificatie en conformiteit?.",
+    "ToetsIds": [
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "MDR20",
+    "Category": "20. Samenloop met AI Act",
+    "Question": "Is de software tevens onderworpen aan de AI Act en zijn de eisen uit beide kaders op elkaar afgestemd?",
+    "NormReference": "MDR + AI Act",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AI Act-a",
+      "AI Act-b",
+      "AI Act-c",
+      "AI Act-d",
+      "AI Act-e",
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "AI Act",
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 1",
+    "Category": "1. Toepasselijkheid",
+    "Question": "Ontwikkelt of levert de leverancier software die als medisch hulpmiddel wordt aangemerkt of onderdeel daarvan vormt?",
+    "NormReference": "ISO 13485 §1.1",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Ontwikkelt of levert de leverancier software die als medisch hulpmiddel wordt aangemerkt of onderdeel daarvan vormt?.",
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 2",
+    "Category": "2. MDR-classificatie",
+    "Question": "Is de software geclassificeerd onder de MDR (klasse IIa of hoger)?",
+    "NormReference": "MDR Annex VIII; ISO 13485 §4.1",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g",
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "ISO13485",
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 3",
+    "Category": "3. QMS",
+    "Question": "Is een gedocumenteerd kwaliteitsmanagementsysteem (QMS) ingericht conform ISO 13485?",
+    "NormReference": "ISO 13485 §4.1",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 4",
+    "Category": "4. Risicomanagement",
+    "Question": "Wordt risicomanagement uitgevoerd volgens ISO 14971 en geïntegreerd in het QMS?",
+    "NormReference": "ISO 13485 §7.1",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 5",
+    "Category": "5. Ontwerpbeheersing",
+    "Question": "Zijn ontwerpinput, verificatie, validatie en ontwerpwijzigingen formeel vastgelegd?",
+    "NormReference": "ISO 13485 §7.3.3–7.3.9",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Zijn ontwerpinput, verificatie, validatie en ontwerpwijzigingen formeel vastgelegd?.",
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 6",
+    "Category": "6. Software lifecycle management",
+    "Question": "Volgt softwareontwikkeling een beheerd proces conform IEC 62304?",
+    "NormReference": "ISO 13485 §7.3; IEC 62304",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Volgt softwareontwikkeling een beheerd proces conform IEC 62304?.",
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 7",
+    "Category": "7. Leveranciersbeheer",
+    "Question": "Worden toeleveranciers beoordeeld, gekwalificeerd en periodiek geëvalueerd?",
+    "NormReference": "ISO 13485 §7.4.1",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 8",
+    "Category": "8. Traceerbaarheid",
+    "Question": "Is traceerbaarheid van componenten, versies en batches geborgd binnen het QMS?",
+    "NormReference": "ISO 13485 §7.5.9",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 9",
+    "Category": "9. Wijzigingsbeheer",
+    "Question": "Worden wijzigingen aan producten, processen of software formeel geregistreerd en beoordeeld?",
+    "NormReference": "ISO 13485 §4.2.4; §7.3.9",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Worden wijzigingen aan producten, processen of software formeel geregistreerd en beoordeeld?.",
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 10",
+    "Category": "10. Documentatiebeheer",
+    "Question": "Zijn alle QMS-documenten onder versiebeheer en gecontroleerde distributie?",
+    "NormReference": "ISO 13485 §4.2.4",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 11",
+    "Category": "11. Klachtenafhandeling",
+    "Question": "Is een proces ingericht voor klachtenafhandeling, analyse en corrigerende maatregelen?",
+    "NormReference": "ISO 13485 §8.2.2–8.5.2",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 12",
+    "Category": "12. Interne audits",
+    "Question": "Worden interne audits periodiek uitgevoerd en gedocumenteerd?",
+    "NormReference": "ISO 13485 §8.2.4",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 13",
+    "Category": "13. Management review",
+    "Question": "Voert het management periodieke evaluaties van het QMS uit?",
+    "NormReference": "ISO 13485 §5.6",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 14",
+    "Category": "14. Competentie en training",
+    "Question": "Is personeel dat betrokken is bij medische software aantoonbaar bekwaam en getraind?",
+    "NormReference": "ISO 13485 §6.2",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 15",
+    "Category": "15. Klanttevredenheid",
+    "Question": "Wordt klantfeedback systematisch verzameld en geanalyseerd voor verbetering?",
+    "NormReference": "ISO 13485 §8.2.1",
+    "RiskLevel": "Laag",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 16",
+    "Category": "16. Correctieve en preventieve acties (CAPA)",
+    "Question": "Zijn processen ingericht voor corrigerende en preventieve acties na incidenten of afwijkingen?",
+    "NormReference": "ISO 13485 §8.5.2–8.5.3",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier onderhoudt binnen zijn ISO 13485-conforme kwaliteitsmanagementsysteem processen voor corrigerende en preventieve acties naar aanleiding van incidenten, afwijkingen en klachten die relevant zijn voor de Diensten aan HUS, en informeert HUS over corrigerende maatregelen die impact hebben op functionaliteit, prestaties of gebruik.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 17",
+    "Category": "17. Procesvalidatie",
+    "Question": "Zijn productie- of onderhoudsprocessen gevalideerd waar verificatie niet volledig mogelijk is?",
+    "NormReference": "ISO 13485 §7.5.6",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 18",
+    "Category": "18. Beheersing van niet-conforme producten",
+    "Question": "Worden niet-conforme producten geïdentificeerd en beheerst?",
+    "NormReference": "ISO 13485 §8.3",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g"
+    ],
+    "NenDomains": [
+      "ISO13485"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 19",
+    "Category": "19. Post-market surveillance",
+    "Question": "Worden gegevens uit gebruiksfase verzameld en gebruikt voor risicobeoordeling en verbeteringen?",
+    "NormReference": "ISO 13485 §8.2.1; MDR Art. 83–86",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Leverancier borgt dat gegevens die in het kader van post-market surveillance, klachtenafhandeling en verbetertrajecten worden verzameld en geanalyseerd, worden verwerkt binnen een ISO 13485- en MDR-conform kwaliteitsmanagementsysteem en dat persoonsgegevens daarbij uitsluitend worden gebruikt voor de overeengekomen doeleinden, waar mogelijk gepseudonimiseerd of geanonimiseerd, met bewaartermijnen die met HUS zijn afgestemd.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g",
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "ISO13485",
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "ISO13485 / 20",
+    "Category": "20. Samenloop met MDR/AI Act",
+    "Question": "Is het QMS afgestemd op eisen uit MDR en, indien relevant, de AI Act?",
+    "NormReference": "ISO 13485 §5.6; MDR Art. 10",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "ISO13485-a",
+      "ISO13485-b",
+      "ISO13485-c",
+      "ISO13485-d",
+      "ISO13485-e",
+      "ISO13485-f",
+      "ISO13485-g",
+      "MDR-a",
+      "MDR-b",
+      "MDR-c",
+      "MDR-d",
+      "MDR-e",
+      "MDR-f"
+    ],
+    "NenDomains": [
+      "ISO13485",
+      "MDR"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA1",
+    "Category": "1. Digitale componenten",
+    "Question": "Bevat het product software of digitale elementen die verbonden zijn met een netwerk of andere digitale systemen?",
+    "NormReference": "CRA Art. 3(1)(1); Annex I",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA2",
+    "Category": "2. Software als product",
+    "Question": "Wordt de software afzonderlijk geleverd of gedistribueerd aan klanten buiten de eigen organisatie?",
+    "NormReference": "CRA Art. 3(1)(2)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA3",
+    "Category": "3. Connectiviteit",
+    "Question": "Heeft het product netwerk-, API- of internetkoppelingen die externe communicatie mogelijk maken?",
+    "NormReference": "CRA Annex I §1",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA4",
+    "Category": "4. Beïnvloeding van andere systemen",
+    "Question": "Kan een kwetsbaarheid in de software andere systemen of gegevens in gevaar brengen?",
+    "NormReference": "CRA Annex I §1(b)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Indien kwetsbaarheden in het geleverde product andere systemen of gegevens in de omgeving van HUS in gevaar kunnen brengen, borgt de Leverancier dat de onder de CRA vallende verplichtingen inzake kwetsbaarheidsbeheer, patching en informatie-uitwisseling worden uitgevoerd op een wijze die in lijn is met de afspraken in deze verwerkersovereenkomst, waarbij datadeling met derden in het kader van kwetsbaarheidsmeldingen wordt beperkt tot wat noodzakelijk en rechtmatig is.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA5",
+    "Category": "5. Open-source en componentbeheer",
+    "Question": "Bevat het product open-sourcecomponenten of afhankelijkheden waarvoor een Software Bill of Materials (SBOM) is opgesteld?",
+    "NormReference": "CRA Annex V §2",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Bevat het product open-sourcecomponenten of afhankelijkheden waarvoor een Software Bill of Materials (SBOM) is opgesteld?.",
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA6",
+    "Category": "6. Secure by design",
+    "Question": "Is de software ontworpen volgens het principe 'secure by design' en getest op bekende kwetsbaarheden vóór vrijgave?",
+    "NormReference": "CRA Annex I §1(a–b)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA7",
+    "Category": "7. Kwetsbaarhedenbeheer",
+    "Question": "Is er een proces voor het identificeren, melden en verhelpen van kwetsbaarheden tijdens de gehele levenscyclus?",
+    "NormReference": "CRA Annex I §1(c); Annex III §2",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA8",
+    "Category": "8. Updatebeleid",
+    "Question": "Worden beveiligingsupdates gedurende de volledige beoogde levensduur van het product geleverd?",
+    "NormReference": "CRA Annex I §2(1–2)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA9",
+    "Category": "9. Incidentmelding",
+    "Question": "Worden ernstige incidenten en kwetsbaarheden tijdig gemeld aan ENISA of de bevoegde nationale autoriteit?",
+    "NormReference": "CRA Art. 11; Annex I §3",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "Indien voor het geleverde product CRA-meldplichten gelden, borgt de Leverancier dat kwetsbaarheden en ernstige incidenten die de omgeving van HUS kunnen raken tijdig worden gemeld aan ENISA of de bevoegde nationale autoriteit, en dat HUS tijdig wordt geïnformeerd over dergelijke meldingen en de getroffen mitigerende maatregelen.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA10",
+    "Category": "10. SBOM-transparantie",
+    "Question": "Is een actuele Software Bill of Materials (SBOM) beschikbaar en inzichtelijk voor toezichthouders of klanten?",
+    "NormReference": "CRA Annex V §2",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA11",
+    "Category": "11. CE-markering",
+    "Question": "Is het product voorzien van CE-markering conform de CRA-conformiteitsvereisten?",
+    "NormReference": "CRA Art. 21",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA12",
+    "Category": "12. Conformiteitsverklaring",
+    "Question": "Is een EU-conformiteitsverklaring voor CRA opgesteld en ondertekend voordat het product op de markt wordt gebracht?",
+    "NormReference": "CRA Art. 20",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA13",
+    "Category": "13. Technisch dossier",
+    "Question": "Is er een technisch dossier aanwezig met ontwerpdetails, beveiligingsfuncties, risicobeoordeling en testresultaten?",
+    "NormReference": "CRA Annex II",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA14",
+    "Category": "14. Log- en auditvoorzieningen",
+    "Question": "Worden beveiligingslogs en auditgegevens vastgelegd en beschermd tegen wijziging?",
+    "NormReference": "CRA Annex I §1(g)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Leverancier legt beveiligingslogs en auditgegevens die in het kader van de CRA-verplichtingen worden vastgelegd zodanig vast dat de integriteit en vertrouwelijkheid van eventuele persoonsgegevens zijn gewaarborgd, en stemt bewaartermijnen, toegang tot en gebruik van deze logs af met HUS zodat zowel de CRA-eisen als de AVG worden nageleefd.",
+    "StandardTextSo": "Tijdens de project- of implementatiefase dient de Leverancier aantoonbaar te borgen dat: Worden beveiligingslogs en auditgegevens vastgelegd en beschermd tegen wijziging?.",
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA15",
+    "Category": "15. Configuratiebeheer",
+    "Question": "Zijn veilige standaardinstellingen toegepast (geen default wachtwoorden of open poorten)?",
+    "NormReference": "CRA Annex I §1(e)",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA16",
+    "Category": "16. Supply chain security",
+    "Question": "Zijn beveiligingsrisico’s in de keten beoordeeld en worden leveranciers gecontroleerd op CRA-conformiteit?",
+    "NormReference": "CRA Art. 15; Annex III",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA17",
+    "Category": "17. Onderhoud en lifecyclebeheer",
+    "Question": "Zijn processen ingericht voor het onderhoud, patchen en veilig buiten gebruik stellen van producten?",
+    "NormReference": "CRA Annex I §2(2)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA18",
+    "Category": "18. Rollen en verantwoordelijkheden",
+    "Question": "Zijn verantwoordelijkheden van fabrikant, importeur en distributeur formeel vastgelegd?",
+    "NormReference": "CRA Art. 8–12",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA19",
+    "Category": "19. Classificatie van het product",
+    "Question": "Is bepaald of het product behoort tot ‘critical class I of II’ en zijn bijbehorende verplichtingen geïdentificeerd?",
+    "NormReference": "CRA Annex III",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "CRA20",
+    "Category": "20. Samenloop met andere kaders",
+    "Question": "Is CRA-conformiteit afgestemd met andere relevante wetgeving (MDR, NIS2, AI Act, GDPR)?",
+    "NormReference": "CRA Art. 2; Annex I",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "CRA-a",
+      "CRA-b",
+      "CRA-c",
+      "CRA-d",
+      "CRA-e",
+      "CRA-f"
+    ],
+    "NenDomains": [
+      "CRA"
+    ],
+    "Themes": [
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "Koppelingen1",
+    "Category": "1. Richting en datastromen",
+    "Question": "Is duidelijk vastgelegd of de koppeling uni- of bidirectioneel is en welke datastromen plaatsvinden?",
+    "NormReference": "GDPR Art. 30",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-e",
+      "Koppeling-a"
+    ],
+    "NenDomains": [
+      "AVG",
+      "Koppeling"
+    ],
+    "Themes": [
+      "1. Richting en datastromen",
+      "Koppelingen & keten"
+    ]
+  },
+  {
+    "ChecklistId": "Koppelingen2",
+    "Category": "2. Encryptie in transit",
+    "Question": "Worden persoonsgegevens bij interfacecommunicatie uitsluitend versleuteld verzonden (TLS 1.2+ of gelijkwaardig)?",
+    "NormReference": "NEN7510:2024 §10.1",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-e",
+      "Koppeling-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "AVG",
+      "Koppeling",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "2. Encryptie in transit",
+      "Automated match",
+      "Koppelingen & keten"
+    ]
+  },
+  {
+    "ChecklistId": "Koppelingen3",
+    "Category": "3. End-to-end encryptie / tokenisatie",
+    "Question": "Wordt gebruikgemaakt van end-to-end encryptie of tokenisatie voor medische gegevens via API’s of berichtenverkeer?",
+    "NormReference": "GDPR Art. 32",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-e",
+      "Koppeling-a"
+    ],
+    "NenDomains": [
+      "AVG",
+      "Koppeling"
+    ],
+    "Themes": [
+      "3. End-to-end encryptie / tokenisatie",
+      "Koppelingen & keten"
+    ]
+  },
+  {
+    "ChecklistId": "Koppelingen4",
+    "Category": "4. Authenticatie en autorisatie",
+    "Question": "Is per koppeling een autorisatie- en authenticatiemechanisme ingericht (zoals OAuth2, SAML, OpenID Connect)?",
+    "NormReference": "NEN7510:2024 §9.4",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-e",
+      "Koppeling-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "AVG",
+      "Koppeling",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "4. Authenticatie en autorisatie",
+      "Automated match",
+      "Koppelingen & keten"
+    ]
+  },
+  {
+    "ChecklistId": "Koppelingen5",
+    "Category": "5. Logging en audittrail",
+    "Question": "Worden logging en audittrails vastgelegd voor datatransfers tussen systemen?",
+    "NormReference": "NEN7513",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Ten aanzien van log- en audittrails voor datatransfers tussen systemen conform NEN 7513 zorgt de Leverancier ervoor dat de in logbestanden opgenomen persoonsgegevens worden beperkt tot wat noodzakelijk is voor het kunnen reconstrueren van toegang, gebruik en uitwisseling van gegevens, en dat bewaartermijnen, toegang tot en gebruik van deze logs met HUS worden afgestemd zodat zowel NEN 7513 als de AVG worden nageleefd.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-e",
+      "Koppeling-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "AVG",
+      "Koppeling",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "5. Logging en audittrail",
+      "Automated match",
+      "Koppelingen & keten"
+    ]
+  },
+  {
+    "ChecklistId": "Koppelingen6",
+    "Category": "6. Verantwoordelijkheid interfacebeveiliging",
+    "Question": "Is expliciet vastgelegd welke partij verantwoordelijk is voor de beveiliging van de interface (zender of ontvanger)?",
+    "NormReference": "GDPR Art. 28(3)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-e",
+      "Koppeling-a"
+    ],
+    "NenDomains": [
+      "AVG",
+      "Koppeling"
+    ],
+    "Themes": [
+      "6. Verantwoordelijkheid interfacebeveiliging",
+      "Koppelingen & keten"
+    ]
+  },
+  {
+    "ChecklistId": "Koppelingen7",
+    "Category": "7. Tijdelijke opslag en caching",
+    "Question": "Zijn er afspraken over tijdelijke opslag, caching of buffering van data binnen de interfaceketen?",
+    "NormReference": "GDPR Art. 5(1c)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Verwerkersovereenkomst bepaalt dat voor datatransfers via koppelingen passende transportbeveiliging wordt toegepast, waaronder versleuteling en integriteitscontroles, conform de door HUS gehanteerde beveiligingsstandaarden.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-e",
+      "Koppeling-a"
+    ],
+    "NenDomains": [
+      "AVG",
+      "Koppeling"
+    ],
+    "Themes": [
+      "7. Tijdelijke opslag en caching",
+      "Koppelingen & keten"
+    ]
+  },
+  {
+    "ChecklistId": "Koppelingen8",
+    "Category": "8. Certificaatbeheer",
+    "Question": "Kunt u aantonen dat sleutels en certificaten voor interfacecommunicatie veilig worden beheerd en periodiek vernieuwd?",
+    "NormReference": "ISO/IEC 27001:2022 A.8.24",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-e",
+      "Koppeling-a"
+    ],
+    "NenDomains": [
+      "AVG",
+      "Koppeling"
+    ],
+    "Themes": [
+      "8. Certificaatbeheer",
+      "Koppelingen & keten"
+    ]
+  },
+  {
+    "ChecklistId": "Koppelingen9",
+    "Category": "9. Validatie en test",
+    "Question": "Wordt de koppeling getest en gevalideerd op foutafhandeling, data-integriteit en uitzonderingssituaties vóór ingebruikname?",
+    "NormReference": "NEN7510:2024 §14.2",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "In de Verwerkersovereenkomst worden afspraken opgenomen over het omgaan met fouten en uitzonderingen in koppelingen, waaronder het detecteren en herstellen van foutieve berichten en het informeren van HUS bij relevante verstoringen.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-e",
+      "Koppeling-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "AVG",
+      "Koppeling",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "9. Validatie en test",
+      "Automated match",
+      "Koppelingen & keten"
+    ]
+  },
+  {
+    "ChecklistId": "Koppelingen10",
+    "Category": "10. Asynchrone communicatie ('fire-and-forget')",
+    "Question": "Is bij asynchrone communicatie voorzien in een verifieerbaar ontvangst- of verwerkingssignaal?",
+    "NormReference": "GDPR Art. 5(1d)",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Verwerkersovereenkomst borgt dat logging en monitoring van koppelingen zodanig is ingericht dat relevante gebeurtenissen en incidenten met betrekking tot de verwerking van persoonsgegevens kunnen worden gesignaleerd, onderzocht en herleid.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-e",
+      "Koppeling-a"
+    ],
+    "NenDomains": [
+      "AVG",
+      "Koppeling"
+    ],
+    "Themes": [
+      "10. Asynchrone communicatie ('fire-and-forget')",
+      "Koppelingen & keten"
+    ]
+  },
+  {
+    "ChecklistId": "Koppelingen11",
+    "Category": "11. Periodieke herbeoordeling",
+    "Question": "Worden koppelingen periodiek herbeoordeeld op noodzaak, beveiligingsniveaus en dataminimalisatie?",
+    "NormReference": "GDPR Art. 25",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "De Verwerkersovereenkomst schrijft voor dat de Leverancier periodiek beoordeelt of koppelingen en daarmee samenhangende verwerkingen nog noodzakelijk zijn, en zo nodig in overleg met HUS dataminimalisatie of afschakeling toepast.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "AVG-e",
+      "Koppeling-a"
+    ],
+    "NenDomains": [
+      "AVG",
+      "Koppeling"
+    ],
+    "Themes": [
+      "11. Periodieke herbeoordeling",
+      "Koppelingen & keten"
+    ]
+  },
+  {
+    "ChecklistId": "Continuiteit1",
+    "Category": "1. Juridische & organisatorische continuïteit",
+    "Question": "Kunt u uw eigendomsstructuur toelichten (moeder/dochter, aandeelhouders)?",
+    "NormReference": "—",
+    "RiskLevel": "Laag",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "Continuiteit-a"
+    ],
+    "NenDomains": [
+      "Continuiteit"
+    ],
+    "Themes": [
+      "1. Juridische & organisatorische continuïteit"
+    ]
+  },
+  {
+    "ChecklistId": "Continuiteit2",
+    "Category": "1. Juridische & organisatorische continuïteit",
+    "Question": "Zijn er lopende faillissements-, surseance- of schuldsaneringsprocedures?",
+    "NormReference": "—",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "Continuiteit-a"
+    ],
+    "NenDomains": [
+      "Continuiteit"
+    ],
+    "Themes": [
+      "1. Juridische & organisatorische continuïteit"
+    ]
+  },
+  {
+    "ChecklistId": "Continuiteit3",
+    "Category": "1. Juridische & organisatorische continuïteit",
+    "Question": "Zijn tekenbevoegdheden voor contracten formeel vastgelegd?",
+    "NormReference": "ISO 27001 A.5",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "Continuiteit-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "Continuiteit",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "1. Juridische & organisatorische continuïteit",
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "Continuiteit4",
+    "Category": "1. Juridische & organisatorische continuïteit",
+    "Question": "Heeft u contractuele verplichtingen aan investeerders die continuïteit kunnen beïnvloeden?",
+    "NormReference": "—",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "Continuiteit-a"
+    ],
+    "NenDomains": [
+      "Continuiteit"
+    ],
+    "Themes": [
+      "1. Juridische & organisatorische continuïteit"
+    ]
+  },
+  {
+    "ChecklistId": "Continuiteit5",
+    "Category": "2. Financiële stabiliteit",
+    "Question": "Beschikt uw organisatie over voldoende liquiditeit en solvabiliteit voor duurzame dienstverlening?",
+    "NormReference": "ISO 22301",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "Continuiteit-a"
+    ],
+    "NenDomains": [
+      "Continuiteit"
+    ],
+    "Themes": [
+      "2. Financiële stabiliteit"
+    ]
+  },
+  {
+    "ChecklistId": "Continuiteit6",
+    "Category": "2. Financiële stabiliteit",
+    "Question": "Heeft u financiële reserves of continuïteitsplannen voor langdurige levering?",
+    "NormReference": "ISO 22301 §8",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "Continuiteit-a"
+    ],
+    "NenDomains": [
+      "Continuiteit"
+    ],
+    "Themes": [
+      "2. Financiële stabiliteit"
+    ]
+  },
+  {
+    "ChecklistId": "Continuiteit7",
+    "Category": "3. Kritieke processen",
+    "Question": "Zijn redundante voorzieningen aanwezig voor kritieke systemen?",
+    "NormReference": "NEN7510 §17",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier borgt dat voor kritieke systemen en componenten binnen de Diensten redun­dante voorzieningen zijn ingericht conform de in de SLA overeengekomen continuïteitseisen. De werking van deze voorzieningen wordt periodiek bewaakt en getest, en bevindingen worden op verzoek met HUS gedeeld.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "Continuiteit-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "Continuiteit",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "3. Kritieke processen",
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "Continuiteit8",
+    "Category": "4. Personele continuïteit",
+    "Question": "Zijn cruciale functies gedocumenteerd en overdraagbaar bij personeelsverloop?",
+    "NormReference": "ISO 27001 A.6",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier draagt zorg voor personele continuïteit voor functies die cruciaal zijn voor de levering en ondersteuning van de Diensten aan HUS, onder meer door vastlegging van procedures en kennis, het voorkomen van single points of failure en het organiseren van adequate vervanging bij afwezigheid of uitdiensttreding.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "Continuiteit-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "Continuiteit",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "4. Personele continuïteit",
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "Continuiteit9",
+    "Category": "4. Personele continuïteit",
+    "Question": "Beschikt u over personeel met back-up bevoegdheden voor kritieke functies?",
+    "NormReference": "ISO 22301",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "Continuiteit-a"
+    ],
+    "NenDomains": [
+      "Continuiteit"
+    ],
+    "Themes": [
+      "4. Personele continuïteit"
+    ]
+  },
+  {
+    "ChecklistId": "Continuiteit10",
+    "Category": "4. Personele continuïteit",
+    "Question": "Heeft u capaciteitsplannen en maatregelen bij uitval van medewerkers?",
+    "NormReference": "ISO 22301",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "Continuiteit-a"
+    ],
+    "NenDomains": [
+      "Continuiteit"
+    ],
+    "Themes": [
+      "4. Personele continuïteit"
+    ]
+  },
+  {
+    "ChecklistId": "Continuiteit11",
+    "Category": "5.Keten & subleveranciers",
+    "Question": "Beschikt u over een exit-strategie voor wisselen van subleveranciers?",
+    "NormReference": "ISO 22301",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "Continuiteit-a"
+    ],
+    "NenDomains": [
+      "Continuiteit"
+    ],
+    "Themes": [
+      "5.Keten & subleveranciers"
+    ]
+  },
+  {
+    "ChecklistId": "Continuiteit12",
+    "Category": "5.Keten & subleveranciers",
+    "Question": "Heeft u SLA’s met ketenpartners waarin continuïteitseisen zijn opgenomen?",
+    "NormReference": "ISO 27001 A.5",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "Continuiteit-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "Continuiteit",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "5.Keten & subleveranciers",
+      "Automated match"
+    ]
+  },
+  {
+    "ChecklistId": "Continuiteit13",
+    "Category": "8. Exit & overdracht",
+    "Question": "Kunt u garanderen dat data veilig en volledig worden overgedragen?",
+    "NormReference": "GDPR Art. 32",
+    "RiskLevel": "Hoog",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "In de Verwerkersovereenkomst wordt vastgelegd dat de Leverancier HUS bij beëindiging van de Diensten ondersteunt bij een veilige en volledige overdracht van persoonsgegevens, inclusief export in een overeengekomen formaat, overdracht aan een opvolgende partij en aantoonbare verwijdering van resterende gegevens bij de Leverancier na afronding van de exit.",
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "Continuiteit-a"
+    ],
+    "NenDomains": [
+      "Continuiteit"
+    ],
+    "Themes": [
+      "8. Exit & overdracht"
+    ]
+  },
+  {
+    "ChecklistId": "Continuiteit14",
+    "Category": "8. Exit & overdracht",
+    "Question": "Is overdracht mogelijk zonder technische lock-in?",
+    "NormReference": "ISO 27001 A.8",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": false,
+    "IsVwoRelevant": false,
+    "IsSoRelevant": false,
+    "StandardTextSla": "De Leverancier werkt bij beëindiging van de Diensten constructief mee aan een technisch en organisatorisch haalbare exit zonder onnodige lock-in. Dit omvat in elk geval het beschikbaar stellen van data in overeengekomen formaten, het bieden van redelijke ondersteuning bij migratie naar een opvolgende oplossing en het uitvoeren van overeengekomen verwijder- of vernietigingshandelingen.",
+    "StandardTextVwo": null,
+    "StandardTextSo": null,
+    "ToetsIds": [
+      "Continuiteit-a",
+      "NEN/ISO-a",
+      "NEN/ISO-b",
+      "NEN/ISO-c",
+      "NEN/ISO-d",
+      "NEN/ISO-e"
+    ],
+    "NenDomains": [
+      "Continuiteit",
+      "NEN/ISO"
+    ],
+    "Themes": [
+      "8. Exit & overdracht",
+      "Automated match"
+    ]
+  }
+]
