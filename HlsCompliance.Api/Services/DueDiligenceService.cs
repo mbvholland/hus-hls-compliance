@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 using HlsCompliance.Api.Domain;
 
 namespace HlsCompliance.Api.Services
@@ -12,7 +14,8 @@ namespace HlsCompliance.Api.Services
     /// - berekenen we Toepasselijk? (kolom F) o.b.v. ToetsVooronderzoek,
     /// - vullen we Antwoord (kolom G) en ControlevraagResultaat (kolom I),
     /// - aggregeren we bewijslast naar BewijsResultaat (kolom J),
-    /// - bewaren we beslissingen over "Negatief resultaat acceptabel?" en Afwijkingstekst (kolom K en M),
+    /// - bewaren we beslissingen over "Negatief resultaat acceptabel?" en Afwijkingstekst (kolom K en M)
+    ///   PERSISTENT in een JSON-bestand,
     /// - berekenen we Resultaat due diligence (kolom L).
     /// </summary>
     public class DueDiligenceService
@@ -25,12 +28,19 @@ namespace HlsCompliance.Api.Services
         private readonly Dictionary<string, ChecklistDecisionState> _decisionStates =
             new Dictionary<string, ChecklistDecisionState>(StringComparer.OrdinalIgnoreCase);
 
+        // Bestand voor persistente opslag
+        private const string DecisionsFileName = "Data/due-diligence-decisions.json";
+        private readonly object _syncRoot = new object();
+
         public DueDiligenceService(
             AssessmentService assessmentService,
             ToetsVooronderzoekService toetsVooronderzoekService)
         {
             _assessmentService = assessmentService ?? throw new ArgumentNullException(nameof(assessmentService));
             _toetsVooronderzoekService = toetsVooronderzoekService ?? throw new ArgumentNullException(nameof(toetsVooronderzoekService));
+
+            // Bij het opstarten van de service proberen we bestaande beslissingen te laden.
+            LoadDecisionStatesFromDisk();
         }
 
         /// <summary>
@@ -122,7 +132,7 @@ namespace HlsCompliance.Api.Services
         /// - K: Negatief resultaat acceptabel? (true/false)
         /// - M: Afwijkingstekst (contract)
         ///
-        /// Daarna kan BuildChecklistRows worden aangeroepen om de nieuwe L-waarde (Resultaat due diligence) te zien.
+        /// Wijzigingen worden PERSISTENT opgeslagen in een JSON-bestand.
         /// </summary>
         public void UpdateNegativeOutcomeDecision(
             Guid assessmentId,
@@ -135,13 +145,20 @@ namespace HlsCompliance.Api.Services
                 throw new ArgumentException("ChecklistId is required.", nameof(checklistId));
             }
 
-            var key = BuildDecisionKey(assessmentId, checklistId);
-
-            _decisionStates[key] = new ChecklistDecisionState
+            lock (_syncRoot)
             {
-                NegativeOutcomeAcceptable = negativeOutcomeAcceptable,
-                DeviationText = deviationText
-            };
+                var key = BuildDecisionKey(assessmentId, checklistId);
+
+                _decisionStates[key] = new ChecklistDecisionState
+                {
+                    AssessmentId = assessmentId,
+                    ChecklistId = checklistId,
+                    NegativeOutcomeAcceptable = negativeOutcomeAcceptable,
+                    DeviationText = deviationText
+                };
+
+                SaveDecisionStatesToDisk();
+            }
         }
 
         /// <summary>
@@ -220,13 +237,7 @@ namespace HlsCompliance.Api.Services
 
         /// <summary>
         /// Aggegreert de statussen van alle bewijslast-items voor één vraag naar
-        /// een samenvattende tekst in kolom J:
-        ///
-        /// - Geen items      -> "Geen bewijs vereist"
-        /// - Één of meer Afgekeurd      -> "Onvoldoende (afgekeurd)"
-        /// - Anders, één of meer In beoordeling -> "In beoordeling"
-        /// - Anders, één of meer Niet aangeleverd (of leeg) -> "Niet aangeleverd"
-        /// - Anders, ten minste één item en alles Goedgekeurd -> "Compleet (alles goedgekeurd)"
+        /// een samenvattende tekst in kolom J.
         ///
         /// Publiek gemaakt zodat we deze logica gericht kunnen unit-testen.
         /// </summary>
@@ -289,8 +300,7 @@ namespace HlsCompliance.Api.Services
                 return "In beoordeling";
             }
 
-            // Daarna Niet aangeleverd (bijv. mix van Goedgekeurd + Niet aangeleverd
-            // moet in Excel ook "Niet aangeleverd" geven).
+            // Daarna Niet aangeleverd (bijv. mix van Goedgekeurd + Niet aangeleverd)
             if (anyNietAangeleverd)
             {
                 return "Niet aangeleverd";
@@ -308,29 +318,7 @@ namespace HlsCompliance.Api.Services
         }
 
         /// <summary>
-        /// Berekent Resultaat due diligence (kolom L) volgens de Excel-LET-logica:
-        ///
-        /// IF(F<>"Ja";"";LET(
-        ///   _ans; I (ControlevraagResultaat);
-        ///   _ev;  J (BewijsResultaat);
-        ///   _acc; K (Negatief resultaat acceptabel?);
-        ///
-        ///   _ansPos; OR(_ans="Goedgekeurd";_ans="Deels goedgekeurd");
-        ///   _ansNeg; _ans="Afgekeurd";
-        ///
-        ///   _evOK;  OR(_ev="Compleet (alles goedgekeurd)";_ev="Geen bewijs vereist");
-        ///   _evBad; _ev="Onvoldoende (afgekeurd)");
-        ///
-        ///   IF(
-        ///     OR(_ansNeg;_evBad);
-        ///       IF(_acc="Ja";"Afwijking acceptabel";"Niet acceptabel");
-        ///       IF(
-        ///         AND(_ansPos;_evOK);
-        ///         "OK";
-        ///         "Nog te beoordelen"
-        ///       )
-        ///   )
-        /// ))
+        /// Berekent Resultaat due diligence (kolom L) volgens de Excel-LET-logica.
         ///
         /// Publiek gemaakt zodat we deze logica gericht kunnen unit-testen.
         /// </summary>
@@ -382,13 +370,17 @@ namespace HlsCompliance.Api.Services
         }
 
         // -------------------------------
-        // Interne helpers voor K/M-opslag
+        // Persistente opslag voor K/M
         // -------------------------------
 
         private ChecklistDecisionState? GetDecisionState(Guid assessmentId, string checklistId)
         {
             var key = BuildDecisionKey(assessmentId, checklistId);
-            return _decisionStates.TryGetValue(key, out var state) ? state : null;
+
+            lock (_syncRoot)
+            {
+                return _decisionStates.TryGetValue(key, out var state) ? state : null;
+            }
         }
 
         private static string BuildDecisionKey(Guid assessmentId, string checklistId)
@@ -396,8 +388,115 @@ namespace HlsCompliance.Api.Services
             return $"{assessmentId:N}|{checklistId}";
         }
 
+        private void LoadDecisionStatesFromDisk()
+        {
+            try
+            {
+                var basePath = Directory.GetCurrentDirectory();
+                var filePath = Path.Combine(basePath, DecisionsFileName);
+
+                if (!File.Exists(filePath))
+                {
+                    return;
+                }
+
+                var json = File.ReadAllText(filePath);
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+
+                var records = JsonSerializer.Deserialize<List<ChecklistDecisionRecord>>(json, options);
+                if (records == null)
+                {
+                    return;
+                }
+
+                lock (_syncRoot)
+                {
+                    _decisionStates.Clear();
+
+                    foreach (var r in records)
+                    {
+                        var key = BuildDecisionKey(r.AssessmentId, r.ChecklistId ?? string.Empty);
+
+                        _decisionStates[key] = new ChecklistDecisionState
+                        {
+                            AssessmentId = r.AssessmentId,
+                            ChecklistId = r.ChecklistId ?? string.Empty,
+                            NegativeOutcomeAcceptable = r.NegativeOutcomeAcceptable,
+                            DeviationText = r.DeviationText
+                        };
+                    }
+                }
+            }
+            catch
+            {
+                // Fouten bij lezen/parse negeren; we starten dan met een lege set.
+                // In een latere versie kun je hier logging toevoegen.
+            }
+        }
+
+        private void SaveDecisionStatesToDisk()
+        {
+            try
+            {
+                var basePath = Directory.GetCurrentDirectory();
+                var filePath = Path.Combine(basePath, DecisionsFileName);
+
+                List<ChecklistDecisionRecord> records;
+
+                lock (_syncRoot)
+                {
+                    records = new List<ChecklistDecisionRecord>();
+
+                    foreach (var kvp in _decisionStates)
+                    {
+                        var s = kvp.Value;
+                        records.Add(new ChecklistDecisionRecord
+                        {
+                            AssessmentId = s.AssessmentId,
+                            ChecklistId = s.ChecklistId,
+                            NegativeOutcomeAcceptable = s.NegativeOutcomeAcceptable,
+                            DeviationText = s.DeviationText
+                        });
+                    }
+                }
+
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                };
+
+                var json = JsonSerializer.Serialize(records, options);
+
+                var dir = Path.GetDirectoryName(filePath);
+                if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
+
+                File.WriteAllText(filePath, json);
+            }
+            catch
+            {
+                // Fouten bij schrijven negeren; beslissingen blijven in memory.
+                // Later kun je hier logging toevoegen.
+            }
+        }
+
         private class ChecklistDecisionState
         {
+            public Guid AssessmentId { get; set; }
+            public string ChecklistId { get; set; } = string.Empty;
+            public bool NegativeOutcomeAcceptable { get; set; }
+            public string? DeviationText { get; set; }
+        }
+
+        private class ChecklistDecisionRecord
+        {
+            public Guid AssessmentId { get; set; }
+            public string? ChecklistId { get; set; }
             public bool NegativeOutcomeAcceptable { get; set; }
             public string? DeviationText { get; set; }
         }
