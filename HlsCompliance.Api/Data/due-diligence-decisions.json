@@ -4,5 +4,11 @@
     "ChecklistId": "Algemeen1",
     "NegativeOutcomeAcceptable": true,
     "DeviationText": "Afwijking geaccepteerd i.v.m. transitieperiode."
+  },
+  {
+    "AssessmentId": "e5e626b4-2d74-4815-8406-6eea34ec99a8",
+    "ChecklistId": "Algemeen1",
+    "NegativeOutcomeAcceptable": true,
+    "DeviationText": "Afwijking geaccepteerd i.v.m. transitieperiode."
   }
 ]
