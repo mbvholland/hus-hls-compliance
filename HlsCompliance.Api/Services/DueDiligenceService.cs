@@ -6,11 +6,13 @@ using HlsCompliance.Api.Domain;
 namespace HlsCompliance.Api.Services
 {
     /// <summary>
-    /// Service die de logica van tab 7 (due diligence) gaat afhandelen.
+    /// Service die de logica van tab 7 (due diligence) afhandelt.
     /// In deze versie:
     /// - koppelen we definities + antwoorden,
-    /// - vullen we kolom G (Answer) en I (AnswerEvaluation),
-    /// - berekenen we een eerste versie van kolom F (Toepasselijk?) op basis van ToetsVooronderzoek.
+    /// - berekenen we Toepasselijk? (kolom F) o.b.v. ToetsVooronderzoek,
+    /// - vullen we Antwoord (kolom G) en ControlevraagResultaat (kolom I),
+    /// - aggregeren we bewijslast naar BewijsResultaat (kolom J),
+    /// - berekenen we Resultaat due diligence (kolom L).
     /// </summary>
     public class DueDiligenceService
     {
@@ -29,25 +31,23 @@ namespace HlsCompliance.Api.Services
         /// Bouwt de "tab 7-rijen" voor een assessment op basis van:
         /// - de checklist-definities (statisch),
         /// - de gegeven antwoorden (tab 8-laag),
+        /// - de bewijslast-items (tab 11-laag),
         /// - het ToetsVooronderzoek-resultaat.
-        ///
-        /// In deze versie:
-        /// - IsApplicable (kolom F) wordt bepaald o.b.v. ToetsVooronderzoek + ToetsIDs per vraag,
-        /// - Answer (kolom G) en AnswerEvaluation (kolom I) worden gevuld,
-        /// - EvidenceSummary / DueDiligenceOutcome komen later.
         /// </summary>
         public List<AssessmentChecklistRow> BuildChecklistRows(
             Guid assessmentId,
             IEnumerable<ChecklistQuestionDefinition> definitions,
-            IEnumerable<AssessmentQuestionAnswer> answers)
+            IEnumerable<AssessmentQuestionAnswer> answers,
+            IEnumerable<AssessmentEvidenceItem> evidenceItems)
         {
             if (definitions == null) throw new ArgumentNullException(nameof(definitions));
             if (answers == null) throw new ArgumentNullException(nameof(answers));
+            if (evidenceItems == null) throw new ArgumentNullException(nameof(evidenceItems));
 
             var assessment = _assessmentService.GetById(assessmentId)
                               ?? throw new InvalidOperationException($"Assessment {assessmentId} not found.");
 
-            // ToetsVooronderzoek-resultaat voor dit assessment (tab 6 in de excel).
+            // ToetsVooronderzoek-resultaat voor dit assessment (tab 6 in de Excel).
             var toetsResult = _toetsVooronderzoekService.Get(assessmentId);
 
             var answerLookup = answers
@@ -55,13 +55,20 @@ namespace HlsCompliance.Api.Services
                 .GroupBy(a => a.ChecklistId, StringComparer.OrdinalIgnoreCase)
                 .ToDictionary(g => g.Key, g => g.First(), StringComparer.OrdinalIgnoreCase);
 
+            var evidenceLookup = evidenceItems
+                .Where(e => e.AssessmentId == assessmentId)
+                .GroupBy(e => e.ChecklistId, StringComparer.OrdinalIgnoreCase)
+                .ToDictionary(g => g.Key, g => g.ToList(), StringComparer.OrdinalIgnoreCase);
+
             var rows = new List<AssessmentChecklistRow>();
 
             foreach (var def in definitions)
             {
                 answerLookup.TryGetValue(def.ChecklistId, out var answer);
+                evidenceLookup.TryGetValue(def.ChecklistId, out var evidenceForQuestion);
 
                 var isApplicable = EvaluateApplicability(assessment, def, toetsResult);
+                var evidenceSummary = SummarizeEvidenceStatus(evidenceForQuestion);
 
                 var row = new AssessmentChecklistRow
                 {
@@ -77,12 +84,22 @@ namespace HlsCompliance.Api.Services
                     // Kolom I: ControlevraagResultaat
                     AnswerEvaluation = answer?.AnswerEvaluation,
 
-                    // Kolom J/K/L/M vullen we in volgende stappen
-                    EvidenceSummary = null,
+                    // Kolom J: BewijsResultaat (samenvatting van bewijslast)
+                    EvidenceSummary = evidenceSummary,
+
+                    // Kolom K: Negatief resultaat acceptabel? -> voorlopig default false
                     NegativeOutcomeAcceptable = false,
+
+                    // Kolom L: Resultaat due diligence (wordt hieronder berekend)
                     DueDiligenceOutcome = null,
+
+                    // Kolom M: Afwijkingstekst (contract) -> vullen we later vanuit UI of andere logica
                     DeviationText = null
                 };
+
+                // Kolom L berekenen op basis van F (IsApplicable), I (AnswerEvaluation),
+                // J (EvidenceSummary) en K (NegativeOutcomeAcceptable).
+                row.DueDiligenceOutcome = EvaluateDueDiligenceOutcome(row);
 
                 rows.Add(row);
             }
@@ -98,21 +115,14 @@ namespace HlsCompliance.Api.Services
         /// Eerste versie:
         /// - Als geen ToetsIDs zijn gekoppeld -> default true (vraag is altijd van toepassing).
         /// - Als minstens één gekoppelde Toets "Ja" is -> true.
-        /// - Als alle bekende antwoorden "Nee" zijn -> false.
+        /// - Als alle bekende ToetsIDs "Nee" zijn -> false.
         /// - Als alles onbekend/ontbrekend is -> false (conservatief niet-toepasselijk voor nu).
-        ///
-        /// Later kunnen we hier:
-        /// - overall risicoklasse (Assessment.OverallRiskLevel),
-        /// - BoZ/LHV-dekking,
-        /// - specifieke AVG/Algemeen-uitzonderingen
-        /// aan toevoegen om 1-op-1 met Excel kolom F te worden.
         /// </summary>
         private static bool EvaluateApplicability(
             Assessment assessment,
             ChecklistQuestionDefinition def,
             ToetsVooronderzoekResult toetsResult)
         {
-            // Als er geen ToetsIDs zijn opgegeven bij deze vraag, nemen we aan dat hij altijd van toepassing is.
             if (def.ToetsIds == null || def.ToetsIds.Length == 0)
             {
                 return true;
@@ -137,7 +147,6 @@ namespace HlsCompliance.Api.Services
                 }
                 else
                 {
-                    // fallback: zoek in Questions als ToetsAnswers nog niet gevuld zou zijn
                     var q = toetsResult.Questions.FirstOrDefault(
                         x => x.ToetsId.Equals(toetsId, StringComparison.OrdinalIgnoreCase));
                     value = q?.Answer;
@@ -145,7 +154,6 @@ namespace HlsCompliance.Api.Services
 
                 if (!value.HasValue)
                 {
-                    // Onbekend; telt voor nu niet mee in true/false
                     continue;
                 }
 
@@ -169,10 +177,169 @@ namespace HlsCompliance.Api.Services
                 return false;
             }
 
-            // Alles onbekend of er zijn alleen lege ToetsIDs:
-            // voor nu: niet van toepassing.
-            // TODO: in volgende iteratie kunnen we hier fijnslijpen o.b.v. Excel-logica.
+            // Alles onbekend of alleen lege ToetsIDs -> niet toepasbaar.
             return false;
+        }
+
+        /// <summary>
+        /// Aggegreert de statussen van alle bewijslast-items voor één vraag naar
+        /// een samenvattende tekst in kolom J:
+        ///
+        /// - Geen items      -> "Geen bewijs vereist"
+        /// - Één of meer Afgekeurd      -> "Onvoldoende (afgekeurd)"
+        /// - Anders, één of meer In beoordeling -> "In beoordeling"
+        /// - Anders, één of meer Niet aangeleverd (of leeg) -> "Niet aangeleverd"
+        /// - Anders, ten minste één item en alles Goedgekeurd -> "Compleet (alles goedgekeurd)"
+        /// </summary>
+        private static string? SummarizeEvidenceStatus(IReadOnlyCollection<AssessmentEvidenceItem>? evidenceItems)
+        {
+            if (evidenceItems == null || evidenceItems.Count == 0)
+            {
+                // Geen bewijslastregels gekoppeld aan deze vraag.
+                return "Geen bewijs vereist";
+            }
+
+            var anyAfgekeurd = false;
+            var anyInBeoordeling = false;
+            var anyNietAangeleverd = false;
+            var anyGoedgekeurd = false;
+
+            foreach (var item in evidenceItems)
+            {
+                var status = (item.Status ?? string.Empty).Trim();
+
+                if (string.IsNullOrEmpty(status))
+                {
+                    // Lege status -> behandelen als "Niet aangeleverd"
+                    anyNietAangeleverd = true;
+                    continue;
+                }
+
+                if (status.Equals("Afgekeurd", StringComparison.OrdinalIgnoreCase))
+                {
+                    anyAfgekeurd = true;
+                }
+                else if (status.Equals("In beoordeling", StringComparison.OrdinalIgnoreCase))
+                {
+                    anyInBeoordeling = true;
+                }
+                else if (status.Equals("Niet aangeleverd", StringComparison.OrdinalIgnoreCase))
+                {
+                    anyNietAangeleverd = true;
+                }
+                else if (status.Equals("Goedgekeurd", StringComparison.OrdinalIgnoreCase))
+                {
+                    anyGoedgekeurd = true;
+                }
+                else
+                {
+                    // Onbekende status: behandelen als "In beoordeling"
+                    anyInBeoordeling = true;
+                }
+            }
+
+            // Excel-logica: elke Afgekeurd domineert -> "Onvoldoende (afgekeurd)"
+            if (anyAfgekeurd)
+            {
+                return "Onvoldoende (afgekeurd)";
+            }
+
+            // Daarna In beoordeling
+            if (anyInBeoordeling)
+            {
+                return "In beoordeling";
+            }
+
+            // Daarna Niet aangeleverd (bijv. mix van Goedgekeurd + Niet aangeleverd
+            // moet in Excel ook "Niet aangeleverd" geven).
+            if (anyNietAangeleverd)
+            {
+                return "Niet aangeleverd";
+            }
+
+            // Als we hier zijn en er zijn items, en niemand is afgekeurd / in beoordeling /
+            // niet aangeleverd, dan zijn ze allemaal goedgekeurd.
+            if (anyGoedgekeurd)
+            {
+                return "Compleet (alles goedgekeurd)";
+            }
+
+            // Fallback: er zijn items, maar geen herkenbare status -> behandelen als "Niet aangeleverd".
+            return "Niet aangeleverd";
+        }
+
+        /// <summary>
+        /// Berekent Resultaat due diligence (kolom L) volgens de Excel-LET-logica:
+        ///
+        /// In Excel (vereenvoudigd):
+        ///
+        /// IF(F<>"Ja";"";LET(
+        ///   _ans; I (ControlevraagResultaat);
+        ///   _ev;  J (BewijsResultaat);
+        ///   _acc; K (Negatief resultaat acceptabel?);
+        ///
+        ///   _ansPos; OR(_ans="Goedgekeurd";_ans="Deels goedgekeurd");
+        ///   _ansNeg; _ans="Afgekeurd";
+        ///
+        ///   _evOK;  OR(_ev="Compleet (alles goedgekeurd)";_ev="Geen bewijs vereist");
+        ///   _evBad; _ev="Onvoldoende (afgekeurd)");
+        ///
+        ///   IF(
+        ///     OR(_ansNeg;_evBad);
+        ///       IF(_acc="Ja";"Afwijking acceptabel";"Niet acceptabel");
+        ///       IF(
+        ///         AND(_ansPos;_evOK);
+        ///         "OK";
+        ///         "Nog te beoordelen"
+        ///       )
+        ///   )
+        /// ))
+        /// </summary>
+        private static string? EvaluateDueDiligenceOutcome(AssessmentChecklistRow row)
+        {
+            // F (Toepasselijk?) is false -> in Excel wordt L dan leeg.
+            if (!row.IsApplicable)
+            {
+                return null;
+            }
+
+            var ans = row.AnswerEvaluation ?? string.Empty;
+            var ev = row.EvidenceSummary ?? string.Empty;
+            var acc = row.NegativeOutcomeAcceptable;
+
+            var ansPos =
+                ans.Equals("Goedgekeurd", StringComparison.OrdinalIgnoreCase) ||
+                ans.Equals("Deels goedgekeurd", StringComparison.OrdinalIgnoreCase);
+
+            var ansNeg =
+                ans.Equals("Afgekeurd", StringComparison.OrdinalIgnoreCase);
+
+            var evOk =
+                ev.Equals("Compleet (alles goedgekeurd)", StringComparison.OrdinalIgnoreCase) ||
+                ev.Equals("Geen bewijs vereist", StringComparison.OrdinalIgnoreCase);
+
+            var evBad =
+                ev.Equals("Onvoldoende (afgekeurd)", StringComparison.OrdinalIgnoreCase);
+
+            // OR(_ansNeg; _evBad)
+            if (ansNeg || evBad)
+            {
+                // IF(_acc="Ja";"Afwijking acceptabel";"Niet acceptabel");
+                if (acc)
+                {
+                    return "Afwijking acceptabel";
+                }
+
+                return "Niet acceptabel";
+            }
+
+            // IF(AND(_ansPos;_evOK);"OK";"Nog te beoordelen")
+            if (ansPos && evOk)
+            {
+                return "OK";
+            }
+
+            return "Nog te beoordelen";
         }
     }
 }
