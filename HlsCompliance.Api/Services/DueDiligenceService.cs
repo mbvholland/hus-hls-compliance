@@ -227,8 +227,10 @@ namespace HlsCompliance.Api.Services
         /// - Anders, één of meer In beoordeling -> "In beoordeling"
         /// - Anders, één of meer Niet aangeleverd (of leeg) -> "Niet aangeleverd"
         /// - Anders, ten minste één item en alles Goedgekeurd -> "Compleet (alles goedgekeurd)"
+        ///
+        /// Publiek gemaakt zodat we deze logica gericht kunnen unit-testen.
         /// </summary>
-        private static string? SummarizeEvidenceStatus(IReadOnlyCollection<AssessmentEvidenceItem>? evidenceItems)
+        public static string? SummarizeEvidenceStatus(IReadOnlyCollection<AssessmentEvidenceItem>? evidenceItems)
         {
             if (evidenceItems == null || evidenceItems.Count == 0)
             {
@@ -329,8 +331,10 @@ namespace HlsCompliance.Api.Services
         ///       )
         ///   )
         /// ))
+        ///
+        /// Publiek gemaakt zodat we deze logica gericht kunnen unit-testen.
         /// </summary>
-        private static string? EvaluateDueDiligenceOutcome(AssessmentChecklistRow row)
+        public static string? EvaluateDueDiligenceOutcome(AssessmentChecklistRow row)
         {
             // F (Toepasselijk?) is false -> in Excel wordt L dan leeg.
             if (!row.IsApplicable)
