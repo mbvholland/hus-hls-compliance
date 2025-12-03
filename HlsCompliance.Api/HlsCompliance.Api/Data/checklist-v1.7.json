@@ -1,0 +1,18 @@
+[
+  {
+    "ChecklistId": "ALG-1",
+    "Category": "Algemeen",
+    "Question": "Is er een verwerkersovereenkomst aanwezig?",
+    "NormReference": "BoZ VWO",
+    "RiskLevel": "Middel",
+    "IsSlaRelevant": true,
+    "IsVwoRelevant": true,
+    "IsSoRelevant": false,
+    "StandardTextSla": null,
+    "StandardTextVwo": "Standaard BoZ VWO van toepassing.",
+    "StandardTextSo": null,
+    "ToetsIds": [ "ALG-a", "AVG-a" ],
+    "NenDomains": [ "A.5", "A.6" ],
+    "Themes": [ "Governance", "Privacy" ]
+  }
+]

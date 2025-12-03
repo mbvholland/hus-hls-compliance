@@ -8,7 +8,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Registratie van onze in-memory AssessmentService
 builder.Services.AddSingleton<AssessmentService>();
 builder.Services.AddSingleton<DpiaQuickscanService>();
 builder.Services.AddSingleton<MdrService>();
@@ -18,9 +17,12 @@ builder.Services.AddSingleton<SecurityProfileService>();
 builder.Services.AddSingleton<ToetsVooronderzoekService>();
 builder.Services.AddSingleton<AlgemeenService>();
 
+builder.Services.AddScoped<DueDiligenceService>();
+
+builder.Services.AddSingleton<IChecklistDefinitionRepository, JsonChecklistDefinitionRepository>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -28,10 +30,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
-// Zorg dat de controllers (zoals AssessmentsController) worden gemapped
 app.MapControllers();
-
 app.Run();
