@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 using HlsCompliance.Api.Domain;
 
 namespace HlsCompliance.Api.Services;
@@ -13,40 +15,54 @@ namespace HlsCompliance.Api.Services;
 /// - F8..F15 = IF(Dx=1; weight(Ex); 0)
 /// - F17 = AVERAGE(F8:F15)
 /// - C16 = COUNTA(C8:C15)=8?
+/// Nu met JSON-persistente opslag (Data/security-profile.json).
 /// </summary>
 public class SecurityProfileService
 {
+    private const string FileName = "Data/security-profile.json";
+
+    // In-memory opslag per assessment
     private readonly Dictionary<Guid, SecurityProfileResult> _storage = new();
+    private readonly object _syncRoot = new();
+
     private readonly DpiaQuickscanService _dpiaQuickscanService;
 
     public SecurityProfileService(DpiaQuickscanService dpiaQuickscanService)
     {
-        _dpiaQuickscanService = dpiaQuickscanService;
+        _dpiaQuickscanService = dpiaQuickscanService ?? throw new ArgumentNullException(nameof(dpiaQuickscanService));
+        LoadFromDisk();
     }
 
     public SecurityProfileResult GetOrCreateForAssessment(Guid assessmentId)
     {
-        if (!_storage.TryGetValue(assessmentId, out var result))
+        lock (_syncRoot)
         {
-            result = new SecurityProfileResult
+            if (!_storage.TryGetValue(assessmentId, out var result))
             {
-                AssessmentId = assessmentId,
-                Questions = CreateDefaultQuestions()
-            };
+                result = new SecurityProfileResult
+                {
+                    AssessmentId = assessmentId,
+                    Questions = CreateDefaultQuestions()
+                };
 
-            PrefillFromDpia(assessmentId, result);
-            Recalculate(result);
+                PrefillFromDpia(assessmentId, result);
+                Recalculate(result);
 
-            _storage[assessmentId] = result;
+                _storage[assessmentId] = result;
+                SaveToDisk();
+            }
+            else
+            {
+                // Afgeleide velden (C8/C12) elke keer updaten vanuit DPIA.
+                PrefillFromDpia(assessmentId, result);
+                Recalculate(result);
+
+                _storage[assessmentId] = result;
+                SaveToDisk();
+            }
+
+            return result;
         }
-        else
-        {
-            // Afgeleide velden (C8/C12) elke keer updaten vanuit DPIA.
-            PrefillFromDpia(assessmentId, result);
-            Recalculate(result);
-        }
-
-        return result;
     }
 
     /// <summary>
@@ -60,31 +76,37 @@ public class SecurityProfileService
     {
         var result = GetOrCreateForAssessment(assessmentId);
 
-        foreach (var (code, answer) in answers)
+        lock (_syncRoot)
         {
-            if (string.IsNullOrWhiteSpace(code))
-                continue;
-
-            var question = result.Questions
-                .FirstOrDefault(q => string.Equals(q.Code, code, StringComparison.OrdinalIgnoreCase));
-
-            if (question == null)
-                continue;
-
-            if (question.IsDerivedFromDpia)
+            foreach (var (code, answer) in answers)
             {
-                // C8/C12 worden altijd uit DPIA gehaald, user-input negeren.
-                continue;
+                if (string.IsNullOrWhiteSpace(code))
+                    continue;
+
+                var question = result.Questions
+                    .FirstOrDefault(q => string.Equals(q.Code, code, StringComparison.OrdinalIgnoreCase));
+
+                if (question == null)
+                    continue;
+
+                if (question.IsDerivedFromDpia)
+                {
+                    // C8/C12 worden altijd uit DPIA gehaald, user-input negeren.
+                    continue;
+                }
+
+                question.Answer = string.IsNullOrWhiteSpace(answer)
+                    ? null
+                    : answer.Trim();
             }
 
-            question.Answer = string.IsNullOrWhiteSpace(answer)
-                ? null
-                : answer.Trim();
-        }
+            // Afgeleide vragen opnieuw vullen uit DPIA
+            PrefillFromDpia(assessmentId, result);
+            Recalculate(result);
 
-        // Afgeleide vragen opnieuw vullen uit DPIA
-        PrefillFromDpia(assessmentId, result);
-        Recalculate(result);
+            _storage[assessmentId] = result;
+            SaveToDisk();
+        }
 
         return result;
     }
@@ -256,5 +278,83 @@ public class SecurityProfileService
                 IsDerivedFromDpia = false
             }
         };
+    }
+
+    private void LoadFromDisk()
+    {
+        try
+        {
+            var basePath = Directory.GetCurrentDirectory();
+            var filePath = Path.Combine(basePath, FileName);
+
+            if (!File.Exists(filePath))
+            {
+                return;
+            }
+
+            var json = File.ReadAllText(filePath);
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            var list = JsonSerializer.Deserialize<List<SecurityProfileResult>>(json, options);
+            if (list == null)
+            {
+                return;
+            }
+
+            lock (_syncRoot)
+            {
+                _storage.Clear();
+                foreach (var item in list)
+                {
+                    if (item != null)
+                    {
+                        _storage[item.AssessmentId] = item;
+                    }
+                }
+            }
+        }
+        catch
+        {
+            // Bij fouten starten we met een lege storage.
+        }
+    }
+
+    private void SaveToDisk()
+    {
+        try
+        {
+            var basePath = Directory.GetCurrentDirectory();
+            var filePath = Path.Combine(basePath, FileName);
+
+            List<SecurityProfileResult> snapshot;
+            lock (_syncRoot)
+            {
+                snapshot = _storage.Values
+                    .Select(v => v)
+                    .ToList();
+            }
+
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true
+            };
+
+            var json = JsonSerializer.Serialize(snapshot, options);
+
+            var dir = Path.GetDirectoryName(filePath);
+            if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            File.WriteAllText(filePath, json);
+        }
+        catch
+        {
+            // Fouten bij schrijven negeren; data blijft in memory beschikbaar.
+        }
     }
 }

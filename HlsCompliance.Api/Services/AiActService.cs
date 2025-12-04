@@ -1,16 +1,23 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 using HlsCompliance.Api.Domain;
 
 namespace HlsCompliance.Api.Services;
 
 /// <summary>
-/// Service voor de AI Act-beslisboom (tab "4. AI Act Beslisboom").
+/// Service voor de AI Act-beslisboom (tab "4. AI Act Beslisboom") met JSON-persistente opslag.
 /// </summary>
 public class AiActService
 {
+    private const string FileName = "Data/ai-act.json";
+
+    // In-memory opslag per assessment
     private readonly Dictionary<Guid, AiActProfileState> _storage = new();
+    private readonly object _syncRoot = new();
+
     private readonly DpiaQuickscanService _dpiaQuickscanService;
     private readonly MdrService _mdrService;
 
@@ -18,8 +25,10 @@ public class AiActService
         DpiaQuickscanService dpiaQuickscanService,
         MdrService mdrService)
     {
-        _dpiaQuickscanService = dpiaQuickscanService;
-        _mdrService = mdrService;
+        _dpiaQuickscanService = dpiaQuickscanService ?? throw new ArgumentNullException(nameof(dpiaQuickscanService));
+        _mdrService = mdrService ?? throw new ArgumentNullException(nameof(mdrService));
+
+        LoadFromDisk();
     }
 
     /// <summary>
@@ -28,28 +37,33 @@ public class AiActService
     /// </summary>
     public AiActProfileState GetOrCreateForAssessment(Guid assessmentId)
     {
-        if (!_storage.TryGetValue(assessmentId, out var state))
+        lock (_syncRoot)
         {
-            state = new AiActProfileState
+            if (!_storage.TryGetValue(assessmentId, out var state))
             {
-                AssessmentId = assessmentId
-            };
+                state = new AiActProfileState
+                {
+                    AssessmentId = assessmentId,
+                    RiskLevel = "Onbekend",
+                    RiskScore = 0,
+                    IsComplete = false,
+                    Explanation = "AI Act-profiel is nog niet ingevuld."
+                };
 
+                _storage[assessmentId] = state;
+                SaveToDisk();
+            }
+
+            // Prefill steeds op basis van actuele DPIA + MDR
             PrefillFromDpia(assessmentId, state);
             PrefillFromMdr(assessmentId, state);
             Recalculate(state);
 
             _storage[assessmentId] = state;
-        }
-        else
-        {
-            // Prefills updaten op basis van huidige DPIA/MDR (override voor B2, non-destructief voor A/C/D).
-            PrefillFromDpia(assessmentId, state);
-            PrefillFromMdr(assessmentId, state);
-            Recalculate(state);
-        }
+            SaveToDisk();
 
-        return state;
+            return state;
+        }
     }
 
     /// <summary>
@@ -95,6 +109,13 @@ public class AiActService
         // B2 altijd opnieuw afleiden uit MDR
         PrefillFromMdr(assessmentId, state);
         Recalculate(state);
+
+        lock (_syncRoot)
+        {
+            _storage[assessmentId] = state;
+            SaveToDisk();
+        }
+
         return state;
     }
 
@@ -318,6 +339,84 @@ public class AiActService
             state.Explanation =
                 "De oplossing wordt als AI-systeem aangemerkt, maar voldoet niet aan hoog- of beperkt-risico criteria; " +
                 "de AI Act-risicoklasse is Laag/minimaal risico.";
+        }
+    }
+
+    private void LoadFromDisk()
+    {
+        try
+        {
+            var basePath = Directory.GetCurrentDirectory();
+            var filePath = Path.Combine(basePath, FileName);
+
+            if (!File.Exists(filePath))
+            {
+                return;
+            }
+
+            var json = File.ReadAllText(filePath);
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            var list = JsonSerializer.Deserialize<List<AiActProfileState>>(json, options);
+            if (list == null)
+            {
+                return;
+            }
+
+            lock (_syncRoot)
+            {
+                _storage.Clear();
+                foreach (var item in list)
+                {
+                    if (item != null)
+                    {
+                        _storage[item.AssessmentId] = item;
+                    }
+                }
+            }
+        }
+        catch
+        {
+            // Bij fouten starten we met een lege storage.
+        }
+    }
+
+    private void SaveToDisk()
+    {
+        try
+        {
+            var basePath = Directory.GetCurrentDirectory();
+            var filePath = Path.Combine(basePath, FileName);
+
+            List<AiActProfileState> snapshot;
+            lock (_syncRoot)
+            {
+                snapshot = _storage.Values
+                    .Select(v => v)
+                    .ToList();
+            }
+
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true
+            };
+
+            var json = JsonSerializer.Serialize(snapshot, options);
+
+            var dir = Path.GetDirectoryName(filePath);
+            if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            File.WriteAllText(filePath, json);
+        }
+        catch
+        {
+            // Fouten bij schrijven negeren; data blijft in memory beschikbaar.
         }
     }
 }
