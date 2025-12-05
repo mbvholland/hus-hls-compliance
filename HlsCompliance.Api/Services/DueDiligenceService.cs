@@ -17,11 +17,17 @@ namespace HlsCompliance.Api.Services
     /// - bewaren we beslissingen over "Negatief resultaat acceptabel?" en Afwijkingstekst (kolom K en M)
     ///   PERSISTENT in een JSON-bestand,
     /// - berekenen we Resultaat due diligence (kolom L).
+    ///
+    /// Nieuw:
+    /// - antwoorden (tab 8) komen uit IAssessmentAnswersRepository,
+    /// - bewijslast (tab 11) komt uit IAssessmentEvidenceRepository.
     /// </summary>
     public class DueDiligenceService
     {
         private readonly AssessmentService _assessmentService;
         private readonly ToetsVooronderzoekService _toetsVooronderzoekService;
+        private readonly IAssessmentAnswersRepository _answersRepository;
+        private readonly IAssessmentEvidenceRepository _evidenceRepository;
 
         // In-memory opslag van beslissingen per Assessment + ChecklistID
         // voor kolom K (NegativeOutcomeAcceptable) en kolom M (DeviationText).
@@ -34,24 +40,46 @@ namespace HlsCompliance.Api.Services
 
         public DueDiligenceService(
             AssessmentService assessmentService,
-            ToetsVooronderzoekService toetsVooronderzoekService)
+            ToetsVooronderzoekService toetsVooronderzoekService,
+            IAssessmentAnswersRepository answersRepository,
+            IAssessmentEvidenceRepository evidenceRepository)
         {
             _assessmentService = assessmentService ?? throw new ArgumentNullException(nameof(assessmentService));
             _toetsVooronderzoekService = toetsVooronderzoekService ?? throw new ArgumentNullException(nameof(toetsVooronderzoekService));
+            _answersRepository = answersRepository ?? throw new ArgumentNullException(nameof(answersRepository));
+            _evidenceRepository = evidenceRepository ?? throw new ArgumentNullException(nameof(evidenceRepository));
 
             // Bij het opstarten van de service proberen we bestaande beslissingen te laden.
             LoadDecisionStatesFromDisk();
         }
 
         /// <summary>
-        /// Bouwt de "tab 7-rijen" voor een assessment op basis van:
+        /// Publiek entrypoint:
+        /// - haalt antwoorden (tab 8) op via IAssessmentAnswersRepository,
+        /// - haalt bewijslast (tab 11) op via IAssessmentEvidenceRepository,
+        /// - combineert dat met definities en ToetsVooronderzoek om tab 7-rijen te bouwen.
+        /// </summary>
+        public List<AssessmentChecklistRow> BuildChecklistRows(
+            Guid assessmentId,
+            IEnumerable<ChecklistQuestionDefinition> definitions)
+        {
+            if (definitions == null) throw new ArgumentNullException(nameof(definitions));
+
+            var answers = _answersRepository.GetByAssessment(assessmentId);
+            var evidenceItems = _evidenceRepository.GetByAssessment(assessmentId);
+
+            return BuildChecklistRowsInternal(assessmentId, definitions, answers, evidenceItems);
+        }
+
+        /// <summary>
+        /// Interne implementatie die de "tab 7-rijen" voor een assessment opbouwt op basis van:
         /// - de checklist-definities (statisch),
         /// - de gegeven antwoorden (tab 8-laag),
         /// - de bewijslast-items (tab 11-laag),
         /// - de beslissingen over kolom K/M,
         /// - het ToetsVooronderzoek-resultaat.
         /// </summary>
-        public List<AssessmentChecklistRow> BuildChecklistRows(
+        private List<AssessmentChecklistRow> BuildChecklistRowsInternal(
             Guid assessmentId,
             IEnumerable<ChecklistQuestionDefinition> definitions,
             IEnumerable<AssessmentQuestionAnswer> answers,

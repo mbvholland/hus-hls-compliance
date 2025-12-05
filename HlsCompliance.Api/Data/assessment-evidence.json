@@ -1,0 +1,18 @@
+[
+  {
+    "AssessmentId": "32efc07c-b9b8-4952-b537-d3cdf26c6520",
+    "ChecklistId": "Algemeen1",
+    "EvidenceId": "B001",
+    "EvidenceName": "DPIA-rapport",
+    "Status": "In beoordeling",
+    "Comment": "DPIA ontvangen op 2025-01-10."
+  },
+  {
+    "AssessmentId": "32efc07c-b9b8-4952-b537-d3cdf26c6520",
+    "ChecklistId": "Algemeen1",
+    "EvidenceId": "B002",
+    "EvidenceName": "Verwerkersovereenkomst",
+    "Status": "Niet aangeleverd",
+    "Comment": null
+  }
+]

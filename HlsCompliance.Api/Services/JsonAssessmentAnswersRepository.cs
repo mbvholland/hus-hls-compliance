@@ -44,6 +44,9 @@ namespace HlsCompliance.Api.Services
         /// Upsert per (AssessmentId + ChecklistId).
         /// Voor elke aangeleverde answer wordt een bestaande answer met dezelfde
         /// AssessmentId + ChecklistId vervangen.
+        ///
+        /// Belangrijk: AssessmentId wordt altijd geforceerd naar de parameter assessmentId,
+        /// zodat foutieve waarden vanuit de caller geen schade kunnen doen.
         /// </summary>
         public void UpsertAnswers(Guid assessmentId, IEnumerable<AssessmentQuestionAnswer> answers)
         {
@@ -56,6 +59,13 @@ namespace HlsCompliance.Api.Services
             {
                 var incoming = answers
                     .Where(a => !string.IsNullOrWhiteSpace(a.ChecklistId))
+                    .Select(a => new AssessmentQuestionAnswer
+                    {
+                        AssessmentId = assessmentId,
+                        ChecklistId = a.ChecklistId,
+                        RawAnswer = a.RawAnswer,
+                        AnswerEvaluation = a.AnswerEvaluation
+                    })
                     .ToList();
 
                 if (!incoming.Any())

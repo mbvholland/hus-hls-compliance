@@ -4,149 +4,159 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using HlsCompliance.Api.Domain;
+using Microsoft.AspNetCore.Hosting;
 
 namespace HlsCompliance.Api.Services
 {
+    /// <summary>
+    /// Repository voor bewijslast per assessment (tab 11-concept).
+    /// Slaat <see cref="AssessmentEvidenceItem"/> op in een JSON-bestand in de Data-map.
+    /// </summary>
     public interface IAssessmentEvidenceRepository
     {
-        IEnumerable<AssessmentEvidenceItem> GetByAssessment(Guid assessmentId);
-        void UpsertEvidence(Guid assessmentId, IEnumerable<AssessmentEvidenceItem> items);
-    }
-
-    /// <summary>
-    /// JSON-gebaseerde opslag van bewijslast-items (tab 11).
-    /// Alles wordt bewaard in Data/evidence.json.
-    /// </summary>
-    public class JsonAssessmentEvidenceRepository : IAssessmentEvidenceRepository
-    {
-        private const string FileName = "Data/evidence.json";
-
-        private readonly object _syncRoot = new();
-        private readonly List<AssessmentEvidenceItem> _items = new();
-
-        public JsonAssessmentEvidenceRepository()
-        {
-            LoadFromDisk();
-        }
-
-        public IEnumerable<AssessmentEvidenceItem> GetByAssessment(Guid assessmentId)
-        {
-            lock (_syncRoot)
-            {
-                return _items
-                    .Where(e => e.AssessmentId == assessmentId)
-                    .Select(e => e)
-                    .ToList();
-            }
-        }
+        /// <summary>
+        /// Haal alle bewijslast-items op voor één assessment.
+        /// </summary>
+        IReadOnlyCollection<AssessmentEvidenceItem> GetByAssessment(Guid assessmentId);
 
         /// <summary>
-        /// Upsert per (AssessmentId + ChecklistId + EvidenceId).
-        /// Bestaat er al een item met dezelfde sleutel, dan wordt die vervangen.
+        /// Vervang alle bewijslast-items voor één assessment door de opgegeven set.
         /// </summary>
-        public void UpsertEvidence(Guid assessmentId, IEnumerable<AssessmentEvidenceItem> items)
+        void Upsert(Guid assessmentId, IEnumerable<AssessmentEvidenceItem> items);
+    }
+
+    public class JsonAssessmentEvidenceRepository : IAssessmentEvidenceRepository
+    {
+        private readonly string _filePath;
+        private readonly object _syncRoot = new();
+
+        // Centrale opslag in memory, wordt bij start geladen uit JSON
+        private List<AssessmentEvidenceItem> _storage = new();
+
+        public JsonAssessmentEvidenceRepository(IWebHostEnvironment env)
         {
-            if (items == null)
-            {
-                return;
-            }
+            if (env == null) throw new ArgumentNullException(nameof(env));
 
-            lock (_syncRoot)
-            {
-                var incoming = items
-                    .Where(i => !string.IsNullOrWhiteSpace(i.ChecklistId) &&
-                                !string.IsNullOrWhiteSpace(i.EvidenceId))
-                    .ToList();
+            var dataDir = Path.Combine(env.ContentRootPath, "Data");
+            Directory.CreateDirectory(dataDir);
 
-                if (!incoming.Any())
-                {
-                    return;
-                }
+            _filePath = Path.Combine(dataDir, "assessment-evidence.json");
 
-                foreach (var inc in incoming)
-                {
-                    // Verwijder bestaande item met zelfde sleutel
-                    _items.RemoveAll(e =>
-                        e.AssessmentId == assessmentId &&
-                        e.ChecklistId.Equals(inc.ChecklistId, StringComparison.OrdinalIgnoreCase) &&
-                        e.EvidenceId.Equals(inc.EvidenceId, StringComparison.OrdinalIgnoreCase));
-
-                    _items.Add(inc);
-                }
-
-                SaveToDisk();
-            }
+            LoadFromDisk();
         }
 
         private void LoadFromDisk()
         {
-            try
+            lock (_syncRoot)
             {
-                var basePath = Directory.GetCurrentDirectory();
-                var filePath = Path.Combine(basePath, FileName);
-
-                if (!File.Exists(filePath))
+                if (!File.Exists(_filePath))
                 {
+                    _storage = new List<AssessmentEvidenceItem>();
                     return;
                 }
 
-                var json = File.ReadAllText(filePath);
-                var options = new JsonSerializerOptions
+                var json = File.ReadAllText(_filePath);
+                if (string.IsNullOrWhiteSpace(json))
                 {
-                    PropertyNameCaseInsensitive = true
-                };
-
-                var items = JsonSerializer.Deserialize<List<AssessmentEvidenceItem>>(json, options);
-                if (items == null)
-                {
+                    _storage = new List<AssessmentEvidenceItem>();
                     return;
                 }
 
-                lock (_syncRoot)
+                try
                 {
-                    _items.Clear();
-                    _items.AddRange(items);
+                    var items = JsonSerializer.Deserialize<List<AssessmentEvidenceItem>>(
+                        json,
+                        new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive = true
+                        });
+
+                    _storage = items ?? new List<AssessmentEvidenceItem>();
                 }
-            }
-            catch
-            {
-                // Fouten negeren -> lege lijst.
+                catch
+                {
+                    // If parsing fails, start with empty storage (loggen kan later nog)
+                    _storage = new List<AssessmentEvidenceItem>();
+                }
             }
         }
 
         private void SaveToDisk()
         {
-            try
+            lock (_syncRoot)
             {
-                var basePath = Directory.GetCurrentDirectory();
-                var filePath = Path.Combine(basePath, FileName);
-
-                List<AssessmentEvidenceItem> snapshot;
-                lock (_syncRoot)
-                {
-                    snapshot = _items
-                        .Select(e => e)
-                        .ToList();
-                }
-
                 var options = new JsonSerializerOptions
                 {
                     WriteIndented = true
                 };
 
-                var json = JsonSerializer.Serialize(snapshot, options);
+                var json = JsonSerializer.Serialize(_storage, options);
+                File.WriteAllText(_filePath, json);
+            }
+        }
 
-                var dir = Path.GetDirectoryName(filePath);
-                if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+        public IReadOnlyCollection<AssessmentEvidenceItem> GetByAssessment(Guid assessmentId)
+        {
+            lock (_syncRoot)
+            {
+                // Clone zodat de caller de interne lijst niet kan muteren
+                return _storage
+                    .Where(x => x.AssessmentId == assessmentId)
+                    .Select(x => new AssessmentEvidenceItem
+                    {
+                        AssessmentId = x.AssessmentId,
+                        ChecklistId = x.ChecklistId,
+                        EvidenceId = x.EvidenceId,
+                        EvidenceName = x.EvidenceName,
+                        Status = x.Status,
+                        Comment = x.Comment
+                    })
+                    .ToList();
+            }
+        }
+
+        public void Upsert(Guid assessmentId, IEnumerable<AssessmentEvidenceItem> items)
+        {
+            if (items == null) throw new ArgumentNullException(nameof(items));
+
+            lock (_syncRoot)
+            {
+                // Verwijder alle bestaande items voor dit assessment
+                _storage.RemoveAll(x => x.AssessmentId == assessmentId);
+
+                // Voeg nieuwe items toe (genormaliseerd)
+                foreach (var item in items)
                 {
-                    Directory.CreateDirectory(dir);
+                    if (item == null)
+                        continue;
+
+                    if (string.IsNullOrWhiteSpace(item.ChecklistId) ||
+                        string.IsNullOrWhiteSpace(item.EvidenceId))
+                    {
+                        // Zonder ChecklistId en EvidenceId kunnen we er niets mee
+                        continue;
+                    }
+
+                    var clone = new AssessmentEvidenceItem
+                    {
+                        AssessmentId = assessmentId,
+                        ChecklistId = item.ChecklistId.Trim(),
+                        EvidenceId = item.EvidenceId.Trim(),
+                        EvidenceName = string.IsNullOrWhiteSpace(item.EvidenceName)
+                            ? null
+                            : item.EvidenceName.Trim(),
+                        Status = string.IsNullOrWhiteSpace(item.Status)
+                            ? null
+                            : item.Status.Trim(),
+                        Comment = string.IsNullOrWhiteSpace(item.Comment)
+                            ? null
+                            : item.Comment.Trim()
+                    };
+
+                    _storage.Add(clone);
                 }
 
-                File.WriteAllText(filePath, json);
-            }
-            catch
-            {
-                // Fouten negeren; items blijven in memory beschikbaar.
+                SaveToDisk();
             }
         }
     }
