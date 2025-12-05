@@ -1,0 +1,166 @@
+﻿BewijsID;BewijsNaam
+B001;Organogram
+B002;Eigendoms- en bestuursstructuur
+B003;QMS-handboek of kwaliteitsmanual
+B004;Business continuity plan (BCP)
+B005;Screening onderaannemers en subverwerkers
+B006;Incident- en datalekprocedure (incl. rollen, termijnen en meldcriteria)
+B007;Voorbeeldcontract onderaannemers of subverwerkers
+B008;HR-beleid
+B009;Communicatiebeleid richting klanten organisatiewijzigingen
+B010;Auditrapporten SOC2/ISAE3402/ISO27001/NEN7510
+B011;Security & privacy by design
+B012;SLA-voorstel
+B013;Jaarrekeningen
+B014;Overzicht toegepaste normen en wetgeving in een compliance-matrix
+B015;Actueel ISO27001- en/of NEN7510-certificaat met scope statement
+B016;Voorbeeldcontract klanten
+B017;Architectuuroverzicht
+B018;Ondertekende verwerkersovereenkomst
+B019;Overzicht subverwerkers
+B020;Privacybeleid
+B021;Procesbeschrijving en werkinstructies voor inzage-, correctie-, verwijderings- en dataportabiliteitsverzoeken.
+B022;DPIA risicoanalyses
+B023;Technische en organisatorische maatregelen (encryptie, MFA, RBAC)
+B024;Logging en audit
+B025;FG benoemd
+B026;Bewaartermijnbeleid
+B027;Cloudproviders AVG-getoetst en geborgd
+B028;NIS2-gap-analyse of implementatieplan
+B029;Relevante beleidsdocumenten AI toepassing
+B030;CE-certificaat of conformiteitsverklaring
+B031;Communicatiebeleid richting klanten over toepassing AI
+B032;Documentatie van AI-systeem (beschrijving model, use case)
+B033;CE-certificaat of conformiteitsverklaring met technisch dossier
+B034;Product-/systeembeschrijving (datasheet, handleiding) met vermelding van software- en digitale componenten en koppelingen met andere systemen
+B035;Beschrijving van het leverings- en distributiemodel (on-premises, SaaS, OEM, app-stores, etc.)
+B036;Actueel overzicht van alle interfaces (netwerkinterfaces, poorten, protocollen, API-endpoints)
+B037;Threat model / risicoanalyse waarin laterale beweging en keteneffecten zijn meegenomen
+B038;Actuele Software Bill of Materials (SBOM) die alle gebruikte OSS- en third-party componenten omvat
+B039;Gedocumenteerde Secure Software Development Lifecycle (SSDLC) met security-gates
+B040;Formeel vulnerability- en patchmanagementproces (beleid en procedure)
+B041;Gedocumenteerd update- en supportbeleid met minimale ondersteuningsduur en end-of-life afspraken
+B042;Incident response plan met criteria voor meldingen aan ENISA/nationale autoriteit
+B043;Actuele SBOM in een gestandaardiseerd formaat (bijv. CycloneDX, SPDX)
+B044;Foto/screenshot van CE-markering op gebruikersinterface
+B045;Ondertekende EU-conformiteitsverklaring (CRA, AI Act, GDPSR/AVG) met identificatie van product en versie
+B046;Volledig technisch dossier (technical file) met systeem- en softwarearchitectuur
+B047;Logging- en monitoringbeleid met beschrijving van vastgelegde events en bewaartermijnen
+B048;Secure configuration/hardening guide voor relevante componenten (servers, appliances, cloudresources)
+B049;Third-Party/Supplier Risk Management-beleid
+B050;Onderhouds- en lifecyclebeleid met afspraken over reguliere updates
+B051;RACI-matrix of verantwoordelijkhedenoverzicht waarin rollen van fabrikant, importeur, distributeur en integrator zijn vastgelegd
+B052;Gedocumenteerde CRA-classificatie met onderbouwing waarom het product wel of niet in critical class I of II valt
+B053;Matrix of mappingdocument waarin CRA-verplichtingen zijn gekoppeld aan MDR, NIS2, AI Act, GDPR en andere relevante kaders
+B054;Configuratie van logging/audittrail datatransfers
+B055;Faillissements-, surseance- of schuldsaneringsprocedures
+B056;Tekenbevoegdheden voor contracten
+B057;Contractuele verplichtingen aan investeerders met impact op continuïteit
+B058;Cruciale functies en rollen gedocumenteerd en overdraagbaar
+B059;Back-up bevoegdheden voor kritieke functies
+B060;Capaciteitsplannen en maatregelen bij uitval medewerkers
+B061;Business continuity- of ISO22301-certificaat
+B062; functiebeschrijvingen (CISO/FG/privacy officer)
+B063; Uittreksel Kamer van Koophandel incl. UBO’s en moeder-dochterrelaties
+B064; eventueel ISO9001- of vergelijkbaar certificaat
+B065; disaster recovery plan (DRP)
+B066; Third-party/supplier risk management-beleid
+B067; format of register voor incident- en datalekregistratie
+B068; samenwerkings- of dienstverleningsovereenkomst onderaannemers of subverwerkers
+B069; medewerker gedragscode
+B070; voorbeeldmeldingen naar klanten organisatiewijzigingen en wijzigingen in voorwaarden en of nieuwe wettelijke bepalingen
+B071; samenvattingen van externe audits en periodieke rapportages.
+B072; Beleid en procesbeschrijving waarin ‘security & privacy by design’ is geborgd in projecten en ontwikkelprocessen
+B073; supportprocesbeschrijving
+B074; accountantsverklaringen
+B075; functiebeschrijvingen CISO/FG/privacy officer
+B076; interne audits/assessments en nalevings beleid. 
+B077; informatiebeveiligingsbeleid
+B078; samenwerkings- of dienstverleningsovereenkomst klanten
+B079; hostingcontract
+B080; register van verwerkingen
+B081; kopieën van subverwerkersovereenkomsten
+B082; DPIA maatregelenplan
+B083; Informatiebeveiligingsbeleid en relevante normen (bijv. NEN7510/ISO27001)
+B084; Logging- en monitoringbeleid met bewaartermijnen
+B085; Benoemingsbesluit of aanstellingsbrief van de FG
+B086; dataclassificatieschema en bewijs van geconfigureerde bewaartermijnen in systemen.
+B087; ISAE/SOC-rapport
+B088; Verwerkersovereenkomst/DPA met cloudprovider
+B089; NIS2 risicoregister
+B090; veiligheidsprocedures AI toepassing
+B091; technisch dossier
+B092; voorbeeldmeldingen naar klanten over AI incidenten en wijzigingen
+B093; data- en model governance AI systeem (datasheets/model cards)
+B094; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.
+B095; corrective en preventive maintenance
+B096; voorbeeld logbestanden datatransfers
+B097;Eigen verklaring over afwezigheid of aanwezigheid van faillissements-, surseance- of schuldsaneringsprocedures, aangevuld met recente jaarrekening of accountantsverklaring en eventuele kredietbeoordeling waaruit de financiële continuïteit blijkt.
+B098; Mandaat- of tekenbevoegdheidsregeling
+B099; Overzicht van relevante financierings- of investeringscontracten met verplichtingen die continuïteit kunnen beïnvloeden (bijvoorbeeld covenants
+B100; HR-beleid en functieprofielen voor kritieke functies
+B101; Overzicht (matrix) van primaire en back-up functionarissen voor kritieke functies
+B102; Capaciteits- of personeelsplannen (inzet, piekbelasting, minimale bezetting)
+B103; beleid en procedures voor continuïteit.
+B104; beveiligings- en privacybeleid.
+B105; schema van de juridische eigendomsstructuur o.a. holding, dochters en deelnemingen
+B106; proces- en procedureoverzicht voor procesbeheersing
+B107; continuïteitsrapportages
+B108; template en voorbeeld van ingevulde leveranciersbeoordeling voor een onderaannemer of subverwerker
+B109; voorbeelden van geanonimiseerde meldingen
+B110; RACI-matrix en beschrijving overleg- en evaluatiestructuur met onderaannemers of subverwerkers.
+B111; VOG-/screeningsbeleid kandidaten
+B112; templates voor incident-/wijzigingscommunicatie voor klanten.
+B113; sjablonen of checklists voor architectuur- en privacyreviews incl. DPIA-trigger
+B114; responstijd- en beschikbaarheidsafspraken
+B115; kredietratings of andere financiële ratio’s.
+B116; relevante procedures voor toegangsbeheer, logging en change management.
+B117; RACI-matrix en beschrijving overleg- en evaluatiestructuur met klanten.
+B118; DPIA risicoanalyses
+B119; overzicht rollen (verwerkingsverantwoordelijke/verwerker).
+B120; proces voor goedkeuring van nieuwe subverwerkers.
+B121; Ondertekende verwerkersovereenkomst
+B122; advies en of oordeel van de leveranciers FG over de DPIA
+B123; architectuur- of ontwerpdocumenten die encryptie, MFA en RBAC beschrijven
+B124; architectuur van logvoorziening of SIEM incl. integriteitsbescherming, hashing of strikte toegangsrechten
+B125; bewijs van registratie van FG bij de AP (indien verplicht)
+B126; Verklaring van Toepasselijkheid (SoA)
+B127; overzicht van datacenters en subverwerkers (incl. landen)
+B128; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.
+B129; architectuur- of procesbeschrijvingen AI toepassing
+B130; risicobeoordeling en eventuele conformiteitsbeoordeling AI syteem.
+B131; beschrijving van logretentie en logbeheerproces datatransfers.
+B132; overzicht van tekenbevoegde functionarissen (bijvoorbeeld handtekeningenlijst)
+B133; change-of-control-clausules)
+B134; procedures voor kennisoverdracht en inwerken (onboarding) bij personeelsverloop
+B135; procedures voor waarneming/vervanging en toekennen van tijdelijke rechten
+B136; draaiboeken of scenario’s voor uitval van medewerkers (bijvoorbeeld pandemie, staking, griepgolf)
+B137; notulen van overlegstructuren.
+B138; organogram met bestuurs- en managementfuncties.
+B139; voorbeelden van interne audit- of managementreviewrapporten.
+B140; scenario-oefeningen en contractclausules over exit.
+B141; overzicht van goedgekeurde onderaannemers/subverwerkers met datum van beoordeling.
+B142; escalatieschema voor interne en externe meldingen van datalekken.
+B143; Voorbeeldcontract klanten
+B144; informatieveiligheid bewustzijns- en trainingsoverzicht medewerkers.
+B145; voorbeelden van projecten waarin ontwikkelprocessen
+B146; voorbeeldrapportages RPO en RTO.
+B147; besluit- of managementnotitie waarin het DPIA-resultaat is geaccordeerd.
+B148; configuratiebeschrijvingen of schermprints waaruit de implementatie van  encryptie, MFA en RBAC blijkt.
+B149; voorbeeld van geanonimiseerde auditlogs die laten zien dat toegangs- en wijzigingslogs volledig en niet manipuleerbaar zijn.
+B150; functie- of rolbeschrijving van de FG en positionering in de organisatie (organogram).
+B151;overzicht van de scope-onderdelen die relevant zijn voor het aangeboden product of de dienst.
+B152; relevante certificeringen of assurance-rapporten van de provider (bijv. ISO27001, SOC2)
+B153; benodigde certificaten voor AI toepassing (CRA, MDR)
+B154; bestuursbesluit of volmachten waarin deze tekenbevoegdheden zijn vastgelegd.
+B155; samenvattende notitie of board memo waarin de belangrijkste risico’s en mitigerende maatregelen zijn beschreven.
+B156; voorbeelden van werkinstructies of runbooks waarmee taken overdraagbaar naar andere of nieuwe medewerkers zijn gemaakt.
+B157; voorbeelden van roosters of vervangingslijsten.
+B158; Voorbeelden van maatregelen medewerkersuitval zoals opschaling
+B159; sjablonen of checklists voor architectuur- en privacyreviews zijn vastgelegd.
+B160; beschrijving cloudplatform
+B161; DPIA Maatregelenplan.
+B162; intern due-diligenceverslag of vragenlijst waaruit AVG-toetsing en periodieke herbeoordeling van de cloudprovider blijkt.
+B163; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).
+B164; prioritering of inzet van tijdelijke krachten.
+B165; securitywhitepapers van de provider.

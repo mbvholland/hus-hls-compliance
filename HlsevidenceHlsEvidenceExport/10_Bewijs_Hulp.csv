@@ -1,0 +1,608 @@
+﻿ChecklistID;BewijsTekst;BewijsID
+Algemeen1;Organogram;B001
+Algemeen2;Eigendoms- en bestuursstructuur;B002
+Algemeen3;QMS-handboek of kwaliteitsmanual;B003
+Algemeen4;Business continuity plan (BCP);B004
+Algemeen5;Business continuity plan (BCP);B004
+Algemeen6;Screening onderaannemers en subverwerkers;B005
+Algemeen7;Incident- en datalekprocedure (incl. rollen, termijnen en meldcriteria);B006
+Algemeen8;Voorbeeldcontract onderaannemers of subverwerkers;B007
+Algemeen9;Voorbeeldcontract onderaannemers of subverwerkers;B007
+Algemeen10;HR-beleid;B008
+Algemeen11;Communicatiebeleid richting klanten organisatiewijzigingen;B009
+Algemeen12;Communicatiebeleid richting klanten organisatiewijzigingen;B009
+Algemeen13;Auditrapporten SOC2/ISAE3402/ISO27001/NEN7510;B010
+Algemeen14;Security & privacy by design;B011
+Algemeen15;SLA-voorstel;B012
+Algemeen16;Jaarrekeningen;B013
+Algemeen17;Organogram;B001
+Algemeen18;Overzicht toegepaste normen en wetgeving in een compliance-matrix;B014
+Algemeen19;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+Algemeen20;Voorbeeldcontract klanten;B016
+Algemeen21;Architectuuroverzicht;B017
+Algemeen22;Architectuuroverzicht;B017
+Algemeen23;Architectuuroverzicht;B017
+AVG1;Ondertekende verwerkersovereenkomst;B018
+AVG2;Ondertekende verwerkersovereenkomst;B018
+AVG3;Overzicht subverwerkers;B019
+AVG4;Privacybeleid;B020
+AVG5;Privacybeleid;B020
+AVG6;Privacybeleid;B020
+AVG7;Privacybeleid;B020
+AVG8;Procesbeschrijving en werkinstructies voor inzage-, correctie-, verwijderings- en dataportabiliteitsverzoeken.;B021
+AVG9;DPIA risicoanalyses;B022
+AVG10;Technische en organisatorische maatregelen (encryptie, MFA, RBAC);B023
+AVG11;Logging en audit;B024
+AVG12;Privacybeleid;B020
+AVG13;FG benoemd;B025
+AVG14;Privacybeleid;B020
+AVG15;Bewaartermijnbeleid;B026
+AVG16;Privacybeleid;B020
+AVG17;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+AVG18;Privacybeleid;B020
+AVG19;Cloudproviders AVG-getoetst en geborgd;B027
+AVG20;Privacybeleid;B020
+NEN1;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN2;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN3;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN4;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN5;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN6;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN7;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN8;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN9;Business continuity plan (BCP);B004
+NEN10;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN11;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN12;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN13;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN14;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN15;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN16;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN17;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN18;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN19;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NEN20;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+NIS2/1;NIS2-gap-analyse of implementatieplan;B028
+NIS2/2;Organogram;B001
+NIS2/3;NIS2-gap-analyse of implementatieplan;B028
+NIS2/4;NIS2-gap-analyse of implementatieplan;B028
+NIS2/5;NIS2-gap-analyse of implementatieplan;B028
+NIS2/6;NIS2-gap-analyse of implementatieplan;B028
+NIS2/7;Business continuity plan (BCP);B004
+NIS2/8;NIS2-gap-analyse of implementatieplan;B028
+NIS2/9;NIS2-gap-analyse of implementatieplan;B028
+NIS2/10;NIS2-gap-analyse of implementatieplan;B028
+NIS2/11;NIS2-gap-analyse of implementatieplan;B028
+NIS2/12;NIS2-gap-analyse of implementatieplan;B028
+NIS2/13;NIS2-gap-analyse of implementatieplan;B028
+NIS2/14;NIS2-gap-analyse of implementatieplan;B028
+NIS2/15;NIS2-gap-analyse of implementatieplan;B028
+NIS2/16;NIS2-gap-analyse of implementatieplan;B028
+NIS2/17;NIS2-gap-analyse of implementatieplan;B028
+NIS2/18;NIS2-gap-analyse of implementatieplan;B028
+NIS2/19;NIS2-gap-analyse of implementatieplan;B028
+NIS2/20;NIS2-gap-analyse of implementatieplan;B028
+AI Act1;Relevante beleidsdocumenten AI toepassing;B029
+AI Act2;Relevante beleidsdocumenten AI toepassing;B029
+AI Act3;Relevante beleidsdocumenten AI toepassing;B029
+AI Act4;Relevante beleidsdocumenten AI toepassing;B029
+AI Act5;CE-certificaat of conformiteitsverklaring;B030
+AI Act6;Relevante beleidsdocumenten AI toepassing;B029
+AI Act7;Organogram;B001
+AI Act8;Relevante beleidsdocumenten AI toepassing;B029
+AI Act9;Communicatiebeleid richting klanten over toepassing AI;B031
+AI Act10;Relevante beleidsdocumenten AI toepassing;B029
+AI Act11;Relevante beleidsdocumenten AI toepassing;B029
+AI Act12;Relevante beleidsdocumenten AI toepassing;B029
+AI Act13;Relevante beleidsdocumenten AI toepassing;B029
+AI Act14;Relevante beleidsdocumenten AI toepassing;B029
+AI Act15;Relevante beleidsdocumenten AI toepassing;B029
+AI Act16;Relevante beleidsdocumenten AI toepassing;B029
+AI Act17;Relevante beleidsdocumenten AI toepassing;B029
+AI Act18;Relevante beleidsdocumenten AI toepassing;B029
+AI Act19;Relevante beleidsdocumenten AI toepassing;B029
+AI Act20;Documentatie van AI-systeem (beschrijving model, use case);B032
+MDR1;CE-certificaat of conformiteitsverklaring;B030
+MDR2;Relevante beleidsdocumenten AI toepassing;B029
+MDR3;CE-certificaat of conformiteitsverklaring;B030
+MDR4;CE-certificaat of conformiteitsverklaring;B030
+MDR5;CE-certificaat of conformiteitsverklaring;B030
+MDR6;CE-certificaat of conformiteitsverklaring;B030
+MDR7;CE-certificaat of conformiteitsverklaring;B030
+MDR8;CE-certificaat of conformiteitsverklaring;B030
+MDR9;CE-certificaat of conformiteitsverklaring;B030
+MDR10;CE-certificaat of conformiteitsverklaring;B030
+MDR11;CE-certificaat of conformiteitsverklaring;B030
+MDR12;CE-certificaat of conformiteitsverklaring;B030
+MDR13;CE-certificaat of conformiteitsverklaring;B030
+MDR14;CE-certificaat of conformiteitsverklaring;B030
+MDR15;CE-certificaat of conformiteitsverklaring;B030
+MDR16;CE-certificaat of conformiteitsverklaring;B030
+MDR17;CE-certificaat of conformiteitsverklaring;B030
+MDR18;CE-certificaat of conformiteitsverklaring;B030
+MDR19;CE-certificaat of conformiteitsverklaring;B030
+MDR20;Documentatie van AI-systeem (beschrijving model, use case);B032
+ISO13485 / 1;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 2;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 3;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 4;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 5;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 6;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 7;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 8;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 9;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 10;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 11;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 12;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 13;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 14;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 15;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 16;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 17;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 18;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 19;CE-certificaat of conformiteitsverklaring met technisch dossier;B033
+ISO13485 / 20;Documentatie van AI-systeem (beschrijving model, use case);B032
+CRA1;Product-/systeembeschrijving (datasheet, handleiding) met vermelding van software- en digitale componenten en koppelingen met andere systemen;B034
+CRA2;Beschrijving van het leverings- en distributiemodel (on-premises, SaaS, OEM, app-stores, etc.);B035
+CRA3;Actueel overzicht van alle interfaces (netwerkinterfaces, poorten, protocollen, API-endpoints);B036
+CRA4;Threat model / risicoanalyse waarin laterale beweging en keteneffecten zijn meegenomen;B037
+CRA5;Actuele Software Bill of Materials (SBOM) die alle gebruikte OSS- en third-party componenten omvat;B038
+CRA6;Gedocumenteerde Secure Software Development Lifecycle (SSDLC) met security-gates;B039
+CRA7;Formeel vulnerability- en patchmanagementproces (beleid en procedure);B040
+CRA8;Gedocumenteerd update- en supportbeleid met minimale ondersteuningsduur en end-of-life afspraken;B041
+CRA9;Incident response plan met criteria voor meldingen aan ENISA/nationale autoriteit;B042
+CRA10;Actuele SBOM in een gestandaardiseerd formaat (bijv. CycloneDX, SPDX);B043
+CRA11;Foto/screenshot van CE-markering op gebruikersinterface;B044
+CRA12;Ondertekende EU-conformiteitsverklaring (CRA, AI Act, GDPSR/AVG) met identificatie van product en versie;B045
+CRA13;Volledig technisch dossier (technical file) met systeem- en softwarearchitectuur;B046
+CRA14;Logging- en monitoringbeleid met beschrijving van vastgelegde events en bewaartermijnen;B047
+CRA15;Secure configuration/hardening guide voor relevante componenten (servers, appliances, cloudresources);B048
+CRA16;Third-Party/Supplier Risk Management-beleid;B049
+CRA17;Onderhouds- en lifecyclebeleid met afspraken over reguliere updates;B050
+CRA18;RACI-matrix of verantwoordelijkhedenoverzicht waarin rollen van fabrikant, importeur, distributeur en integrator zijn vastgelegd;B051
+CRA19;Gedocumenteerde CRA-classificatie met onderbouwing waarom het product wel of niet in critical class I of II valt;B052
+CRA20;Matrix of mappingdocument waarin CRA-verplichtingen zijn gekoppeld aan MDR, NIS2, AI Act, GDPR en andere relevante kaders;B053
+Koppelingen1;Privacybeleid;B020
+Koppelingen2;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+Koppelingen3;Privacybeleid;B020
+Koppelingen4;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+Koppelingen5;Configuratie van logging/audittrail datatransfers;B054
+Koppelingen6;Privacybeleid;B020
+Koppelingen7;Privacybeleid;B020
+Koppelingen8;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+Koppelingen9;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+Koppelingen10;Privacybeleid;B020
+Koppelingen11;Privacybeleid;B020
+Continuiteit1;Eigendoms- en bestuursstructuur;B002
+Continuiteit2;Faillissements-, surseance- of schuldsaneringsprocedures;B055
+Continuiteit3;Tekenbevoegdheden voor contracten;B056
+Continuiteit4;Contractuele verplichtingen aan investeerders met impact op continuïteit;B057
+Continuiteit5;Jaarrekeningen;B013
+Continuiteit6;Jaarrekeningen;B013
+Continuiteit7;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+Continuiteit8;Cruciale functies en rollen gedocumenteerd en overdraagbaar;B058
+Continuiteit9;Back-up bevoegdheden voor kritieke functies;B059
+Continuiteit10;Capaciteitsplannen en maatregelen bij uitval medewerkers;B060
+Continuiteit11;Business continuity- of ISO22301-certificaat;B061
+Continuiteit12;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+Continuiteit13;Privacybeleid;B020
+Continuiteit14;Actueel ISO27001- en/of NEN7510-certificaat met scope statement;B015
+Algemeen1; functiebeschrijvingen (CISO/FG/privacy officer);B062
+Algemeen2; Uittreksel Kamer van Koophandel incl. UBO’s en moeder-dochterrelaties;B063
+Algemeen3; eventueel ISO9001- of vergelijkbaar certificaat;B064
+Algemeen4; disaster recovery plan (DRP);B065
+Algemeen5; disaster recovery plan (DRP);B065
+Algemeen6; Third-party/supplier risk management-beleid;B066
+Algemeen7; format of register voor incident- en datalekregistratie;B067
+Algemeen8; samenwerkings- of dienstverleningsovereenkomst onderaannemers of subverwerkers;B068
+Algemeen9; samenwerkings- of dienstverleningsovereenkomst onderaannemers of subverwerkers;B068
+Algemeen10; medewerker gedragscode;B069
+Algemeen11; voorbeeldmeldingen naar klanten organisatiewijzigingen en wijzigingen in voorwaarden en of nieuwe wettelijke bepalingen;B070
+Algemeen12; voorbeeldmeldingen naar klanten organisatiewijzigingen en wijzigingen in voorwaarden en of nieuwe wettelijke bepalingen;B070
+Algemeen13; samenvattingen van externe audits en periodieke rapportages.;B071
+Algemeen14; Beleid en procesbeschrijving waarin ‘security & privacy by design’ is geborgd in projecten en ontwikkelprocessen;B072
+Algemeen15; supportprocesbeschrijving;B073
+Algemeen16; accountantsverklaringen;B074
+Algemeen17; functiebeschrijvingen CISO/FG/privacy officer;B075
+Algemeen18; interne audits/assessments en nalevings beleid. ;B076
+Algemeen19; informatiebeveiligingsbeleid;B077
+Algemeen20; samenwerkings- of dienstverleningsovereenkomst klanten;B078
+Algemeen21; hostingcontract;B079
+Algemeen22; hostingcontract;B079
+Algemeen23; hostingcontract;B079
+AVG1; register van verwerkingen;B080
+AVG2; register van verwerkingen;B080
+AVG3; kopieën van subverwerkersovereenkomsten;B081
+AVG4; register van verwerkingen;B080
+AVG5; register van verwerkingen;B080
+AVG6; register van verwerkingen;B080
+AVG7; register van verwerkingen;B080
+AVG9; DPIA maatregelenplan;B082
+AVG10; Informatiebeveiligingsbeleid en relevante normen (bijv. NEN7510/ISO27001);B083
+AVG11; Logging- en monitoringbeleid met bewaartermijnen;B084
+AVG12; register van verwerkingen;B080
+AVG13; Benoemingsbesluit of aanstellingsbrief van de FG;B085
+AVG14; register van verwerkingen;B080
+AVG15; dataclassificatieschema en bewijs van geconfigureerde bewaartermijnen in systemen.;B086
+AVG16; register van verwerkingen;B080
+AVG17; ISAE/SOC-rapport;B087
+AVG18; register van verwerkingen;B080
+AVG19; Verwerkersovereenkomst/DPA met cloudprovider;B088
+AVG20; register van verwerkingen;B080
+NEN1; informatiebeveiligingsbeleid;B077
+NEN2; informatiebeveiligingsbeleid;B077
+NEN3; informatiebeveiligingsbeleid;B077
+NEN4; informatiebeveiligingsbeleid;B077
+NEN5; informatiebeveiligingsbeleid;B077
+NEN6; informatiebeveiligingsbeleid;B077
+NEN7; informatiebeveiligingsbeleid;B077
+NEN8; informatiebeveiligingsbeleid;B077
+NEN9; disaster recovery plan (DRP);B065
+NEN10; informatiebeveiligingsbeleid;B077
+NEN11; informatiebeveiligingsbeleid;B077
+NEN12; informatiebeveiligingsbeleid;B077
+NEN13; informatiebeveiligingsbeleid;B077
+NEN14; informatiebeveiligingsbeleid;B077
+NEN15; informatiebeveiligingsbeleid;B077
+NEN16; informatiebeveiligingsbeleid;B077
+NEN17; informatiebeveiligingsbeleid;B077
+NEN18; informatiebeveiligingsbeleid;B077
+NEN19; informatiebeveiligingsbeleid;B077
+NEN20; informatiebeveiligingsbeleid;B077
+NIS2/1; NIS2 risicoregister;B089
+NIS2/2; functiebeschrijvingen (CISO/FG/privacy officer);B062
+NIS2/3; NIS2 risicoregister;B089
+NIS2/4; NIS2 risicoregister;B089
+NIS2/5; NIS2 risicoregister;B089
+NIS2/6; NIS2 risicoregister;B089
+NIS2/7; disaster recovery plan (DRP);B065
+NIS2/8; NIS2 risicoregister;B089
+NIS2/9; NIS2 risicoregister;B089
+NIS2/10; NIS2 risicoregister;B089
+NIS2/11; NIS2 risicoregister;B089
+NIS2/12; NIS2 risicoregister;B089
+NIS2/13; NIS2 risicoregister;B089
+NIS2/14; NIS2 risicoregister;B089
+NIS2/15; NIS2 risicoregister;B089
+NIS2/16; NIS2 risicoregister;B089
+NIS2/17; NIS2 risicoregister;B089
+NIS2/18; NIS2 risicoregister;B089
+NIS2/19; NIS2 risicoregister;B089
+NIS2/20; NIS2 risicoregister;B089
+AI Act1; veiligheidsprocedures AI toepassing;B090
+AI Act2; veiligheidsprocedures AI toepassing;B090
+AI Act3; veiligheidsprocedures AI toepassing;B090
+AI Act4; veiligheidsprocedures AI toepassing;B090
+AI Act5; technisch dossier;B091
+AI Act6; veiligheidsprocedures AI toepassing;B090
+AI Act7; functiebeschrijvingen (CISO/FG/privacy officer);B062
+AI Act8; veiligheidsprocedures AI toepassing;B090
+AI Act9; voorbeeldmeldingen naar klanten over AI incidenten en wijzigingen;B092
+AI Act10; veiligheidsprocedures AI toepassing;B090
+AI Act11; veiligheidsprocedures AI toepassing;B090
+AI Act12; veiligheidsprocedures AI toepassing;B090
+AI Act13; veiligheidsprocedures AI toepassing;B090
+AI Act14; veiligheidsprocedures AI toepassing;B090
+AI Act15; veiligheidsprocedures AI toepassing;B090
+AI Act16; veiligheidsprocedures AI toepassing;B090
+AI Act17; veiligheidsprocedures AI toepassing;B090
+AI Act18; veiligheidsprocedures AI toepassing;B090
+AI Act19; veiligheidsprocedures AI toepassing;B090
+AI Act20; data- en model governance AI systeem (datasheets/model cards);B093
+MDR1; technisch dossier;B091
+MDR2; veiligheidsprocedures AI toepassing;B090
+MDR3; technisch dossier;B091
+MDR4; technisch dossier;B091
+MDR5; technisch dossier;B091
+MDR6; technisch dossier;B091
+MDR7; technisch dossier;B091
+MDR8; technisch dossier;B091
+MDR9; technisch dossier;B091
+MDR10; technisch dossier;B091
+MDR11; technisch dossier;B091
+MDR12; technisch dossier;B091
+MDR13; technisch dossier;B091
+MDR14; technisch dossier;B091
+MDR15; technisch dossier;B091
+MDR16; technisch dossier;B091
+MDR17; technisch dossier;B091
+MDR18; technisch dossier;B091
+MDR19; technisch dossier;B091
+MDR20; data- en model governance AI systeem (datasheets/model cards);B093
+ISO13485 / 1; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 2; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 3; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 4; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 5; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 6; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 7; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 8; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 9; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 10; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 11; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 12; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 13; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 14; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 15; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 16; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 17; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 18; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 19; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+ISO13485 / 20; data- en model governance AI systeem (datasheets/model cards);B093
+CRA17; corrective en preventive maintenance;B095
+Koppelingen1; register van verwerkingen;B080
+Koppelingen2; informatiebeveiligingsbeleid;B077
+Koppelingen3; register van verwerkingen;B080
+Koppelingen4; informatiebeveiligingsbeleid;B077
+Koppelingen5; voorbeeld logbestanden datatransfers;B096
+Koppelingen6; register van verwerkingen;B080
+Koppelingen7; register van verwerkingen;B080
+Koppelingen8; informatiebeveiligingsbeleid;B077
+Koppelingen9; informatiebeveiligingsbeleid;B077
+Koppelingen10; register van verwerkingen;B080
+Koppelingen11; register van verwerkingen;B080
+Continuiteit1; Uittreksel Kamer van Koophandel incl. UBO’s en moeder-dochterrelaties;B063
+Continuiteit2;Eigen verklaring over afwezigheid of aanwezigheid van faillissements-, surseance- of schuldsaneringsprocedures, aangevuld met recente jaarrekening of accountantsverklaring en eventuele kredietbeoordeling waaruit de financiële continuïteit blijkt.;B097
+Continuiteit3; Mandaat- of tekenbevoegdheidsregeling;B098
+Continuiteit4; Overzicht van relevante financierings- of investeringscontracten met verplichtingen die continuïteit kunnen beïnvloeden (bijvoorbeeld covenants;B099
+Continuiteit5; accountantsverklaringen;B074
+Continuiteit6; accountantsverklaringen;B074
+Continuiteit7; informatiebeveiligingsbeleid;B077
+Continuiteit8; HR-beleid en functieprofielen voor kritieke functies;B100
+Continuiteit9; Overzicht (matrix) van primaire en back-up functionarissen voor kritieke functies;B101
+Continuiteit10; Capaciteits- of personeelsplannen (inzet, piekbelasting, minimale bezetting);B102
+Continuiteit11; beleid en procedures voor continuïteit.;B103
+Continuiteit12; informatiebeveiligingsbeleid;B077
+Continuiteit13; register van verwerkingen;B080
+Continuiteit14; informatiebeveiligingsbeleid;B077
+Algemeen1; beveiligings- en privacybeleid.;B104
+Algemeen2; schema van de juridische eigendomsstructuur o.a. holding, dochters en deelnemingen;B105
+Algemeen3; proces- en procedureoverzicht voor procesbeheersing;B106
+Algemeen4; continuïteitsrapportages;B107
+Algemeen5; continuïteitsrapportages;B107
+Algemeen6; template en voorbeeld van ingevulde leveranciersbeoordeling voor een onderaannemer of subverwerker;B108
+Algemeen7; voorbeelden van geanonimiseerde meldingen;B109
+Algemeen8; RACI-matrix en beschrijving overleg- en evaluatiestructuur met onderaannemers of subverwerkers.;B110
+Algemeen9; RACI-matrix en beschrijving overleg- en evaluatiestructuur met onderaannemers of subverwerkers.;B110
+Algemeen10; VOG-/screeningsbeleid kandidaten;B111
+Algemeen11; templates voor incident-/wijzigingscommunicatie voor klanten.;B112
+Algemeen12; templates voor incident-/wijzigingscommunicatie voor klanten.;B112
+Algemeen14; sjablonen of checklists voor architectuur- en privacyreviews incl. DPIA-trigger;B113
+Algemeen15; responstijd- en beschikbaarheidsafspraken;B114
+Algemeen16; kredietratings of andere financiële ratio’s.;B115
+Algemeen17; beveiligings- en privacybeleid.;B104
+Algemeen19; relevante procedures voor toegangsbeheer, logging en change management.;B116
+Algemeen20; RACI-matrix en beschrijving overleg- en evaluatiestructuur met klanten.;B117
+Algemeen21; DPIA risicoanalyses;B118
+Algemeen22; DPIA risicoanalyses;B118
+Algemeen23; DPIA risicoanalyses;B118
+AVG1; overzicht rollen (verwerkingsverantwoordelijke/verwerker).;B119
+AVG2; overzicht rollen (verwerkingsverantwoordelijke/verwerker).;B119
+AVG3; proces voor goedkeuring van nieuwe subverwerkers.;B120
+AVG4; Ondertekende verwerkersovereenkomst;B121
+AVG5; Ondertekende verwerkersovereenkomst;B121
+AVG6; Ondertekende verwerkersovereenkomst;B121
+AVG7; Ondertekende verwerkersovereenkomst;B121
+AVG9; advies en of oordeel van de leveranciers FG over de DPIA;B122
+AVG10; architectuur- of ontwerpdocumenten die encryptie, MFA en RBAC beschrijven;B123
+AVG11; architectuur van logvoorziening of SIEM incl. integriteitsbescherming, hashing of strikte toegangsrechten;B124
+AVG12; Ondertekende verwerkersovereenkomst;B121
+AVG13; bewijs van registratie van FG bij de AP (indien verplicht);B125
+AVG14; Ondertekende verwerkersovereenkomst;B121
+AVG16; Ondertekende verwerkersovereenkomst;B121
+AVG17; Verklaring van Toepasselijkheid (SoA);B126
+AVG18; Ondertekende verwerkersovereenkomst;B121
+AVG19; overzicht van datacenters en subverwerkers (incl. landen);B127
+AVG20; Ondertekende verwerkersovereenkomst;B121
+NEN1; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN2; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN3; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN4; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN5; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN6; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN7; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN8; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN9; continuïteitsrapportages;B107
+NEN10; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN11; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN12; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN13; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN14; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN15; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN16; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN17; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN18; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN19; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NEN20; relevante procedures voor toegangsbeheer, logging en change management.;B116
+NIS2/1; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/2; beveiligings- en privacybeleid.;B104
+NIS2/3; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/4; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/5; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/6; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/7; continuïteitsrapportages;B107
+NIS2/8; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/9; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/10; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/11; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/12; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/13; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/14; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/15; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/16; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/17; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/18; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/19; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+NIS2/20; overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.;B128
+AI Act1; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act2; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act3; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act4; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act5; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+AI Act6; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act7; beveiligings- en privacybeleid.;B104
+AI Act8; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act9; templates voor incident-/wijzigingscommunicatie voor klanten.;B112
+AI Act10; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act11; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act12; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act13; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act14; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act15; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act16; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act17; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act18; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act19; architectuur- of procesbeschrijvingen AI toepassing;B129
+AI Act20; risicobeoordeling en eventuele conformiteitsbeoordeling AI syteem.;B130
+MDR1; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR2; architectuur- of procesbeschrijvingen AI toepassing;B129
+MDR3; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR4; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR5; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR6; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR7; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR8; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR9; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR10; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR11; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR12; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR13; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR14; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR15; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR16; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR17; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR18; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR19; ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.;B094
+MDR20; risicobeoordeling en eventuele conformiteitsbeoordeling AI syteem.;B130
+ISO13485 / 20; risicobeoordeling en eventuele conformiteitsbeoordeling AI syteem.;B130
+Koppelingen1; Ondertekende verwerkersovereenkomst;B121
+Koppelingen2; relevante procedures voor toegangsbeheer, logging en change management.;B116
+Koppelingen3; Ondertekende verwerkersovereenkomst;B121
+Koppelingen4; relevante procedures voor toegangsbeheer, logging en change management.;B116
+Koppelingen5; beschrijving van logretentie en logbeheerproces datatransfers.;B131
+Koppelingen6; Ondertekende verwerkersovereenkomst;B121
+Koppelingen7; Ondertekende verwerkersovereenkomst;B121
+Koppelingen8; relevante procedures voor toegangsbeheer, logging en change management.;B116
+Koppelingen9; relevante procedures voor toegangsbeheer, logging en change management.;B116
+Koppelingen10; Ondertekende verwerkersovereenkomst;B121
+Koppelingen11; Ondertekende verwerkersovereenkomst;B121
+Continuiteit1; schema van de juridische eigendomsstructuur o.a. holding, dochters en deelnemingen;B105
+Continuiteit3; overzicht van tekenbevoegde functionarissen (bijvoorbeeld handtekeningenlijst);B132
+Continuiteit4; change-of-control-clausules);B133
+Continuiteit5; kredietratings of andere financiële ratio’s.;B115
+Continuiteit6; kredietratings of andere financiële ratio’s.;B115
+Continuiteit7; relevante procedures voor toegangsbeheer, logging en change management.;B116
+Continuiteit8; procedures voor kennisoverdracht en inwerken (onboarding) bij personeelsverloop;B134
+Continuiteit9; procedures voor waarneming/vervanging en toekennen van tijdelijke rechten;B135
+Continuiteit10; draaiboeken of scenario’s voor uitval van medewerkers (bijvoorbeeld pandemie, staking, griepgolf);B136
+Continuiteit12; relevante procedures voor toegangsbeheer, logging en change management.;B116
+Continuiteit13; Ondertekende verwerkersovereenkomst;B121
+Continuiteit14; relevante procedures voor toegangsbeheer, logging en change management.;B116
+Algemeen1; notulen van overlegstructuren.;B137
+Algemeen2; organogram met bestuurs- en managementfuncties.;B138
+Algemeen3; voorbeelden van interne audit- of managementreviewrapporten.;B139
+Algemeen4; scenario-oefeningen en contractclausules over exit.;B140
+Algemeen5; scenario-oefeningen en contractclausules over exit.;B140
+Algemeen6; overzicht van goedgekeurde onderaannemers/subverwerkers met datum van beoordeling.;B141
+Algemeen7; escalatieschema voor interne en externe meldingen van datalekken.;B142
+Algemeen9; Voorbeeldcontract klanten;B143
+Algemeen10; informatieveiligheid bewustzijns- en trainingsoverzicht medewerkers.;B144
+Algemeen14; voorbeelden van projecten waarin ontwikkelprocessen;B145
+Algemeen15; voorbeeldrapportages RPO en RTO.;B146
+Algemeen17; notulen van overlegstructuren.;B137
+Algemeen21; DPIA maatregelenplan;B082
+Algemeen22; DPIA maatregelenplan;B082
+Algemeen23; DPIA maatregelenplan;B082
+AVG4; DPIA risicoanalyses;B118
+AVG5; DPIA risicoanalyses;B118
+AVG6; DPIA risicoanalyses;B118
+AVG7; DPIA risicoanalyses;B118
+AVG9; besluit- of managementnotitie waarin het DPIA-resultaat is geaccordeerd.;B147
+AVG10; configuratiebeschrijvingen of schermprints waaruit de implementatie van  encryptie, MFA en RBAC blijkt.;B148
+AVG11; voorbeeld van geanonimiseerde auditlogs die laten zien dat toegangs- en wijzigingslogs volledig en niet manipuleerbaar zijn.;B149
+AVG12; DPIA risicoanalyses;B118
+AVG13; functie- of rolbeschrijving van de FG en positionering in de organisatie (organogram).;B150
+AVG14; DPIA risicoanalyses;B118
+AVG16; DPIA risicoanalyses;B118
+AVG17;overzicht van de scope-onderdelen die relevant zijn voor het aangeboden product of de dienst.;B151
+AVG18; DPIA risicoanalyses;B118
+AVG19; relevante certificeringen of assurance-rapporten van de provider (bijv. ISO27001, SOC2);B152
+AVG20; DPIA risicoanalyses;B118
+NEN9; scenario-oefeningen en contractclausules over exit.;B140
+NIS2/2; notulen van overlegstructuren.;B137
+NIS2/7; scenario-oefeningen en contractclausules over exit.;B140
+AI Act1; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+AI Act2; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+AI Act3; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+AI Act4; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+AI Act6; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+AI Act7; notulen van overlegstructuren.;B137
+AI Act8; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+AI Act10; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+AI Act11; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+AI Act12; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+AI Act13; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+AI Act14; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+AI Act15; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+AI Act16; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+AI Act17; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+AI Act18; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+AI Act19; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+MDR2; benodigde certificaten voor AI toepassing (CRA, MDR);B153
+Koppelingen1; DPIA risicoanalyses;B118
+Koppelingen3; DPIA risicoanalyses;B118
+Koppelingen6; DPIA risicoanalyses;B118
+Koppelingen7; DPIA risicoanalyses;B118
+Koppelingen10; DPIA risicoanalyses;B118
+Koppelingen11; DPIA risicoanalyses;B118
+Continuiteit1; organogram met bestuurs- en managementfuncties.;B138
+Continuiteit3; bestuursbesluit of volmachten waarin deze tekenbevoegdheden zijn vastgelegd.;B154
+Continuiteit4; samenvattende notitie of board memo waarin de belangrijkste risico’s en mitigerende maatregelen zijn beschreven.;B155
+Continuiteit8; voorbeelden van werkinstructies of runbooks waarmee taken overdraagbaar naar andere of nieuwe medewerkers zijn gemaakt.;B156
+Continuiteit9; voorbeelden van roosters of vervangingslijsten.;B157
+Continuiteit10; Voorbeelden van maatregelen medewerkersuitval zoals opschaling;B158
+Continuiteit13; DPIA risicoanalyses;B118
+Algemeen9; samenwerkings- of dienstverleningsovereenkomst klanten;B078
+Algemeen14; sjablonen of checklists voor architectuur- en privacyreviews zijn vastgelegd.;B159
+Algemeen21; beschrijving cloudplatform;B160
+Algemeen22; beschrijving cloudplatform;B160
+Algemeen23; beschrijving cloudplatform;B160
+AVG4; DPIA Maatregelenplan.;B161
+AVG5; DPIA Maatregelenplan.;B161
+AVG6; DPIA Maatregelenplan.;B161
+AVG7; DPIA Maatregelenplan.;B161
+AVG12; DPIA Maatregelenplan.;B161
+AVG14; DPIA Maatregelenplan.;B161
+AVG16; DPIA Maatregelenplan.;B161
+AVG18; DPIA Maatregelenplan.;B161
+AVG19; intern due-diligenceverslag of vragenlijst waaruit AVG-toetsing en periodieke herbeoordeling van de cloudprovider blijkt.;B162
+AVG20; DPIA Maatregelenplan.;B161
+AI Act1; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+AI Act2; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+AI Act3; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+AI Act4; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+AI Act6; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+AI Act8; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+AI Act10; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+AI Act11; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+AI Act12; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+AI Act13; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+AI Act14; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+AI Act15; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+AI Act16; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+AI Act17; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+AI Act18; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+AI Act19; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+MDR2; auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).;B163
+Koppelingen1; DPIA Maatregelenplan.;B161
+Koppelingen3; DPIA Maatregelenplan.;B161
+Koppelingen6; DPIA Maatregelenplan.;B161
+Koppelingen7; DPIA Maatregelenplan.;B161
+Koppelingen10; DPIA Maatregelenplan.;B161
+Koppelingen11; DPIA Maatregelenplan.;B161
+Continuiteit10; prioritering of inzet van tijdelijke krachten.;B164
+Continuiteit13; DPIA Maatregelenplan.;B161
+Algemeen9; RACI-matrix en beschrijving overleg- en evaluatiestructuur met klanten.;B117
+Algemeen21; securitywhitepapers van de provider.;B165
+Algemeen22; securitywhitepapers van de provider.;B165
+Algemeen23; securitywhitepapers van de provider.;B165

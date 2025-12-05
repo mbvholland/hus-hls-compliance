@@ -1,5 +1,662 @@
-[
-  { "evidenceId": "B001", "name": "DPIA-rapport" },
-  { "evidenceId": "B002", "name": "Verwerkersovereenkomst (BoZ)" },
-  { "evidenceId": "B003", "name": "ISMS-certificaat (ISO 27001)" }
+﻿[
+    {
+        "EvidenceId":  "B001",
+        "Name":  "Organogram"
+    },
+    {
+        "EvidenceId":  "B002",
+        "Name":  "Eigendoms- en bestuursstructuur"
+    },
+    {
+        "EvidenceId":  "B003",
+        "Name":  "QMS-handboek of kwaliteitsmanual"
+    },
+    {
+        "EvidenceId":  "B004",
+        "Name":  "Business continuity plan (BCP)"
+    },
+    {
+        "EvidenceId":  "B005",
+        "Name":  "Screening onderaannemers en subverwerkers"
+    },
+    {
+        "EvidenceId":  "B006",
+        "Name":  "Incident- en datalekprocedure (incl. rollen, termijnen en meldcriteria)"
+    },
+    {
+        "EvidenceId":  "B007",
+        "Name":  "Voorbeeldcontract onderaannemers of subverwerkers"
+    },
+    {
+        "EvidenceId":  "B008",
+        "Name":  "HR-beleid"
+    },
+    {
+        "EvidenceId":  "B009",
+        "Name":  "Communicatiebeleid richting klanten organisatiewijzigingen"
+    },
+    {
+        "EvidenceId":  "B010",
+        "Name":  "Auditrapporten SOC2/ISAE3402/ISO27001/NEN7510"
+    },
+    {
+        "EvidenceId":  "B011",
+        "Name":  "Security \u0026 privacy by design"
+    },
+    {
+        "EvidenceId":  "B012",
+        "Name":  "SLA-voorstel"
+    },
+    {
+        "EvidenceId":  "B013",
+        "Name":  "Jaarrekeningen"
+    },
+    {
+        "EvidenceId":  "B014",
+        "Name":  "Overzicht toegepaste normen en wetgeving in een compliance-matrix"
+    },
+    {
+        "EvidenceId":  "B015",
+        "Name":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement"
+    },
+    {
+        "EvidenceId":  "B016",
+        "Name":  "Voorbeeldcontract klanten"
+    },
+    {
+        "EvidenceId":  "B017",
+        "Name":  "Architectuuroverzicht"
+    },
+    {
+        "EvidenceId":  "B018",
+        "Name":  "Ondertekende verwerkersovereenkomst"
+    },
+    {
+        "EvidenceId":  "B019",
+        "Name":  "Overzicht subverwerkers"
+    },
+    {
+        "EvidenceId":  "B020",
+        "Name":  "Privacybeleid"
+    },
+    {
+        "EvidenceId":  "B021",
+        "Name":  "Procesbeschrijving en werkinstructies voor inzage-, correctie-, verwijderings- en dataportabiliteitsverzoeken."
+    },
+    {
+        "EvidenceId":  "B022",
+        "Name":  "DPIA risicoanalyses"
+    },
+    {
+        "EvidenceId":  "B023",
+        "Name":  "Technische en organisatorische maatregelen (encryptie, MFA, RBAC)"
+    },
+    {
+        "EvidenceId":  "B024",
+        "Name":  "Logging en audit"
+    },
+    {
+        "EvidenceId":  "B025",
+        "Name":  "FG benoemd"
+    },
+    {
+        "EvidenceId":  "B026",
+        "Name":  "Bewaartermijnbeleid"
+    },
+    {
+        "EvidenceId":  "B027",
+        "Name":  "Cloudproviders AVG-getoetst en geborgd"
+    },
+    {
+        "EvidenceId":  "B028",
+        "Name":  "NIS2-gap-analyse of implementatieplan"
+    },
+    {
+        "EvidenceId":  "B029",
+        "Name":  "Relevante beleidsdocumenten AI toepassing"
+    },
+    {
+        "EvidenceId":  "B030",
+        "Name":  "CE-certificaat of conformiteitsverklaring"
+    },
+    {
+        "EvidenceId":  "B031",
+        "Name":  "Communicatiebeleid richting klanten over toepassing AI"
+    },
+    {
+        "EvidenceId":  "B032",
+        "Name":  "Documentatie van AI-systeem (beschrijving model, use case)"
+    },
+    {
+        "EvidenceId":  "B033",
+        "Name":  "CE-certificaat of conformiteitsverklaring met technisch dossier"
+    },
+    {
+        "EvidenceId":  "B034",
+        "Name":  "Product-/systeembeschrijving (datasheet, handleiding) met vermelding van software- en digitale componenten en koppelingen met andere systemen"
+    },
+    {
+        "EvidenceId":  "B035",
+        "Name":  "Beschrijving van het leverings- en distributiemodel (on-premises, SaaS, OEM, app-stores, etc.)"
+    },
+    {
+        "EvidenceId":  "B036",
+        "Name":  "Actueel overzicht van alle interfaces (netwerkinterfaces, poorten, protocollen, API-endpoints)"
+    },
+    {
+        "EvidenceId":  "B037",
+        "Name":  "Threat model / risicoanalyse waarin laterale beweging en keteneffecten zijn meegenomen"
+    },
+    {
+        "EvidenceId":  "B038",
+        "Name":  "Actuele Software Bill of Materials (SBOM) die alle gebruikte OSS- en third-party componenten omvat"
+    },
+    {
+        "EvidenceId":  "B039",
+        "Name":  "Gedocumenteerde Secure Software Development Lifecycle (SSDLC) met security-gates"
+    },
+    {
+        "EvidenceId":  "B040",
+        "Name":  "Formeel vulnerability- en patchmanagementproces (beleid en procedure)"
+    },
+    {
+        "EvidenceId":  "B041",
+        "Name":  "Gedocumenteerd update- en supportbeleid met minimale ondersteuningsduur en end-of-life afspraken"
+    },
+    {
+        "EvidenceId":  "B042",
+        "Name":  "Incident response plan met criteria voor meldingen aan ENISA/nationale autoriteit"
+    },
+    {
+        "EvidenceId":  "B043",
+        "Name":  "Actuele SBOM in een gestandaardiseerd formaat (bijv. CycloneDX, SPDX)"
+    },
+    {
+        "EvidenceId":  "B044",
+        "Name":  "Foto/screenshot van CE-markering op gebruikersinterface"
+    },
+    {
+        "EvidenceId":  "B045",
+        "Name":  "Ondertekende EU-conformiteitsverklaring (CRA, AI Act, GDPSR/AVG) met identificatie van product en versie"
+    },
+    {
+        "EvidenceId":  "B046",
+        "Name":  "Volledig technisch dossier (technical file) met systeem- en softwarearchitectuur"
+    },
+    {
+        "EvidenceId":  "B047",
+        "Name":  "Logging- en monitoringbeleid met beschrijving van vastgelegde events en bewaartermijnen"
+    },
+    {
+        "EvidenceId":  "B048",
+        "Name":  "Secure configuration/hardening guide voor relevante componenten (servers, appliances, cloudresources)"
+    },
+    {
+        "EvidenceId":  "B049",
+        "Name":  "Third-Party/Supplier Risk Management-beleid"
+    },
+    {
+        "EvidenceId":  "B050",
+        "Name":  "Onderhouds- en lifecyclebeleid met afspraken over reguliere updates"
+    },
+    {
+        "EvidenceId":  "B051",
+        "Name":  "RACI-matrix of verantwoordelijkhedenoverzicht waarin rollen van fabrikant, importeur, distributeur en integrator zijn vastgelegd"
+    },
+    {
+        "EvidenceId":  "B052",
+        "Name":  "Gedocumenteerde CRA-classificatie met onderbouwing waarom het product wel of niet in critical class I of II valt"
+    },
+    {
+        "EvidenceId":  "B053",
+        "Name":  "Matrix of mappingdocument waarin CRA-verplichtingen zijn gekoppeld aan MDR, NIS2, AI Act, GDPR en andere relevante kaders"
+    },
+    {
+        "EvidenceId":  "B054",
+        "Name":  "Configuratie van logging/audittrail datatransfers"
+    },
+    {
+        "EvidenceId":  "B055",
+        "Name":  "Faillissements-, surseance- of schuldsaneringsprocedures"
+    },
+    {
+        "EvidenceId":  "B056",
+        "Name":  "Tekenbevoegdheden voor contracten"
+    },
+    {
+        "EvidenceId":  "B057",
+        "Name":  "Contractuele verplichtingen aan investeerders met impact op continuïteit"
+    },
+    {
+        "EvidenceId":  "B058",
+        "Name":  "Cruciale functies en rollen gedocumenteerd en overdraagbaar"
+    },
+    {
+        "EvidenceId":  "B059",
+        "Name":  "Back-up bevoegdheden voor kritieke functies"
+    },
+    {
+        "EvidenceId":  "B060",
+        "Name":  "Capaciteitsplannen en maatregelen bij uitval medewerkers"
+    },
+    {
+        "EvidenceId":  "B061",
+        "Name":  "Business continuity- of ISO22301-certificaat"
+    },
+    {
+        "EvidenceId":  "B062",
+        "Name":  "functiebeschrijvingen (CISO/FG/privacy officer)"
+    },
+    {
+        "EvidenceId":  "B063",
+        "Name":  "Uittreksel Kamer van Koophandel incl. UBO’s en moeder-dochterrelaties"
+    },
+    {
+        "EvidenceId":  "B064",
+        "Name":  "eventueel ISO9001- of vergelijkbaar certificaat"
+    },
+    {
+        "EvidenceId":  "B065",
+        "Name":  "disaster recovery plan (DRP)"
+    },
+    {
+        "EvidenceId":  "B066",
+        "Name":  "Third-party/supplier risk management-beleid"
+    },
+    {
+        "EvidenceId":  "B067",
+        "Name":  "format of register voor incident- en datalekregistratie"
+    },
+    {
+        "EvidenceId":  "B068",
+        "Name":  "samenwerkings- of dienstverleningsovereenkomst onderaannemers of subverwerkers"
+    },
+    {
+        "EvidenceId":  "B069",
+        "Name":  "medewerker gedragscode"
+    },
+    {
+        "EvidenceId":  "B070",
+        "Name":  "voorbeeldmeldingen naar klanten organisatiewijzigingen en wijzigingen in voorwaarden en of nieuwe wettelijke bepalingen"
+    },
+    {
+        "EvidenceId":  "B071",
+        "Name":  "samenvattingen van externe audits en periodieke rapportages."
+    },
+    {
+        "EvidenceId":  "B072",
+        "Name":  "Beleid en procesbeschrijving waarin ‘security \u0026 privacy by design’ is geborgd in projecten en ontwikkelprocessen"
+    },
+    {
+        "EvidenceId":  "B073",
+        "Name":  "supportprocesbeschrijving"
+    },
+    {
+        "EvidenceId":  "B074",
+        "Name":  "accountantsverklaringen"
+    },
+    {
+        "EvidenceId":  "B075",
+        "Name":  "functiebeschrijvingen CISO/FG/privacy officer"
+    },
+    {
+        "EvidenceId":  "B076",
+        "Name":  "interne audits/assessments en nalevings beleid. "
+    },
+    {
+        "EvidenceId":  "B077",
+        "Name":  "informatiebeveiligingsbeleid"
+    },
+    {
+        "EvidenceId":  "B078",
+        "Name":  "samenwerkings- of dienstverleningsovereenkomst klanten"
+    },
+    {
+        "EvidenceId":  "B079",
+        "Name":  "hostingcontract"
+    },
+    {
+        "EvidenceId":  "B080",
+        "Name":  "register van verwerkingen"
+    },
+    {
+        "EvidenceId":  "B081",
+        "Name":  "kopieën van subverwerkersovereenkomsten"
+    },
+    {
+        "EvidenceId":  "B082",
+        "Name":  "DPIA maatregelenplan"
+    },
+    {
+        "EvidenceId":  "B083",
+        "Name":  "Informatiebeveiligingsbeleid en relevante normen (bijv. NEN7510/ISO27001)"
+    },
+    {
+        "EvidenceId":  "B084",
+        "Name":  "Logging- en monitoringbeleid met bewaartermijnen"
+    },
+    {
+        "EvidenceId":  "B085",
+        "Name":  "Benoemingsbesluit of aanstellingsbrief van de FG"
+    },
+    {
+        "EvidenceId":  "B086",
+        "Name":  "dataclassificatieschema en bewijs van geconfigureerde bewaartermijnen in systemen."
+    },
+    {
+        "EvidenceId":  "B087",
+        "Name":  "ISAE/SOC-rapport"
+    },
+    {
+        "EvidenceId":  "B088",
+        "Name":  "Verwerkersovereenkomst/DPA met cloudprovider"
+    },
+    {
+        "EvidenceId":  "B089",
+        "Name":  "NIS2 risicoregister"
+    },
+    {
+        "EvidenceId":  "B090",
+        "Name":  "veiligheidsprocedures AI toepassing"
+    },
+    {
+        "EvidenceId":  "B091",
+        "Name":  "technisch dossier"
+    },
+    {
+        "EvidenceId":  "B092",
+        "Name":  "voorbeeldmeldingen naar klanten over AI incidenten en wijzigingen"
+    },
+    {
+        "EvidenceId":  "B093",
+        "Name":  "data- en model governance AI systeem (datasheets/model cards)"
+    },
+    {
+        "EvidenceId":  "B094",
+        "Name":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen."
+    },
+    {
+        "EvidenceId":  "B095",
+        "Name":  "corrective en preventive maintenance"
+    },
+    {
+        "EvidenceId":  "B096",
+        "Name":  "voorbeeld logbestanden datatransfers"
+    },
+    {
+        "EvidenceId":  "B097",
+        "Name":  "Eigen verklaring over afwezigheid of aanwezigheid van faillissements-, surseance- of schuldsaneringsprocedures, aangevuld met recente jaarrekening of accountantsverklaring en eventuele kredietbeoordeling waaruit de financiële continuïteit blijkt."
+    },
+    {
+        "EvidenceId":  "B098",
+        "Name":  "Mandaat- of tekenbevoegdheidsregeling"
+    },
+    {
+        "EvidenceId":  "B099",
+        "Name":  "Overzicht van relevante financierings- of investeringscontracten met verplichtingen die continuïteit kunnen beïnvloeden (bijvoorbeeld covenants"
+    },
+    {
+        "EvidenceId":  "B100",
+        "Name":  "HR-beleid en functieprofielen voor kritieke functies"
+    },
+    {
+        "EvidenceId":  "B101",
+        "Name":  "Overzicht (matrix) van primaire en back-up functionarissen voor kritieke functies"
+    },
+    {
+        "EvidenceId":  "B102",
+        "Name":  "Capaciteits- of personeelsplannen (inzet, piekbelasting, minimale bezetting)"
+    },
+    {
+        "EvidenceId":  "B103",
+        "Name":  "beleid en procedures voor continuïteit."
+    },
+    {
+        "EvidenceId":  "B104",
+        "Name":  "beveiligings- en privacybeleid."
+    },
+    {
+        "EvidenceId":  "B105",
+        "Name":  "schema van de juridische eigendomsstructuur o.a. holding, dochters en deelnemingen"
+    },
+    {
+        "EvidenceId":  "B106",
+        "Name":  "proces- en procedureoverzicht voor procesbeheersing"
+    },
+    {
+        "EvidenceId":  "B107",
+        "Name":  "continuïteitsrapportages"
+    },
+    {
+        "EvidenceId":  "B108",
+        "Name":  "template en voorbeeld van ingevulde leveranciersbeoordeling voor een onderaannemer of subverwerker"
+    },
+    {
+        "EvidenceId":  "B109",
+        "Name":  "voorbeelden van geanonimiseerde meldingen"
+    },
+    {
+        "EvidenceId":  "B110",
+        "Name":  "RACI-matrix en beschrijving overleg- en evaluatiestructuur met onderaannemers of subverwerkers."
+    },
+    {
+        "EvidenceId":  "B111",
+        "Name":  "VOG-/screeningsbeleid kandidaten"
+    },
+    {
+        "EvidenceId":  "B112",
+        "Name":  "templates voor incident-/wijzigingscommunicatie voor klanten."
+    },
+    {
+        "EvidenceId":  "B113",
+        "Name":  "sjablonen of checklists voor architectuur- en privacyreviews incl. DPIA-trigger"
+    },
+    {
+        "EvidenceId":  "B114",
+        "Name":  "responstijd- en beschikbaarheidsafspraken"
+    },
+    {
+        "EvidenceId":  "B115",
+        "Name":  "kredietratings of andere financiële ratio’s."
+    },
+    {
+        "EvidenceId":  "B116",
+        "Name":  "relevante procedures voor toegangsbeheer, logging en change management."
+    },
+    {
+        "EvidenceId":  "B117",
+        "Name":  "RACI-matrix en beschrijving overleg- en evaluatiestructuur met klanten."
+    },
+    {
+        "EvidenceId":  "B118",
+        "Name":  "DPIA risicoanalyses"
+    },
+    {
+        "EvidenceId":  "B119",
+        "Name":  "overzicht rollen (verwerkingsverantwoordelijke/verwerker)."
+    },
+    {
+        "EvidenceId":  "B120",
+        "Name":  "proces voor goedkeuring van nieuwe subverwerkers."
+    },
+    {
+        "EvidenceId":  "B121",
+        "Name":  "Ondertekende verwerkersovereenkomst"
+    },
+    {
+        "EvidenceId":  "B122",
+        "Name":  "advies en of oordeel van de leveranciers FG over de DPIA"
+    },
+    {
+        "EvidenceId":  "B123",
+        "Name":  "architectuur- of ontwerpdocumenten die encryptie, MFA en RBAC beschrijven"
+    },
+    {
+        "EvidenceId":  "B124",
+        "Name":  "architectuur van logvoorziening of SIEM incl. integriteitsbescherming, hashing of strikte toegangsrechten"
+    },
+    {
+        "EvidenceId":  "B125",
+        "Name":  "bewijs van registratie van FG bij de AP (indien verplicht)"
+    },
+    {
+        "EvidenceId":  "B126",
+        "Name":  "Verklaring van Toepasselijkheid (SoA)"
+    },
+    {
+        "EvidenceId":  "B127",
+        "Name":  "overzicht van datacenters en subverwerkers (incl. landen)"
+    },
+    {
+        "EvidenceId":  "B128",
+        "Name":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen."
+    },
+    {
+        "EvidenceId":  "B129",
+        "Name":  "architectuur- of procesbeschrijvingen AI toepassing"
+    },
+    {
+        "EvidenceId":  "B130",
+        "Name":  "risicobeoordeling en eventuele conformiteitsbeoordeling AI syteem."
+    },
+    {
+        "EvidenceId":  "B131",
+        "Name":  "beschrijving van logretentie en logbeheerproces datatransfers."
+    },
+    {
+        "EvidenceId":  "B132",
+        "Name":  "overzicht van tekenbevoegde functionarissen (bijvoorbeeld handtekeningenlijst)"
+    },
+    {
+        "EvidenceId":  "B133",
+        "Name":  "change-of-control-clausules)"
+    },
+    {
+        "EvidenceId":  "B134",
+        "Name":  "procedures voor kennisoverdracht en inwerken (onboarding) bij personeelsverloop"
+    },
+    {
+        "EvidenceId":  "B135",
+        "Name":  "procedures voor waarneming/vervanging en toekennen van tijdelijke rechten"
+    },
+    {
+        "EvidenceId":  "B136",
+        "Name":  "draaiboeken of scenario’s voor uitval van medewerkers (bijvoorbeeld pandemie, staking, griepgolf)"
+    },
+    {
+        "EvidenceId":  "B137",
+        "Name":  "notulen van overlegstructuren."
+    },
+    {
+        "EvidenceId":  "B138",
+        "Name":  "organogram met bestuurs- en managementfuncties."
+    },
+    {
+        "EvidenceId":  "B139",
+        "Name":  "voorbeelden van interne audit- of managementreviewrapporten."
+    },
+    {
+        "EvidenceId":  "B140",
+        "Name":  "scenario-oefeningen en contractclausules over exit."
+    },
+    {
+        "EvidenceId":  "B141",
+        "Name":  "overzicht van goedgekeurde onderaannemers/subverwerkers met datum van beoordeling."
+    },
+    {
+        "EvidenceId":  "B142",
+        "Name":  "escalatieschema voor interne en externe meldingen van datalekken."
+    },
+    {
+        "EvidenceId":  "B143",
+        "Name":  "Voorbeeldcontract klanten"
+    },
+    {
+        "EvidenceId":  "B144",
+        "Name":  "informatieveiligheid bewustzijns- en trainingsoverzicht medewerkers."
+    },
+    {
+        "EvidenceId":  "B145",
+        "Name":  "voorbeelden van projecten waarin ontwikkelprocessen"
+    },
+    {
+        "EvidenceId":  "B146",
+        "Name":  "voorbeeldrapportages RPO en RTO."
+    },
+    {
+        "EvidenceId":  "B147",
+        "Name":  "besluit- of managementnotitie waarin het DPIA-resultaat is geaccordeerd."
+    },
+    {
+        "EvidenceId":  "B148",
+        "Name":  "configuratiebeschrijvingen of schermprints waaruit de implementatie van  encryptie, MFA en RBAC blijkt."
+    },
+    {
+        "EvidenceId":  "B149",
+        "Name":  "voorbeeld van geanonimiseerde auditlogs die laten zien dat toegangs- en wijzigingslogs volledig en niet manipuleerbaar zijn."
+    },
+    {
+        "EvidenceId":  "B150",
+        "Name":  "functie- of rolbeschrijving van de FG en positionering in de organisatie (organogram)."
+    },
+    {
+        "EvidenceId":  "B151",
+        "Name":  "overzicht van de scope-onderdelen die relevant zijn voor het aangeboden product of de dienst."
+    },
+    {
+        "EvidenceId":  "B152",
+        "Name":  "relevante certificeringen of assurance-rapporten van de provider (bijv. ISO27001, SOC2)"
+    },
+    {
+        "EvidenceId":  "B153",
+        "Name":  "benodigde certificaten voor AI toepassing (CRA, MDR)"
+    },
+    {
+        "EvidenceId":  "B154",
+        "Name":  "bestuursbesluit of volmachten waarin deze tekenbevoegdheden zijn vastgelegd."
+    },
+    {
+        "EvidenceId":  "B155",
+        "Name":  "samenvattende notitie of board memo waarin de belangrijkste risico’s en mitigerende maatregelen zijn beschreven."
+    },
+    {
+        "EvidenceId":  "B156",
+        "Name":  "voorbeelden van werkinstructies of runbooks waarmee taken overdraagbaar naar andere of nieuwe medewerkers zijn gemaakt."
+    },
+    {
+        "EvidenceId":  "B157",
+        "Name":  "voorbeelden van roosters of vervangingslijsten."
+    },
+    {
+        "EvidenceId":  "B158",
+        "Name":  "Voorbeelden van maatregelen medewerkersuitval zoals opschaling"
+    },
+    {
+        "EvidenceId":  "B159",
+        "Name":  "sjablonen of checklists voor architectuur- en privacyreviews zijn vastgelegd."
+    },
+    {
+        "EvidenceId":  "B160",
+        "Name":  "beschrijving cloudplatform"
+    },
+    {
+        "EvidenceId":  "B161",
+        "Name":  "DPIA Maatregelenplan."
+    },
+    {
+        "EvidenceId":  "B162",
+        "Name":  "intern due-diligenceverslag of vragenlijst waaruit AVG-toetsing en periodieke herbeoordeling van de cloudprovider blijkt."
+    },
+    {
+        "EvidenceId":  "B163",
+        "Name":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485)."
+    },
+    {
+        "EvidenceId":  "B164",
+        "Name":  "prioritering of inzet van tijdelijke krachten."
+    },
+    {
+        "EvidenceId":  "B165",
+        "Name":  "securitywhitepapers van de provider."
+    }
 ]

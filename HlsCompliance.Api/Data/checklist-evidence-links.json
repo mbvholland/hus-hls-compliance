@@ -1,5 +1,3037 @@
-[
-  { "checklistId": "Algemeen1", "evidenceId": "B001" },
-  { "checklistId": "Algemeen1", "evidenceId": "B002" },
-  { "checklistId": "Algemeen2", "evidenceId": "B003" }
+﻿[
+    {
+        "ChecklistId":  "Algemeen1",
+        "EvidenceText":  "Organogram",
+        "EvidenceId":  "B001"
+    },
+    {
+        "ChecklistId":  "Algemeen2",
+        "EvidenceText":  "Eigendoms- en bestuursstructuur",
+        "EvidenceId":  "B002"
+    },
+    {
+        "ChecklistId":  "Algemeen3",
+        "EvidenceText":  "QMS-handboek of kwaliteitsmanual",
+        "EvidenceId":  "B003"
+    },
+    {
+        "ChecklistId":  "Algemeen4",
+        "EvidenceText":  "Business continuity plan (BCP)",
+        "EvidenceId":  "B004"
+    },
+    {
+        "ChecklistId":  "Algemeen5",
+        "EvidenceText":  "Business continuity plan (BCP)",
+        "EvidenceId":  "B004"
+    },
+    {
+        "ChecklistId":  "Algemeen6",
+        "EvidenceText":  "Screening onderaannemers en subverwerkers",
+        "EvidenceId":  "B005"
+    },
+    {
+        "ChecklistId":  "Algemeen7",
+        "EvidenceText":  "Incident- en datalekprocedure (incl. rollen, termijnen en meldcriteria)",
+        "EvidenceId":  "B006"
+    },
+    {
+        "ChecklistId":  "Algemeen8",
+        "EvidenceText":  "Voorbeeldcontract onderaannemers of subverwerkers",
+        "EvidenceId":  "B007"
+    },
+    {
+        "ChecklistId":  "Algemeen9",
+        "EvidenceText":  "Voorbeeldcontract onderaannemers of subverwerkers",
+        "EvidenceId":  "B007"
+    },
+    {
+        "ChecklistId":  "Algemeen10",
+        "EvidenceText":  "HR-beleid",
+        "EvidenceId":  "B008"
+    },
+    {
+        "ChecklistId":  "Algemeen11",
+        "EvidenceText":  "Communicatiebeleid richting klanten organisatiewijzigingen",
+        "EvidenceId":  "B009"
+    },
+    {
+        "ChecklistId":  "Algemeen12",
+        "EvidenceText":  "Communicatiebeleid richting klanten organisatiewijzigingen",
+        "EvidenceId":  "B009"
+    },
+    {
+        "ChecklistId":  "Algemeen13",
+        "EvidenceText":  "Auditrapporten SOC2/ISAE3402/ISO27001/NEN7510",
+        "EvidenceId":  "B010"
+    },
+    {
+        "ChecklistId":  "Algemeen14",
+        "EvidenceText":  "Security \u0026 privacy by design",
+        "EvidenceId":  "B011"
+    },
+    {
+        "ChecklistId":  "Algemeen15",
+        "EvidenceText":  "SLA-voorstel",
+        "EvidenceId":  "B012"
+    },
+    {
+        "ChecklistId":  "Algemeen16",
+        "EvidenceText":  "Jaarrekeningen",
+        "EvidenceId":  "B013"
+    },
+    {
+        "ChecklistId":  "Algemeen17",
+        "EvidenceText":  "Organogram",
+        "EvidenceId":  "B001"
+    },
+    {
+        "ChecklistId":  "Algemeen18",
+        "EvidenceText":  "Overzicht toegepaste normen en wetgeving in een compliance-matrix",
+        "EvidenceId":  "B014"
+    },
+    {
+        "ChecklistId":  "Algemeen19",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "Algemeen20",
+        "EvidenceText":  "Voorbeeldcontract klanten",
+        "EvidenceId":  "B016"
+    },
+    {
+        "ChecklistId":  "Algemeen21",
+        "EvidenceText":  "Architectuuroverzicht",
+        "EvidenceId":  "B017"
+    },
+    {
+        "ChecklistId":  "Algemeen22",
+        "EvidenceText":  "Architectuuroverzicht",
+        "EvidenceId":  "B017"
+    },
+    {
+        "ChecklistId":  "Algemeen23",
+        "EvidenceText":  "Architectuuroverzicht",
+        "EvidenceId":  "B017"
+    },
+    {
+        "ChecklistId":  "AVG1",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B018"
+    },
+    {
+        "ChecklistId":  "AVG2",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B018"
+    },
+    {
+        "ChecklistId":  "AVG3",
+        "EvidenceText":  "Overzicht subverwerkers",
+        "EvidenceId":  "B019"
+    },
+    {
+        "ChecklistId":  "AVG4",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "AVG5",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "AVG6",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "AVG7",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "AVG8",
+        "EvidenceText":  "Procesbeschrijving en werkinstructies voor inzage-, correctie-, verwijderings- en dataportabiliteitsverzoeken.",
+        "EvidenceId":  "B021"
+    },
+    {
+        "ChecklistId":  "AVG9",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B022"
+    },
+    {
+        "ChecklistId":  "AVG10",
+        "EvidenceText":  "Technische en organisatorische maatregelen (encryptie, MFA, RBAC)",
+        "EvidenceId":  "B023"
+    },
+    {
+        "ChecklistId":  "AVG11",
+        "EvidenceText":  "Logging en audit",
+        "EvidenceId":  "B024"
+    },
+    {
+        "ChecklistId":  "AVG12",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "AVG13",
+        "EvidenceText":  "FG benoemd",
+        "EvidenceId":  "B025"
+    },
+    {
+        "ChecklistId":  "AVG14",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "AVG15",
+        "EvidenceText":  "Bewaartermijnbeleid",
+        "EvidenceId":  "B026"
+    },
+    {
+        "ChecklistId":  "AVG16",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "AVG17",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "AVG18",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "AVG19",
+        "EvidenceText":  "Cloudproviders AVG-getoetst en geborgd",
+        "EvidenceId":  "B027"
+    },
+    {
+        "ChecklistId":  "AVG20",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "NEN1",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN2",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN3",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN4",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN5",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN6",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN7",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN8",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN9",
+        "EvidenceText":  "Business continuity plan (BCP)",
+        "EvidenceId":  "B004"
+    },
+    {
+        "ChecklistId":  "NEN10",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN11",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN12",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN13",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN14",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN15",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN16",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN17",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN18",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN19",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NEN20",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "NIS2/1",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/2",
+        "EvidenceText":  "Organogram",
+        "EvidenceId":  "B001"
+    },
+    {
+        "ChecklistId":  "NIS2/3",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/4",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/5",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/6",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/7",
+        "EvidenceText":  "Business continuity plan (BCP)",
+        "EvidenceId":  "B004"
+    },
+    {
+        "ChecklistId":  "NIS2/8",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/9",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/10",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/11",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/12",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/13",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/14",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/15",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/16",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/17",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/18",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/19",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "NIS2/20",
+        "EvidenceText":  "NIS2-gap-analyse of implementatieplan",
+        "EvidenceId":  "B028"
+    },
+    {
+        "ChecklistId":  "AI Act1",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act2",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act3",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act4",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act5",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "AI Act6",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act7",
+        "EvidenceText":  "Organogram",
+        "EvidenceId":  "B001"
+    },
+    {
+        "ChecklistId":  "AI Act8",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act9",
+        "EvidenceText":  "Communicatiebeleid richting klanten over toepassing AI",
+        "EvidenceId":  "B031"
+    },
+    {
+        "ChecklistId":  "AI Act10",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act11",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act12",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act13",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act14",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act15",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act16",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act17",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act18",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act19",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "AI Act20",
+        "EvidenceText":  "Documentatie van AI-systeem (beschrijving model, use case)",
+        "EvidenceId":  "B032"
+    },
+    {
+        "ChecklistId":  "MDR1",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR2",
+        "EvidenceText":  "Relevante beleidsdocumenten AI toepassing",
+        "EvidenceId":  "B029"
+    },
+    {
+        "ChecklistId":  "MDR3",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR4",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR5",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR6",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR7",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR8",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR9",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR10",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR11",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR12",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR13",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR14",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR15",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR16",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR17",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR18",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR19",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring",
+        "EvidenceId":  "B030"
+    },
+    {
+        "ChecklistId":  "MDR20",
+        "EvidenceText":  "Documentatie van AI-systeem (beschrijving model, use case)",
+        "EvidenceId":  "B032"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 1",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 2",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 3",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 4",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 5",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 6",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 7",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 8",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 9",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 10",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 11",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 12",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 13",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 14",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 15",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 16",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 17",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 18",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 19",
+        "EvidenceText":  "CE-certificaat of conformiteitsverklaring met technisch dossier",
+        "EvidenceId":  "B033"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 20",
+        "EvidenceText":  "Documentatie van AI-systeem (beschrijving model, use case)",
+        "EvidenceId":  "B032"
+    },
+    {
+        "ChecklistId":  "CRA1",
+        "EvidenceText":  "Product-/systeembeschrijving (datasheet, handleiding) met vermelding van software- en digitale componenten en koppelingen met andere systemen",
+        "EvidenceId":  "B034"
+    },
+    {
+        "ChecklistId":  "CRA2",
+        "EvidenceText":  "Beschrijving van het leverings- en distributiemodel (on-premises, SaaS, OEM, app-stores, etc.)",
+        "EvidenceId":  "B035"
+    },
+    {
+        "ChecklistId":  "CRA3",
+        "EvidenceText":  "Actueel overzicht van alle interfaces (netwerkinterfaces, poorten, protocollen, API-endpoints)",
+        "EvidenceId":  "B036"
+    },
+    {
+        "ChecklistId":  "CRA4",
+        "EvidenceText":  "Threat model / risicoanalyse waarin laterale beweging en keteneffecten zijn meegenomen",
+        "EvidenceId":  "B037"
+    },
+    {
+        "ChecklistId":  "CRA5",
+        "EvidenceText":  "Actuele Software Bill of Materials (SBOM) die alle gebruikte OSS- en third-party componenten omvat",
+        "EvidenceId":  "B038"
+    },
+    {
+        "ChecklistId":  "CRA6",
+        "EvidenceText":  "Gedocumenteerde Secure Software Development Lifecycle (SSDLC) met security-gates",
+        "EvidenceId":  "B039"
+    },
+    {
+        "ChecklistId":  "CRA7",
+        "EvidenceText":  "Formeel vulnerability- en patchmanagementproces (beleid en procedure)",
+        "EvidenceId":  "B040"
+    },
+    {
+        "ChecklistId":  "CRA8",
+        "EvidenceText":  "Gedocumenteerd update- en supportbeleid met minimale ondersteuningsduur en end-of-life afspraken",
+        "EvidenceId":  "B041"
+    },
+    {
+        "ChecklistId":  "CRA9",
+        "EvidenceText":  "Incident response plan met criteria voor meldingen aan ENISA/nationale autoriteit",
+        "EvidenceId":  "B042"
+    },
+    {
+        "ChecklistId":  "CRA10",
+        "EvidenceText":  "Actuele SBOM in een gestandaardiseerd formaat (bijv. CycloneDX, SPDX)",
+        "EvidenceId":  "B043"
+    },
+    {
+        "ChecklistId":  "CRA11",
+        "EvidenceText":  "Foto/screenshot van CE-markering op gebruikersinterface",
+        "EvidenceId":  "B044"
+    },
+    {
+        "ChecklistId":  "CRA12",
+        "EvidenceText":  "Ondertekende EU-conformiteitsverklaring (CRA, AI Act, GDPSR/AVG) met identificatie van product en versie",
+        "EvidenceId":  "B045"
+    },
+    {
+        "ChecklistId":  "CRA13",
+        "EvidenceText":  "Volledig technisch dossier (technical file) met systeem- en softwarearchitectuur",
+        "EvidenceId":  "B046"
+    },
+    {
+        "ChecklistId":  "CRA14",
+        "EvidenceText":  "Logging- en monitoringbeleid met beschrijving van vastgelegde events en bewaartermijnen",
+        "EvidenceId":  "B047"
+    },
+    {
+        "ChecklistId":  "CRA15",
+        "EvidenceText":  "Secure configuration/hardening guide voor relevante componenten (servers, appliances, cloudresources)",
+        "EvidenceId":  "B048"
+    },
+    {
+        "ChecklistId":  "CRA16",
+        "EvidenceText":  "Third-Party/Supplier Risk Management-beleid",
+        "EvidenceId":  "B049"
+    },
+    {
+        "ChecklistId":  "CRA17",
+        "EvidenceText":  "Onderhouds- en lifecyclebeleid met afspraken over reguliere updates",
+        "EvidenceId":  "B050"
+    },
+    {
+        "ChecklistId":  "CRA18",
+        "EvidenceText":  "RACI-matrix of verantwoordelijkhedenoverzicht waarin rollen van fabrikant, importeur, distributeur en integrator zijn vastgelegd",
+        "EvidenceId":  "B051"
+    },
+    {
+        "ChecklistId":  "CRA19",
+        "EvidenceText":  "Gedocumenteerde CRA-classificatie met onderbouwing waarom het product wel of niet in critical class I of II valt",
+        "EvidenceId":  "B052"
+    },
+    {
+        "ChecklistId":  "CRA20",
+        "EvidenceText":  "Matrix of mappingdocument waarin CRA-verplichtingen zijn gekoppeld aan MDR, NIS2, AI Act, GDPR en andere relevante kaders",
+        "EvidenceId":  "B053"
+    },
+    {
+        "ChecklistId":  "Koppelingen1",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "Koppelingen2",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "Koppelingen3",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "Koppelingen4",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "Koppelingen5",
+        "EvidenceText":  "Configuratie van logging/audittrail datatransfers",
+        "EvidenceId":  "B054"
+    },
+    {
+        "ChecklistId":  "Koppelingen6",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "Koppelingen7",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "Koppelingen8",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "Koppelingen9",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "Koppelingen10",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "Koppelingen11",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "Continuiteit1",
+        "EvidenceText":  "Eigendoms- en bestuursstructuur",
+        "EvidenceId":  "B002"
+    },
+    {
+        "ChecklistId":  "Continuiteit2",
+        "EvidenceText":  "Faillissements-, surseance- of schuldsaneringsprocedures",
+        "EvidenceId":  "B055"
+    },
+    {
+        "ChecklistId":  "Continuiteit3",
+        "EvidenceText":  "Tekenbevoegdheden voor contracten",
+        "EvidenceId":  "B056"
+    },
+    {
+        "ChecklistId":  "Continuiteit4",
+        "EvidenceText":  "Contractuele verplichtingen aan investeerders met impact op continuïteit",
+        "EvidenceId":  "B057"
+    },
+    {
+        "ChecklistId":  "Continuiteit5",
+        "EvidenceText":  "Jaarrekeningen",
+        "EvidenceId":  "B013"
+    },
+    {
+        "ChecklistId":  "Continuiteit6",
+        "EvidenceText":  "Jaarrekeningen",
+        "EvidenceId":  "B013"
+    },
+    {
+        "ChecklistId":  "Continuiteit7",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "Continuiteit8",
+        "EvidenceText":  "Cruciale functies en rollen gedocumenteerd en overdraagbaar",
+        "EvidenceId":  "B058"
+    },
+    {
+        "ChecklistId":  "Continuiteit9",
+        "EvidenceText":  "Back-up bevoegdheden voor kritieke functies",
+        "EvidenceId":  "B059"
+    },
+    {
+        "ChecklistId":  "Continuiteit10",
+        "EvidenceText":  "Capaciteitsplannen en maatregelen bij uitval medewerkers",
+        "EvidenceId":  "B060"
+    },
+    {
+        "ChecklistId":  "Continuiteit11",
+        "EvidenceText":  "Business continuity- of ISO22301-certificaat",
+        "EvidenceId":  "B061"
+    },
+    {
+        "ChecklistId":  "Continuiteit12",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "Continuiteit13",
+        "EvidenceText":  "Privacybeleid",
+        "EvidenceId":  "B020"
+    },
+    {
+        "ChecklistId":  "Continuiteit14",
+        "EvidenceText":  "Actueel ISO27001- en/of NEN7510-certificaat met scope statement",
+        "EvidenceId":  "B015"
+    },
+    {
+        "ChecklistId":  "Algemeen1",
+        "EvidenceText":  "functiebeschrijvingen (CISO/FG/privacy officer)",
+        "EvidenceId":  "B062"
+    },
+    {
+        "ChecklistId":  "Algemeen2",
+        "EvidenceText":  "Uittreksel Kamer van Koophandel incl. UBO’s en moeder-dochterrelaties",
+        "EvidenceId":  "B063"
+    },
+    {
+        "ChecklistId":  "Algemeen3",
+        "EvidenceText":  "eventueel ISO9001- of vergelijkbaar certificaat",
+        "EvidenceId":  "B064"
+    },
+    {
+        "ChecklistId":  "Algemeen4",
+        "EvidenceText":  "disaster recovery plan (DRP)",
+        "EvidenceId":  "B065"
+    },
+    {
+        "ChecklistId":  "Algemeen5",
+        "EvidenceText":  "disaster recovery plan (DRP)",
+        "EvidenceId":  "B065"
+    },
+    {
+        "ChecklistId":  "Algemeen6",
+        "EvidenceText":  "Third-party/supplier risk management-beleid",
+        "EvidenceId":  "B066"
+    },
+    {
+        "ChecklistId":  "Algemeen7",
+        "EvidenceText":  "format of register voor incident- en datalekregistratie",
+        "EvidenceId":  "B067"
+    },
+    {
+        "ChecklistId":  "Algemeen8",
+        "EvidenceText":  "samenwerkings- of dienstverleningsovereenkomst onderaannemers of subverwerkers",
+        "EvidenceId":  "B068"
+    },
+    {
+        "ChecklistId":  "Algemeen9",
+        "EvidenceText":  "samenwerkings- of dienstverleningsovereenkomst onderaannemers of subverwerkers",
+        "EvidenceId":  "B068"
+    },
+    {
+        "ChecklistId":  "Algemeen10",
+        "EvidenceText":  "medewerker gedragscode",
+        "EvidenceId":  "B069"
+    },
+    {
+        "ChecklistId":  "Algemeen11",
+        "EvidenceText":  "voorbeeldmeldingen naar klanten organisatiewijzigingen en wijzigingen in voorwaarden en of nieuwe wettelijke bepalingen",
+        "EvidenceId":  "B070"
+    },
+    {
+        "ChecklistId":  "Algemeen12",
+        "EvidenceText":  "voorbeeldmeldingen naar klanten organisatiewijzigingen en wijzigingen in voorwaarden en of nieuwe wettelijke bepalingen",
+        "EvidenceId":  "B070"
+    },
+    {
+        "ChecklistId":  "Algemeen13",
+        "EvidenceText":  "samenvattingen van externe audits en periodieke rapportages.",
+        "EvidenceId":  "B071"
+    },
+    {
+        "ChecklistId":  "Algemeen14",
+        "EvidenceText":  "Beleid en procesbeschrijving waarin ‘security \u0026 privacy by design’ is geborgd in projecten en ontwikkelprocessen",
+        "EvidenceId":  "B072"
+    },
+    {
+        "ChecklistId":  "Algemeen15",
+        "EvidenceText":  "supportprocesbeschrijving",
+        "EvidenceId":  "B073"
+    },
+    {
+        "ChecklistId":  "Algemeen16",
+        "EvidenceText":  "accountantsverklaringen",
+        "EvidenceId":  "B074"
+    },
+    {
+        "ChecklistId":  "Algemeen17",
+        "EvidenceText":  "functiebeschrijvingen CISO/FG/privacy officer",
+        "EvidenceId":  "B075"
+    },
+    {
+        "ChecklistId":  "Algemeen18",
+        "EvidenceText":  "interne audits/assessments en nalevings beleid. ",
+        "EvidenceId":  "B076"
+    },
+    {
+        "ChecklistId":  "Algemeen19",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "Algemeen20",
+        "EvidenceText":  "samenwerkings- of dienstverleningsovereenkomst klanten",
+        "EvidenceId":  "B078"
+    },
+    {
+        "ChecklistId":  "Algemeen21",
+        "EvidenceText":  "hostingcontract",
+        "EvidenceId":  "B079"
+    },
+    {
+        "ChecklistId":  "Algemeen22",
+        "EvidenceText":  "hostingcontract",
+        "EvidenceId":  "B079"
+    },
+    {
+        "ChecklistId":  "Algemeen23",
+        "EvidenceText":  "hostingcontract",
+        "EvidenceId":  "B079"
+    },
+    {
+        "ChecklistId":  "AVG1",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "AVG2",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "AVG3",
+        "EvidenceText":  "kopieën van subverwerkersovereenkomsten",
+        "EvidenceId":  "B081"
+    },
+    {
+        "ChecklistId":  "AVG4",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "AVG5",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "AVG6",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "AVG7",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "AVG9",
+        "EvidenceText":  "DPIA maatregelenplan",
+        "EvidenceId":  "B082"
+    },
+    {
+        "ChecklistId":  "AVG10",
+        "EvidenceText":  "Informatiebeveiligingsbeleid en relevante normen (bijv. NEN7510/ISO27001)",
+        "EvidenceId":  "B083"
+    },
+    {
+        "ChecklistId":  "AVG11",
+        "EvidenceText":  "Logging- en monitoringbeleid met bewaartermijnen",
+        "EvidenceId":  "B084"
+    },
+    {
+        "ChecklistId":  "AVG12",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "AVG13",
+        "EvidenceText":  "Benoemingsbesluit of aanstellingsbrief van de FG",
+        "EvidenceId":  "B085"
+    },
+    {
+        "ChecklistId":  "AVG14",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "AVG15",
+        "EvidenceText":  "dataclassificatieschema en bewijs van geconfigureerde bewaartermijnen in systemen.",
+        "EvidenceId":  "B086"
+    },
+    {
+        "ChecklistId":  "AVG16",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "AVG17",
+        "EvidenceText":  "ISAE/SOC-rapport",
+        "EvidenceId":  "B087"
+    },
+    {
+        "ChecklistId":  "AVG18",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "AVG19",
+        "EvidenceText":  "Verwerkersovereenkomst/DPA met cloudprovider",
+        "EvidenceId":  "B088"
+    },
+    {
+        "ChecklistId":  "AVG20",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "NEN1",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN2",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN3",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN4",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN5",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN6",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN7",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN8",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN9",
+        "EvidenceText":  "disaster recovery plan (DRP)",
+        "EvidenceId":  "B065"
+    },
+    {
+        "ChecklistId":  "NEN10",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN11",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN12",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN13",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN14",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN15",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN16",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN17",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN18",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN19",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NEN20",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "NIS2/1",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/2",
+        "EvidenceText":  "functiebeschrijvingen (CISO/FG/privacy officer)",
+        "EvidenceId":  "B062"
+    },
+    {
+        "ChecklistId":  "NIS2/3",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/4",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/5",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/6",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/7",
+        "EvidenceText":  "disaster recovery plan (DRP)",
+        "EvidenceId":  "B065"
+    },
+    {
+        "ChecklistId":  "NIS2/8",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/9",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/10",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/11",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/12",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/13",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/14",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/15",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/16",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/17",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/18",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/19",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "NIS2/20",
+        "EvidenceText":  "NIS2 risicoregister",
+        "EvidenceId":  "B089"
+    },
+    {
+        "ChecklistId":  "AI Act1",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act2",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act3",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act4",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act5",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "AI Act6",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act7",
+        "EvidenceText":  "functiebeschrijvingen (CISO/FG/privacy officer)",
+        "EvidenceId":  "B062"
+    },
+    {
+        "ChecklistId":  "AI Act8",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act9",
+        "EvidenceText":  "voorbeeldmeldingen naar klanten over AI incidenten en wijzigingen",
+        "EvidenceId":  "B092"
+    },
+    {
+        "ChecklistId":  "AI Act10",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act11",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act12",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act13",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act14",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act15",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act16",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act17",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act18",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act19",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "AI Act20",
+        "EvidenceText":  "data- en model governance AI systeem (datasheets/model cards)",
+        "EvidenceId":  "B093"
+    },
+    {
+        "ChecklistId":  "MDR1",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR2",
+        "EvidenceText":  "veiligheidsprocedures AI toepassing",
+        "EvidenceId":  "B090"
+    },
+    {
+        "ChecklistId":  "MDR3",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR4",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR5",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR6",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR7",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR8",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR9",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR10",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR11",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR12",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR13",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR14",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR15",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR16",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR17",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR18",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR19",
+        "EvidenceText":  "technisch dossier",
+        "EvidenceId":  "B091"
+    },
+    {
+        "ChecklistId":  "MDR20",
+        "EvidenceText":  "data- en model governance AI systeem (datasheets/model cards)",
+        "EvidenceId":  "B093"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 1",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 2",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 3",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 4",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 5",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 6",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 7",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 8",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 9",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 10",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 11",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 12",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 13",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 14",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 15",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 16",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 17",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 18",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 19",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 20",
+        "EvidenceText":  "data- en model governance AI systeem (datasheets/model cards)",
+        "EvidenceId":  "B093"
+    },
+    {
+        "ChecklistId":  "CRA17",
+        "EvidenceText":  "corrective en preventive maintenance",
+        "EvidenceId":  "B095"
+    },
+    {
+        "ChecklistId":  "Koppelingen1",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "Koppelingen2",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "Koppelingen3",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "Koppelingen4",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "Koppelingen5",
+        "EvidenceText":  "voorbeeld logbestanden datatransfers",
+        "EvidenceId":  "B096"
+    },
+    {
+        "ChecklistId":  "Koppelingen6",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "Koppelingen7",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "Koppelingen8",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "Koppelingen9",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "Koppelingen10",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "Koppelingen11",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "Continuiteit1",
+        "EvidenceText":  "Uittreksel Kamer van Koophandel incl. UBO’s en moeder-dochterrelaties",
+        "EvidenceId":  "B063"
+    },
+    {
+        "ChecklistId":  "Continuiteit2",
+        "EvidenceText":  "Eigen verklaring over afwezigheid of aanwezigheid van faillissements-, surseance- of schuldsaneringsprocedures, aangevuld met recente jaarrekening of accountantsverklaring en eventuele kredietbeoordeling waaruit de financiële continuïteit blijkt.",
+        "EvidenceId":  "B097"
+    },
+    {
+        "ChecklistId":  "Continuiteit3",
+        "EvidenceText":  "Mandaat- of tekenbevoegdheidsregeling",
+        "EvidenceId":  "B098"
+    },
+    {
+        "ChecklistId":  "Continuiteit4",
+        "EvidenceText":  "Overzicht van relevante financierings- of investeringscontracten met verplichtingen die continuïteit kunnen beïnvloeden (bijvoorbeeld covenants",
+        "EvidenceId":  "B099"
+    },
+    {
+        "ChecklistId":  "Continuiteit5",
+        "EvidenceText":  "accountantsverklaringen",
+        "EvidenceId":  "B074"
+    },
+    {
+        "ChecklistId":  "Continuiteit6",
+        "EvidenceText":  "accountantsverklaringen",
+        "EvidenceId":  "B074"
+    },
+    {
+        "ChecklistId":  "Continuiteit7",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "Continuiteit8",
+        "EvidenceText":  "HR-beleid en functieprofielen voor kritieke functies",
+        "EvidenceId":  "B100"
+    },
+    {
+        "ChecklistId":  "Continuiteit9",
+        "EvidenceText":  "Overzicht (matrix) van primaire en back-up functionarissen voor kritieke functies",
+        "EvidenceId":  "B101"
+    },
+    {
+        "ChecklistId":  "Continuiteit10",
+        "EvidenceText":  "Capaciteits- of personeelsplannen (inzet, piekbelasting, minimale bezetting)",
+        "EvidenceId":  "B102"
+    },
+    {
+        "ChecklistId":  "Continuiteit11",
+        "EvidenceText":  "beleid en procedures voor continuïteit.",
+        "EvidenceId":  "B103"
+    },
+    {
+        "ChecklistId":  "Continuiteit12",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "Continuiteit13",
+        "EvidenceText":  "register van verwerkingen",
+        "EvidenceId":  "B080"
+    },
+    {
+        "ChecklistId":  "Continuiteit14",
+        "EvidenceText":  "informatiebeveiligingsbeleid",
+        "EvidenceId":  "B077"
+    },
+    {
+        "ChecklistId":  "Algemeen1",
+        "EvidenceText":  "beveiligings- en privacybeleid.",
+        "EvidenceId":  "B104"
+    },
+    {
+        "ChecklistId":  "Algemeen2",
+        "EvidenceText":  "schema van de juridische eigendomsstructuur o.a. holding, dochters en deelnemingen",
+        "EvidenceId":  "B105"
+    },
+    {
+        "ChecklistId":  "Algemeen3",
+        "EvidenceText":  "proces- en procedureoverzicht voor procesbeheersing",
+        "EvidenceId":  "B106"
+    },
+    {
+        "ChecklistId":  "Algemeen4",
+        "EvidenceText":  "continuïteitsrapportages",
+        "EvidenceId":  "B107"
+    },
+    {
+        "ChecklistId":  "Algemeen5",
+        "EvidenceText":  "continuïteitsrapportages",
+        "EvidenceId":  "B107"
+    },
+    {
+        "ChecklistId":  "Algemeen6",
+        "EvidenceText":  "template en voorbeeld van ingevulde leveranciersbeoordeling voor een onderaannemer of subverwerker",
+        "EvidenceId":  "B108"
+    },
+    {
+        "ChecklistId":  "Algemeen7",
+        "EvidenceText":  "voorbeelden van geanonimiseerde meldingen",
+        "EvidenceId":  "B109"
+    },
+    {
+        "ChecklistId":  "Algemeen8",
+        "EvidenceText":  "RACI-matrix en beschrijving overleg- en evaluatiestructuur met onderaannemers of subverwerkers.",
+        "EvidenceId":  "B110"
+    },
+    {
+        "ChecklistId":  "Algemeen9",
+        "EvidenceText":  "RACI-matrix en beschrijving overleg- en evaluatiestructuur met onderaannemers of subverwerkers.",
+        "EvidenceId":  "B110"
+    },
+    {
+        "ChecklistId":  "Algemeen10",
+        "EvidenceText":  "VOG-/screeningsbeleid kandidaten",
+        "EvidenceId":  "B111"
+    },
+    {
+        "ChecklistId":  "Algemeen11",
+        "EvidenceText":  "templates voor incident-/wijzigingscommunicatie voor klanten.",
+        "EvidenceId":  "B112"
+    },
+    {
+        "ChecklistId":  "Algemeen12",
+        "EvidenceText":  "templates voor incident-/wijzigingscommunicatie voor klanten.",
+        "EvidenceId":  "B112"
+    },
+    {
+        "ChecklistId":  "Algemeen14",
+        "EvidenceText":  "sjablonen of checklists voor architectuur- en privacyreviews incl. DPIA-trigger",
+        "EvidenceId":  "B113"
+    },
+    {
+        "ChecklistId":  "Algemeen15",
+        "EvidenceText":  "responstijd- en beschikbaarheidsafspraken",
+        "EvidenceId":  "B114"
+    },
+    {
+        "ChecklistId":  "Algemeen16",
+        "EvidenceText":  "kredietratings of andere financiële ratio’s.",
+        "EvidenceId":  "B115"
+    },
+    {
+        "ChecklistId":  "Algemeen17",
+        "EvidenceText":  "beveiligings- en privacybeleid.",
+        "EvidenceId":  "B104"
+    },
+    {
+        "ChecklistId":  "Algemeen19",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "Algemeen20",
+        "EvidenceText":  "RACI-matrix en beschrijving overleg- en evaluatiestructuur met klanten.",
+        "EvidenceId":  "B117"
+    },
+    {
+        "ChecklistId":  "Algemeen21",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "Algemeen22",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "Algemeen23",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "AVG1",
+        "EvidenceText":  "overzicht rollen (verwerkingsverantwoordelijke/verwerker).",
+        "EvidenceId":  "B119"
+    },
+    {
+        "ChecklistId":  "AVG2",
+        "EvidenceText":  "overzicht rollen (verwerkingsverantwoordelijke/verwerker).",
+        "EvidenceId":  "B119"
+    },
+    {
+        "ChecklistId":  "AVG3",
+        "EvidenceText":  "proces voor goedkeuring van nieuwe subverwerkers.",
+        "EvidenceId":  "B120"
+    },
+    {
+        "ChecklistId":  "AVG4",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "AVG5",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "AVG6",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "AVG7",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "AVG9",
+        "EvidenceText":  "advies en of oordeel van de leveranciers FG over de DPIA",
+        "EvidenceId":  "B122"
+    },
+    {
+        "ChecklistId":  "AVG10",
+        "EvidenceText":  "architectuur- of ontwerpdocumenten die encryptie, MFA en RBAC beschrijven",
+        "EvidenceId":  "B123"
+    },
+    {
+        "ChecklistId":  "AVG11",
+        "EvidenceText":  "architectuur van logvoorziening of SIEM incl. integriteitsbescherming, hashing of strikte toegangsrechten",
+        "EvidenceId":  "B124"
+    },
+    {
+        "ChecklistId":  "AVG12",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "AVG13",
+        "EvidenceText":  "bewijs van registratie van FG bij de AP (indien verplicht)",
+        "EvidenceId":  "B125"
+    },
+    {
+        "ChecklistId":  "AVG14",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "AVG16",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "AVG17",
+        "EvidenceText":  "Verklaring van Toepasselijkheid (SoA)",
+        "EvidenceId":  "B126"
+    },
+    {
+        "ChecklistId":  "AVG18",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "AVG19",
+        "EvidenceText":  "overzicht van datacenters en subverwerkers (incl. landen)",
+        "EvidenceId":  "B127"
+    },
+    {
+        "ChecklistId":  "AVG20",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "NEN1",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN2",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN3",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN4",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN5",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN6",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN7",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN8",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN9",
+        "EvidenceText":  "continuïteitsrapportages",
+        "EvidenceId":  "B107"
+    },
+    {
+        "ChecklistId":  "NEN10",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN11",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN12",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN13",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN14",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN15",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN16",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN17",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN18",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN19",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NEN20",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "NIS2/1",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/2",
+        "EvidenceText":  "beveiligings- en privacybeleid.",
+        "EvidenceId":  "B104"
+    },
+    {
+        "ChecklistId":  "NIS2/3",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/4",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/5",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/6",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/7",
+        "EvidenceText":  "continuïteitsrapportages",
+        "EvidenceId":  "B107"
+    },
+    {
+        "ChecklistId":  "NIS2/8",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/9",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/10",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/11",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/12",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/13",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/14",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/15",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/16",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/17",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/18",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/19",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "NIS2/20",
+        "EvidenceText":  "overzicht genomen beveiligingsmaatregelen en verantwoordingsdocumentatie NIS2 verplichtingen.",
+        "EvidenceId":  "B128"
+    },
+    {
+        "ChecklistId":  "AI Act1",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act2",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act3",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act4",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act5",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "AI Act6",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act7",
+        "EvidenceText":  "beveiligings- en privacybeleid.",
+        "EvidenceId":  "B104"
+    },
+    {
+        "ChecklistId":  "AI Act8",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act9",
+        "EvidenceText":  "templates voor incident-/wijzigingscommunicatie voor klanten.",
+        "EvidenceId":  "B112"
+    },
+    {
+        "ChecklistId":  "AI Act10",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act11",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act12",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act13",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act14",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act15",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act16",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act17",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act18",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act19",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "AI Act20",
+        "EvidenceText":  "risicobeoordeling en eventuele conformiteitsbeoordeling AI syteem.",
+        "EvidenceId":  "B130"
+    },
+    {
+        "ChecklistId":  "MDR1",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR2",
+        "EvidenceText":  "architectuur- of procesbeschrijvingen AI toepassing",
+        "EvidenceId":  "B129"
+    },
+    {
+        "ChecklistId":  "MDR3",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR4",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR5",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR6",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR7",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR8",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR9",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR10",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR11",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR12",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR13",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR14",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR15",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR16",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR17",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR18",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR19",
+        "EvidenceText":  "ISO13485-certificaat en klinische evaluatie-rapporten voor toepassingen die onder MDR/IVDR vallen en afgestemd met AI Act verplichtingen.",
+        "EvidenceId":  "B094"
+    },
+    {
+        "ChecklistId":  "MDR20",
+        "EvidenceText":  "risicobeoordeling en eventuele conformiteitsbeoordeling AI syteem.",
+        "EvidenceId":  "B130"
+    },
+    {
+        "ChecklistId":  "ISO13485 / 20",
+        "EvidenceText":  "risicobeoordeling en eventuele conformiteitsbeoordeling AI syteem.",
+        "EvidenceId":  "B130"
+    },
+    {
+        "ChecklistId":  "Koppelingen1",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "Koppelingen2",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "Koppelingen3",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "Koppelingen4",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "Koppelingen5",
+        "EvidenceText":  "beschrijving van logretentie en logbeheerproces datatransfers.",
+        "EvidenceId":  "B131"
+    },
+    {
+        "ChecklistId":  "Koppelingen6",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "Koppelingen7",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "Koppelingen8",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "Koppelingen9",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "Koppelingen10",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "Koppelingen11",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "Continuiteit1",
+        "EvidenceText":  "schema van de juridische eigendomsstructuur o.a. holding, dochters en deelnemingen",
+        "EvidenceId":  "B105"
+    },
+    {
+        "ChecklistId":  "Continuiteit3",
+        "EvidenceText":  "overzicht van tekenbevoegde functionarissen (bijvoorbeeld handtekeningenlijst)",
+        "EvidenceId":  "B132"
+    },
+    {
+        "ChecklistId":  "Continuiteit4",
+        "EvidenceText":  "change-of-control-clausules)",
+        "EvidenceId":  "B133"
+    },
+    {
+        "ChecklistId":  "Continuiteit5",
+        "EvidenceText":  "kredietratings of andere financiële ratio’s.",
+        "EvidenceId":  "B115"
+    },
+    {
+        "ChecklistId":  "Continuiteit6",
+        "EvidenceText":  "kredietratings of andere financiële ratio’s.",
+        "EvidenceId":  "B115"
+    },
+    {
+        "ChecklistId":  "Continuiteit7",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "Continuiteit8",
+        "EvidenceText":  "procedures voor kennisoverdracht en inwerken (onboarding) bij personeelsverloop",
+        "EvidenceId":  "B134"
+    },
+    {
+        "ChecklistId":  "Continuiteit9",
+        "EvidenceText":  "procedures voor waarneming/vervanging en toekennen van tijdelijke rechten",
+        "EvidenceId":  "B135"
+    },
+    {
+        "ChecklistId":  "Continuiteit10",
+        "EvidenceText":  "draaiboeken of scenario’s voor uitval van medewerkers (bijvoorbeeld pandemie, staking, griepgolf)",
+        "EvidenceId":  "B136"
+    },
+    {
+        "ChecklistId":  "Continuiteit12",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "Continuiteit13",
+        "EvidenceText":  "Ondertekende verwerkersovereenkomst",
+        "EvidenceId":  "B121"
+    },
+    {
+        "ChecklistId":  "Continuiteit14",
+        "EvidenceText":  "relevante procedures voor toegangsbeheer, logging en change management.",
+        "EvidenceId":  "B116"
+    },
+    {
+        "ChecklistId":  "Algemeen1",
+        "EvidenceText":  "notulen van overlegstructuren.",
+        "EvidenceId":  "B137"
+    },
+    {
+        "ChecklistId":  "Algemeen2",
+        "EvidenceText":  "organogram met bestuurs- en managementfuncties.",
+        "EvidenceId":  "B138"
+    },
+    {
+        "ChecklistId":  "Algemeen3",
+        "EvidenceText":  "voorbeelden van interne audit- of managementreviewrapporten.",
+        "EvidenceId":  "B139"
+    },
+    {
+        "ChecklistId":  "Algemeen4",
+        "EvidenceText":  "scenario-oefeningen en contractclausules over exit.",
+        "EvidenceId":  "B140"
+    },
+    {
+        "ChecklistId":  "Algemeen5",
+        "EvidenceText":  "scenario-oefeningen en contractclausules over exit.",
+        "EvidenceId":  "B140"
+    },
+    {
+        "ChecklistId":  "Algemeen6",
+        "EvidenceText":  "overzicht van goedgekeurde onderaannemers/subverwerkers met datum van beoordeling.",
+        "EvidenceId":  "B141"
+    },
+    {
+        "ChecklistId":  "Algemeen7",
+        "EvidenceText":  "escalatieschema voor interne en externe meldingen van datalekken.",
+        "EvidenceId":  "B142"
+    },
+    {
+        "ChecklistId":  "Algemeen9",
+        "EvidenceText":  "Voorbeeldcontract klanten",
+        "EvidenceId":  "B143"
+    },
+    {
+        "ChecklistId":  "Algemeen10",
+        "EvidenceText":  "informatieveiligheid bewustzijns- en trainingsoverzicht medewerkers.",
+        "EvidenceId":  "B144"
+    },
+    {
+        "ChecklistId":  "Algemeen14",
+        "EvidenceText":  "voorbeelden van projecten waarin ontwikkelprocessen",
+        "EvidenceId":  "B145"
+    },
+    {
+        "ChecklistId":  "Algemeen15",
+        "EvidenceText":  "voorbeeldrapportages RPO en RTO.",
+        "EvidenceId":  "B146"
+    },
+    {
+        "ChecklistId":  "Algemeen17",
+        "EvidenceText":  "notulen van overlegstructuren.",
+        "EvidenceId":  "B137"
+    },
+    {
+        "ChecklistId":  "Algemeen21",
+        "EvidenceText":  "DPIA maatregelenplan",
+        "EvidenceId":  "B082"
+    },
+    {
+        "ChecklistId":  "Algemeen22",
+        "EvidenceText":  "DPIA maatregelenplan",
+        "EvidenceId":  "B082"
+    },
+    {
+        "ChecklistId":  "Algemeen23",
+        "EvidenceText":  "DPIA maatregelenplan",
+        "EvidenceId":  "B082"
+    },
+    {
+        "ChecklistId":  "AVG4",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "AVG5",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "AVG6",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "AVG7",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "AVG9",
+        "EvidenceText":  "besluit- of managementnotitie waarin het DPIA-resultaat is geaccordeerd.",
+        "EvidenceId":  "B147"
+    },
+    {
+        "ChecklistId":  "AVG10",
+        "EvidenceText":  "configuratiebeschrijvingen of schermprints waaruit de implementatie van  encryptie, MFA en RBAC blijkt.",
+        "EvidenceId":  "B148"
+    },
+    {
+        "ChecklistId":  "AVG11",
+        "EvidenceText":  "voorbeeld van geanonimiseerde auditlogs die laten zien dat toegangs- en wijzigingslogs volledig en niet manipuleerbaar zijn.",
+        "EvidenceId":  "B149"
+    },
+    {
+        "ChecklistId":  "AVG12",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "AVG13",
+        "EvidenceText":  "functie- of rolbeschrijving van de FG en positionering in de organisatie (organogram).",
+        "EvidenceId":  "B150"
+    },
+    {
+        "ChecklistId":  "AVG14",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "AVG16",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "AVG17",
+        "EvidenceText":  "overzicht van de scope-onderdelen die relevant zijn voor het aangeboden product of de dienst.",
+        "EvidenceId":  "B151"
+    },
+    {
+        "ChecklistId":  "AVG18",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "AVG19",
+        "EvidenceText":  "relevante certificeringen of assurance-rapporten van de provider (bijv. ISO27001, SOC2)",
+        "EvidenceId":  "B152"
+    },
+    {
+        "ChecklistId":  "AVG20",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "NEN9",
+        "EvidenceText":  "scenario-oefeningen en contractclausules over exit.",
+        "EvidenceId":  "B140"
+    },
+    {
+        "ChecklistId":  "NIS2/2",
+        "EvidenceText":  "notulen van overlegstructuren.",
+        "EvidenceId":  "B137"
+    },
+    {
+        "ChecklistId":  "NIS2/7",
+        "EvidenceText":  "scenario-oefeningen en contractclausules over exit.",
+        "EvidenceId":  "B140"
+    },
+    {
+        "ChecklistId":  "AI Act1",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "AI Act2",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "AI Act3",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "AI Act4",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "AI Act6",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "AI Act7",
+        "EvidenceText":  "notulen van overlegstructuren.",
+        "EvidenceId":  "B137"
+    },
+    {
+        "ChecklistId":  "AI Act8",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "AI Act10",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "AI Act11",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "AI Act12",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "AI Act13",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "AI Act14",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "AI Act15",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "AI Act16",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "AI Act17",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "AI Act18",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "AI Act19",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "MDR2",
+        "EvidenceText":  "benodigde certificaten voor AI toepassing (CRA, MDR)",
+        "EvidenceId":  "B153"
+    },
+    {
+        "ChecklistId":  "Koppelingen1",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "Koppelingen3",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "Koppelingen6",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "Koppelingen7",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "Koppelingen10",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "Koppelingen11",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "Continuiteit1",
+        "EvidenceText":  "organogram met bestuurs- en managementfuncties.",
+        "EvidenceId":  "B138"
+    },
+    {
+        "ChecklistId":  "Continuiteit3",
+        "EvidenceText":  "bestuursbesluit of volmachten waarin deze tekenbevoegdheden zijn vastgelegd.",
+        "EvidenceId":  "B154"
+    },
+    {
+        "ChecklistId":  "Continuiteit4",
+        "EvidenceText":  "samenvattende notitie of board memo waarin de belangrijkste risico’s en mitigerende maatregelen zijn beschreven.",
+        "EvidenceId":  "B155"
+    },
+    {
+        "ChecklistId":  "Continuiteit8",
+        "EvidenceText":  "voorbeelden van werkinstructies of runbooks waarmee taken overdraagbaar naar andere of nieuwe medewerkers zijn gemaakt.",
+        "EvidenceId":  "B156"
+    },
+    {
+        "ChecklistId":  "Continuiteit9",
+        "EvidenceText":  "voorbeelden van roosters of vervangingslijsten.",
+        "EvidenceId":  "B157"
+    },
+    {
+        "ChecklistId":  "Continuiteit10",
+        "EvidenceText":  "Voorbeelden van maatregelen medewerkersuitval zoals opschaling",
+        "EvidenceId":  "B158"
+    },
+    {
+        "ChecklistId":  "Continuiteit13",
+        "EvidenceText":  "DPIA risicoanalyses",
+        "EvidenceId":  "B118"
+    },
+    {
+        "ChecklistId":  "Algemeen9",
+        "EvidenceText":  "samenwerkings- of dienstverleningsovereenkomst klanten",
+        "EvidenceId":  "B078"
+    },
+    {
+        "ChecklistId":  "Algemeen14",
+        "EvidenceText":  "sjablonen of checklists voor architectuur- en privacyreviews zijn vastgelegd.",
+        "EvidenceId":  "B159"
+    },
+    {
+        "ChecklistId":  "Algemeen21",
+        "EvidenceText":  "beschrijving cloudplatform",
+        "EvidenceId":  "B160"
+    },
+    {
+        "ChecklistId":  "Algemeen22",
+        "EvidenceText":  "beschrijving cloudplatform",
+        "EvidenceId":  "B160"
+    },
+    {
+        "ChecklistId":  "Algemeen23",
+        "EvidenceText":  "beschrijving cloudplatform",
+        "EvidenceId":  "B160"
+    },
+    {
+        "ChecklistId":  "AVG4",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "AVG5",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "AVG6",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "AVG7",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "AVG12",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "AVG14",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "AVG16",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "AVG18",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "AVG19",
+        "EvidenceText":  "intern due-diligenceverslag of vragenlijst waaruit AVG-toetsing en periodieke herbeoordeling van de cloudprovider blijkt.",
+        "EvidenceId":  "B162"
+    },
+    {
+        "ChecklistId":  "AVG20",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "AI Act1",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "AI Act2",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "AI Act3",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "AI Act4",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "AI Act6",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "AI Act8",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "AI Act10",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "AI Act11",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "AI Act12",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "AI Act13",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "AI Act14",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "AI Act15",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "AI Act16",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "AI Act17",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "AI Act18",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "AI Act19",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "MDR2",
+        "EvidenceText":  "auditrapportages AI toepassing (MDR, CRA, AI Act, AVG, ISO13485).",
+        "EvidenceId":  "B163"
+    },
+    {
+        "ChecklistId":  "Koppelingen1",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "Koppelingen3",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "Koppelingen6",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "Koppelingen7",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "Koppelingen10",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "Koppelingen11",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "Continuiteit10",
+        "EvidenceText":  "prioritering of inzet van tijdelijke krachten.",
+        "EvidenceId":  "B164"
+    },
+    {
+        "ChecklistId":  "Continuiteit13",
+        "EvidenceText":  "DPIA Maatregelenplan.",
+        "EvidenceId":  "B161"
+    },
+    {
+        "ChecklistId":  "Algemeen9",
+        "EvidenceText":  "RACI-matrix en beschrijving overleg- en evaluatiestructuur met klanten.",
+        "EvidenceId":  "B117"
+    },
+    {
+        "ChecklistId":  "Algemeen21",
+        "EvidenceText":  "securitywhitepapers van de provider.",
+        "EvidenceId":  "B165"
+    },
+    {
+        "ChecklistId":  "Algemeen22",
+        "EvidenceText":  "securitywhitepapers van de provider.",
+        "EvidenceId":  "B165"
+    },
+    {
+        "ChecklistId":  "Algemeen23",
+        "EvidenceText":  "securitywhitepapers van de provider.",
+        "EvidenceId":  "B165"
+    }
 ]
