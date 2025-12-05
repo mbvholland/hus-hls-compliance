@@ -12,3 +12,4 @@
 *.cache
 *.DS_Store
 Thumbs.db
+echo "HUS_Master_HLS_Finale versie_1.81.xlsx" >> .gitignore
