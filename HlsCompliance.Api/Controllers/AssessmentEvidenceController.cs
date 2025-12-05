@@ -1,104 +1,121 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using HlsCompliance.Api.Domain;
 using HlsCompliance.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HlsCompliance.Api.Controllers
 {
-    /// <summary>
-    /// API voor bewijslast per assessment (spiegelt tab 11-concept).
-    /// </summary>
     [ApiController]
     [Route("api/assessments/{assessmentId:guid}/evidence")]
     public class AssessmentEvidenceController : ControllerBase
     {
         private readonly IAssessmentEvidenceRepository _evidenceRepository;
+        private readonly IChecklistEvidenceLinkRepository _linkRepository;
+        private readonly IEvidenceDefinitionRepository _evidenceDefinitionRepository;
 
-        public AssessmentEvidenceController(IAssessmentEvidenceRepository evidenceRepository)
+        public AssessmentEvidenceController(
+            IAssessmentEvidenceRepository evidenceRepository,
+            IChecklistEvidenceLinkRepository linkRepository,
+            IEvidenceDefinitionRepository evidenceDefinitionRepository)
         {
-            _evidenceRepository = evidenceRepository ?? throw new ArgumentNullException(nameof(evidenceRepository));
+            _evidenceRepository = evidenceRepository;
+            _linkRepository = linkRepository;
+            _evidenceDefinitionRepository = evidenceDefinitionRepository;
         }
 
         /// <summary>
         /// Haal alle bewijslast-items op voor een assessment.
-        /// Dit zijn de per-assessment, per-ChecklistID, per-BewijsID records
-        /// (zoals tab 11 in Excel).
+        /// Dit zijn de records uit tab 11 (AssessmentEvidenceItem),
+        /// zoals opgeslagen in de JSON-bestanden.
         /// </summary>
         [HttpGet]
-        public ActionResult<List<AssessmentEvidenceItem>> Get(Guid assessmentId)
+        public ActionResult<IEnumerable<AssessmentEvidenceItem>> Get(Guid assessmentId)
         {
-            var items = _evidenceRepository
-                .GetByAssessment(assessmentId)
-                .ToList();
+            var items = _evidenceRepository.GetByAssessment(assessmentId);
 
+            // GEEN hard-gecodeerde voorbeelddata, gewoon teruggeven wat er is.
             return Ok(items);
         }
 
-        /// <summary>
-        /// Body voor het updaten van evidence voor één assessment.
-        /// </summary>
         public class UpsertEvidenceRequest
         {
-            public List<EvidenceItemDto> Items { get; set; } = new();
-        }
-
-        /// <summary>
-        /// Eén regel uit tab 11: ChecklistId + BewijsId + status/toelichting.
-        /// </summary>
-        public class EvidenceItemDto
-        {
+            /// <summary>
+            /// ChecklistId uit tab 7/8/11 (kolom A).
+            /// </summary>
             public string ChecklistId { get; set; } = string.Empty;
+
+            /// <summary>
+            /// EvidenceId zoals in tab 10/11.
+            /// </summary>
             public string EvidenceId { get; set; } = string.Empty;
+
+            /// <summary>
+            /// Naam / beschrijving van het bewijs.
+            /// </summary>
             public string? EvidenceName { get; set; }
+
+            /// <summary>
+            /// Status: "Goedgekeurd", "In beoordeling", "Niet aangeleverd", "Afgekeurd", ...
+            /// </summary>
             public string? Status { get; set; }
+
+            /// <summary>
+            /// Optionele toelichting.
+            /// </summary>
             public string? Comment { get; set; }
         }
 
         /// <summary>
-        /// Vervang alle bewijslast-items voor dit assessment door de opgegeven set.
-        /// Dit werkt net als tab 11 overschrijven: de nieuwe set wordt de waarheid.
+        /// Voeg een bewijslast-item toe of update een bestaand item
+        /// (combinatie AssessmentId + ChecklistId + EvidenceId).
+        /// Werkt als tab 11: per EvidenceId kun je status, naam en comment bijwerken.
         /// </summary>
-        [HttpPut]
-        public IActionResult Upsert(Guid assessmentId, [FromBody] UpsertEvidenceRequest request)
+        [HttpPost]
+        public ActionResult<IEnumerable<AssessmentEvidenceItem>> Upsert(
+            Guid assessmentId,
+            [FromBody] UpsertEvidenceRequest request)
         {
-            if (request == null)
+            if (request is null)
             {
                 return BadRequest("Request body is required.");
             }
 
-            if (request.Items == null || request.Items.Count == 0)
+            if (string.IsNullOrWhiteSpace(request.ChecklistId))
             {
-                // Lege lijst mag: betekent "verwijder alle evidence voor dit assessment".
-                _evidenceRepository.Upsert(assessmentId, Enumerable.Empty<AssessmentEvidenceItem>());
-                return NoContent();
+                return BadRequest("ChecklistId is required.");
             }
 
-            var items = request.Items
-                .Where(dto =>
-                    !string.IsNullOrWhiteSpace(dto.ChecklistId) &&
-                    !string.IsNullOrWhiteSpace(dto.EvidenceId))
-                .Select(dto => new AssessmentEvidenceItem
-                {
-                    AssessmentId = assessmentId,
-                    ChecklistId = dto.ChecklistId.Trim(),
-                    EvidenceId = dto.EvidenceId.Trim(),
-                    EvidenceName = string.IsNullOrWhiteSpace(dto.EvidenceName)
-                        ? null
-                        : dto.EvidenceName.Trim(),
-                    Status = string.IsNullOrWhiteSpace(dto.Status)
-                        ? null
-                        : dto.Status.Trim(),
-                    Comment = string.IsNullOrWhiteSpace(dto.Comment)
-                        ? null
-                        : dto.Comment.Trim()
-                });
+            if (string.IsNullOrWhiteSpace(request.EvidenceId))
+            {
+                return BadRequest("EvidenceId is required.");
+            }
 
-            // LET OP: hier gebruiken we de interface-methode Upsert (zonder 'Evidence')
-            _evidenceRepository.Upsert(assessmentId, items);
+            // Eventueel: naam prefille’n uit evidence-definities (tab 10)
+            string? effectiveName = request.EvidenceName;
+            var def = _evidenceDefinitionRepository.GetById(request.EvidenceId);
+            if (string.IsNullOrWhiteSpace(effectiveName) &&
+                def != null &&
+                !string.IsNullOrWhiteSpace(def.Name))
+            {
+                effectiveName = def.Name;
+            }
 
-            return NoContent();
+            var item = new AssessmentEvidenceItem
+            {
+                AssessmentId = assessmentId,
+                ChecklistId = request.ChecklistId,
+                EvidenceId = request.EvidenceId,
+                EvidenceName = effectiveName ?? request.EvidenceName,
+                Status = request.Status,
+                Comment = request.Comment
+            };
+
+            _evidenceRepository.UpsertEvidence(item);
+
+            // Geef na de upsert de volledige lijst voor dit assessment terug
+            var allItems = _evidenceRepository.GetByAssessment(assessmentId);
+            return Ok(allItems);
         }
     }
 }

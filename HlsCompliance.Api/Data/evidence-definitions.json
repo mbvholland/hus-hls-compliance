@@ -1,0 +1,5 @@
+[
+  { "evidenceId": "B001", "name": "DPIA-rapport" },
+  { "evidenceId": "B002", "name": "Verwerkersovereenkomst (BoZ)" },
+  { "evidenceId": "B003", "name": "ISMS-certificaat (ISO 27001)" }
+]

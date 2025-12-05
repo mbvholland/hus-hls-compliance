@@ -3,7 +3,6 @@ using HlsCompliance.Api.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -21,12 +20,19 @@ builder.Services.AddSingleton<AlgemeenService>();
 // Due diligence-engine
 builder.Services.AddSingleton<DueDiligenceService>();
 
-// Statische checklistdefinities uit JSON (tab 7)
+// Statische checklistdefinities (tab 7)
 builder.Services.AddSingleton<IChecklistDefinitionRepository, JsonChecklistDefinitionRepository>();
 
-// NIEUW: persistente opslag voor tab 8 (answers) en tab 11 (evidence)
+// Persistente opslag tab 8 (answers) en tab 11 (evidence)
 builder.Services.AddSingleton<IAssessmentAnswersRepository, JsonAssessmentAnswersRepository>();
 builder.Services.AddSingleton<IAssessmentEvidenceRepository, JsonAssessmentEvidenceRepository>();
+
+// NIEUW: statische bewijs-definities en koppeling checklist↔bewijs (tab 9/10)
+builder.Services.AddSingleton<IEvidenceDefinitionRepository, JsonEvidenceDefinitionRepository>();
+builder.Services.AddSingleton<IChecklistEvidenceLinkRepository, JsonChecklistEvidenceLinkRepository>();
+
+// Bewijsuitvraag-service (combineert checklist + answers + evidence + definities)
+builder.Services.AddSingleton<EvidenceRequestService>();
 
 var app = builder.Build();
 

@@ -8,251 +8,202 @@ namespace HlsCompliance.Tests
 {
     public class DueDiligenceServiceTests
     {
-        // --------------------------
-        // Tests voor BewijsResultaat
-        // --------------------------
+        // --------------------------------------------------------------------
+        //  Evidence-samenvatting (tab 9/11)
+        // --------------------------------------------------------------------
 
         [Fact]
-        public void SummarizeEvidenceStatus_NoItems_ReturnsGeenBewijsVereist()
+        public void SummarizeEvidenceStatus_AllApproved_ReturnsVoldoendeBewijs()
         {
-            // Arrange
-            IReadOnlyCollection<AssessmentEvidenceItem>? items = new List<AssessmentEvidenceItem>();
+            var requiredIds = new[] { "E1", "E2" };
+            var evidence = new[]
+            {
+                new AssessmentEvidenceItem { EvidenceId = "E1", Status = "Goedgekeurd" },
+                new AssessmentEvidenceItem { EvidenceId = "E2", Status = "Goedgekeurd" }
+            };
 
-            // Act
-            var result = DueDiligenceService.SummarizeEvidenceStatus(items);
+            var result = DueDiligenceService.SummarizeEvidenceStatus(requiredIds, evidence);
 
-            // Assert
+            Assert.Equal("Voldoende bewijs", result);
+        }
+
+        [Fact]
+        public void SummarizeEvidenceStatus_MixApprovedAndNotDelivered_ReturnsDeelsAangeleverd()
+        {
+            var requiredIds = new[] { "E1", "E2" };
+            var evidence = new[]
+            {
+                new AssessmentEvidenceItem { EvidenceId = "E1", Status = "Goedgekeurd" },
+                new AssessmentEvidenceItem { EvidenceId = "E2", Status = "Niet aangeleverd" }
+            };
+
+            var result = DueDiligenceService.SummarizeEvidenceStatus(requiredIds, evidence);
+
+            Assert.Equal("Deels aangeleverd", result);
+        }
+
+        [Fact]
+        public void SummarizeEvidenceStatus_AnyRejected_ReturnsOnvoldoendeBewijs()
+        {
+            var requiredIds = new[] { "E1", "E2" };
+            var evidence = new[]
+            {
+                new AssessmentEvidenceItem { EvidenceId = "E1", Status = "Goedgekeurd" },
+                new AssessmentEvidenceItem { EvidenceId = "E2", Status = "Afgekeurd" }
+            };
+
+            var result = DueDiligenceService.SummarizeEvidenceStatus(requiredIds, evidence);
+
+            Assert.Equal("Onvoldoende bewijs", result);
+        }
+
+        [Fact]
+        public void SummarizeEvidenceStatus_NoneRequired_ReturnsGeenBewijsVereist()
+        {
+            var requiredIds = Array.Empty<string>();
+            var evidence = Array.Empty<AssessmentEvidenceItem>();
+
+            var result = DueDiligenceService.SummarizeEvidenceStatus(requiredIds, evidence);
+
             Assert.Equal("Geen bewijs vereist", result);
         }
 
         [Fact]
-        public void SummarizeEvidenceStatus_AllApproved_ReturnsCompleet()
+        public void SummarizeEvidenceStatus_RequiredButNoneDelivered_ReturnsNogNietAangeleverd()
         {
-            // Arrange
-            IReadOnlyCollection<AssessmentEvidenceItem> items = new List<AssessmentEvidenceItem>
-            {
-                NewEvidenceItem("Goedgekeurd"),
-                NewEvidenceItem("Goedgekeurd")
-            };
+            var requiredIds = new[] { "E1" };
+            var evidence = Array.Empty<AssessmentEvidenceItem>();
 
-            // Act
-            var result = DueDiligenceService.SummarizeEvidenceStatus(items);
+            var result = DueDiligenceService.SummarizeEvidenceStatus(requiredIds, evidence);
 
-            // Assert
-            Assert.Equal("Compleet (alles goedgekeurd)", result);
+            Assert.Equal("Nog niet aangeleverd", result);
         }
 
         [Fact]
-        public void SummarizeEvidenceStatus_MixApprovedAndNotDelivered_ReturnsNietAangeleverd()
+        public void SummarizeEvidenceStatus_InReviewOnly_ReturnsInBeoordeling()
         {
-            // Arrange
-            IReadOnlyCollection<AssessmentEvidenceItem> items = new List<AssessmentEvidenceItem>
+            var requiredIds = new[] { "E1" };
+            var evidence = new[]
             {
-                NewEvidenceItem("Goedgekeurd"),
-                NewEvidenceItem("Niet aangeleverd"),
-                NewEvidenceItem(null) // lege status => ook Niet aangeleverd
+                new AssessmentEvidenceItem { EvidenceId = "E1", Status = "In beoordeling" }
             };
 
-            // Act
-            var result = DueDiligenceService.SummarizeEvidenceStatus(items);
+            var result = DueDiligenceService.SummarizeEvidenceStatus(requiredIds, evidence);
 
-            // Assert
-            Assert.Equal("Niet aangeleverd", result);
-        }
-
-        [Fact]
-        public void SummarizeEvidenceStatus_AnyRejected_ReturnsOnvoldoende()
-        {
-            // Arrange
-            IReadOnlyCollection<AssessmentEvidenceItem> items = new List<AssessmentEvidenceItem>
-            {
-                NewEvidenceItem("Goedgekeurd"),
-                NewEvidenceItem("Afgekeurd"),
-                NewEvidenceItem("In beoordeling")
-            };
-
-            // Act
-            var result = DueDiligenceService.SummarizeEvidenceStatus(items);
-
-            // Assert
-            Assert.Equal("Onvoldoende (afgekeurd)", result);
-        }
-
-        [Fact]
-        public void SummarizeEvidenceStatus_NoRejectedButInReview_ReturnsInBeoordeling()
-        {
-            // Arrange
-            IReadOnlyCollection<AssessmentEvidenceItem> items = new List<AssessmentEvidenceItem>
-            {
-                NewEvidenceItem("In beoordeling"),
-                NewEvidenceItem("Goedgekeurd")
-            };
-
-            // Act
-            var result = DueDiligenceService.SummarizeEvidenceStatus(items);
-
-            // Assert
             Assert.Equal("In beoordeling", result);
         }
 
-        // -------------------------------
-        // Tests voor Resultaat due diligence
-        // -------------------------------
+        // --------------------------------------------------------------------
+        //  Einduitkomst due diligence (kolom L)
+        // --------------------------------------------------------------------
 
         [Fact]
-        public void EvaluateDueDiligenceOutcome_NotApplicable_ReturnsNull()
+        public void EvaluateDueDiligenceOutcome_NotApplicable_ReturnsNietVanToepassing()
         {
-            // Arrange
-            var row = NewRow(
+            var outcome = DueDiligenceService.EvaluateDueDiligenceOutcome(
                 isApplicable: false,
                 answerEvaluation: null,
-                evidenceSummary: "Geen bewijs vereist",
+                evidenceResultLabel: null,
                 negativeOutcomeAcceptable: false);
 
-            // Act
-            var result = DueDiligenceService.EvaluateDueDiligenceOutcome(row);
-
-            // Assert
-            Assert.Null(result);
+            Assert.Equal("Niet van toepassing", outcome);
         }
 
         [Fact]
-        public void EvaluateDueDiligenceOutcome_PositiveAnswerAndEvidenceOk_ReturnsOk()
+        public void EvaluateDueDiligenceOutcome_PositiveAnswerAndEvidenceOk_ReturnsVoldoet()
         {
-            // Arrange
-            var row = NewRow(
+            var outcome = DueDiligenceService.EvaluateDueDiligenceOutcome(
                 isApplicable: true,
                 answerEvaluation: "Goedgekeurd",
-                evidenceSummary: "Compleet (alles goedgekeurd)",
+                evidenceResultLabel: "Voldoende bewijs",
                 negativeOutcomeAcceptable: false);
 
-            // Act
-            var result = DueDiligenceService.EvaluateDueDiligenceOutcome(row);
-
-            // Assert
-            Assert.Equal("OK", result);
+            Assert.Equal("Voldoet", outcome);
         }
 
         [Fact]
-        public void EvaluateDueDiligenceOutcome_PartiallyApprovedAndGeenBewijsVereist_ReturnsOk()
+        public void EvaluateDueDiligenceOutcome_AnswerRejectedAndNotAcceptable_ReturnsVoldoetNiet()
         {
-            // Arrange
-            var row = NewRow(
-                isApplicable: true,
-                answerEvaluation: "Deels goedgekeurd",
-                evidenceSummary: "Geen bewijs vereist",
-                negativeOutcomeAcceptable: false);
-
-            // Act
-            var result = DueDiligenceService.EvaluateDueDiligenceOutcome(row);
-
-            // Assert
-            Assert.Equal("OK", result);
-        }
-
-        [Fact]
-        public void EvaluateDueDiligenceOutcome_AnswerRejectedAndNotAcceptable_ReturnsNietAcceptabel()
-        {
-            // Arrange
-            var row = NewRow(
+            var outcome = DueDiligenceService.EvaluateDueDiligenceOutcome(
                 isApplicable: true,
                 answerEvaluation: "Afgekeurd",
-                evidenceSummary: "Compleet (alles goedgekeurd)",
+                evidenceResultLabel: "Onvoldoende bewijs",
                 negativeOutcomeAcceptable: false);
 
-            // Act
-            var result = DueDiligenceService.EvaluateDueDiligenceOutcome(row);
+            Assert.Equal("Voldoet niet", outcome);
+        }
 
-            // Assert
-            Assert.Equal("Niet acceptabel", result);
+        [Fact]
+        public void EvaluateDueDiligenceOutcome_PartiallyApprovedAndGeenBewijsVereist_ReturnsVoldoet()
+        {
+            var outcome = DueDiligenceService.EvaluateDueDiligenceOutcome(
+                isApplicable: true,
+                answerEvaluation: "Deels goedgekeurd",
+                evidenceResultLabel: "Geen bewijs vereist",
+                negativeOutcomeAcceptable: false);
+
+            Assert.Equal("Voldoet", outcome);
         }
 
         [Fact]
         public void EvaluateDueDiligenceOutcome_EvidenceBadButAcceptable_ReturnsAfwijkingAcceptabel()
         {
-            // Arrange
-            var row = NewRow(
+            var outcome = DueDiligenceService.EvaluateDueDiligenceOutcome(
                 isApplicable: true,
                 answerEvaluation: null,
-                evidenceSummary: "Onvoldoende (afgekeurd)",
+                evidenceResultLabel: "Onvoldoende bewijs",
                 negativeOutcomeAcceptable: true);
 
-            // Act
-            var result = DueDiligenceService.EvaluateDueDiligenceOutcome(row);
-
-            // Assert
-            Assert.Equal("Afwijking acceptabel", result);
+            Assert.Equal("Afwijking acceptabel", outcome);
         }
 
         [Fact]
-        public void EvaluateDueDiligenceOutcome_EvidenceBadAndNotAcceptable_ReturnsNietAcceptabel()
+        public void EvaluateDueDiligenceOutcome_EvidenceBadAndNotAcceptable_ReturnsVoldoetNiet()
         {
-            // Arrange
-            var row = NewRow(
+            var outcome = DueDiligenceService.EvaluateDueDiligenceOutcome(
                 isApplicable: true,
                 answerEvaluation: null,
-                evidenceSummary: "Onvoldoende (afgekeurd)",
+                evidenceResultLabel: "Onvoldoende bewijs",
                 negativeOutcomeAcceptable: false);
 
-            // Act
-            var result = DueDiligenceService.EvaluateDueDiligenceOutcome(row);
-
-            // Assert
-            Assert.Equal("Niet acceptabel", result);
+            Assert.Equal("Voldoet niet", outcome);
         }
 
         [Fact]
-        public void EvaluateDueDiligenceOutcome_NoClearPositiveOrNegative_ReturnsNogTeBeoordelen()
+        public void EvaluateDueDiligenceOutcome_EvidenceInReview_ReturnsNogTeBeoordelen()
         {
-            // Arrange
-            var row = NewRow(
+            var outcome = DueDiligenceService.EvaluateDueDiligenceOutcome(
                 isApplicable: true,
                 answerEvaluation: null,
-                evidenceSummary: "In beoordeling",
+                evidenceResultLabel: "In beoordeling",
                 negativeOutcomeAcceptable: false);
 
-            // Act
-            var result = DueDiligenceService.EvaluateDueDiligenceOutcome(row);
-
-            // Assert
-            Assert.Equal("Nog te beoordelen", result);
+            Assert.Equal("Nog te beoordelen", outcome);
         }
 
-        // --------------------------
-        // Helpers
-        // --------------------------
-
-        private static AssessmentEvidenceItem NewEvidenceItem(string? status)
+        [Fact]
+        public void EvaluateDueDiligenceOutcome_OnlyEvidenceLabelConvenience_ReturnsVoldoet()
         {
-            return new AssessmentEvidenceItem
-            {
-                AssessmentId = Guid.NewGuid(),
-                ChecklistId = "Test",
-                EvidenceId = Guid.NewGuid().ToString(),
-                EvidenceName = "Test-bewijs",
-                Status = status,
-                Comment = null
-            };
+            var outcome = DueDiligenceService.EvaluateDueDiligenceOutcome("Voldoende bewijs");
+
+            Assert.Equal("Voldoet", outcome);
         }
 
-        private static AssessmentChecklistRow NewRow(
-            bool isApplicable,
-            string? answerEvaluation,
-            string? evidenceSummary,
-            bool negativeOutcomeAcceptable)
+        [Fact]
+        public void EvaluateDueDiligenceOutcome_RowOverload_UsesRowFields()
         {
-            return new AssessmentChecklistRow
+            var row = new AssessmentChecklistRow
             {
-                AssessmentId = Guid.NewGuid(),
-                ChecklistId = "Test",
-                IsApplicable = isApplicable,
-                Answer = null,
-                AnswerEvaluation = answerEvaluation,
-                EvidenceSummary = evidenceSummary,
-                NegativeOutcomeAcceptable = negativeOutcomeAcceptable,
-                DueDiligenceOutcome = null,
-                DeviationText = null
+                IsApplicable = true,
+                AnswerEvaluation = "Goedgekeurd",
+                NegativeOutcomeAcceptable = false
             };
+
+            var outcome = DueDiligenceService.EvaluateDueDiligenceOutcome(row);
+
+            // Omdat evidenceResultLabel in deze overload niet wordt meegegeven,
+            // maar het antwoord "Goedgekeurd" is, verwachten we "Voldoet".
+            Assert.Equal("Voldoet", outcome);
         }
     }
 }

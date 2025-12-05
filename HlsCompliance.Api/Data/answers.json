@@ -4,5 +4,41 @@
     "ChecklistId": "Algemeen1",
     "RawAnswer": "Ja, er is een CISO.",
     "AnswerEvaluation": "Goedgekeurd"
+  },
+  {
+    "AssessmentId": "35ef402e-f8e1-447d-b6ac-5ffb8e504f36",
+    "ChecklistId": "Algemeen1",
+    "RawAnswer": "Ja, er is een CISO en FG benoemd.",
+    "AnswerEvaluation": "Goedgekeurd"
+  },
+  {
+    "AssessmentId": "35ef402e-f8e1-447d-b6ac-5ffb8e504f36",
+    "ChecklistId": "Algemeen2",
+    "RawAnswer": "De governance is deels ingericht, verbeterplan loopt.",
+    "AnswerEvaluation": "Deels goedgekeurd"
+  },
+  {
+    "AssessmentId": "9cf37b91-dd86-4101-8e99-c50daff049b8",
+    "ChecklistId": "ALG-01",
+    "RawAnswer": "Ja, dit is geregeld in beleid X.",
+    "AnswerEvaluation": "Goedgekeurd"
+  },
+  {
+    "AssessmentId": "9cf37b91-dd86-4101-8e99-c50daff049b8",
+    "ChecklistId": "AVG-02",
+    "RawAnswer": "Nog in voorbereiding.",
+    "AnswerEvaluation": "Deels goedgekeurd"
+  },
+  {
+    "AssessmentId": "9cf37b91-dd86-4101-8e99-c50daff049b8",
+    "ChecklistId": "Algemeen1",
+    "RawAnswer": "Ja, er is een CISO en FG benoemd en vastgelegd in de governance.",
+    "AnswerEvaluation": "Goedgekeurd"
+  },
+  {
+    "AssessmentId": "9cf37b91-dd86-4101-8e99-c50daff049b8",
+    "ChecklistId": "Algemeen2",
+    "RawAnswer": "Beveiligingsbeleid is vastgesteld in 2024 en sluit aan op NEN7510-2024.",
+    "AnswerEvaluation": "Deels goedgekeurd"
   }
 ]

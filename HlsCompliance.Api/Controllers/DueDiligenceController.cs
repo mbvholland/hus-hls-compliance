@@ -16,33 +16,40 @@ namespace HlsCompliance.Api.Controllers
     {
         private readonly DueDiligenceService _dueDiligenceService;
         private readonly IChecklistDefinitionRepository _definitionRepository;
+        private readonly IAssessmentAnswersRepository _answersRepository;
+        private readonly IAssessmentEvidenceRepository _evidenceRepository;
 
         public DueDiligenceController(
             DueDiligenceService dueDiligenceService,
-            IChecklistDefinitionRepository definitionRepository)
+            IChecklistDefinitionRepository definitionRepository,
+            IAssessmentAnswersRepository answersRepository,
+            IAssessmentEvidenceRepository evidenceRepository)
         {
             _dueDiligenceService = dueDiligenceService ?? throw new ArgumentNullException(nameof(dueDiligenceService));
             _definitionRepository = definitionRepository ?? throw new ArgumentNullException(nameof(definitionRepository));
+            _answersRepository = answersRepository ?? throw new ArgumentNullException(nameof(answersRepository));
+            _evidenceRepository = evidenceRepository ?? throw new ArgumentNullException(nameof(evidenceRepository));
         }
 
         /// <summary>
         /// Haalt de due diligence-checklist op voor een assessment.
         /// - definities: uit IChecklistDefinitionRepository,
-        /// - antwoorden: uit JSON (answers.json) via DueDiligenceService,
-        /// - bewijslast: uit JSON (evidence.json) via DueDiligenceService,
+        /// - antwoorden: uit IAssessmentAnswersRepository,
+        /// - bewijslast: uit IAssessmentEvidenceRepository,
         /// - logica voor Toepasselijk?, BewijsResultaat en Resultaat due diligence is actief.
-        ///
-        /// Geeft een lijst DueDiligenceChecklistRowDto terug: conceptueel één rij in tab 7.
         /// </summary>
         [HttpGet("{assessmentId:guid}/checklist")]
         public ActionResult<List<DueDiligenceChecklistRowDto>> GetChecklist(Guid assessmentId)
         {
             var definitions = _definitionRepository.GetAll();
+            var answers = _answersRepository.GetByAssessment(assessmentId);
+            var evidence = _evidenceRepository.GetByAssessment(assessmentId);
 
-            // Nieuw: DueDiligenceService haalt zelf answers en evidence op via de repositories.
             var rows = _dueDiligenceService.BuildChecklistRows(
                 assessmentId,
-                definitions);
+                definitions,
+                answers,
+                evidence);
 
             var dtoList = (from row in rows
                            join def in definitions on row.ChecklistId equals def.ChecklistId
@@ -73,7 +80,6 @@ namespace HlsCompliance.Api.Controllers
 
         /// <summary>
         /// Update kolom K (Negatief resultaat acceptabel?) en kolom M (Afwijkingstekst) voor één checklist-vraag.
-        /// Dit wordt persistent opgeslagen in due-diligence-decisions.json.
         /// </summary>
         [HttpPost("{assessmentId:guid}/decision")]
         public IActionResult UpdateDecision(Guid assessmentId, [FromBody] UpdateDecisionRequest request)
