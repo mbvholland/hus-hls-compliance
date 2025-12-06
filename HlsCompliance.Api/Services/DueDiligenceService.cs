@@ -390,21 +390,91 @@ namespace HlsCompliance.Api.Services
         /// en vertaalt die naar de nieuwe ComputeDueDiligenceOutcome-logica.
         /// </summary>
         public static string? EvaluateDueDiligenceOutcome(AssessmentChecklistRow row)
-{
-    if (row == null) throw new ArgumentNullException(nameof(row));
+        {
+            if (row == null) throw new ArgumentNullException(nameof(row));
 
-    // AssessmentChecklistRow heeft geen expliciete evidence-label property meer.
-    // Voor deze overload gebruiken we alleen:
-    // - IsApplicable
-    // - AnswerEvaluation
-    // - NegativeOutcomeAcceptable
-    // EvidenceResultLabel laten we hier leeg (null).
-    return ComputeDueDiligenceOutcome(
-        isApplicable: row.IsApplicable,
-        answerEvaluation: row.AnswerEvaluation,
-        evidenceResultLabel: null,
-        negativeOutcomeAcceptable: row.NegativeOutcomeAcceptable);
-}
+            return ComputeDueDiligenceOutcome(
+                isApplicable: row.IsApplicable,
+                answerEvaluation: row.AnswerEvaluation,
+                evidenceResultLabel: null,
+                negativeOutcomeAcceptable: row.NegativeOutcomeAcceptable);
+        }
+
+        // =====================================================================
+        //  SAMENVATTING OVER ALLE VRAGEN (VOORTGANG + EINDOORDEEL)
+        // =====================================================================
+
+        public DueDiligenceSummary BuildSummary(
+            Guid assessmentId,
+            IEnumerable<ChecklistQuestionDefinition> definitions,
+            IEnumerable<AssessmentQuestionAnswer> answers,
+            IEnumerable<AssessmentEvidenceItem> evidenceItems)
+        {
+            var rows = BuildChecklistRows(assessmentId, definitions, answers, evidenceItems);
+
+            int total = rows.Count;
+            int applicable = rows.Count(r => r.IsApplicable);
+            int completed = rows.Count(r =>
+                r.DueDiligenceOutcome != null &&
+                r.DueDiligenceOutcome != "Nog te beoordelen");
+
+            string progressStatus;
+            if (completed == 0)
+            {
+                progressStatus = "not_started";
+            }
+            else if (completed < applicable)
+            {
+                progressStatus = "in_progress";
+            }
+            else
+            {
+                progressStatus = "completed";
+            }
+
+            string? overallOutcome = null;
+            bool hasBlocking = false;
+
+            if (rows.Any())
+            {
+                bool anyNotAcceptable = rows.Any(r => r.DueDiligenceOutcome == "Voldoet niet");
+                bool anyAcceptableDeviation = rows.Any(r => r.DueDiligenceOutcome == "Afwijking acceptabel");
+                bool allGoodOrNvt = rows
+                    .Where(r => r.IsApplicable)
+                    .All(r =>
+                        r.DueDiligenceOutcome == "Voldoet" ||
+                        r.DueDiligenceOutcome == "Niet van toepassing");
+
+                if (anyNotAcceptable)
+                {
+                    overallOutcome = "Niet acceptabel";
+                    hasBlocking = true;
+                }
+                else if (anyAcceptableDeviation)
+                {
+                    overallOutcome = "Afwijking acceptabel";
+                }
+                else if (allGoodOrNvt && applicable > 0)
+                {
+                    overallOutcome = "Voldoet";
+                }
+                else
+                {
+                    overallOutcome = "Nog te beoordelen";
+                }
+            }
+
+            return new DueDiligenceSummary
+            {
+                AssessmentId = assessmentId,
+                TotalQuestions = total,
+                ApplicableQuestions = applicable,
+                CompletedQuestions = completed,
+                ProgressStatus = progressStatus,
+                OverallOutcome = overallOutcome,
+                HasBlockingFindings = hasBlocking
+            };
+        }
     }
 
     /// <summary>
@@ -427,5 +497,31 @@ namespace HlsCompliance.Api.Services
         public string? DueDiligenceOutcome { get; set; }
 
         public string? DeviationText { get; set; }
+    }
+
+    /// <summary>
+    /// Samenvatting over de hele due diligence (tab 7) voor één assessment.
+    /// </summary>
+    public class DueDiligenceSummary
+    {
+        public Guid AssessmentId { get; set; }
+        public int TotalQuestions { get; set; }
+        public int ApplicableQuestions { get; set; }
+        public int CompletedQuestions { get; set; }
+
+        /// <summary>
+        /// "not_started", "in_progress", "completed".
+        /// </summary>
+        public string ProgressStatus { get; set; } = "not_started";
+
+        /// <summary>
+        /// "Nog te beoordelen", "Voldoet", "Niet acceptabel", "Afwijking acceptabel".
+        /// </summary>
+        public string? OverallOutcome { get; set; }
+
+        /// <summary>
+        /// True als er minimaal één "Voldoet niet" in kolom L staat.
+        /// </summary>
+        public bool HasBlockingFindings { get; set; }
     }
 }

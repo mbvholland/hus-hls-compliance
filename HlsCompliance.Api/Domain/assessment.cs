@@ -88,30 +88,17 @@ namespace HlsCompliance.Api.Domain
         public string? AssessmentVersion { get; set; }
 
         /// <summary>
-        /// Overkoepelende risicoscore C10 uit tab "0. Algemeen":
-        /// = '1. DPIA_Quickscan'!E18
-        /// + '2. Koppeling-Beslisboom'!D2
-        /// + '3. MDR Beslisboom'!G2
-        /// + '4. AI Act Beslisboom'!H2
-        /// + '5. Securityprofiel leverancier'!F17
+        /// Overkoepelende risicoscore C10 uit tab "0. Algemeen".
         /// </summary>
         public double? OverallRiskScore { get; set; }
 
         /// <summary>
-        /// Overkoepelende risicoklasse C11 (0..n) uit tab "0. Algemeen",
-        /// berekend als:
-        /// IF(MOD(C10;5)/5>=0,4; ROUNDUP(C10/5;0); ROUNDDOWN(C10/5;0)).
+        /// Overkoepelende risicoklasse C11 (0..n) uit tab "0. Algemeen".
         /// </summary>
         public int? OverallRiskClass { get; set; }
 
         /// <summary>
-        /// Overkoepelend risicolabel B10 uit tab "0. Algemeen",
-        /// op basis van C11:
-        /// 0 -> "Geen"
-        /// 1 -> "Laag"
-        /// 2 -> "Gemiddeld"
-        /// 3 -> "Hoog"
-        /// >3 -> "Zeer Hoog".
+        /// Overkoepelend risicolabel B10 uit tab "0. Algemeen".
         /// </summary>
         public string? OverallRiskLabel { get; set; }
 
@@ -137,15 +124,12 @@ namespace HlsCompliance.Api.Domain
         // --------------------------------------------------------------------
 
         /// <summary>
-        /// MDR-klasse voor dit assessment, bijv. "Onbekend",
-        /// "Geen medisch hulpmiddel", "Klasse I", "Klasse IIa", "Klasse IIb", "Klasse III".
+        /// MDR-klasse voor dit assessment.
         /// </summary>
         public string? MdrClass { get; set; }
 
         /// <summary>
-        /// MDR-status, bijv.:
-        /// - "Onbekend"
-        /// - "MDR geclassificeerd"
+        /// MDR-status.
         /// </summary>
         public string MdrStatus { get; set; } = "Onbekend";
 
@@ -154,16 +138,12 @@ namespace HlsCompliance.Api.Domain
         // --------------------------------------------------------------------
 
         /// <summary>
-        /// AI Act-risiconiveau voor dit assessment, bijv.:
-        /// "Onbekend", "Geen AI-systeem (buiten AI Act)",
-        /// "Laag/minimaal risico", "Beperkt risico", "Hoog risico", "Verboden".
+        /// AI Act-risiconiveau voor dit assessment.
         /// </summary>
         public string? AiActRiskLevel { get; set; }
 
         /// <summary>
-        /// Status van de AI Act-classificatie, bijv.:
-        /// - "Onbekend"
-        /// - "AI Act geclassificeerd"
+        /// Status van de AI Act-classificatie.
         /// </summary>
         public string AiActStatus { get; set; } = "Onbekend";
 
@@ -172,18 +152,12 @@ namespace HlsCompliance.Api.Domain
         // --------------------------------------------------------------------
 
         /// <summary>
-        /// Overall risiconiveau van koppelingen voor dit assessment,
-        /// zoals berekend in KoppelingenService:
-        /// "Onbekend", "Geen", "Laag", "Middel", "Hoog".
+        /// Overall risiconiveau van koppelingen voor dit assessment.
         /// </summary>
         public string? ConnectionsOverallRisk { get; set; }
 
         /// <summary>
-        /// Status van de koppelingenrisico-analyse, bijv.:
-        /// - "Onbekend"
-        /// - "Geen koppelingen geregistreerd"
-        /// - "Geen koppelingen volgens DPIA"
-        /// - "Koppelingen beoordeeld"
+        /// Status van de koppelingenrisico-analyse.
         /// </summary>
         public string ConnectionsRiskStatus { get; set; } = "Onbekend";
 
@@ -192,19 +166,41 @@ namespace HlsCompliance.Api.Domain
         // --------------------------------------------------------------------
 
         /// <summary>
-        /// Securityprofiel-risicoscore voor de leverancier,
-        /// in lijn met tab "5. Securityprofiel leverancier" F17 (gemiddelde van F8:F15).
-        /// Waarde loopt grofweg tussen 0 en 6.
+        /// Securityprofiel-risicoscore voor de leverancier.
         /// </summary>
         public double? SecurityProfileRiskScore { get; set; }
 
         /// <summary>
-        /// Status van het securityprofiel, bijv.:
-        /// - "Onbekend"
-        /// - "Onvolledig"
-        /// - "Securityprofiel beoordeeld"
+        /// Status van het securityprofiel.
         /// </summary>
         public string SecurityProfileStatus { get; set; } = "Onbekend";
+
+        // --------------------------------------------------------------------
+        // Eindbeslissing Due Diligence (F3)
+        // --------------------------------------------------------------------
+
+        /// <summary>
+        /// Eindbeslissing voor Due Diligence:
+        /// - "stop"              = proces stoppen, niet naar contractering
+        /// - "go_to_contract"    = doorgaan naar contractering
+        /// - null / leeg         = nog geen besluit.
+        /// </summary>
+        public string? DueDiligenceFinalDecision { get; set; }
+
+        /// <summary>
+        /// Motivatie bij de eindbeslissing (business / risk motivatie).
+        /// </summary>
+        public string? DueDiligenceFinalDecisionMotivation { get; set; }
+
+        /// <summary>
+        /// Wie het besluit heeft genomen (rol/naam).
+        /// </summary>
+        public string? DueDiligenceFinalDecisionBy { get; set; }
+
+        /// <summary>
+        /// Datum van het eindbesluit.
+        /// </summary>
+        public DateTime? DueDiligenceFinalDecisionDate { get; set; }
 
         // --------------------------------------------------------------------
         // Audit / timestamps

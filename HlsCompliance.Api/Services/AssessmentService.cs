@@ -120,6 +120,40 @@ namespace HlsCompliance.Api.Services
             }
         }
 
+        /// <summary>
+        /// Sla de eindbeslissing van de Due Diligence (F3) op:
+        /// - decision: "stop" of "go_to_contract"
+        /// - motivation: business/risk motivatie
+        /// - decisionBy: rol/naam van de beslisser
+        /// - decisionDate: datum van het besluit
+        /// </summary>
+        public bool UpdateDueDiligenceFinalDecision(
+            Guid id,
+            string decision,
+            string? motivation,
+            string? decisionBy,
+            DateTime? decisionDate)
+        {
+            lock (_syncRoot)
+            {
+                var assessment = _assessments.FirstOrDefault(a => a.Id == id);
+                if (assessment == null)
+                {
+                    return false;
+                }
+
+                assessment.DueDiligenceFinalDecision = decision;
+                assessment.DueDiligenceFinalDecisionMotivation = motivation;
+                assessment.DueDiligenceFinalDecisionBy = decisionBy;
+                assessment.DueDiligenceFinalDecisionDate = decisionDate;
+
+                assessment.UpdatedAt = DateTime.UtcNow;
+
+                SaveToDisk();
+                return true;
+            }
+        }
+
         // -------------------------
         // Persistente opslag (JSON)
         // -------------------------
