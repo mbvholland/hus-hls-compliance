@@ -17,6 +17,9 @@ builder.Services.AddSingleton<SecurityProfileService>();
 builder.Services.AddSingleton<ToetsVooronderzoekService>();
 builder.Services.AddSingleton<AlgemeenService>();
 
+// Persistente opslag van due diligence-beslissingen (kolom K/M)
+builder.Services.AddSingleton<IAssessmentDueDiligenceDecisionRepository, JsonDueDiligenceDecisionRepository>();
+
 // Due diligence-engine
 builder.Services.AddSingleton<DueDiligenceService>();
 

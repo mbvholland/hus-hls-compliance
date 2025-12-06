@@ -8,21 +8,41 @@ namespace HlsCompliance.Api.Services
     /// <summary>
     /// Kernlogica voor de due diligence-checklist (tab 7/8/11):
     /// - Bepaalt per checklist-vraag: toepasbaarheid, antwoord, bewijssamenvatting en einduitkomst.
-    /// - Houdt in-memory beslissingen bij voor kolom K/M (Negatief resultaat acceptabel + afwijkingstekst).
+    /// - Houdt beslissingen bij voor kolom K/M (Negatief resultaat acceptabel + afwijkingstekst),
+    ///   met koppeling naar een persistente repository.
     /// - Biedt statische helpers die in de unit tests worden gebruikt.
     /// </summary>
     public class DueDiligenceService
     {
         /// <summary>
-        /// In-memory opslag van beslissingen per assessment + ChecklistId
+        /// In-memory cache van beslissingen per assessment + ChecklistId
         /// (kolom K: Negatief resultaat acceptabel, kolom M: DeviationText).
-        /// NB: nog niet persistent; gaat verloren bij herstart van de API.
         /// </summary>
         private readonly Dictionary<(Guid AssessmentId, string ChecklistId),
             (bool NegativeOutcomeAcceptable, string? DeviationText)> _decisions =
                 new();   // let op: GEEN StringComparer, tuple-key
 
         private readonly object _lock = new();
+
+        private readonly IAssessmentDueDiligenceDecisionRepository? _decisionRepository;
+
+        /// <summary>
+        /// Parameterloze constructor voor o.a. bestaande unit tests.
+        /// Beslissingen worden dan alleen in-memory bijgehouden.
+        /// </summary>
+        public DueDiligenceService()
+            : this(null)
+        {
+        }
+
+        /// <summary>
+        /// Hoofdconstructor met optionele repository voor persistente opslag.
+        /// In productie wordt deze via DI aangeroepen.
+        /// </summary>
+        public DueDiligenceService(IAssessmentDueDiligenceDecisionRepository? decisionRepository)
+        {
+            _decisionRepository = decisionRepository;
+        }
 
         /// <summary>
         /// Wordt aangeroepen door de DueDiligenceController (POST /decision)
@@ -41,23 +61,43 @@ namespace HlsCompliance.Api.Services
 
             var key = (assessmentId, checklistId);
 
+            // Altijd in-memory bijwerken
             lock (_lock)
             {
                 _decisions[key] = (negativeOutcomeAcceptable, deviationText);
             }
+
+            // En indien beschikbaar ook persistente opslag bijwerken
+            _decisionRepository?.Upsert(assessmentId, checklistId, negativeOutcomeAcceptable, deviationText);
         }
 
+        // =====================================================================
+        //  CHECKLIST-OPBOUW
+        // =====================================================================
+
         /// <summary>
-        /// Bouwt de checklist-rijen voor één assessment op basis van:
-        /// - statische definities (tab 7),
-        /// - antwoorden (tab 8),
-        /// - bewijslast (tab 11).
+        /// Bestaande overload: compatibel met bestaande tests/aanroepen.
+        /// Toepasbaarheid wordt berekend zónder ToetsVooronderzoek (alles toepasbaar).
         /// </summary>
         public IReadOnlyList<DueDiligenceChecklistRow> BuildChecklistRows(
             Guid assessmentId,
             IEnumerable<ChecklistQuestionDefinition> definitions,
             IEnumerable<AssessmentQuestionAnswer> answers,
             IEnumerable<AssessmentEvidenceItem> evidenceItems)
+        {
+            return BuildChecklistRows(assessmentId, definitions, answers, evidenceItems, null);
+        }
+
+        /// <summary>
+        /// Nieuwe overload: zelfde gedrag, maar met extra ToetsAnswers
+        /// uit ToetsVooronderzoek om IsApplicable per vraag te bepalen.
+        /// </summary>
+        public IReadOnlyList<DueDiligenceChecklistRow> BuildChecklistRows(
+            Guid assessmentId,
+            IEnumerable<ChecklistQuestionDefinition> definitions,
+            IEnumerable<AssessmentQuestionAnswer> answers,
+            IEnumerable<AssessmentEvidenceItem> evidenceItems,
+            IDictionary<string, bool?>? toetsAnswers)
         {
             if (definitions == null) throw new ArgumentNullException(nameof(definitions));
             if (answers == null) throw new ArgumentNullException(nameof(answers));
@@ -71,6 +111,9 @@ namespace HlsCompliance.Api.Services
                 .Where(e => e.AssessmentId == assessmentId)
                 .ToList();
 
+            // Laad eventuele bestaande beslissingen voor dit assessment uit de repository
+            LoadDecisionsFromRepository(assessmentId);
+
             var rows = new List<DueDiligenceChecklistRow>();
 
             foreach (var def in defList)
@@ -78,8 +121,8 @@ namespace HlsCompliance.Api.Services
                 var answer = answerList.FirstOrDefault(a =>
                     string.Equals(a.ChecklistId, def.ChecklistId, StringComparison.OrdinalIgnoreCase));
 
-                // Voor nu: alle vragen zijn toepasbaar.
-                var isApplicable = true;
+                // NIEUW: toepasbaarheid bepalen op basis van ToetsIds + ToetsAnswers
+                var isApplicable = DetermineApplicability(def, toetsAnswers);
 
                 var rawAnswer = answer?.RawAnswer;
                 var answerEvaluation = answer?.AnswerEvaluation;
@@ -92,13 +135,13 @@ namespace HlsCompliance.Api.Services
                 // Alle aanwezige EvidenceId’s als "verplicht" behandelen
                 var requiredEvidenceIds = evidenceForQuestion
                     .Where(e => !string.IsNullOrWhiteSpace(e.EvidenceId))
-                    .Select(e => e.EvidenceId)
+                    .Select(e => e.EvidenceId!)
                     .Distinct(StringComparer.OrdinalIgnoreCase)
                     .ToList();
 
                 var evidenceSummary = ComputeEvidenceResultLabel(requiredEvidenceIds, evidenceForQuestion);
 
-                // Beslissing kolom K/M uit in-memory store
+                // Beslissing kolom K/M uit cache (die gesynchroniseerd wordt met de repository)
                 bool negativeOutcomeAcceptable = false;
                 string? deviationText = null;
 
@@ -133,6 +176,114 @@ namespace HlsCompliance.Api.Services
             }
 
             return rows;
+        }
+
+        /// <summary>
+        /// Bepaalt of een checklist-vraag van toepassing is op basis van
+        /// de ToetsIds in de checklist-definitie en de ToetsAnswers (tab 6).
+        /// </summary>
+        private static bool DetermineApplicability(
+            ChecklistQuestionDefinition definition,
+            IDictionary<string, bool?>? toetsAnswers)
+        {
+            // Geen ToetsVooronderzoek bekend -> behoud bestaand gedrag (alles toepasbaar)
+            if (toetsAnswers == null || toetsAnswers.Count == 0)
+            {
+                return true;
+            }
+
+            // Geen koppeling met tab 6 -> altijd toepasbaar
+            if (definition.ToetsIds == null || !definition.ToetsIds.Any())
+            {
+                return true;
+            }
+
+            var values = new List<bool?>();
+
+            foreach (var toetsId in definition.ToetsIds)
+            {
+                if (string.IsNullOrWhiteSpace(toetsId))
+                    continue;
+
+                if (toetsAnswers.TryGetValue(toetsId, out var value))
+                {
+                    values.Add(value);
+                }
+            }
+
+            // Geen matchende toetsen gevonden -> conservatief toepasbaar houden
+            if (values.Count == 0)
+            {
+                return true;
+            }
+
+            bool anyYes = values.Any(v => v == true);
+            bool allNo = values.All(v => v == false);
+
+            if (anyYes)
+            {
+                // Ten minste één gerelateerde toets is "Ja" -> vraag is van toepassing
+                return true;
+            }
+
+            if (allNo)
+            {
+                // Alle gerelateerde toetsen zijn "Nee" -> vraag niet van toepassing
+                return false;
+            }
+
+            // Mix van Nee en Onbekend -> we kiezen hier voor "Niet van toepassing"
+            // zodra alle bekende antwoorden Nee zijn.
+            return false;
+        }
+
+        /// <summary>
+        /// Synchroniseert de in-memory cache _decisions met de repository
+        /// voor één assessment (indien een repository aanwezig is).
+        /// </summary>
+        private void LoadDecisionsFromRepository(Guid assessmentId)
+        {
+            if (_decisionRepository == null)
+            {
+                return;
+            }
+
+            var itemsEnumerable = _decisionRepository.GetByAssessment(assessmentId);
+            if (itemsEnumerable == null)
+            {
+                return;
+            }
+
+            var items = itemsEnumerable.ToList();
+            if (!items.Any())
+            {
+                return;
+            }
+
+            lock (_lock)
+            {
+                // Verwijder eventuele oude entries voor dit assessment
+                var keysToRemove = _decisions.Keys
+                    .Where(k => k.AssessmentId == assessmentId)
+                    .ToList();
+
+                foreach (var key in keysToRemove)
+                {
+                    _decisions.Remove(key);
+                }
+
+                // Voeg de beslissingen uit de repository toe aan de cache
+                foreach (var item in items)
+                {
+                    if (item == null || string.IsNullOrWhiteSpace(item.ChecklistId))
+                    {
+                        continue;
+                    }
+
+                    var key = (item.AssessmentId, item.ChecklistId);
+                    _decisions[key] = (item.NegativeOutcomeAcceptable, item.DeviationText);
+                }
+            }
         }
 
         // =====================================================================
@@ -404,13 +555,29 @@ namespace HlsCompliance.Api.Services
         //  SAMENVATTING OVER ALLE VRAGEN (VOORTGANG + EINDOORDEEL)
         // =====================================================================
 
+        /// <summary>
+        /// Bestaande overload: voor tests en bestaande code (zonder ToetsAnswers).
+        /// </summary>
         public DueDiligenceSummary BuildSummary(
             Guid assessmentId,
             IEnumerable<ChecklistQuestionDefinition> definitions,
             IEnumerable<AssessmentQuestionAnswer> answers,
             IEnumerable<AssessmentEvidenceItem> evidenceItems)
         {
-            var rows = BuildChecklistRows(assessmentId, definitions, answers, evidenceItems);
+            return BuildSummary(assessmentId, definitions, answers, evidenceItems, null);
+        }
+
+        /// <summary>
+        /// Nieuwe overload: gebruikt dezelfde IsApplicable-logica als de checklist.
+        /// </summary>
+        public DueDiligenceSummary BuildSummary(
+            Guid assessmentId,
+            IEnumerable<ChecklistQuestionDefinition> definitions,
+            IEnumerable<AssessmentQuestionAnswer> answers,
+            IEnumerable<AssessmentEvidenceItem> evidenceItems,
+            IDictionary<string, bool?>? toetsAnswers)
+        {
+            var rows = BuildChecklistRows(assessmentId, definitions, answers, evidenceItems, toetsAnswers);
 
             int total = rows.Count;
             int applicable = rows.Count(r => r.IsApplicable);

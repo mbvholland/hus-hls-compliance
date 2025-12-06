@@ -40,5 +40,35 @@
     "ChecklistId": "Algemeen2",
     "RawAnswer": "Beveiligingsbeleid is vastgesteld in 2024 en sluit aan op NEN7510-2024.",
     "AnswerEvaluation": "Deels goedgekeurd"
+  },
+  {
+    "AssessmentId": "b77de57d-ec6a-4ca3-ad72-2e6dadffdc82",
+    "ChecklistId": "ALG-01",
+    "RawAnswer": "Ja, dit is geregeld in beleid X.",
+    "AnswerEvaluation": "Goedgekeurd"
+  },
+  {
+    "AssessmentId": "b77de57d-ec6a-4ca3-ad72-2e6dadffdc82",
+    "ChecklistId": "AVG-02",
+    "RawAnswer": "Nog in voorbereiding.",
+    "AnswerEvaluation": "Deels goedgekeurd"
+  },
+  {
+    "AssessmentId": "b77de57d-ec6a-4ca3-ad72-2e6dadffdc82",
+    "ChecklistId": "Algemeen1",
+    "RawAnswer": "Ja, er is een CISO en FG benoemd en vastgelegd in de governance.",
+    "AnswerEvaluation": "Goedgekeurd"
+  },
+  {
+    "AssessmentId": "b77de57d-ec6a-4ca3-ad72-2e6dadffdc82",
+    "ChecklistId": "Algemeen2",
+    "RawAnswer": "Beveiligingsbeleid is vastgesteld in 2024 en sluit aan op NEN7510-2024.",
+    "AnswerEvaluation": "Deels goedgekeurd"
+  },
+  {
+    "AssessmentId": "9cf37b91-dd86-4101-8e99-c50daff049b8",
+    "ChecklistId": "Algemeen19",
+    "RawAnswer": "Nee (controlevraag governance test)",
+    "AnswerEvaluation": "Voldoet niet"
   }
 ]

@@ -8,10 +8,10 @@ using HlsCompliance.Api.Domain;
 namespace HlsCompliance.Api.Services
 {
     /// <summary>
-    /// Simple JSON-backed repository for Due Diligence decisions (kolom K/M) per assessment.
+    /// JSON-backed repository voor Due Diligence-beslissingen (kolom K/M) per assessment.
     /// Data file: Data/due-diligence-decisions.json
     /// </summary>
-    public class JsonDueDiligenceDecisionRepository
+    public class JsonDueDiligenceDecisionRepository : IAssessmentDueDiligenceDecisionRepository
     {
         private const string DecisionsFileName = "Data/due-diligence-decisions.json";
 
@@ -24,7 +24,7 @@ namespace HlsCompliance.Api.Services
         }
 
         /// <summary>
-        /// Get all decisions for a given assessment.
+        /// Haal alle beslissingen op voor één assessment.
         /// </summary>
         public IReadOnlyList<AssessmentDueDiligenceDecision> GetByAssessment(Guid assessmentId)
         {
@@ -38,8 +38,8 @@ namespace HlsCompliance.Api.Services
         }
 
         /// <summary>
-        /// Upsert one decision (per AssessmentId + ChecklistId).
-        /// If it exists, update; otherwise add a new one.
+        /// Upsert één beslissing (per AssessmentId + ChecklistId).
+        /// Bestaat hij al, dan wordt deze bijgewerkt; anders wordt een nieuwe aangemaakt.
         /// </summary>
         public void Upsert(Guid assessmentId, string checklistId, bool negativeOutcomeAcceptable, string? deviationText)
         {
@@ -84,7 +84,7 @@ namespace HlsCompliance.Api.Services
 
                 if (!File.Exists(filePath))
                 {
-                    return; // start empty
+                    return; // start leeg
                 }
 
                 var json = File.ReadAllText(filePath);
@@ -108,8 +108,8 @@ namespace HlsCompliance.Api.Services
             }
             catch
             {
-                // Ignore errors; start with empty list.
-                // (Add logging here later if desired.)
+                // Fouten worden genegeerd; we starten dan met een lege lijst.
+                // (Later kan hier logging aan toegevoegd worden.)
             }
         }
 
@@ -145,8 +145,8 @@ namespace HlsCompliance.Api.Services
             }
             catch
             {
-                // Ignore errors; decisions remain in memory.
-                // (Add logging later if needed.)
+                // Fouten worden genegeerd; beslissingen blijven in geheugen.
+                // (Later kan hier logging aan toegevoegd worden.)
             }
         }
 

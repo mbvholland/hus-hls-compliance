@@ -10,5 +10,23 @@
     "ChecklistId": "Algemeen1",
     "NegativeOutcomeAcceptable": true,
     "DeviationText": "Afwijking geaccepteerd i.v.m. transitieperiode."
+  },
+  {
+    "AssessmentId": "9cf37b91-dd86-4101-8e99-c50daff049b8",
+    "ChecklistId": "Algemeen1",
+    "NegativeOutcomeAcceptable": true,
+    "DeviationText": "Test: afwijking geaccepteerd via API"
+  },
+  {
+    "AssessmentId": "eea638ed-b4ee-4b06-82a9-ef36c19177be",
+    "ChecklistId": "Algemeen1",
+    "NegativeOutcomeAcceptable": true,
+    "DeviationText": "Test: afwijking opnieuw gezet na refactor"
+  },
+  {
+    "AssessmentId": "b77de57d-ec6a-4ca3-ad72-2e6dadffdc82",
+    "ChecklistId": "Algemeen1",
+    "NegativeOutcomeAcceptable": true,
+    "DeviationText": "Test: afwijking geaccepteerd via API"
   }
 ]

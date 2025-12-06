@@ -107,15 +107,22 @@ namespace HlsCompliance.Api.Domain
         // --------------------------------------------------------------------
 
         /// <summary>
-        /// Result from the DPIA quickscan:
-        /// true  = DPIA required
-        /// false = DPIA not required
-        /// null  = not yet determined (quickscan incomplete).
+        /// Resultaat van de DPIA quickscan:
+        /// true  = DPIA vereist
+        /// false = DPIA niet vereist
+        /// null  = nog niet bepaald (quickscan incompleet).
+        /// (Excel: DPIA_Quickscan!E17)
         /// </summary>
         public bool? DpiaRequired { get; set; }
 
         /// <summary>
-        /// Human-readable DPIA status for this assessment.
+        /// DPIA-risicoscore uit de quickscan.
+        /// (Excel: DPIA_Quickscan!E18)
+        /// </summary>
+        public double? DpiaRiskScore { get; set; }
+
+        /// <summary>
+        /// Human-readable DPIA status voor deze assessment.
         /// </summary>
         public string DpiaStatus { get; set; } = "Onbekend";
 
@@ -176,7 +183,7 @@ namespace HlsCompliance.Api.Domain
         public string SecurityProfileStatus { get; set; } = "Onbekend";
 
         // --------------------------------------------------------------------
-        // Eindbeslissing Due Diligence (F3)
+        // Eindbeslissing Due Diligence (F3/G3)
         // --------------------------------------------------------------------
 
         /// <summary>

@@ -28,5 +28,10 @@
     "AssessmentId": "0ac58f98-c442-4fff-aa63-8925e508e3ce",
     "ToetsId": "NENISO-c",
     "Answer": true
+  },
+  {
+    "AssessmentId": "eea638ed-b4ee-4b06-82a9-ef36c19177be",
+    "ToetsId": "NIS2-b",
+    "Answer": false
   }
 ]

@@ -521,10 +521,10 @@ namespace HlsCompliance.Api.Services
                 new()
                 {
                     ToetsId = "CRA-e",
-                    Text = "Is er een essentiële/risicovolle combinatie van kritieke dienst (NEN/ISO-c) en koppelingen?",
+                    Text = "Is er een essentiële/risicovolle combinatie van kritieke dienst (NENISO-c) en koppelingen?",
                     IsDerived = true,
                     DerivedFrom = "NENISO-c/Koppeling-a",
-                    Explanation = "Excel C54: IF(OR(C18='Ja',C57='Ja'),'Ja',IF(AND(C18='Nee',C57='Nee'),'Nee',''))."
+                    Explanation = "Excel C54: IF(OR(C18=\"Ja\",C57=\"Ja\"),\"Ja\",IF(AND(C18=\"Nee\",C57=\"Nee\"),\"Nee\",\"\"))."
                 },
                 new()
                 {
@@ -693,6 +693,39 @@ namespace HlsCompliance.Api.Services
             // CRA Toepasselijk? – F56: aggregatie over CRA-a..f
             result.CraApplicable = AggregateYesNo(result,
                 "CRA-a", "CRA-b", "CRA-c", "CRA-d", "CRA-e", "CRA-f");
+
+            // 6. ToetsAnswers + BoZ/LHV vullen
+            var toetsDict = new Dictionary<string, bool?>(StringComparer.OrdinalIgnoreCase);
+
+            foreach (var q in result.Questions)
+            {
+                if (string.IsNullOrWhiteSpace(q.ToetsId))
+                    continue;
+
+                // Primaire sleutel: ToetsId zoals in tab 6
+                toetsDict[q.ToetsId] = q.Answer;
+
+                // Alias voor NEN/ISO:
+                // - in tab 6 gebruiken we "NENISO-x"
+                // - in checklist-v1.7.json gebruiken we "NEN/ISO-x"
+                if (q.ToetsId.StartsWith("NENISO-", StringComparison.OrdinalIgnoreCase))
+                {
+                    var suffix = q.ToetsId.Substring("NENISO-".Length);
+                    var alias = "NEN/ISO-" + suffix;
+                    toetsDict[alias] = q.Answer;
+                }
+            }
+
+            result.ToetsAnswers = toetsDict;
+
+            // BoZ- en LHV-dekking rechtstreeks uit ALG-b / ALG-c
+            result.IsBozCovered = result.Questions
+                .FirstOrDefault(q => string.Equals(q.ToetsId, "ALG-b", StringComparison.OrdinalIgnoreCase))
+                ?.Answer;
+
+            result.IsLhvCovered = result.Questions
+                .FirstOrDefault(q => string.Equals(q.ToetsId, "ALG-c", StringComparison.OrdinalIgnoreCase))
+                ?.Answer;
 
             // Timestamp
             result.LastUpdated = DateTime.UtcNow;
@@ -1113,7 +1146,7 @@ namespace HlsCompliance.Api.Services
                         _manualAnswers[key] = new ManualAnswerState
                         {
                             AssessmentId = r.AssessmentId,
-                            ToetsId = r.ToetsId,
+                            ToetsId = r.ToetsId!,
                             Answer = r.Answer
                         };
                     }
